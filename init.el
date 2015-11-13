@@ -20,5 +20,3 @@
 (require 'init-git)
 (require 'init-company)
 (require 'init-org)
-(require 'init-latex)
-(require 'init-markdown)
