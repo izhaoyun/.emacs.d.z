@@ -1,0 +1,5 @@
+*.el~
+el-get
+
+elpa/*
+auto-save-list/*
