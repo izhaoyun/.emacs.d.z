@@ -7,21 +7,21 @@
 (global-unset-key (kbd "C-x c"))
 
 (global-set-key (kbd "M-x")     'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-y")     'helm-show-kill-ring)
 (global-set-key (kbd "C-x b")   'helm-mini)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-c h x") 'helm-register)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (global-set-key (kbd "C-s")     'helm-occur)
+(global-set-key (kbd "C-c h x") 'helm-register)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+(global-set-key (kbd "M-y")     'helm-show-kill-ring)
 
-(setq helm-recentf-fuzzy-match    t
-      helm-buffers-fuzzy-matching t
-      helm-semantic-fuzzy-match   t
-      helm-imenu-fuzzy-match      t
-      helm-M-x-fuzzy-match        t
-      helm-apropos-fuzzy-match    t
-      helm-locate-fuzzy-match     t)
+;; fuzzy matching
+(setq helm-recentf-fuzzy-match    t     ; helm-recentf & helm-mini
+      helm-buffers-fuzzy-matching t     ; helm-mini & helm-buffers-list
+      helm-imenu-fuzzy-match      t     ; helm-imenu
+      helm-M-x-fuzzy-match        t     ; helm-M-x
+      helm-apropos-fuzzy-match    t     ; helm-apropos
+      helm-locate-fuzzy-match     t)    ; helm-locate
 
 ;; Package: helm-ag
 (el-get-bundle helm-ag)
@@ -29,6 +29,9 @@
 
 ;; Package: helm-ls-git
 (el-get-bundle helm-ls-git)
+(require 'helm-ls-git)
+(global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 
 ;; Package: helm-swoop
 (el-get-bundle helm-swoop)
