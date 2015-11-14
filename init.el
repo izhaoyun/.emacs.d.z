@@ -21,3 +21,5 @@
 (require 'init-git)
 (require 'init-helm)
 (require 'init-company)
+;; languages
+(require 'init-cc)
