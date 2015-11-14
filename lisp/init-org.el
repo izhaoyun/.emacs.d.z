@@ -1,4 +1,4 @@
-;;; org-mode
+;;; Package: org-mode
 (el-get-bundle org-mode)
 
 (add-to-list 'auto-mode-alist '("\\.org'" . org-mode))

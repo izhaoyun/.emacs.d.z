@@ -21,7 +21,7 @@
 ;; winner-mode
 (winner-mode t)
 
-;; window-numbering
+;; Package: window-numbering
 (el-get-bundle window-numbering)
 (require 'window-numbering)
 (window-numbering-mode 1)

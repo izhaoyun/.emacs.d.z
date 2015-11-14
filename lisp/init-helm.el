@@ -1,4 +1,4 @@
-;; helm
+;; Package: helm
 (el-get-bundle helm)
 
 (require 'helm-config)
@@ -11,11 +11,9 @@
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
 (global-set-key (kbd "C-x b")   'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-
 (global-set-key (kbd "C-c h x") 'helm-register)
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (global-set-key (kbd "C-s")     'helm-occur)
-
 
 (setq helm-recentf-fuzzy-match    t
       helm-buffers-fuzzy-matching t
@@ -25,14 +23,14 @@
       helm-apropos-fuzzy-match    t
       helm-locate-fuzzy-match     t)
 
-;; helm-ag
+;; Package: helm-ag
 (el-get-bundle helm-ag)
-(global-set-key (kbd "M-g a")   'helm-do-ag)
+(global-set-key (kbd "M-g a") 'helm-do-ag)
 
-;; helm-ls-git
+;; Package: helm-ls-git
 (el-get-bundle helm-ls-git)
 
-;; helm-swoop
+;; Package: helm-swoop
 (el-get-bundle helm-swoop)
 (require 'helm-swoop)
 
