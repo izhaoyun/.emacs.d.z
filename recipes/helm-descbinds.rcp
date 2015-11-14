@@ -1,0 +1,6 @@
+(:name helm-descbinds
+       :type elpa
+       :description "Yet Another `describe-bindings' with `helm'."
+       :depends (helm)
+       :prepare (progn
+                  (autoload 'helm-descbinds-install "helm-descbinds")))

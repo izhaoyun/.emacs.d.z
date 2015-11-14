@@ -34,4 +34,9 @@
 (el-get-bundle helm-swoop)
 (require 'helm-swoop)
 
+;; Package: helm-descbinds
+(el-get-bundle helm-descbinds)
+(require 'helm-descbinds)
+(helm-descbinds-mode 1)
+
 (provide 'init-helm)
