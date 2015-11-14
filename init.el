@@ -17,6 +17,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'init-window)
 (require 'init-indentation)
+(require 'init-navigation)
 (require 'init-yasnippet)
 (require 'init-org)
 (require 'init-git)
