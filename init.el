@@ -17,6 +17,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'init-window)
 (require 'init-indentation)
+(require 'init-misc)
 (require 'init-navigation)
 (require 'init-yasnippet)
 (require 'init-org)
@@ -24,4 +25,4 @@
 (require 'init-helm)
 (require 'init-company)
 ;; languages
-(require 'init-cc)
+(require 'init-cc)                      ; for c/c++ programming

@@ -1,6 +1,8 @@
 *.el~
-el-get
 
+el-get/*
 elpa/*
 auto-save-list/*
 semanticdb/*
+
+recentf
