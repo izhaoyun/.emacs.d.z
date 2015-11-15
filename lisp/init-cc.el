@@ -23,4 +23,11 @@
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
+;; Package: semantic-stickyfunc-mode
+(el-get-bundle semantic-stickyfunc-enhance)
+(add-to-list 'semantic-default-submodes
+             'global-semantic-stickyfunc-mode)
+(semantic-mode 1)
+(require 'stickyfunc-enhance)
+
 (provide 'init-cc)
