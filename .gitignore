@@ -4,5 +4,7 @@ el-get/*
 elpa/*
 auto-save-list/*
 semanticdb/*
+.python-environments/*
 
 recentf
+ac-comphist.dat
