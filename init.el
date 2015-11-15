@@ -25,4 +25,5 @@
 (require 'init-helm)
 (require 'init-company)
 ;; languages
-(require 'init-cc)                      ; for c/c++ programming
+(require 'init-cc)                      ; c/c++ programming
+(require 'init-python)                  ; python
