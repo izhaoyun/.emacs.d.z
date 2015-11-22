@@ -1,15 +1,21 @@
 ;;; provides packages useful for c/c++ development
 ;; ==========================================================================
-
-;; cc-mode
 (require 'cc-mode)
+(require 'semantic)
+
+(global-semanticdb-minor-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+(global-semantic-stickyfunc-mode 1)
+
+(semantic-mode 1)
+
+(defun alexott/cedet-hook ()
+  (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
+  (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
 
 ;; Package: cedet
 (el-get-bundle cedet)
 
-(require 'semantic)
-
-;;; Navigation
 ;; ==========================================================================
 ;; Package: helm-gtags
 (el-get-bundle helm-gtags)
@@ -36,13 +42,15 @@
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
+;; ==========================================================================
 ;; Package: company
 (el-get-bundle company)
 (require 'company)
 (setq company-show-numbers t)
 
-;; (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
+;; ==========================================================================
 ;; Package: function-args
 (el-get-bundle function-args)
 (require 'function-args)
@@ -52,6 +60,7 @@
 (define-key c-mode-map   (kbd "M-o")  'fa-show)
 (define-key c++-mode-map (kbd "M-o")  'fa-show)
 
+;; ==========================================================================
 ;; Package: CMake-mode
 (el-get-bundle cmake-mode)
 (require 'cmake-mode)
@@ -65,11 +74,17 @@
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
+;; ==========================================================================
 ;; Package: semantic-stickyfunc-mode
 (el-get-bundle semantic-stickyfunc-enhance)
 (add-to-list 'semantic-default-submodes
              'global-semantic-stickyfunc-mode)
 (semantic-mode 1)
 (require 'stickyfunc-enhance)
+
+;; ==========================================================================
+;; setup GDB
+(setq gdb-many-windows t
+      gdb-show-main t)
 
 (provide 'init-cpp)

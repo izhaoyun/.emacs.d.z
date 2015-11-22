@@ -1,4 +1,7 @@
 ;;; init.el
+
+(setq gc-cons-threshold 100000000)
+
 ;; el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -19,7 +22,7 @@
 (require 'init-indentation)
 (require 'init-misc)
 (require 'init-navigation)
-(require 'init-yasnippet)
+;(require 'init-yasnippet)
 (require 'init-org)
 (require 'init-git)
 (require 'init-helm)
