@@ -23,7 +23,5 @@
 (require 'init-org)
 (require 'init-git)
 (require 'init-helm)
-(require 'init-company)
-;; languages
-(require 'init-cc)                      ; c/c++ programming
+(require 'init-cpp)                      ; c/c++ programming
 (require 'init-python)                  ; python
