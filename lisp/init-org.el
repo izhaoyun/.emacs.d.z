@@ -31,9 +31,19 @@
 (add-to-list 'org-latex-packages-alist '("" "ctex"))
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
+(add-to-list 'org-latex-packages-alist '("" "xcolor"))
+;(add-to-list 'org-latex-packages-alist '("" "minted"))
+
+(setq org-latex-listings t)
+(setq org-latex-listings-options
+      '(("basicstyle"          "\\small")
+        ("breaklines"          "true")
+        ("breakatwhitespace"   "true")
+        ("showspaces"          "false")
+        ("frame"               "single")))
 
 ;; code block fontification
-(setq org-src-fontify-natively t
+(setq org-src-fontify-natively  t
       org-src-tab-acts-natively t)
 
 ;; latex compiler
