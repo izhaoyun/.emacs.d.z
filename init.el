@@ -22,7 +22,7 @@
 (require 'init-indentation)
 (require 'init-misc)
 (require 'init-navigation)
-;(require 'init-yasnippet)
+(require 'init-yasnippet)
 (require 'init-org)
 (require 'init-git)
 (require 'init-helm)
