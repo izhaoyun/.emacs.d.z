@@ -1,10 +1,13 @@
-*.el~
+# temporary files
+*.*~
 
+# all the files in those dirs
 el-get/*
 elpa/*
 auto-save-list/*
 semanticdb/*
 .python-environments/*
 
+# other files
 recentf
 ac-comphist.dat
