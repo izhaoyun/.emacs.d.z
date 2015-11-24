@@ -49,4 +49,10 @@
 ;; latex compiler
 (setq org-latex-compiler "xelatex")
 
+;; TODO extensions
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")))
+
 (provide 'init-org)
