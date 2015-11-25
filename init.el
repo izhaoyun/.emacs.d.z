@@ -21,7 +21,6 @@
 (require 'init-window)
 (require 'init-misc)
 (require 'init-prog)                    ; programming settings
-(require 'init-yasnippet)
 (require 'init-org)
 (require 'init-helm)
 (require 'init-cpp)                      ; c/c++ programming

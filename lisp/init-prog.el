@@ -1,6 +1,14 @@
 ;;; ubiquitous settings for programming
 
 ;; ==========================================================================
+;; Yasnippet
+;; Package: yasnippet
+(el-get-bundle yasnippet)
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"))
+(yas-global-mode 1)
+
+;; ==========================================================================
 ;; Parenthesis
 (show-paren-mode 1)
 
