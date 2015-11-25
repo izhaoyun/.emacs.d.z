@@ -28,6 +28,8 @@
 
 ;; Package: smart-mode-line
 (el-get-bundle smart-mode-line)
+(setq sml/them 'light)
+(setq sml/no-confirm-load-theme t)
 (sml/setup)
 
 (provide 'init-window)
