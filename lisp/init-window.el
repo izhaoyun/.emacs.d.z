@@ -26,4 +26,7 @@
 (require 'window-numbering)
 (window-numbering-mode 1)
 
+;; Package: smart-mode-line
+(el-get-bundle smart-mode-line)
+
 (provide 'init-window)
