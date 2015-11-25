@@ -18,8 +18,10 @@
 
 ;; load packages
 (add-to-list 'load-path "~/.emacs.d/lisp")
+;; basic editor settings
 (require 'init-window)
 (require 'init-misc)
+;; developing section
 (require 'init-prog)                    ; programming settings
 (require 'init-org)
 (require 'init-helm)
