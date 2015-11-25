@@ -20,10 +20,10 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;; basic editor settings
 (require 'init-window)
+(require 'init-helm)
 (require 'init-misc)
 ;; developing section
 (require 'init-prog)                    ; programming settings
 (require 'init-org)
-(require 'init-helm)
 (require 'init-cpp)                     ; c/c++
 (require 'init-python)                  ; python
