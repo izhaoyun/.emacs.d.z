@@ -28,5 +28,6 @@
 
 ;; Package: smart-mode-line
 (el-get-bundle smart-mode-line)
+(sml/setup)
 
 (provide 'init-window)

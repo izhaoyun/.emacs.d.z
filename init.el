@@ -25,5 +25,5 @@
 (require 'init-prog)                    ; programming settings
 (require 'init-org)
 (require 'init-helm)
-(require 'init-cpp)                      ; c/c++ programming
+(require 'init-cpp)                     ; c/c++
 (require 'init-python)                  ; python
