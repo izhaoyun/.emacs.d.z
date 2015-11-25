@@ -9,6 +9,11 @@
 (yas-global-mode 1)
 
 ;; ==========================================================================
+;; Package: comment-dwim-2
+(el-get-bundle comment-dwim-2)
+(global-set-key (kbd "M-;") 'comment-dwim-2)
+
+;; ==========================================================================
 ;; Parenthesis
 (show-paren-mode 1)
 
