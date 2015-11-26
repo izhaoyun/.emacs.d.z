@@ -63,6 +63,9 @@
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
 
+;; Package: highlight-indentation
+(el-get-bundle highlight-indentation)
+
 ;; ==========================================================================
 ;; Version control
 ;; Package: magit
