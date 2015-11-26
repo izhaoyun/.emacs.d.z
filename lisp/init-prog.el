@@ -90,6 +90,10 @@
 (avy-setup-default)
 
 ;; ==========================================================================
+;; Package: projectile
+(el-get-bundle projectile)
+
+;; ==========================================================================
 ;; Miscellaneous packages
 
 ;; Package: ws-butler
