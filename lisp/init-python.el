@@ -14,4 +14,8 @@
 (el-get-bundle company-anaconda)
 (add-to-list 'company-backends 'company-anaconda)
 
+;; Package: pyenv-mode
+(el-get-bundle pyenv-mode)
+(pyenv-mode)
+
 (provide 'init-python)
