@@ -5,6 +5,7 @@
 (require 'python-mode)
 (setq-default py-shell-name "ipython")
 (setq-default py-which-bufname "IPython")
+(setq py-smart-indentation t)
 
 ;; Package: anaconda-mode
 (el-get-bundle anaconda-mode)
