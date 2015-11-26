@@ -8,6 +8,7 @@ auto-save-list/*
 semanticdb/*
 .python-environments/*
 url/*
+anaconda-mode/*
 
 # other files
 recentf
