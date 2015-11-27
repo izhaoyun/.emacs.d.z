@@ -36,11 +36,22 @@
 
 (setq org-latex-listings t)
 (setq org-latex-listings-options
-      '(("basicstyle"          "\\small")
+      '(("basicstyle"          "\\ttfamily")
         ("breaklines"          "true")
+        ("keywordstyle"        "{\\bfseries\\color{NavyBlue}}")
+        ("commentstyle"        "{\\sffamily\\color{PineGreen!60!black}}")
+        ("emphstyle"           "{\\bfseries\\color{Rhodamine}}")
+        ("stringstyle"         "{\\rmfamily}")
+        ("tabsize"             "4")
         ("breakatwhitespace"   "true")
         ("showspaces"          "false")
-        ("frame"               "single")))
+        ("showstringspaces"    "false")
+        ("frame"               "single")
+        ("backgroundcolor"     "{\\color{yellow!20!white}}")
+        ("numbers"             "left")
+        ("numberstyle"         "{\\sffamily\\footnotesize}")
+        ("rulecolor"           "\\color{purple}")
+        ))
 
 ;; code block fontification
 (setq org-src-fontify-natively  t
