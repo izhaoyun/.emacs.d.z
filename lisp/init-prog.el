@@ -1,6 +1,6 @@
 ;;; ubiquitous settings for programming
 
-;; ==========================================================================
+;; ===================================================================
 ;; Yasnippet
 ;; Package: yasnippet
 (el-get-bundle yasnippet)
@@ -8,12 +8,12 @@
 (setq yas-snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"))
 (yas-global-mode 1)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Package: comment-dwim-2
 (el-get-bundle comment-dwim-2)
 (global-set-key (kbd "M-;") 'comment-dwim-2)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Parenthesis
 (show-paren-mode 1)
 
@@ -35,7 +35,7 @@
 (el-get-bundle rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Indentation
 (global-set-key (kbd "RET") 'newline-and-indent)
 
@@ -63,7 +63,10 @@
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
 
-;; ==========================================================================
+;; Package: highlight-indentation
+(el-get-bundle highlight-indentation)
+
+;; ===================================================================
 ;; Version control
 ;; Package: magit
 (el-get-bundle magit)
@@ -75,7 +78,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Navigation
 ;; Package: avy
 (el-get-bundle avy)
@@ -86,7 +89,11 @@
 (global-set-key (kbd "M-g e") 'avy-goto-word-0)
 (avy-setup-default)
 
-;; ==========================================================================
+;; ===================================================================
+;; Package: projectile
+(el-get-bundle projectile)
+
+;; ===================================================================
 ;; Miscellaneous packages
 
 ;; Package: ws-butler
@@ -104,5 +111,9 @@
 (setq sublimity-map-fraction 0.3)
 (setq sublimity-map-text-scale -7)
 ;(sublimity-mode 1)
+
+;; Package: fill-column-indicator
+(el-get-bundle fill-column-indicator)
+(require 'fill-column-indicator)
 
 (provide 'init-prog)

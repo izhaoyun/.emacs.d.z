@@ -1,5 +1,7 @@
 ;;; provides packages useful for c/c++ development
 ;; ==========================================================================
+(require 'init-company)
+;; ==========================================================================
 (require 'cc-mode)
 (require 'semantic)
 
@@ -41,14 +43,6 @@
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-
-;; ==========================================================================
-;; Package: company
-(el-get-bundle company)
-(require 'company)
-(setq company-show-numbers t)
-
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;; ==========================================================================
 ;; Package: function-args

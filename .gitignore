@@ -7,9 +7,14 @@ elpa/*
 auto-save-list/*
 semanticdb/*
 .python-environments/*
+url/*
+anaconda-mode/*
 
 # other files
 recentf
 ac-comphist.dat
 tramp
+<<<<<<< HEAD
 bookmarks
+=======
+>>>>>>> 9438e42824990581b4f1fa7c524413f22b2428c0
