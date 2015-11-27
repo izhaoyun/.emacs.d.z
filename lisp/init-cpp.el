@@ -1,7 +1,5 @@
 ;;; provides packages useful for c/c++ development
-;; ==========================================================================
-(require 'init-company)
-;; ==========================================================================
+;; ===================================================================
 (require 'cc-mode)
 (require 'semantic)
 
@@ -18,7 +16,7 @@
 ;; Package: cedet
 (el-get-bundle cedet)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Package: helm-gtags
 (el-get-bundle helm-gtags)
 
@@ -44,7 +42,7 @@
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Package: function-args
 (el-get-bundle function-args)
 (require 'function-args)
@@ -54,7 +52,7 @@
 (define-key c-mode-map   (kbd "M-o")  'fa-show)
 (define-key c++-mode-map (kbd "M-o")  'fa-show)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Package: CMake-mode
 (el-get-bundle cmake-mode)
 (require 'cmake-mode)
@@ -68,7 +66,7 @@
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
-;; ==========================================================================
+;; ===================================================================
 ;; Package: semantic-stickyfunc-mode
 (el-get-bundle semantic-stickyfunc-enhance)
 (add-to-list 'semantic-default-submodes
@@ -76,7 +74,7 @@
 (semantic-mode 1)
 (require 'stickyfunc-enhance)
 
-;; ==========================================================================
+;; ===================================================================
 ;; setup GDB
 (setq gdb-many-windows t
       gdb-show-main t)

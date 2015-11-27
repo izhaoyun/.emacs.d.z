@@ -94,6 +94,15 @@
 (el-get-bundle projectile)
 
 ;; ===================================================================
+;; Package: company
+(el-get-bundle company)
+(require 'company)
+(setq company-show-numbers t)
+
+;; (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'prog-mode-hook 'company-mode)
+
+;; ===================================================================
 ;; Miscellaneous packages
 
 ;; Package: ws-butler

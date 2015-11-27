@@ -1,5 +1,3 @@
-(require 'init-company)
-
 ;; Package: python-mode
 (el-get-bundle python-mode)
 (require 'python-mode)

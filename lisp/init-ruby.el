@@ -1,4 +1,3 @@
-(require 'init-company)
 (require 'ruby-mode)
 
 ;; Package: robe
@@ -8,9 +7,8 @@
   '(push 'company-robe company-backends))
 
 ;; Package: Enhanced-Ruby-Mode
-;; https://github.com/zenspider/enhanced-ruby-mode#synopsis
 (el-get-bundle enh-ruby-mode)
-
+(add-hook 'enh-ruby-mode-hook 'robe-mode)
 
 ;; Package: inf-ruby
 (el-get-bundle inf-ruby)
