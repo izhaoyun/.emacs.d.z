@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: babel
+# key: babel_
+# --
+#+NAME: ${1:label}
+#+BEGIN_SRC ${2:emacs-lisp} ${3:header-args}
+  $0
+#+END_SRC

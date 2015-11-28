@@ -5,7 +5,9 @@
 ;; Package: yasnippet
 (el-get-bundle yasnippet)
 (require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"))
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"
+        "~/.emacs.d/el-get/yasnippet/snippets"))
 (yas-global-mode 1)
 
 ;; ===================================================================
@@ -44,8 +46,8 @@
 
 ;; show unncessary whitespace that can mess up your diff
 (add-hook 'prog-mode-hook (lambda ()
-			    (interactive)
-			    (setq show-trailing-whitespace 1)))
+                (interactive)
+                (setq show-trailing-whitespace 1)))
 
 ;; use space to indent by default
 (setq-default indent-tabs-mode nil)
