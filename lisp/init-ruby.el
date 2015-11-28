@@ -13,6 +13,6 @@
 ;; Package: inf-ruby
 (el-get-bundle inf-ruby)
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
-(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
 
 (provide 'init-ruby)
