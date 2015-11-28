@@ -1,5 +1,8 @@
 ;;; provides packages useful for c/c++ development
 ;; ===================================================================
+;; Package: cedet
+(el-get-bundle cedet)
+
 (require 'cc-mode)
 (require 'semantic)
 
@@ -13,8 +16,6 @@
   (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
   (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
 
-;; Package: cedet
-(el-get-bundle cedet)
 
 ;; ===================================================================
 ;; Package: helm-gtags
@@ -35,12 +36,25 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 
-(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+;; key settings for helm-gtags
 (define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
 (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+(define-key helm-gtags-mode-map (kbd "C-c <")
+  'helm-gtags-previous-history)
+(define-key helm-gtags-mode-map (kbd "C-c >")
+  'helm-gtags-next-history)
+(define-key helm-gtags-mode-map (kbd "C-c g a")
+  'helm-gtags-tags-in-this-function)
+
+(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+
+;; ===================================================================
+;; Package: sr-speedbar
+(el-get-bundle sr-speedbar)
+
+;; speedbar
+(setq speedbar-show-unknown-files t)
 
 ;; ===================================================================
 ;; Package: function-args
