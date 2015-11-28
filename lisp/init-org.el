@@ -33,15 +33,21 @@
 (add-to-list 'org-latex-packages-alist '("" "color"))
 (add-to-list 'org-latex-packages-alist '("" "geometry"))
 (add-to-list 'org-latex-packages-alist '("dvipsnames" "xcolor"))
-;(add-to-list 'org-latex-packages-alist '("" "minted"))
+(add-to-list 'org-latex-packages-alist '("" "minted"))
 
-(setq org-latex-listings t)
+(setq org-latex-listings 'minted)
+
+(setq org-latex-minted-options
+      '(("frame"               "lines")))
+
 (setq org-latex-listings-options
       '(("basicstyle"          "\\ttfamily")
         ("breaklines"          "true")
         ("keywordstyle"        "{\\bfseries\\color{NavyBlue}}")
         ("commentstyle"        "{\\sffamily\\color{PineGreen!60!black}}")
+        ;; ("emph"                "{}")
         ("emphstyle"           "{\\bfseries\\color{Rhodamine}}")
+        ;; ("alsoletter"          "{.}")
         ("stringstyle"         "{\\rmfamily}")
         ("tabsize"             "2")
         ("breakatwhitespace"   "true")
@@ -53,6 +59,12 @@
         ("numberstyle"         "{\\sffamily\\footnotesize}")
         ("rulecolor"           "\\color{purple}")
         ))
+
+;;
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
 ;; code block fontification
 (setq org-src-fontify-natively  t
