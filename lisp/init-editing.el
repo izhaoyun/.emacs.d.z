@@ -24,4 +24,4 @@
 (global-set-key (kbd "C-S-o")
                 'zhao/new-line-before)
 
-(provide 'init-misc)
+(provide 'init-editing)
