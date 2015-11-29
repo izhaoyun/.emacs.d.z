@@ -3,19 +3,36 @@
 ;; Package: cedet
 (el-get-bundle cedet)
 
-(require 'cc-mode)
-(require 'semantic)
+(require 'cedet-devel-load)
 
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(global-semantic-stickyfunc-mode 1)
+(require 'semantic/senator)
+(require 'semantic/ia)
+(require 'semantic/analyze/refs)
+(require 'semantic/analyze/complete)
+(require 'semantic/bovine/gcc)
+(require 'semantic/mru-bookmark)
+
+(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 
 (semantic-mode 1)
+
+(require 'semantic/ia)
 
 (defun alexott/cedet-hook ()
   (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
   (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
 
+;; Package: semantic-stickyfunc-mode
+(el-get-bundle semantic-stickyfunc-enhance)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(semantic-mode 1)
+(require 'stickyfunc-enhance)
 
 ;; ===================================================================
 ;; Package: helm-gtags
@@ -79,14 +96,6 @@
 (el-get-bundle cmake-font-lock)
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
-
-;; ===================================================================
-;; Package: semantic-stickyfunc-mode
-(el-get-bundle semantic-stickyfunc-enhance)
-(add-to-list 'semantic-default-submodes
-             'global-semantic-stickyfunc-mode)
-(semantic-mode 1)
-(require 'stickyfunc-enhance)
 
 ;; ===================================================================
 ;; setup GDB
