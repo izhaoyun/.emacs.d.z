@@ -79,4 +79,6 @@
         (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
         (sequence "|" "CANCELED(c)")))
 
+(setq org-log-done 'note)
+
 (provide 'init-org)
