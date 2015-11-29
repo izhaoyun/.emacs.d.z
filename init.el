@@ -30,3 +30,4 @@
 (require 'init-ruby)                    ; ruby
 (require 'init-latex)                   ; latex
 (require 'init-html)                    ; html
+(require 'init-yaml)
