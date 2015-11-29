@@ -21,7 +21,7 @@
 ;; basic editor settings
 (require 'init-window)
 (require 'init-helm)
-(require 'init-misc)
+(require 'init-editing)
 ;; developing section
 (require 'init-prog)                    ; programming settings
 (require 'init-org)

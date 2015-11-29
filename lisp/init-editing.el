@@ -8,7 +8,12 @@
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-z") 'undo)
 
-;; self-defined function
+;; Package: expand-region
+(el-get-bundle expand-region)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; new line before current line
 (defun zhao/new-line-before (times)
   "Insert a newline above the current line."
   (interactive "p")
@@ -16,7 +21,7 @@
     (move-beginning-of-line 1)
     (newline times)))
 
-(global-set-key (kbd "C-s-o")
+(global-set-key (kbd "C-S-o")
                 'zhao/new-line-before)
 
 (provide 'init-misc)
