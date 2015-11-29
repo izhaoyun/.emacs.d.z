@@ -28,4 +28,5 @@
 (require 'init-cpp)                     ; c/c++
 (require 'init-python)                  ; python
 (require 'init-ruby)                    ; ruby
-(require 'init-latex)
+(require 'init-latex)                   ; latex
+(require 'init-html)                    ; html
