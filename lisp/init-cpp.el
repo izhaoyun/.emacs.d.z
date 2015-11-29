@@ -1,5 +1,5 @@
 ;;; provides packages useful for c/c++ development
-;; ===================================================================
+
 ;; Package: cedet
 (el-get-bundle cedet)
 
@@ -28,13 +28,21 @@
   (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
   (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
 
+(add-hook 'c-mode-common-hook 'alexott/cedet-hook)
+(add-hook 'c-mode-hook 'alexott/cedet-hook)
+(add-hook 'c++-mode-hook 'alexott/cedet-hook)
+
+;; Package: sr-speedbar
+(el-get-bundle sr-speedbar)
+;; speedbar
+(setq speedbar-show-unknown-files t)
+
 ;; Package: semantic-stickyfunc-mode
 (el-get-bundle semantic-stickyfunc-enhance)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (semantic-mode 1)
 (require 'stickyfunc-enhance)
 
-;; ===================================================================
 ;; Package: helm-gtags
 (el-get-bundle helm-gtags)
 
@@ -66,39 +74,19 @@
 
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 
-;; ===================================================================
-;; Package: sr-speedbar
-(el-get-bundle sr-speedbar)
-
-;; speedbar
-(setq speedbar-show-unknown-files t)
-
-;; ===================================================================
-;; Package: function-args
-(el-get-bundle function-args)
-(require 'function-args)
-(fa-config-default)
-(define-key c-mode-map    [(control tab)] 'moo-complete)
-(define-key c++-mode-map  [(control tab)] 'moo-complete)
-(define-key c-mode-map   (kbd "M-o")  'fa-show)
-(define-key c++-mode-map (kbd "M-o")  'fa-show)
-
-;; ===================================================================
 ;; Package: CMake-mode
 (el-get-bundle cmake-mode)
 (require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-                ("\\.cmake\\'"         . cmake-mode))
-              auto-mode-alist))
+(setq auto-mode-alist (append
+                       '(("CMakeLists\\.txt\\'" . cmake-mode)
+                         ("\\.cmake\\'"         . cmake-mode)) auto-mode-alist))
 
 ;; Package: CMake-font-lock
 (el-get-bundle cmake-font-lock)
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
-;; ===================================================================
-;; setup GDB
+;; setup gdb
 (setq gdb-many-windows t
       gdb-show-main t)
 

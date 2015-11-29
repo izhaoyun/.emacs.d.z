@@ -1,6 +1,5 @@
 ;;; ubiquitous settings for programming
 
-;; ===================================================================
 ;; Yasnippet
 ;; Package: yasnippet
 (el-get-bundle yasnippet)
@@ -10,12 +9,10 @@
         "~/.emacs.d/el-get/yasnippet/snippets"))
 (yas-global-mode 1)
 
-;; ===================================================================
 ;; Package: comment-dwim-2
 (el-get-bundle comment-dwim-2)
 (global-set-key (kbd "M-;") 'comment-dwim-2)
 
-;; ===================================================================
 ;; Parenthesis
 (show-paren-mode 1)
 
@@ -37,7 +34,6 @@
 (el-get-bundle rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; ===================================================================
 ;; Indentation
 (global-set-key (kbd "RET") 'newline-and-indent)
 
@@ -68,7 +64,6 @@
 ;; Package: highlight-indentation
 (el-get-bundle highlight-indentation)
 
-;; ===================================================================
 ;; Version control
 ;; Package: magit
 (el-get-bundle magit)
@@ -80,7 +75,6 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
-;; ===================================================================
 ;; Navigation
 ;; Package: avy
 (el-get-bundle avy)
@@ -91,11 +85,17 @@
 (global-set-key (kbd "M-g e") 'avy-goto-word-0)
 (avy-setup-default)
 
-;; ===================================================================
 ;; Package: projectile
 (el-get-bundle projectile)
+(require 'projectile)
+(projectile-global-mode 1)
+(setq projectile-enable-caching t)
 
-;; ===================================================================
+(require 'helm-projectile)
+(helm-projectile-on)
+(setq projectile-completion-system 'helm)
+(setq projectile-indexing-method 'alien)
+
 ;; Package: company
 (el-get-bundle company)
 (require 'company)
@@ -103,9 +103,6 @@
 
 ;; (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'prog-mode-hook 'company-mode)
-
-;; ===================================================================
-;; Miscellaneous packages
 
 ;; Package: ws-butler
 (el-get-bundle ws-butler)
