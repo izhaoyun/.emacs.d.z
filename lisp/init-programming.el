@@ -124,4 +124,4 @@
 (el-get-bundle fill-column-indicator)
 (require 'fill-column-indicator)
 
-(provide 'init-prog)
+(provide 'init-programming)
