@@ -23,7 +23,7 @@
 (require 'init-helm)
 (require 'init-editing)
 ;; developing section
-(require 'init-prog)                    ; programming settings
+(require 'init-programming)
 (require 'init-org)
 (require 'init-cpp)                     ; c/c++
 (require 'init-python)                  ; python
