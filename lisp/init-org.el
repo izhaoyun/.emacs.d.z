@@ -57,6 +57,8 @@
 ;;         ("rulecolor"           "\\color{purple}")
 ;;         ))
 
+;; on archlinux, you should install pygmentize besides from
+;; python-pygments.
 (setq org-latex-listings 'minted)
 
 ;; for more options of minted package, you can refer to the official docs:
