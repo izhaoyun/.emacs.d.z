@@ -37,30 +37,13 @@
 
 (setq org-latex-listings 'minted)
 
+;; for more options of minted package, you can refer to the official docs:
+;; http://ctan.mirrorcatalogs.com/macros/latex/contrib/minted/minted.pdf
 (setq org-latex-minted-options
-      '(("frame"               "lines")))
+      '(("frame"               "single")
+        ;; ("linenos"             "")
+        ("breaklines"          "")))
 
-(setq org-latex-listings-options
-      '(("basicstyle"          "\\ttfamily")
-        ("breaklines"          "true")
-        ("keywordstyle"        "{\\bfseries\\color{NavyBlue}}")
-        ("commentstyle"        "{\\sffamily\\color{PineGreen!60!black}}")
-        ;; ("emph"                "{}")
-        ("emphstyle"           "{\\bfseries\\color{Rhodamine}}")
-        ;; ("alsoletter"          "{.}")
-        ("stringstyle"         "{\\rmfamily}")
-        ("tabsize"             "2")
-        ("breakatwhitespace"   "true")
-        ("showspaces"          "false")
-        ("showstringspaces"    "false")
-        ("frame"               "single")
-        ("backgroundcolor"     "{\\color{yellow!20!white}}")
-        ;; ("numbers"             "left")
-        ("numberstyle"         "{\\sffamily\\footnotesize}")
-        ("rulecolor"           "\\color{purple}")
-        ))
-
-;;
 (setq org-latex-pdf-process
       '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
