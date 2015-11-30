@@ -80,6 +80,8 @@
 ;; latex compiler
 (setq org-latex-compiler "xelatex")
 
+(setcdr (assoc "\\.pdf\\'" org-file-apps) "evince %s")
+
 ;; TODO extensions
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)")
