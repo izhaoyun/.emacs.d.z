@@ -9,6 +9,7 @@ semanticdb/*
 .python-environments/*
 url/*
 anaconda-mode/*
+eshell/*
 
 # other files
 recentf
