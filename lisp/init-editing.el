@@ -24,4 +24,32 @@
 (global-set-key (kbd "C-S-o")
                 'zhao/new-line-before)
 
+;; backups
+;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files/151946#151946
+(setq vc-make-version-backup t
+      version-control        t
+      kept-new-versions      10
+      kept-old-versions      0
+      delete-old-versions    t
+      backup-by-copying      t)
+;; Default and per-save backups go here:
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup/per-save")))
+
+(defun force-backup-of-buffer ()
+  ;; Make a special "per session" backup at the first save of each
+  ;; emacs session.
+  (when (not buffer-backed-up)
+    ;; Override the default parameters for per-session backups.
+    (let ((backup-directory-alist '(("" . "~/.emacs.d/backup/per-session")))
+          (kept-new-versions 3))
+      (backup-buffer)))
+  ;; Make a "per save" backup on each save. The first save results in
+  ;; both a per-session and a per-save backup, to keep the numbering
+  ;; of per-save backups consistent.
+  (let ((buffer-backed-up nil))
+    (backup-buffer)))
+
+(add-hook 'before-save-hook 'force-backup-of-buffer)
+
+
 (provide 'init-editing)
