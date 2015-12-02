@@ -1,6 +1,8 @@
 ;; Package: python-mode
 (el-get-bundle python-mode)
 (require 'python-mode)
+(el-get-bundle ipython)
+(require 'ipython)
 (setq-default py-shell-name "ipython")
 (setq-default py-which-bufname "IPython")
 (setq py-smart-indentation t)
