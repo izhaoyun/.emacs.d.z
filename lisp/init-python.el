@@ -1,10 +1,13 @@
 ;; Package: python-mode
 (el-get-bundle python-mode)
 (require 'python-mode)
-(el-get-bundle ipython)
-(require 'ipython)
+
 (setq-default py-shell-name "ipython")
-(setq-default py-which-bufname "IPython")
+;; (setq-default python-which-bufname "IPython")
+(setq py-python-command-args
+      '("--gui=wx" "--pylab=wx" "--colors=linux"))
+(setq py-shell-switch-buffers-on-execute-p t)
+(setq py-split-windows-on-execute-p nil)
 (setq py-smart-indentation t)
 
 ;; Package: anaconda-mode
