@@ -1,16 +1,10 @@
 ;;; provides packages useful for c/c++ development
 
-
 ;; Package: sr-speedbar
 (el-get-bundle sr-speedbar)
 ;; speedbar
 (setq speedbar-show-unknown-files t)
 
-;; Package: semantic-stickyfunc-mode
-(el-get-bundle semantic-stickyfunc-enhance)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-(semantic-mode 1)
-(require 'stickyfunc-enhance)
 
 ;; Package: helm-gtags
 (el-get-bundle helm-gtags)
@@ -100,6 +94,13 @@
 ;; (semantic-add-system-include "/usr/local/include" 'c++-mode)
 
 (semantic-mode 1)
+
+;; Package: semantic-stickyfunc-mode
+(el-get-bundle semantic-stickyfunc-enhance)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+;; (semantic-mode 1)
+(require 'stickyfunc-enhance)
+
 
 ;; Package: function-args
 (el-get-bundle function-args)
