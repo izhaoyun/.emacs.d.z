@@ -96,13 +96,6 @@
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
 
-;; Package: company
-(el-get-bundle company)
-(require 'company)
-(setq company-show-numbers t)
-
-;; (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'prog-mode-hook 'company-mode)
 
 ;; Package: ws-butler
 (el-get-bundle ws-butler)
