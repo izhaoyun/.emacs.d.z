@@ -21,6 +21,7 @@
    (org        . t)
    (ruby       . t)
    (latex      . t)
+   (ditaa      . t)
    (sql        . t)
    (C          . t)))
 
