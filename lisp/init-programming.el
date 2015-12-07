@@ -51,8 +51,8 @@
 ;; set appearance of a tab that is represented by 4 spaces
 (setq-default tab-width 4)
 
-;; Package: clean-aindent-mode
-(el-get-bundle clean-aindent-mode)
+;; Package: clean-aindent
+(el-get-bundle clean-aindent)
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
