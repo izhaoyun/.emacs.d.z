@@ -91,4 +91,8 @@
 
 (setq org-log-done 'note)
 
+;; Org-Plot
+;; Package: gnuplot-mode
+(el-get-bundle gnuplot-mode)
+
 (provide 'init-org)
