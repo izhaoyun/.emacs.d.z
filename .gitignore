@@ -19,3 +19,4 @@ bookmarks
 session.*
 projectile-bookmarks.eld
 srecode-map.el
+*.elc
