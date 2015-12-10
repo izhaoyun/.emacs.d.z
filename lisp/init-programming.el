@@ -117,4 +117,7 @@
 (el-get-bundle fill-column-indicator)
 (require 'fill-column-indicator)
 
+;; Eldoc
+(el-get-bundle init-eldoc)
+
 (provide 'init-programming)

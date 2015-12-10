@@ -1,6 +1,9 @@
 ;; Package: python.el
 (el-get-bundle python24)
 
+;; ElDoc
+(add-hook 'python-mode-hook 'eldoc-mode)
+
 ;; Package: anaconda-mode
 (el-get-bundle anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-mode)
