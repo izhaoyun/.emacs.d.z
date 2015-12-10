@@ -1,14 +1,5 @@
-;; Package: python-mode
-(el-get-bundle python-mode)
-(require 'python-mode)
-
-(setq-default py-shell-name "ipython")
-;; (setq-default python-which-bufname "IPython")
-(setq py-python-command-args
-      '("--gui=wx" "--pylab=wx" "--colors=linux"))
-(setq py-shell-switch-buffers-on-execute-p t)
-(setq py-split-windows-on-execute-p nil)
-(setq py-smart-indentation t)
+;; Package: python.el
+(el-get-bundle python24)
 
 ;; Package: anaconda-mode
 (el-get-bundle anaconda-mode)
@@ -22,5 +13,9 @@
 (el-get-bundle elpa:pyenv-mode)
 (require 'pyenv-mode)
 (pyenv-mode)
+
+;; Package: python-django
+(el-get-bundle python-django)
+(require 'python-django)
 
 (provide 'init-python)
