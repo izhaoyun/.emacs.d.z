@@ -120,4 +120,8 @@
 ;; Eldoc
 (el-get-bundle init-eldoc)
 
+;; Package: flycheck
+(el-get-bundle flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 (provide 'init-programming)
