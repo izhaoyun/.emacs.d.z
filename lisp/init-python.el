@@ -17,8 +17,4 @@
 (require 'pyenv-mode)
 (pyenv-mode)
 
-;; Package: python-django
-(el-get-bundle python-django)
-(require 'python-django)
-
 (provide 'init-python)
