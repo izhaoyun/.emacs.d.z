@@ -5,10 +5,10 @@
 (add-hook 'python-mode-hook 'eldoc-mode)
 
 ;; Package: ropemacs
-;; (el-get-bundle ropemacs)
-;; (require 'pymacs)
-;; (pymacs-load "ropemacs" "rope-")
-;; (setq ropemacs-enable-autoimport t)
+(el-get-bundle ropemacs)
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
 
 ;; Package: elpy
 (el-get-bundle elpy)
