@@ -96,22 +96,10 @@
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
 
-
 ;; Package: ws-butler
 (el-get-bundle ws-butler)
 (require 'ws-butler)
 (add-hook 'c-mode-common-hook 'ws-butler-mode)
-
-;; Package: sublimity
-(el-get-bundle sublimity)
-(require 'sublimity)
-(require 'sublimity-scroll)
-(require 'sublimity-map)
-(require 'sublimity-attractive)
-(setq sublimity-map-size 20)
-(setq sublimity-map-fraction 0.3)
-(setq sublimity-map-text-scale -7)
-;(sublimity-mode 1)
 
 ;; Package: fill-column-indicator
 (el-get-bundle fill-column-indicator)
