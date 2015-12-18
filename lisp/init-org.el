@@ -18,7 +18,7 @@
  '((emacs-lisp . t)
    (python     . t)
    (sh         . t)
-   (dot        . graphviz-dot)
+   (dot        . t)
    (org        . t)
    (ruby       . t)
    (latex      . t)
