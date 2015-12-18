@@ -99,7 +99,7 @@
 ;; Package: ws-butler
 (el-get-bundle ws-butler)
 (require 'ws-butler)
-(add-hook 'c-mode-common-hook 'ws-butler-mode)
+(ws-butler-global-mode +1)
 
 ;; Package: fill-column-indicator
 (el-get-bundle fill-column-indicator)
