@@ -1,5 +1,8 @@
-;; Package: graphviz
+;; Package: graphviz-dot
 (el-get-bundle graphviz-dot-mode)
+(load-library "graphviz-dot-mode")
+(define-key graphviz-dot-mode-map (kbd "C-c g p") 'graphviz-dot-preview)
+(define-key graphviz-dot-mode-map (kbd "C-c g v") 'graphviz-dot-view)
 
 ;; Package: markdown-mode
 (el-get-bundle markdown-mode)
