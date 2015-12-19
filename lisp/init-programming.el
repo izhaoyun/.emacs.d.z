@@ -116,4 +116,8 @@
 (with-eval-after-load 'flycheck
   (flycheck-pos-tip-mode))
 
+;; Package: restclient
+(el-get-bundle restclient)
+(require 'restclient)
+
 (provide 'init-programming)
