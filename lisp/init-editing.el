@@ -59,4 +59,8 @@
 (global-set-key [(shift f3)] 'highlight-symbol-prev)
 (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 
+;; Package: multiple-cursors
+(el-get-bundle multiple-cursors)
+(require 'multiple-cursors)
+
 (provide 'init-editing)
