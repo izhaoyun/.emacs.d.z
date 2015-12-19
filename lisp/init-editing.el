@@ -138,5 +138,8 @@
     (setq ispell-extra-args old-ispell-extra-args)
     (ispell-kill-ispell t)
     ))
+;; Package: helm-flyspell
+(el-get-bundle helm-flyspell)
+(define-key flyspell-mode-map (kbd "C-;") 'helm-flyspell-correct)
 
 (provide 'init-editing)

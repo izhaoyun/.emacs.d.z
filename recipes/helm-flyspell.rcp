@@ -1,0 +1,5 @@
+(:name helm-ag
+       :description "Helm extension for correcting words with Flyspell."
+       :type github
+       :pkgname "pronobis/helm-flyspell"
+       :depends (helm))
