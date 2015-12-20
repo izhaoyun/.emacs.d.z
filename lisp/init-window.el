@@ -27,6 +27,10 @@
 (require 'window-numbering)
 (window-numbering-mode 1)
 
+;; Package: zygospore
+(el-get-bundle zygospore)
+(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+
 ;; Package: smart-mode-line
 (el-get-bundle smart-mode-line)
 (setq sml/them 'light)
