@@ -8,6 +8,7 @@
       '("~/.emacs.d/snippets"
         "~/.emacs.d/el-get/yasnippet/snippets"))
 (yas-global-mode 1)
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 
 ;; Package: comment-dwim-2
 (el-get-bundle comment-dwim-2)
