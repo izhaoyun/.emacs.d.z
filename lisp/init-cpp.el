@@ -90,7 +90,7 @@
 (global-semantic-idle-summary-mode 1)
 
 (semantic-add-system-include "/usr/include/boost" 'c++-mode)
-(semantic-add-system-include "/usr/include/opencv" 'c++-mode)
+;; (semantic-add-system-include "/usr/include/opencv" 'c++-mode)
 ;; (semantic-add-system-include "/usr/local/include" 'c++-mode)
 
 (semantic-mode 1)
