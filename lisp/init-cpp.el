@@ -48,6 +48,10 @@
 ;; (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'prog-mode-hook 'company-mode)
 
+;; Package: company-quickhelp
+(el-get-bundle company-quickhelp)
+(company-quickhelp-mode 1)
+
 ;; Package: cedet
 (el-get-bundle cedet)
 
