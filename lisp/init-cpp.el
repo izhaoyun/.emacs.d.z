@@ -102,16 +102,6 @@
 ;; (semantic-mode 1)
 (require 'stickyfunc-enhance)
 
-
-;; Package: function-args
-(el-get-bundle function-args)
-(require 'function-args)
-(fa-config-default)
-(define-key c-mode-map  [(control tab)] 'moo-complete)
-(define-key c++-mode-map  [(control tab)] 'moo-complete)
-(define-key c-mode-map (kbd "M-o")  'fa-show)
-(define-key c++-mode-map (kbd "M-o")  'fa-show)
-
 ;; Package: CMake-mode
 (el-get-bundle cmake-mode)
 (require 'cmake-mode)
