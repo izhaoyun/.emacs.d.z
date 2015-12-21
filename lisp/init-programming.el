@@ -121,5 +121,8 @@
 ;; Package: restclient
 (el-get-bundle restclient)
 (require 'restclient)
+;; Package: company-restclient
+(el-get-bundle company-restclient)
+(add-to-list 'company-backends 'company-restclient)
 
 (provide 'init-programming)
