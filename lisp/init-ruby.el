@@ -14,5 +14,9 @@
 (el-get-bundle inf-ruby)
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
 (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+;; Package: company-inf-ruby
+(el-get-bundle company-inf-ruby)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-inf-ruby))
 
 (provide 'init-ruby)
