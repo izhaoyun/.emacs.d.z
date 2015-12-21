@@ -91,7 +91,8 @@
 (require 'projectile)
 (projectile-global-mode 1)
 (setq projectile-enable-caching t)
-
+;; Package: helm-projectile
+(el-get-bundle helm-projectile)
 (require 'helm-projectile)
 (helm-projectile-on)
 (setq projectile-completion-system 'helm)
