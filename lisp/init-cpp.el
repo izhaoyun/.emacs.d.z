@@ -35,22 +35,12 @@
 
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 
-;; Package: company
-(el-get-bundle company)
-(require 'company)
-(setq company-show-numbers t)
 ;; (setq company-backends (delete 'company-semantic company-backends))
 ;; (define-key c-mode-map  [(tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(tab)] 'company-complete)
 ;; (el-get-bundle company-c-headers)
 ;; (add-to-list 'company-backends 'company-c-headers)
 
-;; (add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'prog-mode-hook 'company-mode)
-
-;; Package: company-quickhelp
-(el-get-bundle company-quickhelp)
-(company-quickhelp-mode 1)
 
 ;; Package: cedet
 (el-get-bundle cedet)

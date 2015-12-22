@@ -1,5 +1,17 @@
 ;;; ubiquitous settings for programming
 
+;; Package: company
+(el-get-bundle company)
+(require 'company)
+(setq company-show-numbers t)
+;;(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'prog-mode-hook 'company-mode)
+
+;; Package: company-quickhelp
+(el-get-bundle company-quickhelp)
+(add-hook 'company-mode-hook 'company-quickhelp-mode)
+;(company-quickhelp-mode 1)
+
 ;; Yasnippet
 ;; Package: yasnippet
 (el-get-bundle yasnippet)

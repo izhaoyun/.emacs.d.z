@@ -22,7 +22,7 @@
 (require 'init-window)
 (require 'init-helm)
 (require 'init-editing)
-;; developing section
+
 (require 'init-programming)
 (require 'init-org)
 (require 'init-cpp)                     ; c/c++

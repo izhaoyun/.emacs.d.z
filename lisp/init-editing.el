@@ -21,8 +21,7 @@
     (move-beginning-of-line 1)
     (newline times)))
 
-(global-set-key (kbd "C-S-o")
-                'zhao/new-line-before)
+(global-set-key (kbd "C-S-o") 'zhao/new-line-before)
 
 ;; backups
 ;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files/151946#151946
@@ -58,9 +57,5 @@
 (global-set-key [f3] 'highlight-symbol-next)
 (global-set-key [(shift f3)] 'highlight-symbol-prev)
 (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
-
-;; Package: multiple-cursors
-(el-get-bundle multiple-cursors)
-(require 'multiple-cursors)
 
 (provide 'init-editing)
