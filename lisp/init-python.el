@@ -6,8 +6,7 @@
 (add-hook 'python-mode-hook
           '(lambda ()
              (setq-default indent-tabs-mode nil)
-             (setq default-tab-width 4)
-             (ropemacs-mode)))
+             (setq default-tab-width 4)))
 
 ;; ElDoc
 (add-hook 'python-mode-hook 'eldoc-mode)
