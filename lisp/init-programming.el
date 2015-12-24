@@ -22,6 +22,32 @@
 (yas-global-mode 1)
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 
+;; solving conflicts in company and yasnippet.
+;; http://www.emacswiki.org/emacs/CompanyMode
+(defun check-expansion ()
+ (save-excursion
+  (if (looking-at "\\_>") t
+   (backward-char 1)
+   (if (looking-at "\\.") t
+    (backward-char 1)
+    (if (looking-at "->") t nil)))))
+
+(defun do-yas-expand ()
+ (let ((yas/fallback-behavior 'return-nil))
+  (yas/expand)))
+
+(defun tab-indent-or-complete ()
+ (interactive)
+ (if (minibufferp)
+  (minibuffer-complete)
+  (if (or (not yas/minor-mode)
+       (null (do-yas-expand)))
+   (if (check-expansion)
+    (company-complete-common)
+    (indent-for-tab-command)))))
+
+(global-set-key [tab] 'tab-indent-or-complete)
+
 ;; Package: comment-dwim-2
 (el-get-bundle comment-dwim-2)
 (global-set-key (kbd "M-;") 'comment-dwim-2)
@@ -83,8 +109,7 @@
 (require 'magit)
 (with-eval-after-load 'info
   (info-initialize)
-  (add-to-list 'Info-directory-list
-               "~/.emacs.d/el-get/magit/Documentation/"))
+  (add-to-list 'Info-directory-list "~/.emacs.d/el-get/magit/Documentation/"))
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
@@ -101,7 +126,7 @@
 ;; Package: projectile
 (el-get-bundle projectile)
 (require 'projectile)
-(projectile-global-mode 1)
+(projectile-global-mode)
 (setq projectile-enable-caching t)
 ;; Package: helm-projectile
 (el-get-bundle helm-projectile)
