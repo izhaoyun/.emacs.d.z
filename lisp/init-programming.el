@@ -4,21 +4,18 @@
 (el-get-bundle company)
 (require 'company)
 (setq company-show-numbers t)
-;;(add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'prog-mode-hook 'company-mode)
 
 ;; Package: company-quickhelp
 (el-get-bundle company-quickhelp)
 (add-hook 'company-mode-hook 'company-quickhelp-mode)
-;(company-quickhelp-mode 1)
 
 ;; Yasnippet
 ;; Package: yasnippet
 (el-get-bundle yasnippet)
 (require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"
-        "~/.emacs.d/el-get/yasnippet/snippets"))
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"
+                         "~/.emacs.d/el-get/yasnippet/snippets"))
 (yas-global-mode 1)
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 
@@ -60,8 +57,8 @@
 (require 'smartparens-config)
 (show-smartparens-global-mode t)
 (smartparens-global-mode 1)
-;; when you press RET, the curly braces automatically
-;; add another newline
+;; when you press RET, the curly braces automatically add another
+;; newline
 (sp-with-modes '(c-mode c++-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair "/*" "*/" :post-handlers '((" | " "SPC")
@@ -86,7 +83,6 @@
 
 ;; use space to indent by default
 (setq-default indent-tabs-mode nil)
-
 ;; set appearance of a tab that is represented by 4 spaces
 (setq-default tab-width 4)
 
@@ -113,7 +109,6 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
-;; Navigation
 ;; Package: avy
 (el-get-bundle avy)
 (global-set-key (kbd "C-:") 'avy-goto-char)
@@ -142,14 +137,13 @@
 
 ;; Package: fill-column-indicator
 (el-get-bundle fill-column-indicator)
-(require 'fill-column-indicator)
 
 ;; Eldoc
 (el-get-bundle init-eldoc)
 
 ;; Package: flycheck
 (el-get-bundle flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'prog-mode-hook 'flycheck-mode)
 ;; Package: flycheck-pos-tip
 (el-get-bundle flycheck-pos-tip)
 (with-eval-after-load 'flycheck
@@ -157,7 +151,6 @@
 
 ;; Package: restclient
 (el-get-bundle restclient)
-(require 'restclient)
 ;; Package: company-restclient
 (el-get-bundle company-restclient)
 (add-to-list 'company-backends 'company-restclient)

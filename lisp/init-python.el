@@ -13,8 +13,8 @@
 
 ;; Package: elpy
 (el-get-bundle elpy)
-(elpy-enable)
-(when (executable-find "ipython")
-  (elpy-use-ipython))
+(autoload 'elpy-enable "elpy" "enable elpy in all python buffers." t nil)
+(autoload 'elpy-mode "elpy" "minor mode in python buffers." t nil)
+(autoload 'elpy-use-ipython "elpy" "use ipython instead of python shell." t nil)
 
 (provide 'init-python)
