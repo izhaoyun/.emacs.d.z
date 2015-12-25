@@ -22,9 +22,18 @@
    (org        . t)
    (ruby       . t)
    (latex      . t)
+   (plantuml   . t)
    (ditaa      . t)
    (sql        . t)
    (C          . t)))
+
+;; set org-plantuml
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path
+      (expand-file-name
+       "~/.emacs.d/tools/plantuml/plantuml.jar"))
+;; Package: plantuml-mode
+(el-get-bundle plantuml-mode)
 
 (setq org-confirm-babel-evaluate nil)
 
