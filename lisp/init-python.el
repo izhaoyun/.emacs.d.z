@@ -1,12 +1,7 @@
 (el-get-bundle python24)
-;; (setq python-shell-interpreter "ipython"
-      ;; python-shell-interpreter-args "-i")
-
-(add-hook 'python-mode-hook '(lambda ()
-                               (setq-default indent-tabs-mode nil)
-                               (setq-default python-indent-offset 4)
-                               (setq python-shell-interpreter "ipython")
-                               (setq python-shell-interpreter-args "-i")))
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i"
+      python-indent-offset 4)
 
 ;; ElDoc
 (add-hook 'python-mode-hook 'eldoc-mode)
