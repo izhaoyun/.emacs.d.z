@@ -19,4 +19,9 @@
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-inf-ruby))
 
+;; Package: rbenv.el
+(el-get-bundle rbenv)
+(require 'rbenv)
+(global-rbenv-mode)
+
 (provide 'init-ruby)
