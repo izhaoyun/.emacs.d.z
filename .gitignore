@@ -1,0 +1,9 @@
+el-get/*
+elpa/*
+auto-save-list/*
+eshell/*
+projectile*
+recentf
+semanticdb/*
+backup/*
+srecode-map.el
