@@ -65,9 +65,9 @@
 (global-set-key (kbd "<f1> l") 'counsel-load-library)
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-(global-set-key (kbd "C-c C-g") 'counsel-git)
-(global-set-key (kbd "C-c C-j") 'counsel-git-grep)
-(global-set-key (kbd "C-c C-s") 'counsel-ag)
+(global-set-key (kbd "C-c h g") 'counsel-git)
+(global-set-key (kbd "C-c h j") 'counsel-git-grep)
+(global-set-key (kbd "C-c h s") 'counsel-ag)
 (global-set-key (kbd "C-c C-l") 'counsel-locate)
 
 (provide 'init-helm)
