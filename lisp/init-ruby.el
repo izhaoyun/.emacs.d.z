@@ -1,8 +1,15 @@
 ;; Package: inf-ruby
 (el-get-bundle inf-ruby)
-(autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+(require 'inf-ruby)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (inf-ruby-minor-mode +1)
+
+;; Package: robe
+(el-get-bundle robe)
+(require 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(eval-after-load 'company '(push 'company-robe company-backends))
 
 ;; Package: rvm.el
 (el-get-bundle rvm)
@@ -11,11 +18,6 @@
 ;; Package: bundler.el
 (el-get-bundle bundler)
 (require 'bundler)
-
-;; Package: robe
-(el-get-bundle robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(eval-after-load 'company '(push 'company-robe company-backends))
 
 ;; Package: yard-mode
 (el-get-bundle yard-mode)
