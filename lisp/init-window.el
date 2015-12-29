@@ -33,11 +33,6 @@
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 
-;; Package: workgroups2
-(el-get-bundle workgroups2)
-(require 'workgroups2)
-(workgroups-mode 1)
-
 ;; Pakcage: ztree
 (el-get-bundle ztree)
 (require 'ztree-diff)
