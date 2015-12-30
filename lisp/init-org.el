@@ -45,6 +45,8 @@
 (add-to-list 'org-latex-packages-alist '("" "geometry"))
 (add-to-list 'org-latex-packages-alist '("dvipsnames" "xcolor"))
 (add-to-list 'org-latex-packages-alist '("" "minted"))
+(add-to-list 'org-latex-packages-alist '("" "tabularx"))
+(add-to-list 'org-latex-packages-alist '("" "tabu"))
 
 ;;(setq org-latex-listings t)
 
