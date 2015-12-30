@@ -43,7 +43,4 @@
 (el-get-bundle ruby-tools)
 (require 'ruby-tools)
 
-;; Package: ruby-test-mode
-(el-get-bundle ruby-test-mode)
-
 (provide 'init-ruby)
