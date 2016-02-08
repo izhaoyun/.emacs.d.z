@@ -7,8 +7,8 @@
 (add-hook 'prog-mode-hook 'company-mode)
 
 ;; Package: company-quickhelp
-(el-get-bundle company-quickhelp)
-(add-hook 'company-mode-hook 'company-quickhelp-mode)
+;; (el-get-bundle company-quickhelp)
+;; (add-hook 'company-mode-hook 'company-quickhelp-mode)
 
 ;; Yasnippet
 ;; Package: yasnippet
