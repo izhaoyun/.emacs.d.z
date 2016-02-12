@@ -17,7 +17,7 @@
 ;(package-initialize)
 
 ;; load packages
-(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/modules")
 ;; basic editor settings
 (require 'init-window)
 (require 'init-helm)
