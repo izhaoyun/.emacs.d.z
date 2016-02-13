@@ -19,6 +19,7 @@
 ;; load settings for Emacs
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
 (require 'init-misc)
+(require 'init-yasnippet)
 
 ;; load modules for different programming languages
 (add-to-list 'load-path (concat user-emacs-directory "langs"))
