@@ -1,4 +1,4 @@
-;;; init-org.el --- Configuration for org-mode.
+;;; init-org.el --- Configuration for org-mode
 
 
 ;;; Commentary:
