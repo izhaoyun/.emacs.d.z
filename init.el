@@ -16,10 +16,13 @@
 ;(el-get 'sync)
 ;(package-initialize)
 
-;; load packages
-(add-to-list 'load-path "~/.emacs.d/modules")
+;; load basic settings for Emacs
+(add-to-list 'load-path (concat user-emacs-directory "settings"))
+(require 'init-misc)
+
+(add-to-list 'load-path "~/.emacs.d/lisp")
 ;; basic editor settings
-(require 'init-window)
+;(require 'init-window)                  ;
 (require 'init-helm)
 (require 'init-editing)
 
