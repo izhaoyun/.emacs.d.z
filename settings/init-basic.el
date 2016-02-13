@@ -14,9 +14,12 @@
     (tool-bar-mode -1)
     (scroll-bar-mode -1))
 
+  (global-font-lock-mode t)
+  (global-hl-line-mode t)
+  
   (global-linum-mode t)
   (column-number-mode t)
-
+  
   (winner-mode t)
   ;; Package: window-numbering
   (el-get-bundle window-numbering)
@@ -77,6 +80,12 @@
   
   (add-hook 'before-save-hook 'force-backup-of-buffer)
 
+  ;; cursor and mouse
+  (blink-cursor-mode -1)
+  (mouse-avoidance-mode 'jump)
+
+  ;; miscellaneous
+  (defalias 'yes-or-no-p 'y-or-n-p)
   )
 
 (provide 'init-basic)
