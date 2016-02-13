@@ -16,9 +16,13 @@
 ;(el-get 'sync)
 ;(package-initialize)
 
-;; load basic settings for Emacs
+;; load settings for Emacs
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
 (require 'init-misc)
+
+;; load modules for different programming languages
+(add-to-list 'load-path (concat user-emacs-directory "langs"))
+(require 'init-org)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;; basic editor settings
@@ -27,7 +31,7 @@
 (require 'init-editing)
 
 (require 'init-programming)
-(require 'init-org)
+;; (require 'init-org)
 (require 'init-cpp)                     ; c/c++
 (require 'init-python)                  ; python
 (require 'init-ruby)                    ; ruby

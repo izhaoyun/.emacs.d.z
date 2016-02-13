@@ -1,6 +1,6 @@
-;;; init-misc.el
+;;; init-misc.el --- Fixing weird quirks and poor defaults
 
-;; URL: https://github.com/technomancy/better-defaults
+;;; Commentary:
 
 ;;; Code:
 
@@ -16,7 +16,7 @@
 
   (global-linum-mode t)
   (column-number-mode t)
-  
+
   (winner-mode t)
   ;; Package: window-numbering
   (el-get-bundle window-numbering)
@@ -40,7 +40,7 @@
   (global-set-key (kbd "C-r") 'isearch-backward-regexp)
   (global-set-key (kbd "C-M-s") 'isearch-forward)
   (global-set-key (kbd "C-M-r") 'isearch-backward)
-  
+
   (show-paren-mode 1)
   (setq-default indent-tabs-mode nil)
   (setq x-select-enable-clipboard t
@@ -57,3 +57,4 @@
                                                  "backups")))))
 
 (provide 'init-misc)
+;;; init-misc.el ends here
