@@ -1,4 +1,4 @@
-;;; init-misc.el --- Fixing weird quirks and poor defaults
+;;; init-basic.el --- Fixing weird quirks and poor defaults
 
 ;;; Commentary:
 
@@ -51,10 +51,33 @@
         require-final-newline t
         visible-bell t
         load-prefer-newer t
-        ediff-window-setup-function 'ediff-setup-windows-plain
-        save-place-file (concat user-emacs-directory "places")
-        backup-directory-alist `(("." . ,(concat user-emacs-directory
-                                                 "backups")))))
+        ediff-window-setup-function 'ediff-setup-windows-plain)
 
-(provide 'init-misc)
-;;; init-misc.el ends here
+  ;; backup files
+  (setq version-control t
+        kept-new-versions 10
+        kept-old-versions 0
+        delete-old-versions t
+        backup-by-copying t)
+  (setq backup-directory-alist '(("" . "~/.emacs.d/backups/per-save")))
+
+  (defun force-backup-of-buffer ()
+    ;; Make a special "per session" backup at the first save of each
+    ;; emacs session.
+    (when (not buffer-backed-up)
+      ;; Override the default parameters for per-session backups.
+      (let ((backup-directory-alist '(("" . "~/.emacs.d/backups/per-session")))
+            (kept-new-versions 3))
+        (backup-buffer)))
+    ;; Make a "per save" backup on each save. The first save results in
+    ;; both a per-session and a per-save backup, to keep the numbering
+    ;; of per-save backups consistent.
+    (let ((buffer-backed-up nil))
+      (backup-buffer)))
+  
+  (add-hook 'before-save-hook 'force-backup-of-buffer)
+
+  )
+
+(provide 'init-basic)
+;;; init-basic.el ends here

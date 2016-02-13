@@ -18,23 +18,10 @@
 
 ;; load settings for Emacs
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
-(require 'init-misc)
+(require 'init-basic)
 (require 'init-yasnippet)
 
 ;; load modules for different programming languages
 (add-to-list 'load-path (concat user-emacs-directory "langs"))
 (require 'init-org)
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
-;; basic editor settings
-;(require 'init-window)                  ;
-(require 'init-helm)
-(require 'init-editing)
-
-(require 'init-programming)
-;; (require 'init-org)
-(require 'init-cpp)                     ; c/c++
-(require 'init-python)                  ; python
-(require 'init-ruby)                    ; ruby
-(require 'init-latex)                   ; latex
-(require 'init-others)
