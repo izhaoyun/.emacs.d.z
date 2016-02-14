@@ -24,4 +24,4 @@
 ;; load modules for different programming languages
 (add-to-list 'load-path (concat user-emacs-directory "langs"))
 (require 'init-org)
-
+(require 'init-cc)
