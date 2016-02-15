@@ -11,6 +11,7 @@
 ;; CEDET
 (el-get-bundle cedet)
 
+(load "~/.emacs.d/el-get/cedet/cedet-devel-load.el")
 (load "~/.emacs.d/el-get/cedet/contrib/cedet-contrib-load.el")
 
 (require 'semantic/senator)
@@ -46,6 +47,13 @@
 (el-get-bundle semantic-stickyfunc-enhance)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (require 'stickyfunc-enhance)
+
+;; Package: function-args
+(el-get-bundle function-args)
+(require 'function-args)
+(fa-config-default)
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(set-default 'semantic-case-fold t)
 
 (provide 'init-cc)
 ;;; init-cc.el ends here
