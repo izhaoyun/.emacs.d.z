@@ -15,10 +15,10 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(add-hook 'org-load-hook
-	  (lambda ()
-        (define-key org-mode-map "\C-%" 'org-mark-ring-push)
-        (define-key org-mode-map "\C-&" 'org-mark-ring-goto)))
+;(add-hook 'org-load-hook
+;	  (lambda ()
+;        (define-key org-mode-map "\C-%" 'org-mark-ring-push)
+;        (define-key org-mode-map "\C-&" 'org-mark-ring-goto)))
 
 ;; solving conflicts with yasnippet
 (add-hook 'org-mode-hook
