@@ -19,6 +19,7 @@
 ;; load settings for Emacs
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
 (require 'init-basic)
+;(require 'init-ido)
 (require 'init-yasnippet)
 (require 'init-swiper)
 (require 'init-avy)

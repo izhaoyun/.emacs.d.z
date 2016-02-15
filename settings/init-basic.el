@@ -6,13 +6,16 @@
 
 ;;;###autoload
 (progn
-  (ido-mode t)
-  (setq ido-enable-flex-matching t)
-
+  (setq inhibit-splash-screen t)
   (menu-bar-mode -1)
   (when window-system
     (tool-bar-mode -1)
     (scroll-bar-mode -1))
+
+  ;; coding: utf-8
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
 
   (global-font-lock-mode t)
   (global-hl-line-mode t)
@@ -21,10 +24,17 @@
   (column-number-mode t)
   
   (winner-mode t)
+
   ;; Package: window-numbering
   (el-get-bundle window-numbering)
   (require 'window-numbering)
   (window-numbering-mode t)
+
+  ;; Package: smart-mode-line
+  (el-get-bundle smart-mode-line)
+  (setq sml/them 'light)
+  (setq sml/no-confirm-load-theme t)
+  (sml/setup)
 
   (autoload 'zap-up-to-char "misc"
     "Kill up to, but not including ARGth occurrence of CHAR." t)
@@ -32,20 +42,13 @@
   (require 'uniquify)
   (setq uniquify-buffer-name-style 'forward)
 
-  (require 'saveplace)
-  (setq-default save-place t)
-
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "C-x C-b") 'ibuffer)
   (global-set-key (kbd "M-z") 'zap-up-to-char)
 
-  (global-set-key (kbd "C-s") 'isearch-forward-regexp)
-  (global-set-key (kbd "C-r") 'isearch-backward-regexp)
-  (global-set-key (kbd "C-M-s") 'isearch-forward)
-  (global-set-key (kbd "C-M-r") 'isearch-backward)
-
   (show-paren-mode 1)
   (setq-default indent-tabs-mode nil)
+  (setq tab-width 4)
   (setq x-select-enable-clipboard t
         x-select-enable-primary t
         save-interprogram-paste-before-kill t
@@ -56,20 +59,25 @@
         load-prefer-newer t
         ediff-window-setup-function 'ediff-setup-windows-plain)
 
+  (require 'saveplace)
+  (setq-default save-place t)
+  
   ;; backup files
   (setq version-control t
         kept-new-versions 10
         kept-old-versions 0
         delete-old-versions t
-        backup-by-copying t)
-  (setq backup-directory-alist '(("" . "~/.emacs.d/backups/per-save")))
+        backup-by-copying t
+        backup-directory-alist
+        '(("" . "~/.emacs.d/backups/per-save")))
 
   (defun force-backup-of-buffer ()
     ;; Make a special "per session" backup at the first save of each
     ;; emacs session.
     (when (not buffer-backed-up)
       ;; Override the default parameters for per-session backups.
-      (let ((backup-directory-alist '(("" . "~/.emacs.d/backups/per-session")))
+      (let ((backup-directory-alist
+             '(("" . "~/.emacs.d/backups/per-session")))
             (kept-new-versions 3))
         (backup-buffer)))
     ;; Make a "per save" backup on each save. The first save results in
@@ -79,14 +87,14 @@
       (backup-buffer)))
   
   (add-hook 'before-save-hook 'force-backup-of-buffer)
-
+  
   ;; cursor and mouse
   (blink-cursor-mode -1)
   (mouse-avoidance-mode 'jump)
 
   ;; miscellaneous
   (defalias 'yes-or-no-p 'y-or-n-p)
-  )
+  (require 'cl))
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
