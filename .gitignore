@@ -10,6 +10,8 @@ eshell/*
 
 # files
 *.*~
+places
+ido.last
 .emacs_workgroups
 recentf
 ac-comphist.dat

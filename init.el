@@ -19,10 +19,17 @@
 ;; load settings for Emacs
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
 (require 'init-basic)
+;(require 'init-ido)
 (require 'init-yasnippet)
 (require 'init-session)
+(require 'init-helm)
+(require 'init-swiper)
+(require 'init-avy)
 
 ;; load modules for different programming languages
 (add-to-list 'load-path (concat user-emacs-directory "langs"))
+(require 'init-project)
+(require 'init-company)
 (require 'init-org)
 (require 'init-cc)
+(require 'init-python)

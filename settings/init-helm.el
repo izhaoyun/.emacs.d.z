@@ -1,7 +1,11 @@
+;;; init-helm.el --- Helm
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Package: helm
 (el-get-bundle helm)
-
-(require 'helm-config)
 
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
@@ -28,12 +32,6 @@
 (el-get-bundle helm-ag)
 (global-set-key (kbd "M-g a") 'helm-do-ag)
 
-;; Package: helm-ls-git
-(el-get-bundle helm-ls-git)
-(require 'helm-ls-git)
-(global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
-(global-set-key (kbd "C-c C-d") 'helm-browse-project)
-
 ;; Package: helm-swoop
 (el-get-bundle helm-swoop)
 (require 'helm-swoop)
@@ -47,27 +45,7 @@
 (el-get-bundle helm-descbinds)
 (require 'helm-descbinds)
 (helm-descbinds-mode 1)
-
-;; Package: swiper
-(el-get-bundle swiper)
-;; Package: swiper-helm
-;;(el-get-bundle swiper-helm)
-
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "<f6>") 'ivy-resume)
-;; (global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> l") 'counsel-load-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-(global-set-key (kbd "C-c h g") 'counsel-git)
-(global-set-key (kbd "C-c h j") 'counsel-git-grep)
-(global-set-key (kbd "C-c h s") 'counsel-ag)
-(global-set-key (kbd "C-c C-l") 'counsel-locate)
+(global-set-key (kbd "C-h c") 'helm-descbinds)
 
 (provide 'init-helm)
+;;; init-helm.el ends here
