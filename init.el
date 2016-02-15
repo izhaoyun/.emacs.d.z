@@ -31,3 +31,4 @@
 (require 'init-company)
 (require 'init-org)
 (require 'init-cc)
+(require 'init-python)

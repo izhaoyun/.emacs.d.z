@@ -5,10 +5,11 @@
 ;;; Code:
 
 ;; Package: company
-(el-get-bundle company)
+(el-get-bundle company-mode)
 (require 'company)
 (setq company-show-numbers t)
-(add-hook 'prog-mode-hook 'company-mode)
+;; (add-hook 'prog-mode-hook 'company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; solving conflicts in company and yasnippet.
 ;; http://www.emacswiki.org/emacs/CompanyMode
