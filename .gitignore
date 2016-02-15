@@ -1,7 +1,4 @@
-# temporary files
-*.*~
-
-# all the files in those dirs
+# dirs
 el-get/*
 elpa/*
 auto-save-list/*
@@ -11,7 +8,9 @@ url/*
 anaconda-mode/*
 eshell/*
 
-# other files
+# files
+*.*~
+.emacs_workgroups
 recentf
 ac-comphist.dat
 tramp
