@@ -98,7 +98,7 @@
                               auto-mode-alist))
 
 ;; Package: CMake-font-lock
-(el-get-bundle cmake-font-lock)
+(el-get-bundle Lindydancer/cmake-font-lock)
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 

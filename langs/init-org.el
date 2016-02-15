@@ -7,13 +7,18 @@
 ;;; Code:
 (el-get-bundle org-mode)
 
-;; suggested bindings
+(setq initial-major-mode 'org-mode)
+
+;; key bindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(setq initial-major-mode 'org-mode)
+(add-hook 'org-load-hook
+	  (lambda ()
+        (define-key org-mode-map "\C-%" 'org-mark-ring-push)
+        (define-key org-mode-map "\C-&" 'org-mark-ring-goto)))
 
 ;; solving conflicts with yasnippet
 (add-hook 'org-mode-hook
