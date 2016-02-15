@@ -6,6 +6,15 @@
 
 (require 'cc-mode)
 
+;; (setq company-backends (delete 'company-semantic company-backends))
+
+(define-key c-mode-map  [(tab)] 'company-complete)
+(define-key c++-mode-map  [(tab)] 'company-complete)
+
+;; Package: company-c-headers
+(el-get-bundle company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+
 ;; Package: helm-gtags
 (el-get-bundle helm-gtags)
 (setq helm-gtags-ignore-case           t
@@ -92,6 +101,20 @@
 (el-get-bundle cmake-font-lock)
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
+
+;; folding
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+;; compilation
+(global-set-key (kbd "<f5>") (lambda ()
+                               (interactive)
+                               (setq-local compilation-read-command nil)
+                               (call-interactively 'compile)))
+
+;; debugging
+(setq gdb-many-windows t
+      gdb-show-main t)
+
 
 (provide 'init-cc)
 ;;; init-cc.el ends here

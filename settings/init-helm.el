@@ -45,6 +45,7 @@
 (el-get-bundle helm-descbinds)
 (require 'helm-descbinds)
 (helm-descbinds-mode 1)
+(global-set-key (kbd "C-h c") 'helm-descbinds)
 
 (provide 'init-helm)
 ;;; init-helm.el ends here
