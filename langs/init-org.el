@@ -13,8 +13,9 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+(setq initial-major-mode 'org-mode)
 
-;; solve confilicts with yasnippet
+;; solving conflicts with yasnippet
 (add-hook 'org-mode-hook
           (lambda ()
             (org-set-local 'yas/trigger-key [tab])
