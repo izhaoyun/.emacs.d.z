@@ -36,6 +36,10 @@
 (require 'smartparens-config)
 (show-smartparens-global-mode t)
 (smartparens-global-mode 1)
+(sp-with-modes '(c-mode c++-mode)
+  (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
+  (sp-local-pair "/*" "*/" :post-handlers '((" | " "SPC")
+                                            ("* ||\n[i]" "RET"))))
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 
 ;; Package: rainbow-delimiters
@@ -59,10 +63,21 @@
 ;; Package: highlight-indentation
 (el-get-bundle highlight-indentation)
 
+(add-hook 'prog-mode-hook (lambda ()
+                            (interactive)
+                            (setq show-trailing-whitespace 1)))
+
 ;; Package: ws-butler
 (el-get-bundle ws-butler)
 (require 'ws-butler)
 (ws-butler-global-mode +1)
+
+;; Package: fill-column-indicator
+(el-get-bundle fill-column-indicator)
+
+;; Package: comment-dwim-2
+(el-get-bundle comment-dwim-2)
+(global-set-key (kbd "M-;") 'comment-dwim-2)
 
 (provide 'init-project)
 ;;; init-project.el ends here
