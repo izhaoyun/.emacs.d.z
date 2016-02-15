@@ -43,7 +43,12 @@
   (setq uniquify-buffer-name-style 'forward)
 
   (global-set-key (kbd "M-/") 'hippie-expand)
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+  ;; Package: expand-region
+  (el-get-bundle expand-region)
+  (require 'expand-region)
+  (global-set-key (kbd "C-=") 'er/expand-region)
+
   (global-set-key (kbd "M-z") 'zap-up-to-char)
 
   (show-paren-mode 1)
@@ -87,10 +92,20 @@
       (backup-buffer)))
   
   (add-hook 'before-save-hook 'force-backup-of-buffer)
-  
+
   ;; cursor and mouse
   (blink-cursor-mode -1)
   (mouse-avoidance-mode 'jump)
+
+  ;; Package: undo-tree
+  (el-get-bundle undo-tree)
+  (require 'undo-tree)
+  (global-undo-tree-mode 1)
+  (setq undo-tree-visualizer-timestamps t
+        undo-tree-visualizer-diff       t)
+  ;; setting up undo/redo keys
+  (defalias 'redo 'undo-tree-redo)
+  (global-set-key (kbd "C-z") 'undo)
 
   ;; miscellaneous
   (defalias 'yes-or-no-p 'y-or-n-p)

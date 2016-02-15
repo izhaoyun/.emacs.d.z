@@ -1,39 +1,7 @@
 ;;; provides packages useful for c/c++ development
 
-;; Package: sr-speedbar
-(el-get-bundle sr-speedbar)
-;; speedbar
-(setq speedbar-show-unknown-files t)
 
 
-;; Package: helm-gtags
-(el-get-bundle helm-gtags)
-
-(setq helm-gtags-ignore-case t
-      helm-gtags-auto-update t
-      helm-gtags-use-input-at-cursor t
-      helm-gtags-pulse-at-cursor t
-      helm-gtags-prefix-key "\C-cg"
-      helm-gtags-suggested-key-mapping t)
-
-(require 'helm-gtags)
-;; Enable helm-gtags-mode
-(add-hook 'dired-mode-hook 'helm-gtags-mode)
-(add-hook 'eshell-mode-hook 'helm-gtags-mode)
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode-hook 'helm-gtags-mode)
-
-;; key settings for helm-gtags
-(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
-(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-(define-key helm-gtags-mode-map (kbd "C-c g a")
-  'helm-gtags-tags-in-this-function)
-
-(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 
 ;; (setq company-backends (delete 'company-semantic company-backends))
 ;; (define-key c-mode-map  [(tab)] 'company-complete)
@@ -89,24 +57,6 @@
 ;; (semantic-add-system-include "/usr/local/include" 'c++-mode)
 
 (semantic-mode 1)
-
-;; Package: semantic-stickyfunc-mode
-(el-get-bundle semantic-stickyfunc-enhance)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-;; (semantic-mode 1)
-(require 'stickyfunc-enhance)
-
-;; Package: CMake-mode
-(el-get-bundle cmake-mode)
-(require 'cmake-mode)
-(setq auto-mode-alist (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-                                ("\\.cmake\\'"         . cmake-mode))
-                              auto-mode-alist))
-
-;; Package: CMake-font-lock
-(el-get-bundle cmake-font-lock)
-(autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
-(add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
 ;; setup gdb
 (setq gdb-many-windows t
