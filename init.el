@@ -20,6 +20,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
 (require 'init-basic)
 (require 'init-yasnippet)
+(require 'init-avy)
 
 ;; load modules for different programming languages
 (add-to-list 'load-path (concat user-emacs-directory "langs"))
