@@ -7,7 +7,14 @@
 ;;; Code:
 (el-get-bundle org-mode)
 
-(setq initial-major-mode 'org-mode)
+(require 'org)
+(require 'ob)
+(require 'ox)
+(require 'ox-md)
+(require 'ox-latex)
+(require 'ox-beamer)
+
+;; (setq initial-major-mode 'org-mode)
 
 ;; key bindings
 (global-set-key "\C-cl" 'org-store-link)
@@ -39,10 +46,9 @@
    (ditaa      . t)
    (sql        . t)
    (C          . t)))
-;; (setq org-confirm-babel-evaluate nil)
+(setq org-confirm-babel-evaluate nil)
 
 ;; org latex listings
-(require 'ox-latex)
 (add-to-list 'org-latex-packages-alist '("" "ctex"))
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
