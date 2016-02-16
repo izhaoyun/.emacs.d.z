@@ -14,6 +14,8 @@
 (require 'ox-latex)
 (require 'ox-beamer)
 
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
 ;; (setq initial-major-mode 'org-mode)
 
 ;; key bindings
