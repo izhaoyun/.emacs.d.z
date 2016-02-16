@@ -19,10 +19,10 @@
 
   (global-font-lock-mode t)
   (global-hl-line-mode t)
-  
+
   (global-linum-mode t)
   (column-number-mode t)
-  
+
   (winner-mode t)
 
   ;; Package: window-numbering
@@ -66,7 +66,7 @@
 
   (require 'saveplace)
   (setq-default save-place t)
-  
+
   ;; backup files
   (setq version-control t
         kept-new-versions 10
@@ -90,11 +90,11 @@
     ;; of per-save backups consistent.
     (let ((buffer-backed-up nil))
       (backup-buffer)))
-  
+
   (add-hook 'before-save-hook 'force-backup-of-buffer)
 
   ;; cursor and mouse
-  (blink-cursor-mode -1)
+  ;; (blink-cursor-mode -1)
   (mouse-avoidance-mode 'jump)
 
   ;; Package: undo-tree
