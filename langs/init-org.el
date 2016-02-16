@@ -132,5 +132,8 @@
 (add-to-list 'org-export-filter-final-output-functions
              'ox-html-clear-single-linebreak-for-cjk)
 
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (provide 'init-org)
 ;;; init-org.el ends here
