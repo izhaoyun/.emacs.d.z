@@ -35,11 +35,11 @@
 ;; Package: helm-swoop
 (el-get-bundle helm-swoop)
 (require 'helm-swoop)
-;; change the keybinds
-(global-set-key (kbd "C-c p s w") 'helm-swoop)
-(global-set-key (kbd "C-c p s b") 'helm-swoop-back-to-last-point)
-(global-set-key (kbd "C-c p s m") 'helm-multi-swoop)
-(global-set-key (kbd "C-c p s l") 'helm-multi-swoop-all)
+(global-unset-key (kbd "C-c h s"))
+(global-set-key (kbd "C-c h s s") 'helm-swoop)
+(global-set-key (kbd "C-c h s b") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c h s m") 'helm-multi-swoop)
+(global-set-key (kbd "C-c h s l") 'helm-multi-swoop-all)
 
 ;; Package: helm-descbinds
 (el-get-bundle helm-descbinds)
