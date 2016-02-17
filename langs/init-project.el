@@ -62,7 +62,10 @@
 
 ;; Package: highlight-indentation
 (el-get-bundle highlight-indentation)
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
+(add-hook 'python-mode-hook 'highlight-indentation-current-column-mode)
 
+;; whitespace
 (add-hook 'prog-mode-hook (lambda ()
                             (interactive)
                             (setq show-trailing-whitespace 1)))
