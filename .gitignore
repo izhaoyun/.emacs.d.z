@@ -7,10 +7,12 @@ semanticdb/*
 url/*
 anaconda-mode/*
 eshell/*
+_site/*
 
 # files
 *.*~
 places
+Gemfile.lock
 ido.last
 .emacs_workgroups
 recentf
