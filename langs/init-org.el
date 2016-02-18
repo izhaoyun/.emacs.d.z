@@ -10,9 +10,11 @@
 (require 'org)
 (require 'ob)
 (require 'ox)
-(require 'ox-md)
-(require 'ox-latex)
+(require 'ox-ascii)
 (require 'ox-beamer)
+(require 'ox-html)
+(require 'ox-latex)
+(require 'ox-md)
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
@@ -35,6 +37,12 @@
             (org-set-local 'yas/trigger-key [tab])
             (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
 
+;; default language
+(setq org-export-default-language "zh-CN")
+
+;; org babel setup
+(add-hook 'org-babel-after-execute-hook
+          'org-display-inline-images 'append)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
