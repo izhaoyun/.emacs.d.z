@@ -3,6 +3,10 @@
 ;;; Commentary:
 
 ;;; Code:
+;; Package: bundler
+(el-get-bundle bundler)
+(require 'bundler)
+
 ;; Package: inf-ruby
 (el-get-bundle inf-ruby)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
