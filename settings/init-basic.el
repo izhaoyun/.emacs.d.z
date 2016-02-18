@@ -25,7 +25,21 @@
   (global-linum-mode t)
   (column-number-mode t)
 
+  ;; history
+  (setq savehist-file "~/.emacs.d/savehist")
+  (savehist-mode 1)
+  (setq history-length t)
+  (setq history-delete-duplicates t)
+  (setq savehist-save-minibuffer-history 1)
+  (setq savehist-additional-variables '(kill-ring
+                                        search-ring
+                                        regexp-search-ring))
+
   (winner-mode t)
+
+  ;; go back to previous places
+  (bind-key "C-o" 'pop-to-mark-command)
+  (setq set-mark-command-repeat-pop t)
 
   ;; Package: window-numbering
   (el-get-bundle window-numbering)
