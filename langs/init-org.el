@@ -31,6 +31,10 @@
     (local-set-key (kbd "C-&") 'org-mark-ring-goto)
     (local-set-key (kbd "C-%") 'org-mark-ring-push)))
 
+;; chinese-fonts-setup
+(el-get-bundle tumashu/chinese-fonts-setup)
+(require 'chinese-fonts-setup)
+
 ;; solving conflicts with yasnippet
 (add-hook 'org-mode-hook
           (lambda ()
