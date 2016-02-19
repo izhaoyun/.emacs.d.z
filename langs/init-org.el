@@ -34,6 +34,11 @@
 ;; chinese-fonts-setup
 (el-get-bundle tumashu/chinese-fonts-setup)
 (require 'chinese-fonts-setup)
+(setq cfs-profiles '("org-mode" "program"))
+;; 英文字体个人喜欢source code pro，所以org-mode对应的profile里排在了最前边。
+(setq cfs--current-profile-name "org-mode")
+(setq cfs--custom-set-fontsizes '(10 12.5 12.5))
+(setq cfs--fontsize-steps (quote (2 3 4)))
 
 ;; solving conflicts with yasnippet
 (add-hook 'org-mode-hook
