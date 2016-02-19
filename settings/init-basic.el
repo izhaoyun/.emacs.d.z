@@ -37,10 +37,6 @@
 
   (winner-mode t)
 
-  ;; go back to previous places
-  (bind-key "C-o" 'pop-to-mark-command)
-  (setq set-mark-command-repeat-pop t)
-
   ;; Package: window-numbering
   (el-get-bundle window-numbering)
   (require 'window-numbering)
