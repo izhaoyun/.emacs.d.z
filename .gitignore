@@ -10,6 +10,7 @@ eshell/*
 _site/*
 
 # files
+savehist
 *.*~
 places
 Gemfile.lock
