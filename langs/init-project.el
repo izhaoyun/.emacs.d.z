@@ -60,15 +60,18 @@
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
 
+;; Package: aggressive-indent
+(el-get-bundle aggressive-indent-mode)
+(global-aggressive-indent-mode 1)
+
 ;; Package: highlight-indentation
 (el-get-bundle highlight-indentation)
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'highlight-indentation-current-column-mode)
 
 ;; whitespace
-(add-hook 'prog-mode-hook (lambda ()
-                            (interactive)
-                            (setq show-trailing-whitespace 1)))
+(add-hook 'prog-mode-hook
+          (lambda () (interactive) (setq show-trailing-whitespace 1)))
 
 ;; Package: ws-butler
 (el-get-bundle ws-butler)
