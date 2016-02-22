@@ -117,15 +117,15 @@
 
 ;; Package: flycheck-google-cpplint
 (el-get-bundle flycheck/flycheck-google-cpplint)
-(eval-after-load 'flycheck
-  '(progn
-     (require 'flycheck-google-cpplint)
-     (flycheck-add-next-checker 'c/c++-clang
-                                '(warnings-only . c/c++-googlelint))
-     (custom-set-variables
-      '(flycheck-googlelint-verbose "3")
-      '(flycheck-googlelint-filter "-whitespace,+whitespace/braces")
-      '(flycheck-googlelint-linelength "120"))))
+;; (eval-after-load 'flycheck
+;;   '(progn
+;;      (require 'flycheck-google-cpplint)
+;;      (flycheck-add-next-checker 'c/c++-clang
+;;                                 '(warnings-only . c/c++-googlelint))
+;;      (custom-set-variables
+;;       '(flycheck-googlelint-verbose "3")
+;;       '(flycheck-googlelint-filter "-whitespace,+whitespace/braces")
+;;       '(flycheck-googlelint-linelength "120"))))
 
 (provide 'init-cc)
 ;;; init-cc.el ends here
