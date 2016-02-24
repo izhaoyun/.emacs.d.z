@@ -119,6 +119,9 @@
   (defalias 'redo 'undo-tree-redo)
   (global-set-key (kbd "C-z") 'undo)
 
+  ;; remote server files
+  (setq tramp-default-method "ssh")
+
   ;; miscellaneous
   (defalias 'yes-or-no-p 'y-or-n-p)
   (require 'cl))
