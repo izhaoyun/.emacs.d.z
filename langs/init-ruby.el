@@ -32,9 +32,6 @@
 (require 'ruby-block)
 (ruby-block-mode t)
 
-;; Package: yari
-(el-get-bundle yari)
-
 ;; Package: bundler
 (el-get-bundle bundler)
 (require 'bundler)
@@ -43,12 +40,6 @@
 (el-get-bundle rubocop)
 (require 'rubocop)
 (add-hook 'ruby-mode-hook #'rubocop-mode)
-
-;; Package: robe
-(el-get-bundle robe-mode)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
 
 ;; Package: yari
 (el-get-bundle yari)
