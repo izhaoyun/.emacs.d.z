@@ -36,9 +36,9 @@
 (el-get-bundle helm-swoop)
 (require 'helm-swoop)
 (global-unset-key (kbd "C-c h s"))
-(global-set-key (kbd "C-c h s s") 'helm-swoop)
+(global-set-key (kbd "C-c h s f") 'helm-swoop)
 (global-set-key (kbd "C-c h s b") 'helm-swoop-back-to-last-point)
-(global-set-key (kbd "C-c h s m") 'helm-multi-swoop)
+(global-set-key (kbd "C-c h s p") 'helm-multi-swoop)
 (global-set-key (kbd "C-c h s l") 'helm-multi-swoop-all)
 
 (provide 'init-helm)
