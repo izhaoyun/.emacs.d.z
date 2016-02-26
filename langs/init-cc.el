@@ -8,8 +8,8 @@
 
 ;; (setq company-backends (delete 'company-semantic company-backends))
 
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
+(define-key c-mode-map   [(tab)] 'company-complete)
+(define-key c++-mode-map [(tab)] 'company-complete)
 
 ;; Package: company-c-headers
 (el-get-bundle company-c-headers)
