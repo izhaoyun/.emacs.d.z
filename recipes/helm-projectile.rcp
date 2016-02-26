@@ -1,5 +1,0 @@
-(:name projectile
-       :description "helm-projectile provides helm integration."
-       :type github
-       :pkgname "bbatsov/helm-projectile"
-       :depends (projectile))
