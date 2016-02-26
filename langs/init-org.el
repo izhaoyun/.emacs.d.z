@@ -1,8 +1,6 @@
 ;;; init-org.el --- Configuration for org-mode
 
-
 ;;; Commentary:
-
 
 ;;; Code:
 (el-get-bundle org-mode)

@@ -21,6 +21,7 @@
 (require 'init-basic)
 ;(require 'init-ido)
 (require 'init-yasnippet)
+(require 'init-hydra)
 (require 'init-swiper)
 (require 'init-helm)
 (require 'init-avy)
@@ -33,3 +34,6 @@
 (require 'init-org)
 (require 'init-cc)
 (require 'init-python)
+(require 'init-ruby)
+
+;;; init.el ends here
