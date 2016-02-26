@@ -15,7 +15,7 @@
 (el-get-bundle helm-projectile)
 (require 'helm-projectile)
 (helm-projectile-on)
-(setq projectile-completion-system 'helm)
+(setq projectile-completion-system 'ivy)
 (setq projectile-indexing-method 'alien)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
