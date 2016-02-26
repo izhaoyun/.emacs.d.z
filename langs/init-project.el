@@ -61,10 +61,6 @@
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
 
-;; Package: aggressive-indent
-(el-get-bundle aggressive-indent-mode)
-(global-aggressive-indent-mode 1)
-
 ;; Package: highlight-indentation
 (el-get-bundle highlight-indentation)
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
