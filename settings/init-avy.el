@@ -11,6 +11,8 @@
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 (global-set-key (kbd "M-g w") 'avy-goto-word-1)
 (global-set-key (kbd "M-g e") 'avy-goto-word-0)
+(global-set-key (kbd "M-p") 'avy-pop-mark)
+(advice-add 'swiper :before 'avy-push-mark)
 
 ;; Package: ace-pinyin
 ; 因为ace-pinyin里require了ace-jump-mode，懒得注释掉那一句了。
