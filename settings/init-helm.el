@@ -22,14 +22,15 @@
 (global-set-key (kbd "C-x r b")     'helm-filtered-bookmarks)
 (global-set-key (kbd "C-h SPC")		'helm-all-mark-rings)
 (global-set-key (kbd "M-y")         'helm-show-kill-ring)
+(global-set-key (kbd "C-h M")       'helm-man-woman)
 
 ;; fuzzy matching
-(setq helm-recentf-fuzzy-match		 t ; helm-recentf & helm-mini
-      helm-buffers-fuzzy-matching	 t ; helm-mini & helm-buffers-list
-      helm-imenu-fuzzy-match		 t ; helm-imenu
-      helm-M-x-fuzzy-match		 t ; helm-M-x
-      helm-apropos-fuzzy-match		 t ; helm-apropos
-      helm-locate-fuzzy-match		 t) ; helm-locate
+(setq helm-recentf-fuzzy-match	  t  ; helm-recentf & helm-mini
+      helm-buffers-fuzzy-matching t  ; helm-mini & helm-buffers-list
+      helm-imenu-fuzzy-match	  t  ; helm-imenu
+      helm-M-x-fuzzy-match        t  ; helm-M-x
+      helm-apropos-fuzzy-match	  t  ; helm-apropos
+      helm-locate-fuzzy-match	  t) ; helm-locate
 
 ;; Package: helm-swoop
 (el-get-bundle helm-swoop)
