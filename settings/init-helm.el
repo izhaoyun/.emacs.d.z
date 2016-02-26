@@ -21,7 +21,7 @@
 (global-set-key (kbd "C-x C-b")		'helm-buffers-list)
 (global-set-key (kbd "C-x r b")     'helm-filtered-bookmarks)
 (global-set-key (kbd "C-h SPC")		'helm-all-mark-rings)
-(global-set-key (kbd "M-y")		'helm-show-kill-ring)
+(global-set-key (kbd "M-y")         'helm-show-kill-ring)
 
 ;; fuzzy matching
 (setq helm-recentf-fuzzy-match		 t ; helm-recentf & helm-mini
@@ -30,10 +30,6 @@
       helm-M-x-fuzzy-match		 t ; helm-M-x
       helm-apropos-fuzzy-match		 t ; helm-apropos
       helm-locate-fuzzy-match		 t) ; helm-locate
-
-;; Package: helm-ag
-(el-get-bundle helm-ag)
-(global-set-key (kbd "M-g a") 'helm-do-ag)
 
 ;; Package: helm-swoop
 (el-get-bundle helm-swoop)
