@@ -80,13 +80,13 @@
   (setq-default save-place t)
 
   ;; backup files
-  (setq version-control t
+  (setq vc-make-version-backup t
+  		version-control t
         kept-new-versions 10
         kept-old-versions 0
         delete-old-versions t
-        backup-by-copying t
-        backup-directory-alist
-        '(("" . "~/.emacs.d/backups/per-save")))
+        backup-by-copying t)
+  (setq backup-directory-alist '(("" . "~/.emacs.d/backups/per-save")))
 
   (defun force-backup-of-buffer ()
     ;; Make a special "per session" backup at the first save of each
