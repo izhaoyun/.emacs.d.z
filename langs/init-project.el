@@ -43,6 +43,11 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(el-get-bundle abo-abo/helm-make)
+(require 'helm-make)
+(setq helm-make-completion-method 'ivy)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (global-set-key (kbd "RET") 'newline-and-indent)
