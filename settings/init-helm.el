@@ -41,5 +41,8 @@
 (global-set-key (kbd "C-c h s p") 'helm-multi-swoop)
 (global-set-key (kbd "C-c h s l") 'helm-multi-swoop-all)
 
+;; Package: swpiper-helm
+(el-get-bundle abo-abo/swiper-helm)
+
 (provide 'init-helm)
 ;;; init-helm.el ends here
