@@ -43,11 +43,5 @@
 (global-set-key (kbd "C-c h s m") 'helm-multi-swoop)
 (global-set-key (kbd "C-c h s l") 'helm-multi-swoop-all)
 
-;; Package: helm-descbinds
-(el-get-bundle helm-descbinds)
-(require 'helm-descbinds)
-(helm-descbinds-mode 1)
-(global-set-key (kbd "C-h c") 'helm-descbinds)
-
 (provide 'init-helm)
 ;;; init-helm.el ends here
