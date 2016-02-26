@@ -11,15 +11,20 @@
 ;; (add-hook 'prog-mode-hook 'company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Package: company-quickhelp-mode
+(el-get-bundle company-quickhelp)
+(add-hook 'company-mode-hook 'company-quickhelp-mode)
+;; (company-quick-mode 1)
+
 ;; solving conflicts in company and yasnippet.
 ;; http://www.emacswiki.org/emacs/CompanyMode
 (defun check-expansion ()
- (save-excursion
-  (if (looking-at "\\_>") t
-   (backward-char 1)
-   (if (looking-at "\\.") t
-    (backward-char 1)
-    (if (looking-at "->") t nil)))))
+  (save-excursion
+    (if (looking-at "\\_>") t
+      (backward-char 1)
+      (if (looking-at "\\.") t
+        (backward-char 1)
+        (if (looking-at "->") t nil)))))
 
 (defun do-yas-expand ()
  (let ((yas/fallback-behavior 'return-nil))
