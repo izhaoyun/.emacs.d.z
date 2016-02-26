@@ -14,7 +14,7 @@
 ;; use switch-to-buffer instead and switch-to-buffer will use ivy
 ;; completion when ivy-mode is on.
 ;; (global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-c C-s")		'helm-occur)
+;; (global-set-key (kbd "C-c C-s")		'helm-occur)
 (global-set-key (kbd "C-c f")		'helm-recentf)
 (global-set-key (kbd "C-c h x")		'helm-register)
 (global-set-key (kbd "C-c C-x C-f")	'helm-find-files)
