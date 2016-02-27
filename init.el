@@ -31,6 +31,7 @@
 (require 'init-project)
 (require 'init-company)
 (require 'init-flycheck)
+(require 'init-web)
 (require 'init-org)
 (require 'init-cc)
 (require 'init-python)
