@@ -3,6 +3,10 @@
 ;;; Commentary:
 
 ;;; Code:
+;; Package: emmet-mode
+(el-get-bundle emmet-mode)
+(require 'emmet-mode)
+
 ;; Package: web-mode.el
 (el-get-bundle web-mode)
 (require 'web-mode)
