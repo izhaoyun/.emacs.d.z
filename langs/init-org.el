@@ -38,11 +38,20 @@
 (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
 (setq cfs--fontsize-steps (quote (2 3 4)))
 
-;; solving conflicts with yasnippet
-(add-hook 'org-mode-hook
-          (lambda ()
-            (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field-or-maybe-expand)))
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(defun yas/org-setup ()
+  ;; yasnippet (using the new org-cycle hooks)
+  (make-variable-buffer-local 'yas/trigger-key)
+  (setq yas/trigger-key [tab])
+  (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+  (define-key yas/keymap [tab] 'yas/next-field))
+
+;; See https://github.com/eschulte/emacs24-starter-kit/issues/80.
+(setq org-src-tab-acts-natively nil)
+
+(add-hook 'org-mode-hook #'yas/org-setup)
 
 ;; default language
 (setq org-export-default-language "zh-CN")
