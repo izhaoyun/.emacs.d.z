@@ -6,6 +6,9 @@
 
 (require 'cc-mode)
 
+(setq-default c-basic-offset 4
+              c-default-style "linux")
+
 ;; (setq company-backends (delete 'company-semantic company-backends))
 
 (define-key c-mode-map   [(tab)] 'company-complete)
