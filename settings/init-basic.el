@@ -110,7 +110,7 @@
   (mouse-avoidance-mode 'jump)
 
   ;; Package: undo-tree
-  (el-get-bundle undo-tree)
+  (el-get-bundle elpa:undo-tree)
   (require 'undo-tree)
   (global-undo-tree-mode 1)
   (setq undo-tree-visualizer-timestamps t
