@@ -119,10 +119,6 @@
   (defalias 'redo 'undo-tree-redo)
   (global-set-key (kbd "C-z") 'undo)
 
-  ;; Package: ag.el
-  (el-get-bundle ag)
-  (require 'ag)
-
   ;; Package: multiple-cursors
   (el-get-bundle multiple-cursors)
   (require 'multiple-cursors)
