@@ -122,6 +122,10 @@
   ;; Package: multiple-cursors
   (el-get-bundle multiple-cursors)
   (require 'multiple-cursors)
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
   ;; remote server files
   (setq tramp-default-method "ssh")
