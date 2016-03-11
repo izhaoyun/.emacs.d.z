@@ -21,7 +21,9 @@
 (global-set-key (kbd "C-c s j") 'counsel-git-grep)
 (global-set-key (kbd "C-c s a") 'counsel-ag)
 (global-set-key (kbd "C-c s l") 'counsel-locate)
-(global-set-key (kbd "C-h K") 'counsel-descbinds)
+(global-set-key (kbd "C-c d k") 'counsel-descbinds)
+(global-set-key (kbd "C-c d f") 'counsel-describe-function)
+(global-set-key (kbd "C-c d v") 'counsel-describe-variable)
 
 (define-key ivy-minibuffer-map (kbd "C-c o") 'ivy-occur)
 
