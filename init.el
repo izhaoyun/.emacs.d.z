@@ -23,18 +23,14 @@
   (el-get-bundle use-package))  
 (setq use-package-verbose t)
 (require 'use-package)
-(use-package auto-compile
-  :ensure t
-  :config (auto-compile-on-load-mode))
-(setq load-prefer-newer t)
 
 ;; load settings for Emacs
 (add-to-list 'load-path "~/.emacs.d/settings")
 (require 'init-basic)
 ;; (require 'init-ido)
 ;; (require 'init-yasnippet)
-;; (require 'init-hydra)
-;; (require 'init-swiper)
+(require 'init-hydra)
+(require 'init-swiper)
 ;; (require 'init-helm)
 ;; (require 'init-avy)
 
