@@ -4,29 +4,29 @@
 
 ;;; Code:
 (el-get-bundle swiper)
-
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(global-set-key (kbd "C-s")     'swiper)
-(global-set-key (kbd "C-r")     'ivy-resume)
-(global-set-key (kbd "M-x")     'counsel-M-x)
-(global-set-key (kbd "M-y")     'counsel-yank-pop)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-h K")   'counsel-descbinds)
-(global-set-key (kbd "<f1> f")  'counsel-describe-function)
-(global-set-key (kbd "<f1> v")  'counsel-describe-variable)
-(global-set-key (kbd "<f1> l")  'counsel-load-library)
-(global-set-key (kbd "<f2> i")  'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u")  'counsel-unicode-char)
-(global-set-key (kbd "C-c s g") 'counsel-git)
-(global-set-key (kbd "C-c s j") 'counsel-git-grep)
-(global-set-key (kbd "C-c s a") 'counsel-ag)
-(global-set-key (kbd "C-c s l") 'counsel-locate)
-(global-set-key (kbd "C-c d k") 'counsel-descbinds)
-(global-set-key (kbd "C-c d f") 'counsel-describe-function)
-(global-set-key (kbd "C-c d v") 'counsel-describe-variable)
-
-(define-key ivy-minibuffer-map (kbd "C-c o") 'ivy-occur)
+(use-package counsel
+  ;; https://github.com/jwiegley/use-package/issues/121
+  :bind (("C-s" . swiper)               ; global-map
+         ("M-x" . counsel-M-x)
+         ("M-y" . counsel-yank-pop)
+         ("C-x C-f" . counsel-find-file)
+         ("C-h K"   . counsel-descbinds)
+         ("C-h S"   . counsel-info-lookup-symbol)
+         ("C-h l"   . counsel-load-library)
+         ("C-c s a" . counsel-ag)
+         ("C-c s g" . counsel-git)
+         ("C-c s j" . counsel-git-grep)
+         ("C-c s l" . counsel-locate))
+  :bind (:map help-map                  ; help-map
+              ("f" . counsel-describe-function)
+              ("v" . counsel-describe-variable))
+  :init
+  (progn
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy))
+  :config
+  (progn
+    (ivy-mode)))
 
 (provide 'init-swiper)
 ;;; init-swiper.el ends here
