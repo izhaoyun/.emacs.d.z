@@ -29,16 +29,21 @@
          ("C-x C-b" . helm-buffers-list)
          ("C-x c y" . helm-yas-complete)
          ("C-x c Y" . helm-yas-create-snippet-on-region)
-         ("C-x c SPC" . helm-all-mark-rings))
+         ("C-x c SPC" . helm-all-mark-rings)))
 
 ;; Package: helm-swoop
 (el-get-bundle helm-swoop)
-;; (require 'helm-swoop)
-;; (global-unset-key (kbd "C-c h s"))
-;; (global-set-key (kbd "C-c h s f") 'helm-swoop)
-;; (global-set-key (kbd "C-c h s b") 'helm-swoop-back-to-last-point)
-;; (global-set-key (kbd "C-c h s p") 'helm-multi-swoop)
-;; (global-set-key (kbd "C-c h s l") 'helm-multi-swoop-all)
+(use-package helm-swoop
+  :bind (("M-i" . helm-swoop)
+         ("M-I" . helm-swoop-back-to-last-point)
+         ("C-c M-i" . helm-multi-swoop)
+         ("C-x M-i" . helm-multi-swoop-all))
+  :config
+  (progn
+    (define-key isearch-mode-map (kbd "M-i")
+      'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i")
+      'helm-multi-swoop-all-from-helm-swoop)))
 
 (provide 'init-helm)
 ;;; init-helm.el ends here
