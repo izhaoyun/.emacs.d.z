@@ -84,6 +84,13 @@
     (setq sml/no-confirm-load-theme t)
     (sml/setup)))
 
+;; Package: rainbow-delimiters
+(el-get-bundle rainbow-delimiters)
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 ;; https://www.emacswiki.org/emacs/ZapToChar
 ;; https://www.emacswiki.org/emacs/ZapToCharUsage
 (autoload 'zap-up-to-char "misc"
