@@ -16,11 +16,11 @@
 
 ;; Package: ace-pinyin
 ; 因为ace-pinyin里require了ace-jump-mode，懒得注释掉那一句了。
-(el-get-bundle ace-jump-mode)
-(el-get-bundle cute-jumper/ace-pinyin)
-(require 'ace-pinyin)
-(setq ace-pinyin-use-avy t)
-(ace-pinyin-global-mode +1)
+;(el-get-bundle ace-jump-mode)
+;(el-get-bundle cute-jumper/ace-pinyin)
+;(require 'ace-pinyin)
+;(setq ace-pinyin-use-avy t)
+;(ace-pinyin-global-mode +1)
 
 (provide 'init-avy)
 ;;; init-avy.el ends here

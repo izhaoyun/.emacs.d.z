@@ -3,136 +3,116 @@
 ;;; Commentary:
 
 ;;; Code:
+(setq inhibit-splash-screen t)
+(when window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1)
+  (menu-bar-mode 1)
+  (scroll-bar-mode -1))
 
-;;;###autoload
-(progn
-  (setq inhibit-splash-screen t)
-  (menu-bar-mode -1)
-  (when window-system
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1))
+;; Backups
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq backup-directory-alist
+      '(("." . "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms
+      '((".*" "~/.emacs.d/auto-save-list/" t)))
 
-  ;; coding: utf-8
-  (set-terminal-coding-system 'utf-8)
-  (set-keyboard-coding-system 'utf-8)
-  (set-language-environment   'utf-8)
-  (set-default-coding-systems 'utf-8)
-  (prefer-coding-system       'utf-8)
+;; History
+(setq savehist-file "~/.emacs.d/savehist")
+(savehist-mode 1)
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+	search-ring
+	regexp-search-ring))
 
-  (global-font-lock-mode t)
-  (global-hl-line-mode t)
+;; UTF-8
+(prefer-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment   'utf-8)
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system       'utf-8)
 
-  (global-linum-mode t)
-  (column-number-mode t)
+(global-font-lock-mode)
+(winner-mode)
+(global-linum-mode)
+(column-number-mode)
 
-  ;; history
-  (setq savehist-file "~/.emacs.d/savehist")
-  (savehist-mode 1)
-  (setq history-length t)
-  (setq history-delete-duplicates t)
-  (setq savehist-save-minibuffer-history 1)
-  (setq savehist-additional-variables '(kill-ring
-                                        search-ring
-                                        regexp-search-ring))
+;; Package: undo-tree
+(el-get-bundle undo-tree)
+(use-package undo-tree
+  :defer t
+  :ensure t
+  :diminish undo-tree-mode
+  :config
+  (progn
+    (global-undo-tree-mode)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff       t)))
 
-  (winner-mode t)
+;; Package: expand-region
+(el-get-bundle expand-region)
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
 
-  ;; Package: window-numbering
-  (el-get-bundle window-numbering)
-  (require 'window-numbering)
-  (window-numbering-mode t)
+;; Package: guide-key
+(el-get-bundle guide-key)
+(use-package guide-key
+  :defer t
+  :diminish guide-key-mode
+  :config
+  (progn
+    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+    (guide-key-mode 1)))  ; Enable guide-key-mode
 
-  ;; Package: smart-mode-line
-  (el-get-bundle smart-mode-line)
-  (setq sml/them 'light)
-  (setq sml/no-confirm-load-theme t)
-  (sml/setup)
+;; Package: window-numbering 
+(el-get-bundle window-numbering)
+(use-package window-numbering
+  :config
+  (window-numbering-mode))
 
-  (autoload 'zap-up-to-char "misc"
-    "Kill up to, but not including ARGth occurrence of CHAR." t)
+;; Package: smart-mode-line
+(el-get-bundle smart-mode-line)
+(use-package smart-mode-line
+  :init
+  (progn
+    (setq sml/them 'light)
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup)))
 
-  (require 'uniquify)
-  (setq uniquify-buffer-name-style 'forward)
+;; https://www.emacswiki.org/emacs/ZapToChar
+;; https://www.emacswiki.org/emacs/ZapToCharUsage
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR." t)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
 
-  (global-set-key (kbd "M-/") 'hippie-expand)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
-  ;; Package: expand-region
-  (el-get-bundle expand-region)
-  (require 'expand-region)
-  (global-set-key (kbd "C-=") 'er/expand-region)
+(bind-key "C-x p" 'pop-to-mark-command)
+(setq set-mark-command-repeat-pop t)
 
-  (global-set-key (kbd "M-z") 'zap-up-to-char)
+;; remote server files
+(setq tramp-default-method "ssh")
 
-  (show-paren-mode 1)
-  (setq-default indent-tabs-mode nil)
-  (setq tab-width 4)
-  (setq x-select-enable-clipboard t
-        x-select-enable-primary t
-        save-interprogram-paste-before-kill t
-        apropos-do-all t
-        mouse-yank-at-point t
-        require-final-newline t
-        visible-bell t
-        load-prefer-newer t
-        ediff-window-setup-function 'ediff-setup-windows-plain)
+(show-paren-mode 1)
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+(setq x-select-enable-clipboard t
+      x-select-enable-primary t
+      save-interprogram-paste-before-kill t
+      apropos-do-all t
+      mouse-yank-at-point t
+      require-final-newline t
+      visible-bell t
+      load-prefer-newer t
+      ediff-window-setup-function 'ediff-setup-windows-plain)
 
-  (require 'saveplace)
-  (setq-default save-place t)
-
-  ;; backup files
-  (setq vc-make-version-backup t
-  		version-control t
-        kept-new-versions 10
-        kept-old-versions 0
-        delete-old-versions t
-        backup-by-copying t)
-  (setq backup-directory-alist '(("" . "~/.emacs.d/backups/per-save")))
-
-  (defun force-backup-of-buffer ()
-    ;; Make a special "per session" backup at the first save of each
-    ;; emacs session.
-    (when (not buffer-backed-up)
-      ;; Override the default parameters for per-session backups.
-      (let ((backup-directory-alist
-             '(("" . "~/.emacs.d/backups/per-session")))
-            (kept-new-versions 3))
-        (backup-buffer)))
-    ;; Make a "per save" backup on each save. The first save results in
-    ;; both a per-session and a per-save backup, to keep the numbering
-    ;; of per-save backups consistent.
-    (let ((buffer-backed-up nil))
-      (backup-buffer)))
-
-  (add-hook 'before-save-hook 'force-backup-of-buffer)
-
-  ;; cursor and mouse
-  ;; (blink-cursor-mode -1)
-  (mouse-avoidance-mode 'jump)
-
-  ;; Package: undo-tree
-  (el-get-bundle elpa:undo-tree)
-  (require 'undo-tree)
-  (global-undo-tree-mode 1)
-  (setq undo-tree-visualizer-timestamps t
-        undo-tree-visualizer-diff       t)
-  ;; setting up undo/redo keys
-  (defalias 'redo 'undo-tree-redo)
-  (global-set-key (kbd "C-z") 'undo)
-
-  ;; Package: multiple-cursors
-  (el-get-bundle multiple-cursors)
-  (require 'multiple-cursors)
-  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-  ;; remote server files
-  (setq tramp-default-method "ssh")
-
-  ;; miscellaneous
-  (defalias 'yes-or-no-p 'y-or-n-p)
-  (require 'cl))
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here

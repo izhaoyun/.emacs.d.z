@@ -14,27 +14,39 @@
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 (el-get 'sync)
-;; (package-initialize)
+;; el-get setup ends here
+
+(package-initialize nil)
+(setq package-enable-at-startup nil)
+
+(unless (package-installed-p 'use-package)
+  (el-get-bundle use-package))  
+(setq use-package-verbose t)
+(require 'use-package)
+(use-package auto-compile
+  :ensure t
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
 
 ;; load settings for Emacs
-(add-to-list 'load-path (concat user-emacs-directory "settings"))
+(add-to-list 'load-path "~/.emacs.d/settings")
 (require 'init-basic)
-;(require 'init-ido)
-(require 'init-yasnippet)
-(require 'init-hydra)
-(require 'init-swiper)
-(require 'init-helm)
-(require 'init-avy)
+;; (require 'init-ido)
+;; (require 'init-yasnippet)
+;; (require 'init-hydra)
+;; (require 'init-swiper)
+;; (require 'init-helm)
+;; (require 'init-avy)
 
 ;; load modules for different programming languages
-(add-to-list 'load-path (concat user-emacs-directory "langs"))
-(require 'init-project)
-(require 'init-company)
-(require 'init-flycheck)
-(require 'init-web)
-(require 'init-org)
-(require 'init-cc)
-(require 'init-python)
-(require 'init-ruby)
+;; (add-to-list 'load-path "~/.emacs.d/langs")
+;; (require 'init-project)
+;; (require 'init-company)
+;; (require 'init-flycheck)
+;; (require 'init-web)
+;; (require 'init-org)
+;; (require 'init-cc)
+;; (require 'init-python)
+;; (require 'init-ruby)
 
 ;;; init.el ends here
