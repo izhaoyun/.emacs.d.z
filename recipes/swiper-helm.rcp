@@ -1,5 +1,0 @@
-(:name projectile
-       :description "use the helm back end of the overview"
-       :type github
-       :pkgname "abo-abo/swiper-helm"
-       :depends (swiper helm))
