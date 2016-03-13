@@ -8,6 +8,7 @@
 (use-package counsel
   ;; https://github.com/jwiegley/use-package/issues/121
   :bind (("C-s" . swiper)               ; global-map
+         ("C-r" . ivy-resume)
          ("M-x" . counsel-M-x)
          ("M-y" . counsel-yank-pop)
          ("C-x C-f" . counsel-find-file)

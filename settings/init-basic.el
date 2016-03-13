@@ -145,7 +145,7 @@
     ;; pair management
     (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
     (sp-local-pair 'web-mode "<" nil :when '(my/sp-web-mode-is-code-context))))
-
+(show-paren-mode 1)
 
 ;; https://www.emacswiki.org/emacs/ZapToChar
 ;; https://www.emacswiki.org/emacs/ZapToCharUsage
