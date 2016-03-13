@@ -29,7 +29,6 @@
 (require 'init-basic)
 ;; (require 'init-ido)
 ;; (require 'init-yasnippet)
-(require 'init-hydra)
 (require 'init-helm)
 (require 'init-swiper)
 ;; (require 'init-avy)

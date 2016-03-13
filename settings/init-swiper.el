@@ -29,5 +29,9 @@
   (progn
     (ivy-mode)))
 
+;; Package: hydra
+(el-get-bundle hydra)
+(use-package hydra)
+
 (provide 'init-swiper)
 ;;; init-swiper.el ends here

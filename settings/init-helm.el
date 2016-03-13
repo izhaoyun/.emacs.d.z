@@ -8,6 +8,7 @@
 (el-get-bundle helm)
 (use-package helm
   :diminish helm-mode
+  :defer 5
   :init
   (progn
     (require 'helm-config)
