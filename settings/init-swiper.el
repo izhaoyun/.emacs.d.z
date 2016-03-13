@@ -3,6 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
+;; Package: swiper
 (el-get-bundle swiper)
 (use-package counsel
   ;; https://github.com/jwiegley/use-package/issues/121
