@@ -13,8 +13,8 @@
     (eval-print-last-sexp)))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
-;(el-get 'sync)
-;(package-initialize)
+(el-get 'sync)
+;; (package-initialize)
 
 ;; load settings for Emacs
 (add-to-list 'load-path (concat user-emacs-directory "settings"))
