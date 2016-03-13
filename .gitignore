@@ -21,7 +21,7 @@ ac-comphist.dat
 tramp
 bookmarks
 session.*
-projectile-bookmarks.eld
 srecode-map.el
 *.elc
-projectile.cache
+.projectile.cache
+.projectile-bookmarks.eld
