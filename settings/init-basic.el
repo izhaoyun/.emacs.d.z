@@ -176,5 +176,15 @@
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
+;; Package: chinese-fonts-setup
+(el-get-bundle tumashu/chinese-fonts-setup)
+(use-package chinese-fonts-setup
+  :init
+  (progn
+     (setq cfs-profiles '("org-mode" "program"))
+     (setq cfs--current-profile-name "org-mode")
+     (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
+     (setq cfs--fontsize-steps (quote (2 3 4)))))
+
 (provide 'init-basic)
 ;;; init-basic.el ends here
