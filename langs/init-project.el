@@ -6,7 +6,6 @@
 ;; Package: projectile
 (el-get-bundle projectile)
 (use-package projectile
-  :defer 5
   :commands (projectile-find-file projectile-switch-project)
   :config
   (projectile-global-mode 1)
@@ -15,9 +14,7 @@
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching t)
-  (setq projectile-known-projects-file "~/.emacs.d/.projectile-bookmarks.eld")
-  (setq projectile-mode-line
-        '(:eval (format " %s[%s]" (string #x1f5c0) (projectile-project-name)))))
+  (setq projectile-known-projects-file "~/.emacs.d/.projectile-bookmarks.eld"))
 
 ;; Package: magit
 (el-get-bundle magit)
