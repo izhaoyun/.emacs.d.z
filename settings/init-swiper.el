@@ -34,5 +34,22 @@
 (el-get-bundle hydra)
 (use-package hydra)
 
+;; Package: avy
+(el-get-bundle avy)
+(use-package avy
+  :bind (("C-:" . avy-goto-char)
+         ("C-'" . avy-goto-char-2)
+         ("M-g f" . avy-goto-line)
+         ("M-g w" . avy-goto-word-1)
+         ("M-g e" . avy-goto-word-0)
+         ("M-p" . avy-pop-mark))
+  :init
+  (progn
+    (avy-setup-default)
+    (setq avy-all-windows nil)
+    (setq avy-timeout-seconds 0.8))
+  :config
+  (advice-add 'swiper :before 'avy-push-mark))
+
 (provide 'init-swiper)
 ;;; init-swiper.el ends here
