@@ -13,12 +13,12 @@
     (setq projectile-completion-system 'ivy)
     (setq projectile-indexing-method 'alien)
     (setq projectile-cache-file "~/.emacs.d/.projectile.cache")
-    (setq projectile-known-projects-file "~/.emacs.d/.projectile-bookmarks.eld")
-    ))
+    (setq projectile-known-projects-file "~/.emacs.d/.projectile-bookmarks.eld")))
 
 ;; Package: magit
 (el-get-bundle magit)
 (use-package magit
+  :defer t
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup))
   :config
@@ -28,6 +28,12 @@
 (el-get-bundle comment-dwim-2)
 (use-package comment-dwim-2
   :bind ("M-;" . comment-dwim-2))
+
+;; Package: company
+(el-get-bundle company-mode)
+(use-package company-mode
+  :defer t
+  :idle (global-company-mode))
 
 (provide 'init-project)
 ;;; init-project.el ends here
