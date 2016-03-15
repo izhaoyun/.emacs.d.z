@@ -12,8 +12,8 @@
     (setq projectile-enable-caching t)
     (setq projectile-completion-system 'ivy)
     (setq projectile-indexing-method 'alien)
-    (setq projectile-cache-file "~/.emacs.d/.projectile.cache")
-    (setq projectile-known-projects-file "~/.emacs.d/.projectile-bookmarks.eld")))
+    (setq projectile-cache-file "~/.emacs.d/projectile.cache")
+    (setq projectile-known-projects-file "~/.emacs.d/projectile-bookmarks.eld")))
 
 ;; Package: magit
 (el-get-bundle magit)
@@ -34,6 +34,14 @@
 (use-package company-mode
   :defer t
   :config (global-company-mode))
+
+;; Package: yasnippet
+(el-get-bundle yasnippet)
+(use-package yasnippet
+  :defer t
+  :config
+  (progn
+    (yas-global-mode 1)))
 
 (provide 'init-project)
 ;;; init-project.el ends here

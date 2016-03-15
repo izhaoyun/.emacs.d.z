@@ -31,7 +31,6 @@
 ;; (require 'init-yasnippet)
 (require 'init-helm)
 (require 'init-swiper)
-;; (require 'init-avy)
 
 ;; load modules for different programming languages
 (add-to-list 'load-path "~/.emacs.d/langs")
@@ -39,7 +38,7 @@
 ;; (require 'init-company)
 ;; (require 'init-flycheck)
 ;; (require 'init-web)
-;; (require 'init-org)
+(require 'init-org)
 ;; (require 'init-cc)
 ;; (require 'init-python)
 ;; (require 'init-ruby)
