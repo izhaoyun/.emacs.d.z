@@ -33,7 +33,7 @@
 (el-get-bundle company-mode)
 (use-package company-mode
   :defer t
-  :idle (global-company-mode))
+  :config (global-company-mode))
 
 (provide 'init-project)
 ;;; init-project.el ends here
