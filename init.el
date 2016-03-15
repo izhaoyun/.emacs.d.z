@@ -27,14 +27,11 @@
 ;; load settings for Emacs
 (add-to-list 'load-path "~/.emacs.d/settings")
 (require 'init-basic)
-;; (require 'init-ido)
-;; (require 'init-yasnippet)
-(require 'init-helm)
 (require 'init-swiper)
+(require 'init-keys)
 
 ;; load modules for different programming languages
 (add-to-list 'load-path "~/.emacs.d/langs")
-(require 'init-project)
 ;; (require 'init-company)
 ;; (require 'init-flycheck)
 ;; (require 'init-web)

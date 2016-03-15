@@ -3,6 +3,106 @@
 ;;; Commentary:
 
 ;;; Code:
+;; Package: undo-tree
+(el-get-bundle undo-tree)
+(use-package undo-tree
+  :defer t
+  :ensure t
+  :diminish undo-tree-mode
+  :config
+  (progn
+    (global-undo-tree-mode)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff       t)))
+
+;; Package: expand-region
+(el-get-bundle expand-region)
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+;; Package: window-numbering
+(el-get-bundle window-numbering)
+(use-package window-numbering
+  :config
+  (window-numbering-mode))
+
+;; Package: smart-mode-line
+(el-get-bundle smart-mode-line)
+(use-package smart-mode-line
+  :init
+  (progn
+    (setq sml/them 'light)
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup)))
+
+;; Package: rainbow-delimiters
+(el-get-bundle rainbow-delimiters)
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+;; Package: smartparens
+(el-get-bundle smartparens)
+;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org#smartparens-mode
+(use-package smartparens
+  :config
+  (progn
+    (require 'smartparens-config)
+    (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+    (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)))
+
+;; Package: chinese-fonts-setup
+(el-get-bundle tumashu/chinese-fonts-setup)
+(use-package chinese-fonts-setup
+  :init
+  (progn
+     (setq cfs-profiles '("org-mode" "program"))
+     (setq cfs--current-profile-name "org-mode")
+     (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
+     (setq cfs--fontsize-steps (quote (2 3 4)))))
+
+;; Package: helm
+(el-get-bundle helm)
+(use-package helm
+  :diminish helm-mode
+  :defer 5
+  :init
+  (progn
+    (require 'helm-config)
+    (setq helm-candidate-number-limit 100)
+    ;; From https://gist.github.com/antifuchs/9238468
+    (setq helm-idle-delay 0.0
+          helm-input-idle-delay 0.01
+          helm-yas-display-key-on-candidate t
+          helm-quick-update t
+          helm-M-x-requires-pattern nil
+          helm-apropos-fuzzy-match  t
+          helm-ff-skip-boring-files t)
+    (helm-mode))
+  :bind (("C-c h" . helm-mini)
+         ("C-c f" . helm-recentf)
+         ("C-h a" . helm-apropos)
+         ("C-h M" . helm-man-woman)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-x c y" . helm-yas-complete)
+         ("C-x c Y" . helm-yas-create-snippet-on-region)
+         ("C-x c SPC" . helm-all-mark-rings)))
+
+;; Package: helm-swoop
+(el-get-bundle helm-swoop)
+(use-package helm-swoop
+  :bind (("M-i" . helm-swoop)
+         ("M-I" . helm-swoop-back-to-last-point)
+         ("C-c M-i" . helm-multi-swoop)
+         ("C-x M-i" . helm-multi-swoop-all))
+  :config
+  (progn
+    (define-key isearch-mode-map (kbd "M-i")
+      'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i")
+      'helm-multi-swoop-all-from-helm-swoop)))
+
 ;; Package: swiper
 (el-get-bundle swiper)
 (use-package counsel
@@ -32,7 +132,13 @@
 
 ;; Package: hydra
 (el-get-bundle hydra)
-(use-package hydra)
+(use-package hydra
+  :init
+  (progn
+    (require 'hydra)
+    (setq hydra--work-around-dedicated nil))
+  :config
+  (hydra-add-font-lock))
 
 ;; Package: avy
 (el-get-bundle avy)
@@ -50,6 +156,54 @@
     (setq avy-timeout-seconds 0.8))
   :config
   (advice-add 'swiper :before 'avy-push-mark))
+
+;; Package: yasnippet
+(el-get-bundle yasnippet)
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :defer t
+  :init
+  (progn
+    (setq yas-verbosity 0)
+    (setq yas-fallback-behavior 'return-nil)
+    (setq yas-triggers-in-field t)
+    (setq yas-snippet-dirs (list (concat user-emacs-directory "snippets/"))))
+  :config
+  (progn
+    (define-key yas-minor-mode-map [(tab)] nil)
+    (define-key yas-minor-mode-map (kbd "TAB") nil)
+    (yas-global-mode)))
+
+;; Package: projectile
+(el-get-bundle projectile)
+(use-package projectile
+  :defer t
+  :init
+  (progn
+    (setq projectile-enable-caching t)
+    (setq projectile-completion-system 'ivy)
+    (setq projectile-indexing-method 'alien)
+    (projectile-global-mode)))
+
+;; Package: magit
+(el-get-bundle magit)
+(use-package magit
+  :defer t
+  :bind (("C-x g" . magit-status)
+         ("C-x M-g" . magit-dispatch-popup))
+  :config
+  (setq magit-completing-read-function 'ivy-completing-read))
+
+;; Package: comment-dwim-2
+(el-get-bundle comment-dwim-2)
+(use-package comment-dwim-2
+  :bind ("M-;" . comment-dwim-2))
+
+;; Package: company
+(el-get-bundle company-mode)
+(use-package company-mode
+  :defer t
+  :config (global-company-mode))
 
 (provide 'init-swiper)
 ;;; init-swiper.el ends here
