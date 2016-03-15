@@ -59,17 +59,6 @@
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
 
-;; Package: guide-key
-(el-get-bundle guide-key)
-(use-package guide-key
-  :defer t
-  :diminish guide-key-mode
-  :config
-  (progn
-    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
-    (guide-key-mode 1)))  ; Enable guide-key-mode
-
-;; Package: window-numbering 
 (el-get-bundle window-numbering)
 (use-package window-numbering
   :config
@@ -100,7 +89,6 @@
     (require 'smartparens-config)
     (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
     (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)
-;;;;;;;;;;;;;;;;;;;;;;;;
     ;; keybinding management
     (define-key sp-keymap (kbd "C-c s r n") 'sp-narrow-to-sexp)
     (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
@@ -141,7 +129,6 @@
     (define-key sp-keymap (kbd "C-c s n") 'sp-add-to-next-sexp)
     (define-key sp-keymap (kbd "C-c s j") 'sp-join-sexp)
     (define-key sp-keymap (kbd "C-c s s") 'sp-split-sexp)
-;;;;;;;;;;;;;;;;;;
     ;; pair management
     (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
     (sp-local-pair 'web-mode "<" nil :when '(my/sp-web-mode-is-code-context))))
@@ -175,6 +162,16 @@
       ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
+
+;; Package: chinese-fonts-setup
+(el-get-bundle tumashu/chinese-fonts-setup)
+(use-package chinese-fonts-setup
+  :init
+  (progn
+     (setq cfs-profiles '("org-mode" "program"))
+     (setq cfs--current-profile-name "org-mode")
+     (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
+     (setq cfs--fontsize-steps (quote (2 3 4)))))
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
