@@ -29,16 +29,6 @@
     (local-set-key (kbd "C-&") 'org-mark-ring-goto)
     (local-set-key (kbd "C-%") 'org-mark-ring-push)))
 
-(defun yas/org-very-safe-expand ()
-  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-
-(defun yas/org-setup ()
-  ;; yasnippet (using the new org-cycle hooks)
-  (make-variable-buffer-local 'yas/trigger-key)
-  (setq yas/trigger-key [tab])
-  (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-  (define-key yas/keymap [tab] 'yas/next-field))
-
 ;; See https://github.com/eschulte/emacs24-starter-kit/issues/80.
 (setq org-src-tab-acts-natively nil)
 

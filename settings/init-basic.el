@@ -42,6 +42,20 @@
 (global-linum-mode)
 (column-number-mode)
 
+;; Align text
+;; http://pragmaticemacs.com/emacs/aligning-text/
+(defun bjm/align-whitespace (start end)
+  "Align columns by whitespace"
+  (interactive "r")
+  (align-regexp start end
+                "\\(\\s-*\\)\\s-" 1 0 t))
+
+(defun bjm/align-& (start end)
+  "Align columns by ampersand"
+  (interactive "r")
+  (align-regexp start end
+                "\\(\\s-*\\)&" 1 1 t))
+
 ;; Package: undo-tree
 (el-get-bundle undo-tree)
 (use-package undo-tree

@@ -6,14 +6,13 @@
 ;; Package: projectile
 (el-get-bundle projectile)
 (use-package projectile
+  :defer t
   :init
   (progn
-    (projectile-global-mode)
     (setq projectile-enable-caching t)
     (setq projectile-completion-system 'ivy)
     (setq projectile-indexing-method 'alien)
-    (setq projectile-cache-file "~/.emacs.d/projectile.cache")
-    (setq projectile-known-projects-file "~/.emacs.d/projectile-bookmarks.eld")))
+    (projectile-global-mode)))
 
 ;; Package: magit
 (el-get-bundle magit)

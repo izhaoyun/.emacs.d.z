@@ -23,5 +23,5 @@ bookmarks
 session.*
 srecode-map.el
 *.elc
-.projectile.cache
-.projectile-bookmarks.eld
+projectile.cache
+projectile-bookmarks.eld
