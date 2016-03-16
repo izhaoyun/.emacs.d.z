@@ -1,10 +1,9 @@
-;;; init-swiper.el --- Swiper
+;;; init-packages.el --- initialize packages
 
 ;;; Commentary:
 
 ;;; Code:
 ;; Package: undo-tree
-(el-get-bundle undo-tree)
 (use-package undo-tree
   :defer t
   :ensure t
@@ -16,19 +15,19 @@
     (setq undo-tree-visualizer-diff       t)))
 
 ;; Package: expand-region
-(el-get-bundle expand-region)
 (use-package expand-region
+  :ensure t
   :bind ("C-=" . er/expand-region))
 
 ;; Package: window-numbering
-(el-get-bundle window-numbering)
 (use-package window-numbering
+  :ensure t
   :config
   (window-numbering-mode))
 
 ;; Package: smart-mode-line
-(el-get-bundle smart-mode-line)
 (use-package smart-mode-line
+  :ensure t
   :init
   (progn
     (setq sml/them 'light)
@@ -36,16 +35,15 @@
     (sml/setup)))
 
 ;; Package: rainbow-delimiters
-(el-get-bundle rainbow-delimiters)
 (use-package rainbow-delimiters
   :config
   (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; Package: smartparens
-(el-get-bundle smartparens)
 ;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org#smartparens-mode
 (use-package smartparens
+  :ensure t
   :config
   (progn
     (require 'smartparens-config)
@@ -53,8 +51,8 @@
     (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)))
 
 ;; Package: chinese-fonts-setup
-(el-get-bundle tumashu/chinese-fonts-setup)
 (use-package chinese-fonts-setup
+  :ensure t
   :init
   (progn
      (setq cfs-profiles '("org-mode" "program"))
@@ -63,8 +61,8 @@
      (setq cfs--fontsize-steps (quote (2 3 4)))))
 
 ;; Package: helm
-(el-get-bundle helm)
 (use-package helm
+  :ensure t
   :diminish helm-mode
   :defer 5
   :init
@@ -90,8 +88,8 @@
          ("C-x c SPC" . helm-all-mark-rings)))
 
 ;; Package: helm-swoop
-(el-get-bundle helm-swoop)
 (use-package helm-swoop
+  :ensure t
   :bind (("M-i" . helm-swoop)
          ("M-I" . helm-swoop-back-to-last-point)
          ("C-c M-i" . helm-multi-swoop)
@@ -104,8 +102,8 @@
       'helm-multi-swoop-all-from-helm-swoop)))
 
 ;; Package: swiper
-(el-get-bundle swiper)
 (use-package counsel
+  :ensure t
   ;; https://github.com/jwiegley/use-package/issues/121
   :bind (("C-s" . swiper)               ; global-map
          ("C-r" . ivy-resume)
@@ -131,8 +129,8 @@
     (ivy-mode)))
 
 ;; Package: hydra
-(el-get-bundle hydra)
 (use-package hydra
+  :ensure t
   :init
   (progn
     (require 'hydra)
@@ -140,9 +138,13 @@
   :config
   (hydra-add-font-lock))
 
+;; Package: which-key
+(use-package which-key
+  :ensure t)
+
 ;; Package: avy
-(el-get-bundle avy)
 (use-package avy
+  :ensure t
   :bind (("C-:" . avy-goto-char)
          ("C-'" . avy-goto-char-2)
          ("M-g f" . avy-goto-line)
@@ -158,8 +160,8 @@
   (advice-add 'swiper :before 'avy-push-mark))
 
 ;; Package: yasnippet
-(el-get-bundle yasnippet)
 (use-package yasnippet
+  :ensure t
   :diminish yas-minor-mode
   :defer t
   :init
@@ -175,8 +177,8 @@
     (yas-global-mode)))
 
 ;; Package: projectile
-(el-get-bundle projectile)
 (use-package projectile
+  :ensure t
   :defer t
   :init
   (progn
@@ -186,8 +188,8 @@
     (projectile-global-mode)))
 
 ;; Package: magit
-(el-get-bundle magit)
 (use-package magit
+  :ensure t
   :defer t
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup))
@@ -195,15 +197,15 @@
   (setq magit-completing-read-function 'ivy-completing-read))
 
 ;; Package: comment-dwim-2
-(el-get-bundle comment-dwim-2)
 (use-package comment-dwim-2
+  :ensure t
   :bind ("M-;" . comment-dwim-2))
 
 ;; Package: company
-(el-get-bundle company-mode)
 (use-package company-mode
+  :ensure t
   :defer t
   :config (global-company-mode))
 
-(provide 'init-swiper)
+(provide 'init-packages)
 ;;; init-swiper.el ends here
