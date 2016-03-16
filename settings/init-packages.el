@@ -9,9 +9,8 @@
   :diminish undo-tree-mode
   :init
   (progn
-	(setq undo-tree-visualizer-diff       t)
-    (setq undo-tree-visualizer-timestamps t)
-  	)
+    (setq undo-tree-visualizer-diff       t)
+    (setq undo-tree-visualizer-timestamps t))
   :config
   (progn (global-undo-tree-mode)))
 
@@ -44,8 +43,7 @@
 ;; Package: smartparens
 ;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org#smartparens-mode
 (use-package smartparens
-  :defer 2
-  :config
+  :init
   (progn
     (require 'smartparens-config)
     (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
@@ -137,12 +135,10 @@
   (hydra-add-font-lock))
 
 ;; Package: which-key
-(use-package which-key
-  :ensure t)
+(use-package which-key)
 
 ;; Package: avy
 (use-package avy
-  :ensure t
   :defer t
   :bind (("C-:" . avy-goto-char)
          ("C-'" . avy-goto-char-2)
@@ -160,7 +156,6 @@
 
 ;; Package: yasnippet
 (use-package yasnippet
-  :ensure t
   :diminish yas-minor-mode
   :defer t
   :init
@@ -177,7 +172,6 @@
 
 ;; Package: projectile
 (use-package projectile
-  :ensure t
   :defer t
   :init
   (progn
@@ -188,7 +182,6 @@
 
 ;; Package: magit
 (use-package magit
-  :ensure t
   :defer t
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup))
@@ -197,12 +190,10 @@
 
 ;; Package: comment-dwim-2
 (use-package comment-dwim-2
-  :ensure t
   :bind ("M-;" . comment-dwim-2))
 
 ;; Package: company
 (use-package company
-  :ensure t
   :defer t
   :config (global-company-mode))
 
