@@ -6,28 +6,29 @@
 ;; Package: undo-tree
 (use-package undo-tree
   :defer t
-  :ensure t
   :diminish undo-tree-mode
-  :config
+  :init
   (progn
-    (global-undo-tree-mode)
+	(setq undo-tree-visualizer-diff       t)
     (setq undo-tree-visualizer-timestamps t)
-    (setq undo-tree-visualizer-diff       t)))
+  	)
+  :config
+  (progn (global-undo-tree-mode)))
 
 ;; Package: expand-region
 (use-package expand-region
-  :ensure t
+  :defer t
   :bind ("C-=" . er/expand-region))
 
 ;; Package: window-numbering
 (use-package window-numbering
-  :ensure t
-  :config
+  :defer t
+  :init
   (window-numbering-mode))
 
 ;; Package: smart-mode-line
 (use-package smart-mode-line
-  :ensure t
+  :defer t
   :init
   (progn
     (setq sml/them 'light)
@@ -36,14 +37,14 @@
 
 ;; Package: rainbow-delimiters
 (use-package rainbow-delimiters
-  :config
+  :init
   (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; Package: smartparens
 ;; https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org#smartparens-mode
 (use-package smartparens
-  :ensure t
+  :defer 2
   :config
   (progn
     (require 'smartparens-config)
@@ -52,8 +53,8 @@
 
 ;; Package: chinese-fonts-setup
 (use-package chinese-fonts-setup
-  :ensure t
-  :init
+  :defer t
+  :config
   (progn
      (setq cfs-profiles '("org-mode" "program"))
      (setq cfs--current-profile-name "org-mode")
@@ -62,9 +63,8 @@
 
 ;; Package: helm
 (use-package helm
-  :ensure t
   :diminish helm-mode
-  :defer 5
+  :defer t
   :init
   (progn
     (require 'helm-config)
@@ -89,7 +89,7 @@
 
 ;; Package: helm-swoop
 (use-package helm-swoop
-  :ensure t
+  :defer t
   :bind (("M-i" . helm-swoop)
          ("M-I" . helm-swoop-back-to-last-point)
          ("C-c M-i" . helm-multi-swoop)
@@ -103,7 +103,6 @@
 
 ;; Package: swiper
 (use-package counsel
-  :ensure t
   ;; https://github.com/jwiegley/use-package/issues/121
   :bind (("C-s" . swiper)               ; global-map
          ("C-r" . ivy-resume)
@@ -130,7 +129,6 @@
 
 ;; Package: hydra
 (use-package hydra
-  :ensure t
   :init
   (progn
     (require 'hydra)
@@ -145,6 +143,7 @@
 ;; Package: avy
 (use-package avy
   :ensure t
+  :defer t
   :bind (("C-:" . avy-goto-char)
          ("C-'" . avy-goto-char-2)
          ("M-g f" . avy-goto-line)
@@ -202,7 +201,7 @@
   :bind ("M-;" . comment-dwim-2))
 
 ;; Package: company
-(use-package company-mode
+(use-package company
   :ensure t
   :defer t
   :config (global-company-mode))
