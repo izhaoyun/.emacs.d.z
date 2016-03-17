@@ -1,20 +1,18 @@
 ;;; init.el
-
 (setq gc-cons-threshold 100000000)
 
 ;; load path etc.
 (require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives '(("org"   . "http://orgmode.org/elpa/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("popkit" . "http://elpa.popkit.org/packages/")))
 (package-initialize)
+(setq package-enable-at-startup nil)
 (unless package-archive-contents (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
-(require 'use-package)
+;; (require 'use-package)
 
 ;; load settings for Emacs
 (add-to-list 'load-path "~/.emacs.d/settings")
