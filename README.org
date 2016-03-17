@@ -1,10 +1,4 @@
-* 关于这份个人配置文件
-  我还是一本正经地胡说八道好了。
-  1. 使用[[https://github.com/dimitri/el-get][el-get]]来管理插件
-  2. 使用了个人非常喜欢打插件。譬如说[[http://orgmode.org][Org-mode]]、[[https://github.com/abo-abo/swiper][Swiper]]等等。作为一个使
-     用Emacs还不到一年的人来说，这些都是相当吸引我哒。
-  3. 最好确保系统中安装了一些软件包。例如使用Org-mode导出PDF时需要
-     LaTeX之类的程序，以及python-pygments之类的python支持（代码高亮）。
-     这些配置可能都比较图样图森破，但对于我这样的菜鸟而言已然足够了。
-  4. 我才懒得用evim，毕竟是从vim阵营里抓过来的，而且也已经很习惯Emacs
-     的按键模式了。
+* README
+  ...
+  
+
