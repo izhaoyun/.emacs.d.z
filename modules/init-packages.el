@@ -190,5 +190,24 @@
   :config
   (global-company-mode))
 
+;; Package: org-mode
+(use-package org
+  :pin org
+  :mode ("\\.org$" . org-mode)
+  :bind
+  (("C-c a" . org-agenda)
+   ("C-c b" . org-iswitchb)
+   ("C-c c" . org-capture)
+   ("C-c l" . org-store-link))
+  :init
+  (progn (use-package org-plus-contrib :pin org)
+         (require 'org)
+         (require 'ox)
+         (require 'ox-beamer)
+         (require 'ox-latex)
+         (require 'ox-gfm))
+  :config
+  )
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
