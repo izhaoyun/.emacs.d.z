@@ -3,26 +3,24 @@
 
 ;; load path etc.
 (require 'package)
-(setq package-archives '(("popkit" . "http://elpa.popkit.org/packages/")))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+			 ("popkit" . "http://elpa.popkit.org/packages/")))
 (package-initialize)
 (setq package-enable-at-startup nil)
 (unless package-archive-contents (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(unless (package-installed-p 'use-package) (package-install 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 ;; (require 'use-package)
 
 ;; load settings for Emacs
-(add-to-list 'load-path "~/.emacs.d/settings")
+(add-to-list 'load-path "~/.emacs.d/modules")
 (require 'init-basic)
 (require 'init-packages)
 ;; (require 'init-keys)
-
-;; load modules for different programming languages
-(add-to-list 'load-path "~/.emacs.d/modules")
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (require 'init-flycheck)
 ;; (require 'init-web)
 ;; (require 'init-org)
