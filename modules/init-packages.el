@@ -192,8 +192,15 @@
 ;; Package: company
 (use-package company
   :defer t
+  :init
+  (setq company-show-numbers t)
   :config
-  (global-company-mode))
+  ;; (progn
+    ;; no need to enable company-mode globally. maybe it's better to
+    ;; have more than one auto complete packages for different modes.
+    ;; (global-company-mode)
+    ;; )
+  )
 
 ;; Package: org-mode
 (use-package org
@@ -222,6 +229,11 @@
       :init
       (add-hook 'org-mode-hook 'org-bullets-mode))
     (use-package htmlize)))
+
+;; Package: company-c-headers
+(use-package company-c-headers
+  :init
+  )
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
