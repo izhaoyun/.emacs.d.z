@@ -3,10 +3,10 @@
 
 ;; load path etc.
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("popkit" . "http://elpa.popkit.org/packages/")))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("popkit" . "http://elpa.popkit.org/packages/"))
+
 (package-initialize)
 (setq package-enable-at-startup nil)
 (unless package-archive-contents (package-refresh-contents))
