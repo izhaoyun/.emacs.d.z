@@ -29,9 +29,10 @@
 (use-package smart-mode-line
   :defer t
   :init
-  (progn (setq sml/them 'light)
-         (setq sml/no-confirm-load-theme t)
-         (sml/setup)))
+  (progn
+    (setq sml/them 'light)
+    (setq sml/no-confirm-load-theme t)
+    (sml/setup)))
 
 ;; Package: rainbow-delimiters
 (use-package rainbow-delimiters
@@ -42,9 +43,10 @@
 ;; Package: smartparens
 (use-package smartparens
   :init
-  (progn (require 'smartparens-config)
-         (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-         (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)))
+  (progn
+    (require 'smartparens-config)
+    (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+    (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)))
 
 ;; Package: chinese-fonts-setup
 ;; (use-package chinese-fonts-setup
@@ -59,18 +61,18 @@
 (use-package helm
   :defer t
   :diminish helm-mode
+  :init
+  (setq helm-idle-delay 0.0
+        helm-input-idle-delay 0.01
+        helm-yas-display-key-on-candidate t
+        helm-quick-update t
+        helm-M-x-requires-pattern nil
+        helm-apropos-fuzzy-match  t
+        helm-ff-skip-boring-files t)
   :config
-  (progn (require 'helm-config)
-         (setq helm-candidate-number-limit 100)
-         ;; From https://gist.github.com/antifuchs/9238468
-         (setq helm-idle-delay 0.0
-               helm-input-idle-delay 0.01
-               helm-yas-display-key-on-candidate t
-               helm-quick-update t
-               helm-M-x-requires-pattern nil
-               helm-apropos-fuzzy-match  t
-               helm-ff-skip-boring-files t)
-         (helm-mode))
+  (progn
+    (require 'helm-config)
+    (helm-mode))
   :bind
   (("C-c h" . helm-mini)
    ("C-c f" . helm-recentf)
@@ -90,10 +92,9 @@
    ("C-c M-i" . helm-multi-swoop)
    ("C-x M-i" . helm-multi-swoop-all))
   :config
-  (progn (define-key isearch-mode-map (kbd "M-i")
-           'helm-swoop-from-isearch)
-         (define-key helm-swoop-map (kbd "M-i")
-           'helm-multi-swoop-all-from-helm-swoop)))
+  (progn
+    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)))
 
 ;; Package: swiper
 (use-package counsel
@@ -116,8 +117,9 @@
         ("f" . counsel-describe-function)
         ("v" . counsel-describe-variable))
   :init
-  (progn (setq ivy-use-virtual-buffers t)
-         (setq ivy-display-style 'fancy))
+  (progn
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy))
   :config
   (progn (ivy-mode)))
 
@@ -139,9 +141,10 @@
    ("M-g e" . avy-goto-word-0)
    ("M-p" . avy-pop-mark))
   :init
-  (progn (avy-setup-default)
-         (setq avy-all-windows nil)
-         (setq avy-timeout-seconds 0.8))
+  (progn
+    (avy-setup-default)
+    (setq avy-all-windows nil)
+    (setq avy-timeout-seconds 0.8))
   :config
   (advice-add 'swiper :before 'avy-push-mark))
 
@@ -150,14 +153,16 @@
   :diminish yas-minor-mode
   :defer t
   :init
-  (progn (setq yas-verbosity 0)
-         (setq yas-fallback-behavior 'return-nil)
-         (setq yas-triggers-in-field t)
-         (setq yas-snippet-dirs "~/.emacs.d/snippets"))
+  (progn
+    (setq yas-verbosity 0)
+    (setq yas-fallback-behavior 'return-nil)
+    (setq yas-triggers-in-field t)
+    (setq yas-snippet-dirs "~/.emacs.d/snippets"))
   :config
-  (progn (define-key yas-minor-mode-map [(tab)] nil)
-         (define-key yas-minor-mode-map (kbd "TAB") nil)
-         (yas-global-mode)))
+  (progn
+    (define-key yas-minor-mode-map [(tab)] nil)
+    (define-key yas-minor-mode-map (kbd "TAB") nil)
+    (yas-global-mode)))
 
 ;; Package: projectile
 (use-package projectile
@@ -200,14 +205,23 @@
    ("C-c c" . org-capture)
    ("C-c l" . org-store-link))
   :init
-  (progn (use-package org-plus-contrib :pin org)
-         (require 'org)
-         (require 'ox)
-         (require 'ox-beamer)
-         (require 'ox-latex)
-         (require 'ox-gfm))
+  (progn
+    (require 'org)
+    (require 'ox)
+    (require 'ox-beamer)
+    (require 'ox-latex)
+    (use-package org-plus-contrib :pin org
+      :init
+      (progn
+        (require 'org-bullets)
+        (require 'ox-gfm))))
   :config
-  )
+  (progn
+    (use-package org-bullets
+      :defer t
+      :init
+      (add-hook 'org-mode-hook 'org-bullets-mode))
+    (use-package htmlize)))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
