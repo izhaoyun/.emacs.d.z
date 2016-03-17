@@ -8,7 +8,7 @@
 (setq package-archives '(("org"   . "http://orgmode.org/elpa/")
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
-;; (unless package-archive-contents (package-refresh-contents))
+(unless package-archive-contents (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -24,7 +24,7 @@
 
 ;; load modules for different programming languages
 (add-to-list 'load-path "~/.emacs.d/modules")
-;; (require 'init-company)
+
 ;; (require 'init-flycheck)
 ;; (require 'init-web)
 ;; (require 'init-org)

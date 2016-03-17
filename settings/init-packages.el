@@ -50,14 +50,14 @@
     (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)))
 
 ;; Package: chinese-fonts-setup
-(use-package chinese-fonts-setup
-  :defer t
-  :config
-  (progn
-     (setq cfs-profiles '("org-mode" "program"))
-     (setq cfs--current-profile-name "org-mode")
-     (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
-     (setq cfs--fontsize-steps (quote (2 3 4)))))
+;; (use-package chinese-fonts-setup
+;;   :defer t
+;;   :config
+;;   (progn
+;;      (setq cfs-profiles '("org-mode" "program"))
+;;      (setq cfs--current-profile-name "org-mode")
+;;      (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
+;;      (setq cfs--fontsize-steps (quote (2 3 4)))))
 
 ;; Package: helm
 (use-package helm

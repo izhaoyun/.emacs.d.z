@@ -3,8 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(el-get-bundle org-mode)
-
 (require 'org)
 (require 'ob)
 (require 'ox)
