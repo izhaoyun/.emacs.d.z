@@ -22,6 +22,7 @@
 ;; (require 'init-keys)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-cpp)
+(require 'init-org)
 (require 'init-erlang)
 
 ;;; init.el ends here
