@@ -3,6 +3,14 @@
 ;;; Commentary:
 
 ;;; Code:
+(use-package auto-compile
+  :init
+  (setq load-prefer-newer t)
+  :config
+  (progn
+    (auto-compile-on-load-mode)
+    (auto-compile-on-save-mode)))
+
 ;; Package: undo-tree
 (use-package undo-tree
   :defer t

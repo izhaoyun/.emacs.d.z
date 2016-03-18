@@ -13,7 +13,7 @@
 (unless (package-installed-p 'use-package) (package-install 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
-;; (require 'use-package)
+(require 'use-package)
 
 ;; load settings for Emacs
 (add-to-list 'load-path "~/.emacs.d/modules")
