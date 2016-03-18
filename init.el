@@ -21,11 +21,6 @@
 (require 'init-packages)
 ;; (require 'init-keys)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (require 'init-flycheck)
-;; (require 'init-web)
-;; (require 'init-org)
-;; (require 'init-cc)
-;; (require 'init-python)
-;; (require 'init-ruby)
+(require 'init-erlang)
 
 ;;; init.el ends here
