@@ -21,6 +21,7 @@
 (require 'init-packages)
 ;; (require 'init-keys)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d/langs")
 (require 'init-erlang)
 
 ;;; init.el ends here
