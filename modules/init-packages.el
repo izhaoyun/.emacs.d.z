@@ -3,15 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package auto-compile
-  :init
-  (setq load-prefer-newer t)
-  :config
-  (progn
-    (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode)))
-
-;; Package: undo-tree
 (use-package undo-tree
   :defer t
   :diminish undo-tree-mode
@@ -22,18 +13,14 @@
   :config
   (progn (global-undo-tree-mode)))
 
-;; Package: expand-region
 (use-package expand-region
-  :defer t
   :bind
   ("C-=" . er/expand-region))
 
-;; Package: window-numbering
 (use-package window-numbering
   :init
   (window-numbering-mode))
 
-;; Package: smart-mode-line
 (use-package smart-mode-line
   :defer t
   :init
@@ -42,21 +29,13 @@
     (setq sml/no-confirm-load-theme t)
     (sml/setup)))
 
-;; Package: rainbow-delimiters
-(use-package rainbow-delimiters
-  :init
-  (add-hook 'org-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+;; (use-package smartparens
+;;   :init
+;;   (use-package smartparens-config
+;;     :ensure smartparens)
+;;   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+;;   (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
 
-;; Package: smartparens
-(use-package smartparens
-  :init
-  (progn
-    (require 'smartparens-config)
-    (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-    (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode)))
-
-;; Package: chinese-fonts-setup
 ;; (use-package chinese-fonts-setup
 ;;   :defer t
 ;;   :config
@@ -65,44 +44,66 @@
 ;;          (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
 ;;          (setq cfs--fontsize-steps (quote (2 3 4)))))
 
-;; Package: helm
+;; (use-package helm
+;;   :init
+;;   (setq helm-yas-display-key-on-candidate t
+;;         helm-quick-update t
+;;         helm-M-x-requires-pattern nil
+;;         helm-apropos-fuzzy-match  t
+;;         helm-ff-skip-boring-files t)
+;;   (use-package helm-config :ensure helm)
+;;   :bind
+;;   (("C-c h" . helm-mini)
+;;    ("C-c f" . helm-recentf)
+;;    ("C-h a" . helm-apropos)
+;;    ("C-h M" . helm-man-woman)
+;;    ("C-x C-b" . helm-buffers-list)
+;;    ("C-x c y" . helm-yas-complete)
+;;    ("C-x c Y" . helm-yas-create-snippet-on-region)
+;;    ("C-x c SPC" . helm-all-mark-rings))
+;;   :config
+;;   (helm-mode)
+;;   )
 (use-package helm
-  :defer t
-  :diminish helm-mode
-  :init
-  (setq helm-idle-delay 0.0
-        helm-input-idle-delay 0.01
-        helm-yas-display-key-on-candidate t
-        helm-quick-update t
-        helm-M-x-requires-pattern nil
-        helm-apropos-fuzzy-match  t
-        helm-ff-skip-boring-files t)
   :config
-  (progn
-    (require 'helm-config)
-    (helm-mode))
-  :bind
-  (("C-c h" . helm-mini)
-   ("C-c f" . helm-recentf)
-   ("C-h a" . helm-apropos)
-   ("C-h M" . helm-man-woman)
-   ("C-x C-b" . helm-buffers-list)
-   ("C-x c y" . helm-yas-complete)
-   ("C-x c Y" . helm-yas-create-snippet-on-region)
-   ("C-x c SPC" . helm-all-mark-rings)))
 
-;; Package: helm-swoop
-(use-package helm-swoop
-  :defer t
-  :bind
-  (("M-i" . helm-swoop)
-   ("M-I" . helm-swoop-back-to-last-point)
-   ("C-c M-i" . helm-multi-swoop)
-   ("C-x M-i" . helm-multi-swoop-all))
-  :config
-  (progn
-    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)))
+  (use-package helm-config
+    :ensure helm)
+
+  (use-package helm-dash
+    :init
+    (defvar-local helm-dash-docsets nil)
+
+    (defmacro helm-dash-setup (language docsets)
+      "Create function that sets up `helm-dash' for specific LANGUAGE."
+      (let ((fn-name (intern (format "helm-dash-%s" language)))
+            (current-docsets (mapconcat 'identity docsets ", ")))
+        `(progn
+           (defun ,fn-name ()
+             ,(format "Set up `helm-dash' for %s.\n\nDocsets: %s"
+                      language current-docsets)
+             (setq helm-dash-docsets ,docsets)
+             (setq helm-current-buffer (current-buffer))))))
+
+
+    )
+
+  (use-package helm-make
+    :init
+    (setq helm-make-completion-method 'ivy))
+
+  
+
+  )
+
+
+;; (use-package hlem-swoop
+;;     :bind
+;;     (("M-i" . helm-swoop)
+;;      ("M-I" . helm-swoop-back-to-last-point)
+;;      ("C-c M-i" . helm-multi-swoop)
+;;      ("C-x M-i" . helm-multi-swoop-all))
+;;     )
 
 ;; Package: swiper
 (use-package counsel
@@ -133,10 +134,10 @@
 
 ;; Package: which-key
 (use-package which-key
+  :defer 3
   :config
-  (progn
-    (which-key-mode)
-    (which-key-setup-side-window-right-bottom)))
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom))
 
 ;; Package: avy
 (use-package avy
@@ -155,6 +156,10 @@
     (setq avy-timeout-seconds 0.8))
   :config
   (advice-add 'swiper :before 'avy-push-mark))
+
+(use-package avy-zap
+  :bind
+  ("M-z" . avy-zap-up-char-dwim))
 
 ;; Package: yasnippet
 (use-package yasnippet
@@ -184,11 +189,9 @@
 
 ;; Package: magit
 (use-package magit
-  :defer t
   :bind
-  (("C-x g" . magit-status)
-   ("C-x M-g" . magit-dispatch-popup))
-  :config
+  (("C-x g" . magit-status))
+  :init
   (setq magit-completing-read-function 'ivy-completing-read))
 
 ;; Package: comment-dwim-2
@@ -210,10 +213,7 @@
     ;; )
   )
 
-;; Package: company-c-headers
-(use-package company-c-headers
-  :init
-  )
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

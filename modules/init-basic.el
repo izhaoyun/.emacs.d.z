@@ -44,9 +44,26 @@
 (prefer-coding-system       'utf-8)
 
 (global-font-lock-mode)
-(winner-mode)
+
+(use-package winner
+  :config
+  (winner-mode)
+  (bind-key "C-c r" #'winner-redo)
+  (bind-key "C-c u" #'winner-undo))
+
 (global-linum-mode)
 (column-number-mode)
+
+(use-package pos-tip)
+
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+;; (use-package whitespace
+;;   :commands whitespace-mode
+;;   :config
+;;   (modeline-remove-lighter 'whitespace-mode))
 
 ;; Align text
 ;; http://pragmaticemacs.com/emacs/aligning-text/
@@ -90,16 +107,18 @@
 
 ;; Byte-Compile
 ;; https://github.com/itsjeyd/.emacs.d/blob/emacs24/init.el
-;; (defun recompile-elisp-file ()
-;;   (interactive)
-;;   (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
-;;     (let ((byte-file (concat buffer-file-name "\\.elc")))
-;;       (if (or (not (file-exists-p byte-file))
-;;               (file-newer-than-file-p buffer-file-name byte-file))
-;;           (byte-compile-file buffer-file-name)))))
-;; (add-hook 'after-save-hook #'recompile-elisp-file)
-
+(defun recompile-elisp-file ()
+  (interactive)
+  (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
+    (let ((byte-file (concat buffer-file-name "\\.elc")))
+      (if (or (not (file-exists-p byte-file))
+              (file-newer-than-file-p buffer-file-name byte-file))
+          (byte-compile-file buffer-file-name)))))
+(add-hook 'after-save-hook #'recompile-elisp-file)
 (setq load-prefer-newer t)
+
+;; common lisp
+(use-package cl-lib)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here
