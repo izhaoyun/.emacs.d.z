@@ -10,7 +10,7 @@
          ("C-c l" . org-store-link))
   :init
   (use-package org)
-  
+  :defer 2
   :config
   ;; Withing with Code Blocks
   (use-package ob :ensure nil
@@ -94,13 +94,11 @@
     
     ;; (add-to-list 'org-export-filter-final-output-functions
     ;;              'ox-html-clear-single-linebreak-for-cjk)
-    ) ; ox settings ends here.
+    ))
 
-  ;;; Others
-  (use-package org-bullets
+(use-package org-bullets
     :init (add-hook 'org-mode-hook 'org-bullets-mode))
 
-  (use-package htmlize)
-  ) ; org settings ends here.
+(use-package htmlize)
 
 (provide 'init-org)
