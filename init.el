@@ -1,6 +1,10 @@
 ;;; init.el
 (setq gc-cons-threshold 100000000)
 
+;; personal information
+(setq user-full-name "Zhao Yun"
+      user-mail-address "zjlyzhy@gmail.com")
+
 ;; load path etc.
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))

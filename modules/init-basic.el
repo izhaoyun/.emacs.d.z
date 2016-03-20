@@ -47,18 +47,18 @@
 
 (use-package winner
   :config
-  (winner-mode)
-  (bind-key "C-c r" #'winner-redo)
-  (bind-key "C-c u" #'winner-undo))
+  (winner-mode))
 
 (global-linum-mode)
 (column-number-mode)
 
-(use-package pos-tip)
+(use-package pos-tip :defer t)
 
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(show-paren-mode 1)
 
 ;; (use-package whitespace
 ;;   :commands whitespace-mode
@@ -79,18 +79,12 @@
   (align-regexp start end
                 "\\(\\s-*\\)&" 1 1 t))
 
-;; https://www.emacswiki.org/emacs/ZapToChar
-;; https://www.emacswiki.org/emacs/ZapToCharUsage
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR." t)
-(global-set-key (kbd "M-z") 'zap-up-to-char)
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (bind-key "C-x p" 'pop-to-mark-command)
 (setq set-mark-command-repeat-pop t)
 
-(show-paren-mode 1)
+
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 (setq x-select-enable-clipboard t
@@ -103,7 +97,9 @@
       load-prefer-newer t
       ediff-window-setup-function 'ediff-setup-windows-plain)
 
-(global-set-key (kbd "M-/") 'hippie-expand)
+(use-package hippie-expand
+  :ensure nil
+  :bind ("M-/" . hippie-expand))
 
 ;; Byte-Compile
 ;; https://github.com/itsjeyd/.emacs.d/blob/emacs24/init.el
