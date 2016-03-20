@@ -4,14 +4,13 @@
 
 ;;; Code:
 (use-package undo-tree
-  :defer t
+  :defer 9
   :diminish undo-tree-mode
   :init
-  (progn
-    (setq undo-tree-visualizer-diff       t)
-    (setq undo-tree-visualizer-timestamps t))
+  (setq undo-tree-visualizer-diff       t)
+  (setq undo-tree-visualizer-timestamps t)
   :config
-  (progn (global-undo-tree-mode)))
+  (global-undo-tree-mode))
 
 (use-package expand-region
   :commands er/expand-region
@@ -19,16 +18,17 @@
   ("C-=" . er/expand-region))
 
 (use-package window-numbering
-  :init
+  :defer 10
+  :config
   (window-numbering-mode))
 
-(use-package smart-mode-line
-  :defer t
-  :init
-  (progn
-    (setq sml/them 'light)
-    (setq sml/no-confirm-load-theme t)
-    (sml/setup)))
+;; (use-package smart-mode-line
+;;   :defer t
+;;   :init
+;;   (progn
+;;     (setq sml/them 'light)
+;;     (setq sml/no-confirm-load-theme t)
+;;     (sml/setup)))
 
 ;; (use-package smartparens
 ;;   :init
@@ -37,51 +37,40 @@
 ;;   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 ;;   (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
 
-(global-unset-key (kbd "C-x c"))
-
 (use-package helm
-  :defer t
+  :defer 1
   :init
+  (global-unset-key (kbd "C-x c"))
   (setq helm-truncate-lines t)
-  (setq helm-split-window-in-side-p t)
   (setq helm-move-to-line-cycle-in-source t)
+  :commands helm-recentf
+  :bind 
+  ("C-c h c" . helm-recentf)
+  :config
+  (bind-key "C-c h b" 'helm-mini)
+  (bind-key "C-x C-b" 'helm-mini)
+  (bind-key "C-c h a" 'helm-apropos)
+  (bind-key "C-c h f" 'helm-find-files)
+  (bind-key "C-c h g" 'helm-register)
+  (bind-key "C-c h i" 'helm-info)
+  (bind-key "C-c h m" 'helm-man-woman)
   ;; globally enable fuzzy matching for helm-mode
   (setq helm-mode-fuzzy-match t)
-  (setq helm-completion-in-region-fuzzy-match t)
+  (setq helm-completion-in-region-fuzzy-match t))
+
+;; Package: helm-dash
+(use-package helm-dash
+  :defer 8
   :bind
-  ("C-x C-b" . helm-mini)
-  :bind
-  (("C-c h a" . helm-apropos)
-   ("C-c h b" . helm-mini)
-   ("C-c h c" . helm-recentf)   
-   ("C-c h f" . helm-find-files)
-   ("C-c h g" . helm-register)
-   ("C-c h i" . helm-info)
-   ("C-c h l" . helm-locate)
-   ("C-c h m" . helm-man-woman)
-   ("C-c h o" . helm-occur)
-   ("C-c h r" . helm-resume)
-   ("C-c h t" . helm-top)
-   ("C-c h x" . helm-regex)
-   ("C-c h y" . helm-show-kill-ring)
-   ("C-c h SPC" . helm-all-mark-rings))
-  :config
-  (require 'helm)
-  (require 'helm-config)
-  (helm-mode)
-  (helm-autoresize-mode t)
-  ;; Package: helm-dash
-  (use-package helm-dash
-    :defer 5
-    :bind
-    ("C-c h d" . helm-dash-at-point)
-    :init
-    (setq helm-dash-docsets-path "~/Dropbox/docsets/"))
-  ;; Package: helm-make
-  (use-package helm-make
-    :defer 5
-    :init
-    (setq helm-make-completion-method 'ivy)))
+  ("C-c h d" . helm-dash-at-point)
+  :init
+  (setq helm-dash-docsets-path "~/.docsets/"))
+
+;; Package: helm-make
+(use-package helm-make
+  :defer 8
+  :init
+  (setq helm-make-completion-method 'ivy))
 
 ;; Package: swiper
 (use-package counsel
@@ -108,11 +97,11 @@
   (ivy-mode))
 
 ;; Hydra
-(use-package hydra :defer t)
+(use-package hydra :defer 8)
 
 ;; Package: avy
 (use-package avy
-  :defer t
+  :defer 3
   :bind (("C-:" . avy-goto-char)
          ("C-'" . avy-goto-char-2)
          ("M-g f" . avy-goto-line)
@@ -120,38 +109,38 @@
          ("M-g e" . avy-goto-word-0)
          ("M-p" . avy-pop-mark))
   :init
-  (progn
-    (avy-setup-default)
-    (setq avy-all-windows nil)
-    (setq avy-timeout-seconds 0.8))
+  (avy-setup-default)
+  (setq avy-all-windows nil)
+  (setq avy-timeout-seconds 0.8)
   :config
-  (advice-add 'swiper :before 'avy-push-mark)
+  (advice-add 'swiper :before 'avy-push-mark))
 
-  ;; Package: avy-zap
-  (use-package avy-zap
-    :bind ("M-z" . avy-zap-up-char-dwim))
+;; Package: avy-zap
+(use-package avy-zap
+  :defer 7
+  :bind ("M-z" . avy-zap-up-char-dwim))
 
-  ;; Package: ace-pinyin
-  (use-package ace-pinyin
-    :init
-    (setq ace-pinyin-use-avy t)
-    :config
-    (ace-pinyin-global-mode))
-  )
+;; Package: ace-pinyin
+(use-package ace-pinyin
+  :defer 4
+  :diminish ace-pinyin-mode
+  :init
+  (setq ace-pinyin-use-avy t)
+  :config
+  (ace-pinyin-global-mode))
 
-
-
-;; which-key
+;; Package: which-key
 (use-package which-key
-  :defer 3
-  :config
+  :defer 1
+  :diminish which-key-mode
+  :init
   (which-key-mode)
   (which-key-setup-side-window-right-bottom))
 
 ;; Package: yasnippet
 (use-package yasnippet
   :diminish yas-minor-mode
-  :defer t
+  :defer 2
   :commands yas-minor-mode
   :init
   (setq yas-verbosity 0)
@@ -159,20 +148,18 @@
   (setq yas-triggers-in-field t)
   (setq yas-snippet-dirs "~/.emacs.d/snippets")
   :config
-  (progn
-    (define-key yas-minor-mode-map [(tab)] nil)
-    (define-key yas-minor-mode-map (kbd "TAB") nil)
-    (yas-global-mode)))
+  (define-key yas-minor-mode-map [(tab)] nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (yas-global-mode))
 
 ;; Package: projectile
 (use-package projectile
-  :defer t
+  :defer 1
   :init
-  (progn
-    (setq projectile-enable-caching t)
-    (setq projectile-completion-system 'ivy)
-    (setq projectile-indexing-method 'alien)
-    (projectile-global-mode)))
+  (setq projectile-enable-caching t)
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-indexing-method 'alien)
+  (projectile-global-mode))
 
 ;; Package: magit
 (use-package magit
@@ -183,13 +170,13 @@
 
 ;; Package: comment-dwim-2
 (use-package comment-dwim-2
-  :defer t
+  :defer 4
   :bind
   ("M-;" . comment-dwim-2))
 
 ;; Package: company
 (use-package company
-  :defer t
+  :defer 5
   :init
   (setq company-show-numbers t)
   :config
