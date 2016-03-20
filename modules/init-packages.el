@@ -37,50 +37,51 @@
 ;;   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 ;;   (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
 
-
-
-;; (use-package helm
-;;   :init
-;;   (setq helm-yas-display-key-on-candidate t
-;;         helm-quick-update t
-;;         helm-M-x-requires-pattern nil
-;;         helm-apropos-fuzzy-match  t
-;;         helm-ff-skip-boring-files t)
-;;   (use-package helm-config :ensure helm)
-;;   :bind
-;;   (("C-c h" . helm-mini)
-;;    ("C-c f" . helm-recentf)
-;;    ("C-h a" . helm-apropos)
-;;    ("C-h M" . helm-man-woman)
-;;    ("C-x C-b" . helm-buffers-list)
-;;    ("C-x c y" . helm-yas-complete)
-;;    ("C-x c Y" . helm-yas-create-snippet-on-region)
-;;    ("C-x c SPC" . helm-all-mark-rings))
-;;   :config
-;;   (helm-mode)
-;;   )
+(global-unset-key (kbd "C-x c"))
 
 (use-package helm
+  :defer t
+  :init
+  (setq helm-truncate-lines t)
+  (setq helm-split-window-in-side-p t)
+  (setq helm-move-to-line-cycle-in-source t)
+  ;; globally enable fuzzy matching for helm-mode
+  (setq helm-mode-fuzzy-match t)
+  (setq helm-completion-in-region-fuzzy-match t)
+  :bind
+  ("C-x C-b" . helm-mini)
+  :bind
+  (("C-c h a" . helm-apropos)
+   ("C-c h b" . helm-mini)
+   ("C-c h c" . helm-recentf)   
+   ("C-c h f" . helm-find-files)
+   ("C-c h g" . helm-register)
+   ("C-c h i" . helm-info)
+   ("C-c h l" . helm-locate)
+   ("C-c h m" . helm-man-woman)
+   ("C-c h o" . helm-occur)
+   ("C-c h r" . helm-resume)
+   ("C-c h t" . helm-top)
+   ("C-c h x" . helm-regex)
+   ("C-c h y" . helm-show-kill-ring)
+   ("C-c h SPC" . helm-all-mark-rings))
   :config
-
-  (use-package helm-config
-    :ensure helm)
-
+  (require 'helm)
+  (require 'helm-config)
+  (helm-mode)
+  (helm-autoresize-mode t)
+  ;; Package: helm-dash
   (use-package helm-dash
-    :bind ("C-c d" . helm-dash-at-point)
+    :defer 5
+    :bind
+    ("C-c h d" . helm-dash-at-point)
     :init
     (setq helm-dash-docsets-path "~/Dropbox/docsets/"))
-
+  ;; Package: helm-make
   (use-package helm-make
-    :init (setq helm-make-completion-method 'ivy))
-  )
-
-
-;; (use-package hlem-swoop
-;;     :bind (("M-i" . helm-swoop)
-;;            ("M-I" . helm-swoop-back-to-last-point)
-;;            ("C-c M-i" . helm-multi-swoop)
-;;            ("C-x M-i" . helm-multi-swoop-all)))
+    :defer 5
+    :init
+    (setq helm-make-completion-method 'ivy)))
 
 ;; Package: swiper
 (use-package counsel
@@ -94,7 +95,7 @@
          ("C-h l"   . counsel-load-library)
          ("C-c s a" . counsel-ag)
          ("C-c s g" . counsel-git)
-         ("C-c s j" . counsel-git-grep)
+         ("C-c s p" . counsel-git-grep)
          ("C-c s l" . counsel-locate))
   :bind (:map help-map
               ("f" . counsel-describe-function)
