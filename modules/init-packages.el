@@ -14,6 +14,7 @@
   (progn (global-undo-tree-mode)))
 
 (use-package expand-region
+  :commands er/expand-region
   :bind
   ("C-=" . er/expand-region))
 
@@ -36,13 +37,7 @@
 ;;   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 ;;   (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
 
-;; (use-package chinese-fonts-setup
-;;   :defer t
-;;   :config
-;;   (progn (setq cfs-profiles '("org-mode" "program"))
-;;          (setq cfs--current-profile-name "org-mode")
-;;          (setq cfs--custom-set-fontsizes '(10 12.5 12.5))
-;;          (setq cfs--fontsize-steps (quote (2 3 4)))))
+
 
 ;; (use-package helm
 ;;   :init
@@ -64,6 +59,7 @@
 ;;   :config
 ;;   (helm-mode)
 ;;   )
+
 (use-package helm
   :config
 
@@ -71,106 +67,96 @@
     :ensure helm)
 
   (use-package helm-dash
+    :bind ("C-c d" . helm-dash-at-point)
     :init
-    (defvar-local helm-dash-docsets nil)
-
-    (defmacro helm-dash-setup (language docsets)
-      "Create function that sets up `helm-dash' for specific LANGUAGE."
-      (let ((fn-name (intern (format "helm-dash-%s" language)))
-            (current-docsets (mapconcat 'identity docsets ", ")))
-        `(progn
-           (defun ,fn-name ()
-             ,(format "Set up `helm-dash' for %s.\n\nDocsets: %s"
-                      language current-docsets)
-             (setq helm-dash-docsets ,docsets)
-             (setq helm-current-buffer (current-buffer))))))
-
-
-    )
+    (setq helm-dash-docsets-path "~/Dropbox/docsets/"))
 
   (use-package helm-make
-    :init
-    (setq helm-make-completion-method 'ivy))
-
-  
-
+    :init (setq helm-make-completion-method 'ivy))
   )
 
 
 ;; (use-package hlem-swoop
-;;     :bind
-;;     (("M-i" . helm-swoop)
-;;      ("M-I" . helm-swoop-back-to-last-point)
-;;      ("C-c M-i" . helm-multi-swoop)
-;;      ("C-x M-i" . helm-multi-swoop-all))
-;;     )
+;;     :bind (("M-i" . helm-swoop)
+;;            ("M-I" . helm-swoop-back-to-last-point)
+;;            ("C-c M-i" . helm-multi-swoop)
+;;            ("C-x M-i" . helm-multi-swoop-all)))
 
 ;; Package: swiper
 (use-package counsel
-  ;; https://github.com/jwiegley/use-package/issues/121
-  :bind
-  (("C-s" . swiper)
-   ("C-r" . ivy-resume)
-   ("M-x" . counsel-M-x)
-   ("M-y" . counsel-yank-pop)
-   ("C-x C-f" . counsel-find-file)
-   ("C-h K"   . counsel-descbinds)
-   ("C-h S"   . counsel-info-lookup-symbol)
-   ("C-h l"   . counsel-load-library)
-   ("C-c s a" . counsel-ag)
-   ("C-c s g" . counsel-git)
-   ("C-c s j" . counsel-git-grep)
-   ("C-c s l" . counsel-locate))
-  :bind
-  (:map help-map
-        ("f" . counsel-describe-function)
-        ("v" . counsel-describe-variable))
+  :bind (("C-s" . swiper)
+         ("C-r" . ivy-resume)
+         ("M-x" . counsel-M-x)
+         ("M-y" . counsel-yank-pop)
+         ("C-x C-f" . counsel-find-file)
+         ("C-h K"   . counsel-descbinds)
+         ("C-h S"   . counsel-info-lookup-symbol)
+         ("C-h l"   . counsel-load-library)
+         ("C-c s a" . counsel-ag)
+         ("C-c s g" . counsel-git)
+         ("C-c s j" . counsel-git-grep)
+         ("C-c s l" . counsel-locate))
+  :bind (:map help-map
+              ("f" . counsel-describe-function)
+              ("v" . counsel-describe-variable))
   :init
-  (progn
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy))
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy)
+  (setq counsel-find-file-at-point t)
   :config
-  (progn (ivy-mode)))
+  (ivy-mode))
 
-;; Package: which-key
-(use-package which-key
-  :defer 3
-  :config
-  (which-key-mode)
-  (which-key-setup-side-window-right-bottom))
+;; Hydra
+(use-package hydra :defer t)
 
 ;; Package: avy
 (use-package avy
   :defer t
-  :bind
-  (("C-:" . avy-goto-char)
-   ("C-'" . avy-goto-char-2)
-   ("M-g f" . avy-goto-line)
-   ("M-g w" . avy-goto-word-1)
-   ("M-g e" . avy-goto-word-0)
-   ("M-p" . avy-pop-mark))
+  :bind (("C-:" . avy-goto-char)
+         ("C-'" . avy-goto-char-2)
+         ("M-g f" . avy-goto-line)
+         ("M-g w" . avy-goto-word-1)
+         ("M-g e" . avy-goto-word-0)
+         ("M-p" . avy-pop-mark))
   :init
   (progn
     (avy-setup-default)
     (setq avy-all-windows nil)
     (setq avy-timeout-seconds 0.8))
   :config
-  (advice-add 'swiper :before 'avy-push-mark))
+  (advice-add 'swiper :before 'avy-push-mark)
 
-(use-package avy-zap
-  :bind
-  ("M-z" . avy-zap-up-char-dwim))
+  ;; Package: avy-zap
+  (use-package avy-zap
+    :bind ("M-z" . avy-zap-up-char-dwim))
+
+  ;; Package: ace-pinyin
+  (use-package ace-pinyin
+    :init
+    (setq ace-pinyin-use-avy t)
+    :config
+    (ace-pinyin-global-mode))
+  )
+
+
+
+;; which-key
+(use-package which-key
+  :defer 3
+  :config
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom))
 
 ;; Package: yasnippet
 (use-package yasnippet
   :diminish yas-minor-mode
   :defer t
+  :commands yas-minor-mode
   :init
-  (progn
-    (setq yas-verbosity 0)
-    (setq yas-fallback-behavior 'return-nil)
-    (setq yas-triggers-in-field t)
-    (setq yas-snippet-dirs "~/.emacs.d/snippets"))
+  (setq yas-verbosity 0)
+  (setq yas-fallback-behavior 'return-nil)
+  (setq yas-triggers-in-field t)
+  (setq yas-snippet-dirs "~/.emacs.d/snippets")
   :config
   (progn
     (define-key yas-minor-mode-map [(tab)] nil)
@@ -189,8 +175,8 @@
 
 ;; Package: magit
 (use-package magit
-  :bind
-  (("C-x g" . magit-status))
+  :bind (("C-x g" . magit-status)
+         ("C-x G" . magit-status-with-prefix))
   :init
   (setq magit-completing-read-function 'ivy-completing-read))
 
@@ -212,8 +198,6 @@
     ;; (global-company-mode)
     ;; )
   )
-
-
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
