@@ -27,5 +27,8 @@
 (require 'init-cpp)
 (require 'init-org)
 (require 'init-erlang)
+(require 'init-python)
+(require 'init-ruby)
+(require 'init-latex)
 
 ;;; init.el ends here
