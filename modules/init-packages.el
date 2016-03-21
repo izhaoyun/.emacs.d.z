@@ -75,6 +75,7 @@
 ;; Package: swiper
 (use-package counsel
   :defer 1
+  :diminish ivy
   :init
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
