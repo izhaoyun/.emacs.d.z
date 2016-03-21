@@ -38,7 +38,7 @@
 ;;   (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
 
 (use-package helm
-  :defer 1
+  :defer 2
   :init
   (global-unset-key (kbd "C-x c"))
   (setq helm-truncate-lines t)
@@ -60,7 +60,7 @@
 
 ;; Package: helm-dash
 (use-package helm-dash
-  :defer 8
+  :defer 7
   :bind
   ("C-c h d" . helm-dash-at-point)
   :init
@@ -74,6 +74,11 @@
 
 ;; Package: swiper
 (use-package counsel
+  :defer 1
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy)
+  (setq counsel-find-file-at-point t)
   :bind (("C-s" . swiper)
          ("C-r" . ivy-resume)
          ("M-x" . counsel-M-x)
@@ -89,10 +94,6 @@
   :bind (:map help-map
               ("f" . counsel-describe-function)
               ("v" . counsel-describe-variable))
-  :init
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy)
-  (setq counsel-find-file-at-point t)
   :config
   (ivy-mode))
 
@@ -117,7 +118,7 @@
 
 ;; Package: avy-zap
 (use-package avy-zap
-  :defer 7
+  :defer 8
   :bind ("M-z" . avy-zap-up-char-dwim))
 
 ;; Package: ace-pinyin
