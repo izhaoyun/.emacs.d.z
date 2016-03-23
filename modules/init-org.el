@@ -1,16 +1,14 @@
 ;; Package: org-mode
 (use-package org
-  :pin manual
-  :load-path ("src/org-mode/lisp"
-              "src/org-mode/contrib/lisp")
   :mode ("\\.org$" . org-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
   :init
-  (use-package org)
-  :defer 2
+  (use-package org :pin org)
+  (use-package org-plus-contrib :pin org)
+  :defer 1
   :config
   ;; Withing with Code Blocks
   (use-package ob :ensure nil
@@ -25,8 +23,7 @@
     (use-package ob-latex :ensure nil)
     (use-package ob-C :ensure nil)
     (use-package ob-sql :ensure nil)
-    (use-package ob-dot :ensure nil)
-    )
+    (use-package ob-dot :ensure nil))
 
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)

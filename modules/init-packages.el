@@ -29,7 +29,7 @@
   (sml/setup))
 
 (use-package smartparens
-  :defer 10
+  :defer 7
   :config
   (use-package smartparens-config :ensure nil)
   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
