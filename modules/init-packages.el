@@ -56,14 +56,6 @@
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t))
 
-;; Package: helm-dash
-(use-package helm-dash
-  :defer 7 
-  :bind
-  ("C-c h d" . helm-dash-at-point)
-  :init
-  (setq helm-dash-docsets-path "~/.docsets/"))
-
 ;; Package: helm-make
 (use-package helm-make
   :defer 7
