@@ -51,6 +51,7 @@
 
 (global-linum-mode)
 (column-number-mode)
+(electric-indent-mode -1)
 
 (use-package pos-tip :defer t)
 

@@ -4,7 +4,7 @@
 
 ;;; Code:
 (use-package undo-tree
-  :defer 9
+  :defer 8
   :diminish undo-tree-mode
   :init
   (setq undo-tree-visualizer-diff       t)
@@ -22,23 +22,21 @@
   :config
   (window-numbering-mode))
 
-;; (use-package smart-mode-line
-;;   :defer t
-;;   :init
-;;   (progn
-;;     (setq sml/them 'light)
-;;     (setq sml/no-confirm-load-theme t)
-;;     (sml/setup)))
+(use-package smart-mode-line
+  :init
+  (setq sml/them 'light)
+  (setq sml/no-confirm-load-theme t)
+  (sml/setup))
 
-;; (use-package smartparens
-;;   :init
-;;   (use-package smartparens-config
-;;     :ensure smartparens)
-;;   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-;;   (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
+(use-package smartparens
+  :defer 7
+  :config
+  (use-package smartparens-config :ensure nil)
+  (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+  (add-hook 'emacs-lisp-mode-hook 'show-smartparens-mode))
 
 (use-package helm
-  :defer 1
+  :defer 2
   :init
   (global-unset-key (kbd "C-x c"))
   (setq helm-truncate-lines t)
@@ -58,22 +56,20 @@
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t))
 
-;; Package: helm-dash
-(use-package helm-dash
-  :defer 8
-  :bind
-  ("C-c h d" . helm-dash-at-point)
-  :init
-  (setq helm-dash-docsets-path "~/.docsets/"))
-
 ;; Package: helm-make
 (use-package helm-make
-  :defer 8
+  :defer 7
   :init
   (setq helm-make-completion-method 'ivy))
 
 ;; Package: swiper
 (use-package counsel
+  :defer 1
+  :diminish ivy-mode
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy)
+  (setq counsel-find-file-at-point t)
   :bind (("C-s" . swiper)
          ("C-r" . ivy-resume)
          ("M-x" . counsel-M-x)
@@ -89,10 +85,6 @@
   :bind (:map help-map
               ("f" . counsel-describe-function)
               ("v" . counsel-describe-variable))
-  :init
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy)
-  (setq counsel-find-file-at-point t)
   :config
   (ivy-mode))
 
@@ -117,7 +109,7 @@
 
 ;; Package: avy-zap
 (use-package avy-zap
-  :defer 7
+  :defer 8
   :bind ("M-z" . avy-zap-up-char-dwim))
 
 ;; Package: ace-pinyin
@@ -163,14 +155,14 @@
 
 ;; Package: magit
 (use-package magit
-  :bind (("C-x g" . magit-status)
-         ("C-x G" . magit-status-with-prefix))
+  :bind
+  ("C-x g" . magit-status)
   :init
   (setq magit-completing-read-function 'ivy-completing-read))
 
 ;; Package: comment-dwim-2
 (use-package comment-dwim-2
-  :defer 4
+  :defer 2
   :bind
   ("M-;" . comment-dwim-2))
 
