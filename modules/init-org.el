@@ -94,7 +94,8 @@
     ))
 
 (use-package org-bullets
-    :init (add-hook 'org-mode-hook 'org-bullets-mode))
+  :ensure nil
+  :init (add-hook 'org-mode-hook 'org-bullets-mode))
 
 (use-package htmlize)
 
