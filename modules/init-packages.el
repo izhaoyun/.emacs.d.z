@@ -49,7 +49,7 @@
   (bind-key "C-x C-b" 'helm-mini)
   (bind-key "C-c h a" 'helm-apropos)
   (bind-key "C-c h f" 'helm-find-files)
-  (bind-key "C-c h g" 'helm-register)
+  (bind-key "C-c h e" 'helm-register)
   (bind-key "C-c h i" 'helm-info)
   (bind-key "C-c h m" 'helm-man-woman)
   ;; globally enable fuzzy matching for helm-mode
@@ -58,7 +58,7 @@
 
 ;; Package: helm-make
 (use-package helm-make
-  :defer 7
+  :defer 9
   :init
   (setq helm-make-completion-method 'ivy))
 
