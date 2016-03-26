@@ -36,19 +36,6 @@
   (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
   (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history))
 
-(use-package cedet
-  :defer 6
-  :pin manual
-  :init
-  (load-file "~/.emacs.d/src/cedet/cedet-devel-load.el")
-  (load-file "~/.emacs.d/src/cedet/contrib/cedet-contrib-load.el")
-  (require 'semantic))
-
-(use-package stickyfunc-enhance
-  :defer 7
-  :config
-  (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-  (semantic-mode))
 
 (provide 'init-cpp)
 ;;; init-cpp.el ends here

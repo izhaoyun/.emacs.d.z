@@ -29,7 +29,7 @@
   (sml/setup))
 
 (use-package smartparens
-  :defer 7
+  :defer 4
   :config
   (use-package smartparens-config :ensure nil)
   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
@@ -107,14 +107,9 @@
   :config
   (advice-add 'swiper :before 'avy-push-mark))
 
-;; Package: avy-zap
-(use-package avy-zap
-  :defer 8
-  :bind ("M-z" . avy-zap-up-char-dwim))
-
 ;; Package: ace-pinyin
 (use-package ace-pinyin
-  :defer 4
+  :defer 3
   :diminish ace-pinyin-mode
   :init
   (setq ace-pinyin-use-avy t)
@@ -168,7 +163,7 @@
 
 ;; Package: company
 (use-package company
-  :defer 5
+  :defer 4
   :init
   (setq company-show-numbers t)
   :config
@@ -178,6 +173,12 @@
     ;; (global-company-mode)
     ;; )
   )
+
+(use-package stickyfunc-enhance
+  :defer 7
+  :config
+  (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+  (semantic-mode))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
