@@ -5,7 +5,6 @@
   :init)
 
 (use-package cmake-mode
-  :pin marmalade
   :mode (("CMakeLists\\.txt\\'" . cmake-mode)
          ("\\.cmake\\'"         . cmake-mode)))
 

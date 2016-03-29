@@ -7,8 +7,8 @@
 
 ;; load path etc.
 (require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-						 ("marmalade" . "https://marmalade-repo.org/packages/")
+(setq package-archives '(("melpa" . "http://elpa.org/packages/")
+						 ("marmalade" . "http://marmalade-repo.org/packages/") 
 						 ("popkit" . "http://elpa.popkit.org/packages/")
 						 ("org" . "http://orgmode.org/elpa/")))
 
@@ -28,7 +28,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-cpp)
 (require 'init-org)
-(require 'init-erlang)
+;; (require 'init-erlang)
 (require 'init-python)
 (require 'init-ruby)
 (require 'init-latex)
