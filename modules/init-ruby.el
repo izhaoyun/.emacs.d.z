@@ -3,6 +3,7 @@
   :interpreter "ruby")
 
 (use-package robe
+  :defer 8
   :config
   (add-hook 'ruby-mode-hook 'robe-mode)
   (push 'company-robe company-backends))

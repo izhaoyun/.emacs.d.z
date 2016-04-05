@@ -1,8 +1,9 @@
 (use-package cc-mode
-  :mode (("\\.h$" . c++-mode)))
-
-(use-package company-c-headers
-  :init)
+  :mode (("\\.h$" . c++-mode))
+  :config
+  (add-hook 'c++-mode-hook
+            (lambda ()
+              (hs-minor-mode))))
 
 (use-package cmake-mode
   :mode (("CMakeLists\\.txt\\'" . cmake-mode)
@@ -14,6 +15,7 @@
               gdb-show-main    t))
 
 (use-package company-c-headers
+  :defer 8
   :config
   (add-to-list 'company-backends 'company-c-headers))
 

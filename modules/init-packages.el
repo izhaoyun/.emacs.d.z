@@ -29,7 +29,7 @@
   (sml/setup))
 
 (use-package smartparens
-  :defer 4
+  :defer 9
   :config
   (use-package smartparens-config :ensure nil)
   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
@@ -175,7 +175,7 @@
   )
 
 (use-package stickyfunc-enhance
-  :defer 7
+  :defer 5
   :config
   (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
   (semantic-mode))

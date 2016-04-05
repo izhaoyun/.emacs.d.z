@@ -51,7 +51,11 @@
 
 (global-linum-mode)
 (column-number-mode)
+
 (electric-indent-mode -1)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default tab-always-indent 'complete)
 
 (use-package pos-tip :defer t)
 
@@ -85,12 +89,10 @@
 (bind-key "C-x p" 'pop-to-mark-command)
 (setq set-mark-command-repeat-pop t)
 
-
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
-(setq x-select-enable-clipboard t
-      x-select-enable-primary t
-      save-interprogram-paste-before-kill t
+;; Sync Copy/Paste Clipboards with Linux X11
+(setq x-select-enable-clipboard t)
+(setq x-select-enable-primary t)
+(setq save-interprogram-paste-before-kill t
       apropos-do-all t
       mouse-yank-at-point t
       require-final-newline t

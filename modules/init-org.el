@@ -1,30 +1,29 @@
 ;; Package: org-mode
 (use-package org
-  :pin org
-  :ensure t
+  :ensure org-plus-contrib
   :mode ("\\.org$" . org-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
-  :init
-  (use-package org-plus-contrib :pin org)
+  :commands org-mode
   :defer 1
   :config
   ;; Withing with Code Blocks
-  (use-package ob :ensure nil
-    :config
-    (use-package ob-ditaa :ensure nil)
-    (use-package ob-plantuml :ensure nil)
-    (use-package ob-ruby :ensure nil)
-    (use-package ob-shell :ensure nil)
-    (use-package ob-python :ensure nil)
-    (use-package ob-sed :ensure nil)
-    (use-package ob-awk :ensure nil)
-    (use-package ob-latex :ensure nil)
-    (use-package ob-C :ensure nil)
-    (use-package ob-sql :ensure nil)
-    (use-package ob-dot :ensure nil))
+  (use-package ob-ditaa 
+    :ensure nil
+    :init
+    (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0_9.jar"))
+  (use-package ob-plantuml :ensure nil)
+  (use-package ob-ruby :ensure nil)
+  (use-package ob-shell :ensure nil)
+  (use-package ob-python :ensure nil)
+  (use-package ob-sed :ensure nil)
+  (use-package ob-awk :ensure nil)
+  (use-package ob-latex :ensure nil)
+  (use-package ob-C :ensure nil)
+  (use-package ob-sql :ensure nil)
+  (use-package ob-dot :ensure nil)
 
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
