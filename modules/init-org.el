@@ -1,6 +1,7 @@
 ;; Package: org-mode
 (use-package org
   :ensure org-plus-contrib
+  :pin manual
   :mode ("\\.org$" . org-mode)
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb)
