@@ -8,8 +8,7 @@
 ;; load path etc.
 (require 'package)
 (setq package-archives '(("melpa" . "http://elpa.org/packages/")
-						 ("marmalade" . "http://marmalade-repo.org/packages/") 
-						 ("popkit" . "http://elpa.popkit.org/packages/")
+                         ("popkit" . "http://elpa.popkit.org/packages/")
 						 ("org" . "http://orgmode.org/elpa/")))
 
 (package-initialize)
@@ -17,7 +16,7 @@
 (unless package-archive-contents (package-refresh-contents))
 (unless (package-installed-p 'use-package) (package-install 'use-package))
 (setq use-package-verbose t)
-(setq use-package-always-ensure t)
+;; (setq use-package-always-ensure t)
 (require 'use-package)
 
 ;; load settings for Emacs
