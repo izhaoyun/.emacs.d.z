@@ -62,9 +62,9 @@
   :init
   (setq helm-make-completion-method 'ivy))
 
-;; Package: swiper
-(use-package counsel
+(use-package swiper
   :defer 1
+  :ensure counsel
   :diminish ivy-mode
   :init
   (setq ivy-use-virtual-buffers t)
