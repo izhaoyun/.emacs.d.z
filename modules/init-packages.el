@@ -88,23 +88,6 @@
   :config
   (advice-add 'swiper :before 'avy-push-mark))
 
-;; Package: ace-pinyin
-(use-package ace-pinyin
-  :defer 3
-  :diminish ace-pinyin-mode
-  :init
-  (setq ace-pinyin-use-avy t)
-  :config
-  (ace-pinyin-global-mode))
-
-;; Package: which-key
-(use-package which-key
-  :defer 1
-  :diminish which-key-mode
-  :init
-  (which-key-mode)
-  (which-key-setup-side-window-right-bottom))
-
 ;; Package: yasnippet
 (use-package yasnippet
   :diminish yas-minor-mode

@@ -53,6 +53,8 @@
 
 ;; key bindings
 (global-unset-key "\C-x\C-v")
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -78,3 +80,5 @@
 (setq gc-cons-threshold 100000000)
 
 (provide 'setup-custom)
+
+

@@ -79,7 +79,7 @@
 ;; (use-package hydra)
 
 (use-package which-key
-  ;;  :defer 1
+  :defer 5
   :diminish which-key-mode
   :init
   (which-key-mode)
@@ -107,5 +107,23 @@
   (setq ace-pinyin-use-avy t)
   :config
   (ace-pinyin-global-mode))
+
+;;(use-package async
+  ;; :defer 5
+  ;; :config
+  ;; (dired-async-mode 1)
+  ;; (async-bytecomp-package-mode 1)
+  ;;)
+
+(use-package helm-config
+  ;; :defer 6
+  :ensure helm
+  :init
+  (setq helm-truncate-lines t)
+  (setq helm-move-to-line-cycle-in-source t)
+  (setq helm-mode-fuzzy-match t)
+  (setq helm-completion-in-region-fuzzy-match t)
+  :config
+  )
 
 (provide 'setup-utils)
