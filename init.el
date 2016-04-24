@@ -1,6 +1,3 @@
-;;; init.el
-(setq gc-cons-threshold 100000000)
-
 ;; personal information
 (setq user-full-name "Zhao Yun"
       user-mail-address "zjlyzhy@gmail.com")
@@ -8,25 +5,11 @@
 ;; basic settings
 (add-to-list 'load-path "~/.emacs.d/core")
 (require 'setup-packages)
+(require 'setup-custom)
+(require 'setup-utils)
 
-;(setq package-enable-at-startup nil)
-;(unless package-archive-contents (package-refresh-contents))
-;(unless (package-installed-p 'use-package) (package-install 'use-package))
-;(setq use-package-verbose t)
-;; (setq use-package-always-ensure t)
-;(require 'use-package)
-;
-;;; load settings for Emacs
-;(add-to-list 'load-path "~/.emacs.d/modules")
-;(require 'init-basic)
-;(require 'init-packages)
-;; (require 'init-keys)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(require 'init-cpp)
-;(require 'init-org)
-;;; (require 'init-erlang)
-;(require 'init-python)
-;(require 'init-ruby)
-;(require 'init-latex)
+;; langs settings
+(add-to-list 'load-path "~/.emacs.d/langs")
+(require 'setup-org)
 
 ;;; init.el ends here

@@ -3,25 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package undo-tree
-  :defer 8
-  :diminish undo-tree-mode
-  :init
-  (setq undo-tree-visualizer-diff       t)
-  (setq undo-tree-visualizer-timestamps t)
-  :config
-  (global-undo-tree-mode))
-
-(use-package expand-region
-  :commands er/expand-region
-  :bind
-  ("C-=" . er/expand-region))
-
-(use-package window-numbering
-  :defer 10
-  :config
-  (window-numbering-mode))
-
 (use-package smart-mode-line
   :init
   (setq sml/them 'light)

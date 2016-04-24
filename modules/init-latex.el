@@ -1,3 +1,0 @@
-;; AUCTEX
-
-(provide 'init-latex)

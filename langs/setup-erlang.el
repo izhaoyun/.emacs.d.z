@@ -1,8 +1,3 @@
-;;; init-erlang.el --- Configuration for Erlang
-
-;;; Commentary:
-
-;;; Code:
 (use-package erlang
   :mode
   (("\\.erl\\'" . erlang-mode)
@@ -13,8 +8,6 @@
   (setq erlang-man-root-dir "/usr/lib/erlang/man")
   (add-hook 'erlang-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
   (setq erlang-compile-extra-opts '(debug_info))
-  :config
-  )
+  :config)
 
-(provide 'init-erlang)
-;;; init-erlang.el ends here
+(provide 'setup-erlang)
