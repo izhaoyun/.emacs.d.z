@@ -8,6 +8,11 @@
 (require 'setup-custom)
 (require 'setup-utils)
 
+;; modules for programming
+(add-to-list 'load-path "~/.emacs.d/modules")
+(require 'setup-project)
+(require 'setup-completion)
+
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/langs")
 (require 'setup-org)
