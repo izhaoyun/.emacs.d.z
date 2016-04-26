@@ -10,8 +10,9 @@
 
 ;; modules for programming
 (add-to-list 'load-path "~/.emacs.d/modules")
-(require 'setup-project)
 (require 'setup-completion)
+(require 'setup-vc)
+(require 'setup-project)
 
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/langs")
