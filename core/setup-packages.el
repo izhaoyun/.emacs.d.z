@@ -5,9 +5,6 @@
 (package-initialize)
 (setq package-enable-at-startup nil)
 
-(unless package-archive-contents
-  (package-refresh-contents))
-
 ;; install use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
