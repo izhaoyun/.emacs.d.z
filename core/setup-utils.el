@@ -1,26 +1,12 @@
 (use-package cl)
 (use-package cl-lib)
 
-(use-package auto-compile
-  :config
-  (auto-compile-on-load-mode))
-;; https://github.com/itsjeyd/.emacs.d/blob/emacs24/init.el
-(defun recompile-elisp-file ()
-  (interactive)
-  (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
-    (let ((byte-file (concat buffer-file-name "\\.elc")))
-      (if (or (not (file-exists-p byte-file))
-              (file-newer-than-file-p buffer-file-name byte-file))
-          (byte-compile-file buffer-file-name)))))
-(add-hook 'after-save-hook #'recompile-elisp-file)
-(setq load-prefer-newer t)
-
 (use-package dash
   :config
   (dash-enable-font-lock))
 
 (use-package winner
-  :config
+  :init
   (winner-mode))
 
 (use-package server
@@ -46,14 +32,14 @@
   :init
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-visualizer-timestamps t)
-  :config
+  ;; :init
   (global-undo-tree-mode))
 
 (use-package swiper
   ;;  :defer 1
   :ensure counsel
   :diminish ivy-mode
-  :init 
+  :init
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
   (setq counsel-find-file-at-point t)
@@ -74,7 +60,7 @@
   (:map help-map
         ("f" . counsel-describe-function)
         ("v" . counsel-describe-variable))
-  :config
+  :init
   (ivy-mode))
 
 ;; (use-package hydra)
@@ -99,16 +85,18 @@
   (avy-setup-default)
   (setq avy-all-windows nil)
   (setq avy-timeout-seconds 0.8)
-  :config
   (advice-add 'swiper :before 'avy-push-mark))
 
 (use-package ace-pinyin
-  :defer 7
   :diminish ace-pinyin-mode
+  :commands ace-pinyin-global-mode
   :init
   (setq ace-pinyin-use-avy t)
-  :config
   (ace-pinyin-global-mode))
+
+(use-package ace-link
+  :init
+  (ace-link-setup-default))
 
 ;;(use-package async
   ;; :defer 5

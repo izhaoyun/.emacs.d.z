@@ -1,7 +1,3 @@
-;; personal information
-(setq user-full-name "Zhao Yun"
-      user-mail-address "zjlyzhy@gmail.com")
-
 ;; basic settings
 (add-to-list 'load-path "~/.emacs.d/core")
 (require 'setup-packages)

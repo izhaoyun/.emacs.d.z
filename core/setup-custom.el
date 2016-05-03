@@ -13,7 +13,7 @@
 (setq mouse-yank-at-point t)
 (setq scroll-preserve-screen-position t)
 (mouse-avoidance-mode 'jump)
-(set-cursor-color "black")
+(set-cursor-color "blue")
 (column-number-mode t)
 (mouse-wheel-mode t)
 
@@ -69,16 +69,13 @@
 (setq history-length t)
 (setq history-delete-duplicates t)
 (setq savehist-save-minibuffer-history 1)
-(setq savehist-additional-variables
-      '(kill-ring
-        search-ring
-        regexp-search-ring))
+(setq savehist-additional-variables '(kill-ring
+                                      search-ring
+                                      regexp-search-ring))
 
 ;; miscellaneous
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold (* 100 1024 1024))
 
 (provide 'setup-custom)
-
-

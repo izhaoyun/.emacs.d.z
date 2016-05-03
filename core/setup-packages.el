@@ -16,10 +16,28 @@
 (require 'diminish)
 (require 'bind-key)
 
-;; (use-package paradox
-;;   :commands paradox-list-packages
-;;   :init
-;;   (setq paradox-automatically-star nil)
-;;   (setq paradox-execute-asynchronously nil))
+(use-package auto-compile
+  :init
+  (auto-compile-on-load-mode))
+
+;; https://github.com/itsjeyd/.emacs.d/blob/emacs24/init.el
+(defun recompile-elisp-file ()
+  (interactive)
+  (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
+    (let ((byte-file (concat buffer-file-name "\\.elc")))
+      (if (or (not (file-exists-p byte-file))
+              (file-newer-than-file-p buffer-file-name byte-file))
+          (byte-compile-file buffer-file-name)))))
+(add-hook 'after-save-hook #'recompile-elisp-file)
+(setq load-prefer-newer t)
 
 (provide 'setup-packages)
+
+
+
+
+
+
+
+
+
