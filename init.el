@@ -24,8 +24,6 @@
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode))
 
-(setq custom-file "~/.emacs.d/custom.el")
-
 (use-package async-bytecomp
   :ensure async
   :init
