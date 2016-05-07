@@ -37,6 +37,6 @@
 
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/langs")
-;;(require 'setup-org)
+(require 'setup-org)
 
 ;;; init.el ends here
