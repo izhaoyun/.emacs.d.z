@@ -1,25 +1,18 @@
 (use-package cl)
 (use-package cl-lib)
-
-(use-package dash
-  :config
-  (dash-enable-font-lock))
+(use-package dash)
 
 (use-package winner
   :init
   (winner-mode))
 
-(use-package server
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
 (use-package expand-region
   :bind
-  ("C-=" . er/expand-region))
+  ("C-=" . er/expand-region)
+  ("C--" . er/contract-region))
 
 (use-package rainbow-delimiters
-  :config
+  :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package window-numbering
@@ -105,5 +98,15 @@
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t)
   (global-unset-key (kbd "C-x c")))
+
+(use-package smartparens-config
+  :ensure smartparens
+  :init
+  (smartparens-global-mode 1))
+
+(use-package server
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
 (provide 'setup-utils)

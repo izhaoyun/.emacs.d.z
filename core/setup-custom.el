@@ -35,11 +35,12 @@
 (setq require-final-newline t)
 
 ;; insert parenthesis by pair
-(setq electric-pair-pairs '((?\" . ?\")
-                            (?\{ . ?\})))
-(electric-pair-mode 1)
+;; (setq electric-pair-pairs '((?\" . ?\")
+;;                             (?\{ . ?\})))
+;; (electric-pair-mode 1)
 ;; auto highlight parenthesis
 (setq show-paren-style 'expression)
+;;(set-face-background 'show-paren-match )
 (custom-set-faces '(show-paren-match ((((class color) (background light)) (:background "yellow1")))))
 (show-paren-mode 1)
 
