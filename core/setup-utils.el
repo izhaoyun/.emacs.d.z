@@ -98,13 +98,6 @@
   :init
   (ace-link-setup-default))
 
-;;(use-package async
-  ;; :defer 5
-  ;; :config
-  ;; (dired-async-mode 1)
-  ;; (async-bytecomp-package-mode 1)
-  ;;)
-
 (use-package helm-config
   :ensure helm
   :init
@@ -112,10 +105,6 @@
   (setq helm-move-to-line-cycle-in-source t)
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t)
-  (global-unset-key (kbd "C-x c"))
-  :bind
-  (("C-x C-b" . helm-mini))
-  :config
-  )
+  (global-unset-key (kbd "C-x c")))
 
 (provide 'setup-utils)

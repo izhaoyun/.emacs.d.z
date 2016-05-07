@@ -32,12 +32,3 @@
 (setq load-prefer-newer t)
 
 (provide 'setup-packages)
-
-
-
-
-
-
-
-
-
