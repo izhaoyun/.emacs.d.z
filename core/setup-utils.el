@@ -101,8 +101,10 @@
 
 (use-package smartparens-config
   :ensure smartparens
+  :diminish smartparens-mode
   :init
-  (smartparens-global-mode 1))
+  (smartparens-global-mode 1)
+  (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode))
 
 (use-package server
   :config
