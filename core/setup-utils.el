@@ -32,7 +32,6 @@
   :init
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-visualizer-timestamps t)
-  ;; :init
   (global-undo-tree-mode))
 
 (use-package swiper

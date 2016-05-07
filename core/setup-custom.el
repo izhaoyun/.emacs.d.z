@@ -13,7 +13,8 @@
 (setq mouse-yank-at-point t)
 (setq scroll-preserve-screen-position t)
 (mouse-avoidance-mode 'jump)
-(set-cursor-color "blue")
+(set-cursor-color "red")
+(global-linum-mode 1)
 (column-number-mode 1)
 (mouse-wheel-mode 1)
 
@@ -25,13 +26,13 @@
 ;; tabs, spaces, lines and parenthesis
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
-(setq-default tab-always-indent 'complete)
+;; (setq-default tab-always-indent 'complete)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 (setq sentence-end-double-space nil)
 (setq truncate-partial-width-windows nil)
 (setq-default indicate-empty-lines t)
 (setq require-final-newline t)
-(global-linum-mode 1)
 
 ;; insert parenthesis by pair
 (setq electric-pair-pairs '((?\" . ?\")
@@ -42,16 +43,18 @@
 (custom-set-faces '(show-paren-match ((((class color) (background light)) (:background "yellow1")))))
 (show-paren-mode 1)
 
-;; buffers and windows
-(setq frame-title-format "%b - emacs")
-;; (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; (icomplete-mode t)
 (setq read-buffer-completion-ignore-case t)
 
 ;; key bindings
 (global-unset-key "\C-x\C-v")
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "RET") 'newline-and-indent)
+
+;; buffers and windows
+(setq frame-title-format "%b - emacs")
+
+;; list buffers: ibuffer
+(defalias 'list-buffers 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; backups
