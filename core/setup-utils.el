@@ -30,7 +30,6 @@
 (use-package swiper
   ;;  :defer 1
   :ensure counsel
-  :diminish ivy-mode
   :init
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
