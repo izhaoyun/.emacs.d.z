@@ -1,3 +1,7 @@
+;; user details
+(setq user-full-name "Zhao Yun")
+(setq user-mail-address "zjlyzhy@gmail.com")
+
 ;; packages repositories
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
