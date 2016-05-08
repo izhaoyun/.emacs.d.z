@@ -1,22 +1,13 @@
-(use-package cc-mode
-  :mode (("\\.h$" . c++-mode))
-  :config
-  (add-hook 'c++-mode-hook
-            (lambda ()
-              (hs-minor-mode)
-              )
-            )
+(defun c++-config-default ()
+  "configuration for c/c++ programming."
+  
   )
 
 ;;(use-package cmake-mode
 ;;  :mode (("CMakeLists\\.txt\\'" . cmake-mode)
 ;;         ("\\.cmake\\'"         . cmake-mode)))
 
-(use-package gdb-mi
-  :init
-  (setq gdb-many-windows t)
-  (setq gdb-show-main    t)
-  )
+
 
 ;; (use-package company-c-headers
 ;;   :defer 8

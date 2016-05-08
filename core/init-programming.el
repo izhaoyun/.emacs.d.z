@@ -2,8 +2,9 @@
   (use-package company
     :init
     (setq company-show-numbers t)
+    (company-mode 1)
     )
-  )
+)
 
 (defun init-auto-complete ()
   (use-package auto-complete-config
