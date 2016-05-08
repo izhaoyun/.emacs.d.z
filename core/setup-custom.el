@@ -80,6 +80,13 @@
                                       search-ring
                                       regexp-search-ring))
 
+;; mode-line
+(use-package smart-mode-line
+  :init
+  (setq sml/no-confirm-load-theme t)
+  (sml/setup)
+  )
+
 ;; miscellaneous
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (defalias 'yes-or-no-p 'y-or-n-p)
