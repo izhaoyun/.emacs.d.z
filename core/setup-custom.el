@@ -3,7 +3,12 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (setq visible-bell t)
+
+;; splash screen
 (setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
+(setq initial-major-mode 'org-mode)
+
 (global-hl-line-mode 1)
 (global-font-lock-mode 1)
 

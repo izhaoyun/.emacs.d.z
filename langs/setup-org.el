@@ -1,5 +1,6 @@
 (use-package org
-  :mode (("\\.org$" . org-mode))
+  :mode (("\\.org$" . org-mode)
+         ("\\.txt$" . org-mode))
   :bind
   (("C-c a" . org-agenda)
    ("C-c b" . org-iswitchb)
@@ -11,6 +12,14 @@
   (add-hook 'org-mode-hook 'init-org-bullets)
 
   :config
+  ;; alist of packages to be inserted in every LaTeX header.
+  (add-to-list 'org-latex-packages-alist '("" "ctex"))
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (add-to-list 'org-latex-packages-alist '("" "color"))
+  (add-to-list 'org-latex-packages-alist '("" "geometry"))
+  (add-to-list 'org-latex-packages-alist '("" "tabularx"))
+  (add-to-list 'org-latex-packages-alist '("" "tabu"))
+  
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
@@ -56,16 +65,25 @@
     :ensure org
     :init
     (setq org-latex-listings 'minted)
-    ;; alist of packages to be inserted in every LaTeX header.
-    (add-to-list 'org-latex-packages-alist '("" "ctex"))
-    (add-to-list 'org-latex-packages-alist '("" "minted"))
+    (setq org-latex-minted-options
+          '(("frame"      "single")
+            ("breaklines" "")))
+    (setq org-latex-pdf-process
+          '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+            "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+            "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
     )
-  
+
+  (use-package ox-html
+    :ensure org
+    :init
+    )
+
   (use-package ox
     :ensure org
     :init
     (setq org-export-default-language "zh-CN"))
-  )
+)
 
 (defun init-org-bullets ()
   (use-package org-bullets
