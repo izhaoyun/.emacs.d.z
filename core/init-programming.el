@@ -36,7 +36,7 @@
   )
 
 (use-package yafolding)
-  
+
 (use-package projectile
   :diminish projectile-mode
   :init

@@ -43,7 +43,9 @@
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/langs")
 (require 'setup-org)
+(require 'setup-cpp)
 (require 'setup-ruby)
 (require 'setup-python)
+(require 'setup-go)
 
 ;;; init.el ends here
