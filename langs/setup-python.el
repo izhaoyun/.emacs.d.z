@@ -9,14 +9,12 @@
   Python's PEP8."
   (use-package py-yapf
     :config
-    (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
-    )
+    (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
   )
 
 (defun init-live-py-mode ()
   (use-package live-py-mode
     :commands live-py-mode
-    :init)
-  )
+    :init))
 
 (provide 'setup-python)
