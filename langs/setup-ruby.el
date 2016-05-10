@@ -33,7 +33,6 @@ subprocess."
   (add-hook 'ruby-mode-hook 'init-robe)
   (add-hook 'ruby-mode-hook 'init-rubocop)
   ;; (add-hook 'ruby-mode-hook 'init-inf-ruby)
-  (add-hook 'ruby-mode-hook 'init-bundler)
-  )
+  (add-hook 'ruby-mode-hook 'init-bundler))
 
 (provide 'setup-ruby)

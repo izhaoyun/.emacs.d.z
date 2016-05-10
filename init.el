@@ -2,11 +2,12 @@
 (setq user-full-name "Zhao Yun")
 (setq user-mail-address "zjlyzhy@gmail.com")
 
+;; initialize load paths
+(defvar dotfiles-dir user-emacs-directory)
+
 ;; packages repositories
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("popkit" . "http://elpa.popkit.org/packages/"))
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -38,14 +39,14 @@
 (add-to-list 'load-path "~/.emacs.d/core")
 (require 'setup-custom)
 (require 'setup-utils)
-(require 'init-programming)
+(require 'init-develop)
 
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/langs")
 (require 'setup-org)
-(require 'setup-cpp)
+;;(require 'setup-cpp)
 (require 'setup-ruby)
 (require 'setup-python)
-(require 'setup-go)
+;;(require 'setup-go)
 
 ;;; init.el ends here
