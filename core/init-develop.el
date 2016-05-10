@@ -53,7 +53,15 @@
   :config
   )
 
+(defun init-highlight-indentation ()
+  (use-package highlight-indentation
+    :init
+    (highlight-indentation-mode 1)
+    (highlight-indentation-current-column-mode 1))
+    )
+  
 (add-hook 'prog-mode-hook 'init-autofill-only-comments)
 (add-hook 'prog-mode-hook 'init-comment-dwim-2)
+(add-hook 'prog-mode-hook 'init-highlight-indentation)
 
 (provide 'init-develop)
