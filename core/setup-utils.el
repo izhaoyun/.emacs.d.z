@@ -4,24 +4,20 @@
 
 (use-package winner
   :init
-  (winner-mode)
-  )
+  (winner-mode))
 
 (use-package expand-region
   :bind
   ("C-=" . er/expand-region)
-  ("C--" . er/contract-region)
-  )
+  ("C--" . er/contract-region))
 
 (use-package rainbow-delimiters
   :init
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-  )
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package window-numbering
   :init
-  (window-numbering-mode)
-  )
+  (window-numbering-mode))
 
 (use-package undo-tree
   ;; :defer 8
@@ -29,8 +25,7 @@
   :init
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-visualizer-timestamps t)
-  (global-undo-tree-mode)
-  )
+  (global-undo-tree-mode))
 
 (use-package swiper
   ;;  :defer 1
@@ -45,8 +40,6 @@
    ("M-x" . counsel-M-x)
    ("M-y" . counsel-yank-pop)
    ("C-x C-f" . counsel-find-file)
-   ("C-h K"   . counsel-descbinds)
-   ("C-h S"   . counsel-info-lookup-symbol)
    ("C-h l"   . counsel-load-library)
    ("C-c s a" . counsel-ag)
    ("C-c s g" . counsel-git)
@@ -54,21 +47,21 @@
    ("C-c s l" . counsel-locate))
   :bind
   (:map help-map
+        ("b" . counsel-descbinds)
         ("f" . counsel-describe-function)
-        ("v" . counsel-describe-variable))
+        ("v" . counsel-describe-variable)
+        ("s" . counsel-info-lookup-symbol))
   :init
-  (ivy-mode)
-  )
+  (ivy-mode))
 
 ;; (use-package hydra)
 
 (use-package which-key
-  :defer 5
+  :defer 3
   :diminish which-key-mode
   :init
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom)
-  )
+  (which-key-setup-side-window-right-bottom))
 
 (use-package avy
   :bind
@@ -84,19 +77,16 @@
   (setq avy-all-windows nil)
   (setq avy-timeout-seconds 0.8)
   (advice-add 'swiper :before 'avy-push-mark)
-  )
-
-(use-package ace-pinyin
-  :diminish ace-pinyin-mode
-  :commands ace-pinyin-global-mode
-  :init
-  (setq ace-pinyin-use-avy t)
-  (ace-pinyin-global-mode)
-  )
-
-(use-package ace-link
-  :init
-  (ace-link-setup-default)
+  :config
+  (use-package ace-link
+    :init
+    (ace-link-setup-default))
+  (use-package ace-pinyin
+    :diminish ace-pinyin-mode
+    :commands ace-pinyin-global-mode
+    :init
+    (setq ace-pinyin-use-avy t)
+    (ace-pinyin-global-mode))
   )
 
 (use-package helm-config
@@ -106,24 +96,20 @@
   (setq helm-move-to-line-cycle-in-source t)
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t)
+  :config
   (global-unset-key (kbd "C-x c"))
-  :bind
-  (("C-h a" . helm-apropos)
-   ("C-h M" . helm-man-woman))
-  )
+  (global-set-key (kbd "C-c h") 'helm-command-prefix))
 
 (use-package smartparens-config
   :ensure smartparens
   :diminish smartparens-mode
   :init
   (smartparens-global-mode 1)
-  (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-  )
+  (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode))
 
 (use-package server
   :config
   (unless (server-running-p)
-    (server-start))
-  )
+    (server-start)))
 
 (provide 'setup-utils)

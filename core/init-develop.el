@@ -15,6 +15,7 @@
 
 ;; (defun init-magit ()
 (use-package magit
+  :defer t
   :bind
   (("C-x g" . magit-status)
    ("C-x G" . magit-status-with-prefix)))
