@@ -13,12 +13,13 @@
     (ac-config-default))
   )
 
-(defun init-magit ()
-  (use-package magit
-    :bind
-    (("C-x g" . magit-status)
-     ("C-x G" . magit-status-with-prefix)))
-  )
+;; (defun init-magit ()
+(use-package magit
+  :defer t
+  :bind
+  (("C-x g" . magit-status)
+   ("C-x G" . magit-status-with-prefix)))
+  ;; )
 
 (defun init-comment-dwim-2 ()
   (use-package comment-dwim-2
