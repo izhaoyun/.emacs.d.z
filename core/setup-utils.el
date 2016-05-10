@@ -112,4 +112,8 @@
   (unless (server-running-p)
     (server-start)))
 
+(use-package recentf
+  :init
+  (recentf-mode 1))
+
 (provide 'setup-utils)
