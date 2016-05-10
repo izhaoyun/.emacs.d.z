@@ -57,8 +57,11 @@
   (use-package highlight-indentation
     :init
     (highlight-indentation-mode 1)
-    (highlight-indentation-current-column-mode 1))
-    )
+    (highlight-indentation-current-column-mode 1)
+    :config
+    (set-face-background 'highlight-indentation-face "#e3e3d3")
+    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
+  )
   
 (add-hook 'prog-mode-hook 'init-autofill-only-comments)
 (add-hook 'prog-mode-hook 'init-comment-dwim-2)
