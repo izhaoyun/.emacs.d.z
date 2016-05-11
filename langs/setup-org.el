@@ -34,7 +34,7 @@
   "settings for export"
   (progn
     (use-package ox-beamer :ensure org)
-    (use-package ox-gfm)
+    (use-package ox-gfm    :ensure org-plus-contrib)
     (use-package ox-html   :ensure org
       :init
       (use-package htmlize))
@@ -76,6 +76,7 @@ usually soft line-breaks"
 
 (defun init-org-bullets ()
   (use-package org-bullets
+    :ensure org-plus-contrib
     :init
     (org-bullets-mode 1)))
 
