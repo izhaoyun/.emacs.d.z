@@ -35,12 +35,25 @@
 (defun init-clean-aindent-mode ()
   (use-package clean-aindent-mode
     :init
-    (add-hook 'prog-mode-hook 'clean-aindent-mode))
+    (clean-aindent-mode 1))
   )
 
-(defun init-yafolding
-    (use-package yafolding)
-    )
+(defun init-dtrt-indent ()
+  (use-package dtrt-indent
+    :init
+    (dtrt-indent-mode 1))
+  )
+
+(defun init-yafolding ()
+  (use-package yafolding)
+  )
+
+(defun init-ws-butler ()
+  (use-package ws-butler
+    :diminish ws-butler-mode
+    :init
+    (ws-butler-mode))
+  )
 
 (use-package projectile
   :diminish projectile-mode
@@ -49,12 +62,13 @@
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
   (projectile-global-mode)
-  
   :config
   )
 
 (defun init-highlight-indentation ()
   (use-package highlight-indentation
+    :diminish (highlight-indentation-mode
+               highlight-indentation-current-column-mode)
     :init
     (highlight-indentation-mode 1)
     (highlight-indentation-current-column-mode 1)
@@ -66,5 +80,8 @@
 (add-hook 'prog-mode-hook 'init-autofill-only-comments)
 (add-hook 'prog-mode-hook 'init-comment-dwim-2)
 (add-hook 'prog-mode-hook 'init-highlight-indentation)
+(add-hook 'prog-mode-hook 'init-clean-aindent-mode)
+(add-hook 'prog-mode-hook 'init-dtrt-indent)
+(add-hook 'prog-mode-hook 'init-ws-butler)
 
 (provide 'init-develop)

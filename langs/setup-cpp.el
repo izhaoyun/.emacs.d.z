@@ -3,11 +3,16 @@
   
   )
 
+(use-package cc-mode
+  :mode (("\\.h\\'" . c++-mode))
+  :init
+  (setq c-default-style "linux")
+  :config
+  )
+
 ;;(use-package cmake-mode
 ;;  :mode (("CMakeLists\\.txt\\'" . cmake-mode)
 ;;         ("\\.cmake\\'"         . cmake-mode)))
-
-
 
 ;; (use-package company-c-headers
 ;;   :defer 8
