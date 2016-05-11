@@ -38,6 +38,7 @@
   (async-bytecomp-package-mode 1))
 
 
+
 ;; basic settings
 (add-to-list 'load-path (expand-file-name "core" dotfiles-dir))
 (require 'setup-custom)
