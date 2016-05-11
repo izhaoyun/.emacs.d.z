@@ -55,6 +55,12 @@
     (ws-butler-mode))
   )
 
+(use-package yasnippet
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
+
+
 (use-package projectile
   :diminish projectile-mode
   :init
