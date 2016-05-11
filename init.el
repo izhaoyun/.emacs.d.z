@@ -3,7 +3,9 @@
 (setq user-mail-address "zjlyzhy@gmail.com")
 
 ;; initialize load paths
-(defvar dotfiles-dir user-emacs-directory)
+;; (defvar dotfiles-dir user-emacs-directory)
+(setq dotfiles-dir (file-name-directory (or (buffer-file-name)
+                                            load-file-name)))
 
 ;; packages repositories
 (require 'package)
@@ -35,16 +37,17 @@
   :init
   (async-bytecomp-package-mode 1))
 
+
 ;; basic settings
-(add-to-list 'load-path "~/.emacs.d/core")
+(add-to-list 'load-path (expand-file-name "core" dotfiles-dir))
 (require 'setup-custom)
 (require 'setup-utils)
 (require 'init-develop)
 
 ;; langs settings
-(add-to-list 'load-path "~/.emacs.d/langs")
+(add-to-list 'load-path (expand-file-name "langs" dotfiles-dir))
 (require 'setup-org)
-;;(require 'setup-cpp)
+(require 'setup-cpp)
 (require 'setup-ruby)
 (require 'setup-python)
 ;;(require 'setup-go)
