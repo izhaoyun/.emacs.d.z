@@ -1,10 +1,14 @@
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
+  :bind
+  ("RET" . newline-and-indent)
   :init
   (setq c-default-style "linux")
-  (add-hook 'c-mode-hook 'init-company)
-  (add-hook 'c++-mode-hook 'init-company)
-  (add-hook 'c++-mode-hook 'init-semantic-stickyfunc-enhance))
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (add-hook 'c-mode-common-hook 'hs-minor-mode)
+  (add-hook 'c-mode-common-hook 'init-company)
+  (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance))
 
 ;; (use-package company-c-headers
 ;;   :defer 8
