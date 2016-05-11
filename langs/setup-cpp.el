@@ -15,6 +15,24 @@
 ;;   :config
 ;;   (add-to-list 'company-backends 'company-c-headers))
 
+(use-package ggtags
+  :bind
+  (:map ggtags-mode-map
+        ("C-c g s" . ggtags-find-other-symbol)
+        ("C-c g h" . ggtags-view-tag-history)
+        ("C-c g r" . ggtags-find-reference)
+        ("C-c g f" . ggtags-find-file)
+        ("C-c g c" . ggtags-create-tags)
+        ("C-c g u" . ggtags-update-tags)
+        ("C-,"     . pop-tag-mark))
+  :init
+  (ggtags-mode 1)
+  (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+                (ggtags-mode 1)))))
+
 (use-package helm-gtags
   :defer t
   :init
