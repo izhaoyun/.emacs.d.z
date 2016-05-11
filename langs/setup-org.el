@@ -26,8 +26,7 @@
        (shell      . t)
        (python     . t)
        (plantuml   . t)
-       (emacs-lisp . t)
-       )
+       (emacs-lisp . t))
      ))
   )
 
