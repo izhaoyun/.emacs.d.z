@@ -55,11 +55,7 @@
     (ws-butler-mode))
   )
 
-(use-package yasnippet
-  :config
-  (yas-reload-all)
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
-
+;; (use-package yasnippet)
 
 (use-package projectile
   :diminish projectile-mode
@@ -81,6 +77,13 @@
     :config
     (set-face-background 'highlight-indentation-face "#e3e3d3")
     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
+  )
+
+(defun init-semantic-stickyfunc-enhance ()
+  (use-package stickyfunc-enhance
+    :init
+    (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+    (semantic-mode 1))
   )
   
 (add-hook 'prog-mode-hook 'init-autofill-only-comments)

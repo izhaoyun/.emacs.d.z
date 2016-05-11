@@ -34,6 +34,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
   (setq counsel-find-file-at-point t)
+  (setq ivy-count-format "(%d/%d) ")
   :bind
   (("C-s" . swiper)
    ("C-r" . ivy-resume)
@@ -43,6 +44,7 @@
    ("C-h l"   . counsel-load-library)
    ("C-c s a" . counsel-ag)
    ("C-c s g" . counsel-git)
+   ("C-c s i" . counsel-imenu)
    ("C-c s p" . counsel-git-grep)
    ("C-c s l" . counsel-locate))
   :bind

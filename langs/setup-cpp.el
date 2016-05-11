@@ -1,7 +1,10 @@
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
   :init
-  (setq c-default-style "linux"))
+  (setq c-default-style "linux")
+  (add-hook 'c-mode-hook 'init-company)
+  (add-hook 'c++-mode-hook 'init-company)
+  (add-hook 'c++-mode-hook 'init-semantic-stickyfunc-enhance))
 
 ;; (use-package company-c-headers
 ;;   :defer 8
