@@ -9,7 +9,9 @@
 
 ;; packages repositories
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -36,8 +38,6 @@
   :ensure async
   :init
   (async-bytecomp-package-mode 1))
-
-
 
 ;; basic settings
 (add-to-list 'load-path (expand-file-name "core" dotfiles-dir))
