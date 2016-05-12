@@ -6,12 +6,15 @@
   (use-package ob-sed        :ensure org)
   (use-package ob-sql        :ensure org)
   (use-package ob-ruby       :ensure org)
-  (use-package ob-ditaa      :ensure org)
   (use-package ob-shell      :ensure org)
   (use-package ob-python     :ensure org)
   (use-package ob-plantuml   :ensure org)  
   (use-package ob-emacs-lisp :ensure org)
-  
+  (use-package ob-ditaa
+    :ensure org
+    :init
+    (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0_9.jar"))
+
   (use-package ob            :ensure org
     :init
     (org-babel-do-load-languages
@@ -27,8 +30,7 @@
        (python     . t)
        (plantuml   . t)
        (emacs-lisp . t))
-     ))
-  )
+     )))
 
 (defun init-org-export ()
   "settings for export"

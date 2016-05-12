@@ -98,6 +98,8 @@
   (setq helm-move-to-line-cycle-in-source t)
   (setq helm-mode-fuzzy-match t)
   (setq helm-completion-in-region-fuzzy-match t)
+  :bind
+  (("C-x C-b" . helm-mini))
   :config
   (global-unset-key (kbd "C-x c"))
   (global-set-key (kbd "C-c h") 'helm-command-prefix))
