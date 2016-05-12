@@ -19,9 +19,10 @@ subprocess."
 (defun init-robe ()
   (use-package robe
     :init
+    (robe-mode)
+    :config
     (eval-after-load 'company
-      '(push 'company-robe company-backends))
-    (robe-mode))
+      '(push 'company-robe company-backends)))
   )
 
 (use-package ruby-mode

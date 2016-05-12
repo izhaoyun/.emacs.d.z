@@ -10,10 +10,11 @@
   (add-hook 'c-mode-common-hook 'init-company)
   (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance))
 
-;; (use-package company-c-headers
-;;   :defer 8
-;;   :config
-;;   (add-to-list 'company-backends 'company-c-headers))
+(use-package company-c-headers
+  :config
+  (eval-after-load 'company
+    '(push 'company-c-headers company-backends)
+    ))
 
 (use-package ggtags
   :bind
@@ -28,6 +29,7 @@
   :init
   (ggtags-mode 1)
   (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+  (setq-local eldoc-documentation-function #'ggtags-eldoc-function)
   (add-hook 'c-mode-common-hook
             (lambda ()
               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
