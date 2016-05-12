@@ -61,7 +61,7 @@
 
 ;; list buffers: ibuffer
 (defalias 'list-buffers 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))

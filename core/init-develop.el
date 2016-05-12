@@ -59,6 +59,12 @@
   :init
   (yas-global-mode 1))
 
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode)
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
 (use-package projectile
   :diminish projectile-mode
   :init
