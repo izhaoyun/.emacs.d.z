@@ -28,6 +28,7 @@
 
 (setq load-prefer-newer t)
 
+;; byte-compile
 (defun recompile-elisp-file ()
   (interactive)
   (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
