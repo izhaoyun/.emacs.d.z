@@ -28,16 +28,15 @@
 
 (setq load-prefer-newer t)
 
-(use-package auto-compile
-  :init
-  (setq auto-compile-display-buffer nil)
-  (auto-compile-on-save-mode)
-  (auto-compile-on-load-mode))
+(defun recompile-elisp-file ()
+  (interactive)
+  (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
+    (let ((byte-file (concat buffer-file-name "\\.elc")))
+      (if (or (not (file-exists-p byte-file))
+              (file-newer-than-file-p buffer-file-name byte-file))
+          (byte-compile-file buffer-file-name)))))
 
-(use-package async-bytecomp
-  :ensure async
-  :init
-  (async-bytecomp-package-mode 1))
+(add-hook 'after-save-hook #'recompile-elisp-file)
 
 ;; basic settings
 (add-to-list 'load-path (expand-file-name "core" dotfiles-dir))
