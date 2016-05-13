@@ -2,8 +2,7 @@
   (use-package company
     :init
     (setq company-show-numbers t)
-    (company-mode 1)
-    )
+    (company-mode 1))
 )
 
 (defun init-auto-complete ()
@@ -18,7 +17,7 @@
   :bind
   (("C-x g" . magit-status)
    ("C-x G" . magit-status-with-prefix)))
-  
+
 (defun init-comment-dwim-2 ()
   (use-package comment-dwim-2
     :bind
