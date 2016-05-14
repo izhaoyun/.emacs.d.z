@@ -12,13 +12,11 @@
     (ac-config-default))
   )
 
-;; (defun init-magit ()
 (use-package magit
   :defer t
   :bind
   (("C-x g" . magit-status)
    ("C-x G" . magit-status-with-prefix)))
-;; )
 
 (defun init-comment-dwim-2 ()
   (use-package comment-dwim-2
@@ -58,11 +56,11 @@
   :init
   (yas-global-mode 1))
 
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode)
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+(defun init-flycheck ()
+  (use-package flycheck
+    :init
+    (flycheck-mode))
+  )
 
 (use-package projectile
   :diminish projectile-mode
@@ -98,5 +96,6 @@
 (add-hook 'prog-mode-hook 'init-clean-aindent-mode)
 (add-hook 'prog-mode-hook 'init-dtrt-indent)
 (add-hook 'prog-mode-hook 'init-ws-butler)
+(add-hook 'prog-mode-hook 'init-flycheck)
 
 (provide 'init-develop)
