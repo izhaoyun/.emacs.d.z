@@ -36,7 +36,7 @@
   (setq counsel-find-file-at-point t)
   (setq ivy-count-format "(%d/%d) ")
   :bind
-  (("C-s" . swiper)
+  (("C-s" . counsel-grep-or-swiper)
    ("C-r" . ivy-resume)
    ("M-x" . counsel-M-x)
    ("M-y" . counsel-yank-pop)
@@ -46,7 +46,10 @@
    ("C-c s g" . counsel-git)
    ("C-c s i" . counsel-imenu)
    ("C-c s p" . counsel-git-grep)
-   ("C-c s l" . counsel-locate))
+   ("C-c s l" . counsel-locate)
+   ("C-c s t" . counsel-tmm)            ; menubar
+   ("C-c s r" . counsel-linux-app)      ; run linux app
+   )
   :bind
   (:map help-map
         ("b" . counsel-descbinds)
@@ -56,7 +59,7 @@
   :init
   (ivy-mode))
 
-;; (use-package hydra)
+(use-package hydra)
 
 (use-package which-key
   :defer 3
@@ -90,19 +93,6 @@
     (setq ace-pinyin-use-avy t)
     (ace-pinyin-global-mode))
   )
-
-(use-package smartparens-config
-  :ensure smartparens
-  :diminish smartparens-mode
-  :init
-  (show-smartparens-global-mode +1)
-  (smartparens-global-mode 1)
-  ;; when you press RET, the curly braces automatically add another
-  ;; newline
-  (sp-with-modes '(c-mode c++-mode)
-    (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
-    (sp-local-pair "/*" "*/" :post-handlers '((" | " "SPC")
-                                              ("* ||\n[i]" "RET")))))
 
 (use-package server
   :config

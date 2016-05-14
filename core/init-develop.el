@@ -18,70 +18,51 @@
   (("C-x g" . magit-status)
    ("C-x G" . magit-status-with-prefix)))
 
-(defun init-comment-dwim-2 ()
-  (use-package comment-dwim-2
-    :bind
-    ("M-;" . comment-dwim-2))
-  )
+(use-package comment-dwim-2
+  :bind
+  ("M-;" . comment-dwim-2))
 
-(defun init-autofill-only-comments ()
-  (auto-fill-mode 1)
-  (setq comment-auto-fill-only-comments t)
-  )
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (auto-fill-mode 1)
+            (setq comment-auto-fill-only-comments t)))
 
-(defun init-clean-aindent-mode ()
-  (use-package clean-aindent-mode
-    :init
-    (clean-aindent-mode 1))
-  )
+(use-package clean-aindent-mode
+  :init
+  (clean-aindent-mode 1))
 
-(defun init-dtrt-indent ()
-  (use-package dtrt-indent
-    :init
-    (dtrt-indent-mode 1))
-  )
+(use-package dtrt-indent
+  :init
+  (dtrt-indent-mode 1))
 
-(defun init-yafolding ()
-  (use-package yafolding)
-  )
-
-(defun init-ws-butler ()
-  (use-package ws-butler
-    :diminish ws-butler-mode
-    :init
-    (ws-butler-mode))
-  )
+(use-package ws-butler
+  :diminish ws-butler-mode
+  :init
+  (ws-butler-mode))
 
 (use-package yasnippet
   :init
   (yas-global-mode 1))
 
-(defun init-flycheck ()
-  (use-package flycheck
-    :init
-    (flycheck-mode))
-  )
+(use-package indent-guide
+  :diminish indent-guide-mode
+  :init
+  (indent-guide-global-mode))
+
+;;(defun init-flycheck ()
+;;  (use-package flycheck
+;;    :init
+;;    (flycheck-mode))
+;;  )
 
 (use-package projectile
   :diminish projectile-mode
   :init
+  (projectile-global-mode)
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
-  (projectile-global-mode)
   :config)
-
-;; (defun init-highlight-indentation ()
-;;   (use-package highlight-indentation
-;;     :diminish (highlight-indentation-mode
-;;                highlight-indentation-current-column-mode)
-;;     :init
-;;     (highlight-indentation-mode 1)
-;;     (highlight-indentation-current-column-mode 1)
-;;     :config
-;;     (set-face-background 'highlight-indentation-face "#e3e3d3")
-;;     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3"))
-;; )
 
 (defun init-semantic-stickyfunc-enhance ()
   (use-package stickyfunc-enhance
@@ -89,20 +70,5 @@
     (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
     (semantic-mode 1))
   )
-
-(defun init-indent-guide ()
-  (use-package indent-guide
-    :init
-    (indent-guide-global-mode))
-  )
-  
-(add-hook 'prog-mode-hook 'init-autofill-only-comments)
-(add-hook 'prog-mode-hook 'init-comment-dwim-2)
-;; (add-hook 'prog-mode-hook 'init-highlight-indentation)
-(add-hook 'prog-mode-hook 'init-indent-guide)
-(add-hook 'prog-mode-hook 'init-clean-aindent-mode)
-(add-hook 'prog-mode-hook 'init-dtrt-indent)
-(add-hook 'prog-mode-hook 'init-ws-butler)
-(add-hook 'prog-mode-hook 'init-flycheck)
 
 (provide 'init-develop)

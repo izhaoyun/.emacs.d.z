@@ -43,11 +43,24 @@
 ;; (setq electric-pair-pairs '((?\" . ?\")
 ;;                             (?\{ . ?\})))
 ;; (electric-pair-mode 1)
+
 ;; auto highlight parenthesis
 (setq show-paren-style 'expression)
-;;(set-face-background 'show-paren-match )
 (custom-set-faces '(show-paren-match ((((class color) (background light)) (:background "yellow1")))))
 (show-paren-mode 1)
+
+(use-package smartparens-config
+  :ensure smartparens
+  :diminish smartparens-mode
+  :init
+  (show-smartparens-global-mode 1)
+  (smartparens-global-mode 1)
+  ;; when you press RET, the curly braces automatically add another
+  ;; newline
+  (sp-with-modes '(c-mode c++-mode)
+    (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
+    (sp-local-pair "/*" "*/" :post-handlers '((" | " "SPC")
+                                              ("* ||\n[i]" "RET")))))
 
 ;; (icomplete-mode t)
 (setq read-buffer-completion-ignore-case t)
@@ -83,6 +96,6 @@
 ;; miscellaneous
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq gc-cons-threshold (* 100 1024 1024))
+(setq gc-cons-threshold 104857600)
 
 (provide 'setup-custom)

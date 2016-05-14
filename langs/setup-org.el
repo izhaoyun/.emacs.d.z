@@ -1,3 +1,7 @@
+(setq sentence-end
+      "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end-double-space nil)
+
 (defun init-org-babel ()
   "settings for org-babel."
   (use-package ob-C          :ensure org)
