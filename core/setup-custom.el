@@ -28,12 +28,6 @@
 (setq make-backup-files nil)
 (setq read-file-name-completion-ignore-case t)
 
-;; tabs, spaces, lines and parenthesis
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-;; (setq-default tab-always-indent 'complete)
-(global-set-key (kbd "RET") 'newline-and-indent)
-
 (setq sentence-end-double-space nil)
 (setq truncate-partial-width-windows nil)
 (setq-default indicate-empty-lines t)
@@ -74,7 +68,7 @@
 
 ;; list buffers: ibuffer
 (defalias 'list-buffers 'ibuffer)
-;; (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))

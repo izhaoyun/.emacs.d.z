@@ -50,7 +50,7 @@
 (require 'setup-org)
 (require 'setup-cpp)
 ;;(require 'setup-ruby)
-;;(require 'setup-python)
+(require 'setup-python)
 ;;(require 'setup-go)
 
 ;;; init.el ends here
