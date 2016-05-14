@@ -9,8 +9,10 @@
   (use-package auto-complete-config
     :ensure auto-complete
     :init
-    (ac-config-default))
+    (ac-config-default)
+    (auto-complete-mode))
   )
+(add-hook 'emacs-lisp-mode-hook 'init-auto-complete)
 
 (use-package magit
   :defer t
@@ -18,22 +20,34 @@
   (("C-x g" . magit-status)
    ("C-x G" . magit-status-with-prefix)))
 
-(use-package comment-dwim-2
-  :bind
-  ("M-;" . comment-dwim-2))
+(defun init-comment ()
+  (use-package comment-dwim-2
+    :bind
+    ("M-;" . comment-dwim-2)
+    )
+  ;; auto fill only comments
+  (auto-fill-mode 1)
+  (setq comment-auto-fill-only-comments t)
+  )
+(add-hook 'prog-mode-hook 'init-comment)
 
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (auto-fill-mode 1)
-            (setq comment-auto-fill-only-comments t)))
+;; indentation
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 (use-package clean-aindent-mode
   :init
   (clean-aindent-mode 1))
 
 (use-package dtrt-indent
-  :init
+  :config
   (dtrt-indent-mode 1))
+
+(use-package indent-guide
+    :diminish indent-guide-mode
+    :init
+    (indent-guide-global-mode))
 
 (use-package ws-butler
   :diminish ws-butler-mode
@@ -43,11 +57,6 @@
 (use-package yasnippet
   :init
   (yas-global-mode 1))
-
-(use-package indent-guide
-  :diminish indent-guide-mode
-  :init
-  (indent-guide-global-mode))
 
 ;;(defun init-flycheck ()
 ;;  (use-package flycheck
