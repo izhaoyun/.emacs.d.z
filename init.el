@@ -9,7 +9,7 @@
 
 ;; packages repositories
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(;("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
@@ -49,8 +49,8 @@
 (add-to-list 'load-path (expand-file-name "langs" dotfiles-dir))
 (require 'setup-org)
 (require 'setup-cpp)
-(require 'setup-ruby)
-(require 'setup-python)
+;;(require 'setup-ruby)
+;;(require 'setup-python)
 ;;(require 'setup-go)
 
 ;;; init.el ends here

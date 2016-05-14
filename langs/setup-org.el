@@ -1,3 +1,7 @@
+(setq sentence-end
+      "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end-double-space nil)
+
 (defun init-org-babel ()
   "settings for org-babel."
   (use-package ob-C          :ensure org)
@@ -74,13 +78,31 @@ usually soft line-breaks"
     (setq org-latex-compiler "xelatex")
     :config
     (add-to-list 'org-export-filter-final-output-functions
-                 'ox-html-clear-single-linebreak-for-cjk)))
+                 'ox-html-clear-single-linebreak-for-cjk))
+  )
 
 (defun init-org-bullets ()
   (use-package org-bullets
     :ensure org-plus-contrib
     :init
-    (org-bullets-mode 1)))
+    (org-bullets-mode 1))
+  )
+
+(defun init-org-publish ()
+  (use-package ox-publish
+    :ensure org
+    :init
+    (setq org-publish-project-alist
+          '("org-notes"
+            :base-directory "~/org-notes/"
+            :base-extension "org"
+            :publishing-directory "~/public_html/"
+            :recursive t
+            :publishing-function org-html-publish-to-html
+            :auto-preamble t
+            ))
+    )
+  )
 
 (use-package org
   :mode (("\\.org$" . org-mode)
@@ -103,7 +125,8 @@ usually soft line-breaks"
   (add-to-list 'org-latex-packages-alist '("" "geometry"))
   (add-to-list 'org-latex-packages-alist '("" "tabularx"))
   (add-to-list 'org-latex-packages-alist '("" "tabu"))
-  
+
+  (add-hook 'org-mode-hook 'init-org-publish)
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
