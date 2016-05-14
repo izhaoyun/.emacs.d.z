@@ -3,7 +3,15 @@
   Python."
   (use-package anaconda-mode
     :init
-    (anaconda-mode))
+    (anaconda-mode)
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+    (use-package company-anaconda
+      :init
+      (eval-after-load "company"
+        '(add-to-list 'company-backends
+                      '(company-anaconda :with company-capf))))
+    )
   )
 
 (use-package python
