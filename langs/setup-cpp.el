@@ -6,15 +6,24 @@
   (setq c-default-style "linux")
   (setq indent-tabs-mode nil)
   (setq c-basic-offset 4)
-  (add-hook 'c-mode-common-hook 'hs-minor-mode)
-  (add-hook 'c-mode-common-hook 'init-company)
-  (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance))
 
-(use-package company-c-headers
-  :config
-  (eval-after-load 'company
-    '(push 'company-c-headers company-backends)
-    ))
+  (add-hook 'c-mode-common-hook 'hs-minor-mode)
+  ;; (add-hook 'c-mode-common-hook 'init-company)
+  (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
+  (add-hook 'c-mode-common-hook 'init-cmake-ide)
+  )
+
+(defun init-cmake-ide ()
+  ;; cmake-ide
+  (use-package cmake-ide
+    :init
+    (cmake-ide-setup))
+  )
+
+(use-package cmake-mode
+  :mode (("CMakeLists\\.txt$" . cmake-mode)
+         ("\\.cmake$" . cmake-mode))
+  )
 
 (use-package ggtags
   :bind
@@ -43,5 +52,6 @@
   (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
   (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
   (setq c-eldoc-buffer-regenerate-time 60))
+
 
 (provide 'setup-cpp)
