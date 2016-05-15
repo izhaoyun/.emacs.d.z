@@ -61,6 +61,38 @@
 
 (use-package hydra)
 
+(defhydra hydra-buffer-menu (:color pink
+                             :hint nil)
+  "
+^Mark^             ^Unmark^           ^Actions^          ^Search
+^^^^^^^^-----------------------------------------------------------------
+_m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
+_s_: save          _U_: unmark up     _b_: bury          _I_: isearch
+_d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
+_D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
+_~_: modified
+"
+  ("m" Buffer-menu-mark)
+  ("u" Buffer-menu-unmark)
+  ("U" Buffer-menu-backup-unmark)
+  ("d" Buffer-menu-delete)
+  ("D" Buffer-menu-delete-backwards)
+  ("s" Buffer-menu-save)
+  ("~" Buffer-menu-not-modified)
+  ("x" Buffer-menu-execute)
+  ("b" Buffer-menu-bury)
+  ("g" revert-buffer)
+  ("T" Buffer-menu-toggle-files-only)
+  ("O" Buffer-menu-multi-occur :color blue)
+  ("I" Buffer-menu-isearch-buffers :color blue)
+  ("R" Buffer-menu-isearch-buffers-regexp :color blue)
+  ("c" nil "cancel")
+  ("v" Buffer-menu-select "select" :color blue)
+  ("o" Buffer-menu-other-window "other-window" :color blue)
+  ("q" quit-window "quit" :color blue))
+
+(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+
 (use-package which-key
   :defer 3
   :diminish which-key-mode
@@ -70,29 +102,38 @@
 
 (use-package avy
   :bind
-  (("C-:" . avy-goto-char)
-   ("C-'" . avy-goto-char-2)
-   ("M-g f" . avy-goto-line)
-   ("M-g w" . avy-goto-word-1)
-   ("M-g e" . avy-goto-word-0)
-   ("M-p" . avy-pop-mark))
+  ("M-p" . avy-pop-mark)
   :commands avy-setup-default
   :init
   (avy-setup-default)
   (setq avy-all-windows nil)
   (setq avy-timeout-seconds 0.8)
-  (advice-add 'swiper :before 'avy-push-mark)
-  :config
-  (use-package ace-link
-    :init
-    (ace-link-setup-default))
-  (use-package ace-pinyin
-    :diminish ace-pinyin-mode
-    :commands ace-pinyin-global-mode
-    :init
-    (setq ace-pinyin-use-avy t)
-    (ace-pinyin-global-mode))
+  (advice-add 'swiper :before 'avy-push-mark))
+
+(defhydra hydra-avy (global-map "M-g a")
+  "Jump to things in Emacs tree-style.\n"
+  ("j" avy-goto-char)
+  ("J" avy-goto-char-2)
+  ("w" avy-goto-word-0)
+  ("W" avy-goto-word-1)
+  ("l" avy-goto-line)
+  ("c" avy-copy-line)
+  ("C" avy-copy-region)
+  ("m" avy-move-line)
+  ("M" avy-move-region)
+  ("q" nil)
   )
+
+(use-package ace-pinyin
+  :diminish ace-pinyin-mode
+  :commands ace-pinyin-global-mode
+  :init
+  (setq ace-pinyin-use-avy t)
+  (ace-pinyin-global-mode))
+
+(use-package ace-link
+  :init
+  (ace-link-setup-default))
 
 (use-package server
   :config

@@ -68,11 +68,12 @@
 (use-package projectile
   :diminish projectile-mode
   :init
-  (projectile-global-mode)
+  (setq projectile-verbose nil)
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
-  :config)
+  (projectile-global-mode)
+  )
 
 (defun init-semantic-stickyfunc-enhance ()
   (use-package stickyfunc-enhance
