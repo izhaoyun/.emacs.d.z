@@ -30,6 +30,7 @@
 (use-package swiper
   ;;  :defer 1
   :ensure counsel
+  :diminish ivy-mode
   :init
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
@@ -142,7 +143,8 @@ _~_: modified
     (server-start)))
 
 (use-package recentf
-  :init
+  :commands recentf-mode
+  :config
   (recentf-mode 1))
 
 (provide 'setup-utils)
