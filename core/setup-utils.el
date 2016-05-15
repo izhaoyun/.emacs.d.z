@@ -102,7 +102,8 @@ _~_: modified
 
 (use-package avy
   :bind
-  ("M-p" . avy-pop-mark)
+  (("C-:" . avy-goto-char)
+   ("M-p" . avy-pop-mark))
   :commands avy-setup-default
   :init
   (avy-setup-default)
