@@ -67,8 +67,8 @@
 (setq frame-title-format "%b - emacs")
 
 ;; list buffers: ibuffer
-(defalias 'list-buffers 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (defalias 'list-buffers 'ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
