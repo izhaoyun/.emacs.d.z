@@ -1,9 +1,9 @@
-(defun init-company ()
-  (use-package company
-    :init
-    (setq company-show-numbers t)
-    (company-mode 1))
-)
+;; (defun init-company ()
+;;   (use-package company
+;;     :init
+;;     (setq company-show-numbers t)
+;;     (company-mode 1))
+;; )
 
 (defun init-auto-complete ()
   (use-package auto-complete-config
@@ -17,9 +17,8 @@
 (use-package magit
   :defer t
   :bind
-  (("C-x g" . magit-status)
-   ("C-x G" . magit-status-with-prefix)))
-
+  ("C-x g" . magit-status))
+  
 (defun init-comment ()
   (use-package comment-dwim-2
     :bind
@@ -36,18 +35,21 @@
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(use-package clean-aindent-mode
-  :init
-  (clean-aindent-mode 1))
+(defun init-indent ()
+  (use-package clean-aindent-mode
+    :init
+    (clean-aindent-mode 1))
 
-(use-package dtrt-indent
-  :config
-  (dtrt-indent-mode 1))
+  (use-package dtrt-indent
+    :config
+    (dtrt-indent-mode 1))
 
-(use-package indent-guide
+  (use-package indent-guide
     :diminish indent-guide-mode
     :init
     (indent-guide-global-mode))
+  )
+(add-hook 'prog-mode-hook 'init-indent)
 
 (use-package ws-butler
   :diminish ws-butler-mode
@@ -55,10 +57,12 @@
   (ws-butler-mode))
 
 (use-package yasnippet
+  :commands yas-global-mode
   :init
   (yas-global-mode 1))
 
 (use-package flycheck
+  :commands global-flycheck-mode
   :init
   (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically
@@ -67,6 +71,7 @@
 
 (use-package projectile
   :diminish projectile-mode
+  :commands projectile-global-mode
   :init
   (setq projectile-verbose nil)
   (setq projectile-enable-caching t)
