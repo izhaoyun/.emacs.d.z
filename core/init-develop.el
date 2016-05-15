@@ -58,11 +58,12 @@
   :init
   (yas-global-mode 1))
 
-;;(defun init-flycheck ()
-;;  (use-package flycheck
-;;    :init
-;;    (flycheck-mode))
-;;  )
+(use-package flycheck
+  :init
+  (global-flycheck-mode)
+  (setq flycheck-check-syntax-automatically
+        '(mode-enabled save))
+  )
 
 (use-package projectile
   :diminish projectile-mode
