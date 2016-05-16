@@ -2,6 +2,16 @@
 (use-package cl-lib)
 (use-package dash)
 
+(use-package recentf
+  :commands recentf-mode
+  :config
+  (recentf-mode 1))
+
+(use-package server
+  :config
+  (unless (server-running-p)
+    (server-start)))
+
 (use-package winner
   :init
   (winner-mode))
@@ -136,15 +146,5 @@ _~_: modified
 (use-package ace-link
   :init
   (ace-link-setup-default))
-
-(use-package server
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
-(use-package recentf
-  :commands recentf-mode
-  :config
-  (recentf-mode 1))
 
 (provide 'setup-utils)
