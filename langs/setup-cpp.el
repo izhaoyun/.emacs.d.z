@@ -10,6 +10,7 @@
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
   ;; (add-hook 'c-mode-common-hook 'init-company)
   (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
+  (add-hook 'c-mode-common-hook 'init-cmake-mode)
   (add-hook 'c-mode-common-hook 'init-cmake-ide)
   (add-hook 'c-mode-common-hook 'init-ggtags)
   )
