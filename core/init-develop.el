@@ -31,11 +31,11 @@
 (add-hook 'prog-mode-hook 'init-comment)
 
 ;; indentation
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(global-set-key (kbd "RET") 'newline-and-indent)
-
 (defun init-indent ()
+  (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
+  (global-set-key (kbd "RET") 'newline-and-indent)
+
   (use-package clean-aindent-mode
     :init
     (clean-aindent-mode 1))
