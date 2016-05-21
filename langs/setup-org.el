@@ -115,7 +115,7 @@ usually soft line-breaks"
   :init
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
-  (add-hook 'org-mode-hook 'init-org-bullets)
+  ;; (add-hook 'org-mode-hook 'init-org-bullets)
 
   :config
   ;; alist of packages to be inserted in every LaTeX header.
@@ -125,6 +125,9 @@ usually soft line-breaks"
   (add-to-list 'org-latex-packages-alist '("" "geometry"))
   (add-to-list 'org-latex-packages-alist '("" "tabularx"))
   (add-to-list 'org-latex-packages-alist '("" "tabu"))
+  (add-to-list 'org-latex-packages-alist '("" "fancyhdr"))
+  (add-to-list 'org-latex-packages-alist '("" "natbib"))
+  (add-to-list 'org-latex-packages-alist '("" "titlesec"))
 
   (add-hook 'org-mode-hook 'init-org-publish)
   (add-hook 'org-mode-hook 'init-org-babel)
