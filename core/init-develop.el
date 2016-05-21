@@ -61,13 +61,15 @@
   :init
   (yas-global-mode 1))
 
-(use-package flycheck
-  :commands global-flycheck-mode
-  :init
-  (global-flycheck-mode)
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled save))
+(defun init-flycheck ()
+  (use-package flycheck
+    :commands flycheck-mode
+    :init
+    (flycheck-mode)
+    (setq flycheck-check-syntax-automatically
+          '(mode-enabled save)))
   )
+(add-hook 'prog-mode-hook 'init-flycheck)
 
 (use-package projectile
   :diminish projectile-mode
