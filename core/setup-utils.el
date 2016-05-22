@@ -1,45 +1,11 @@
-(use-package cl)
-(use-package cl-lib)
-(use-package dash)
-
-(use-package recentf
-  :commands recentf-mode
-  :config
-  (recentf-mode 1))
-
-(use-package server
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
-(use-package winner
-  :init
-  (winner-mode))
-
-(use-package window-numbering
-  :init
-  (window-numbering-mode))
-
-(use-package expand-region
-  :bind
-  ("C-=" . er/expand-region)
-  ("C--" . er/contract-region))
-
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :bind
-  ("C-z" . undo)
-  :init
-  (setq undo-tree-visualizer-diff t)
-  (setq undo-tree-visualizer-timestamps t)
-  (global-undo-tree-mode))
+(use-package hydra)
 
 (use-package swiper
   :ensure counsel
   :diminish ivy-mode
   :init
-  (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
+  (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :bind
   (("C-s" . counsel-grep-or-swiper)
@@ -53,8 +19,8 @@
    ("C-c s i" . counsel-imenu)
    ("C-c s p" . counsel-git-grep)
    ("C-c s l" . counsel-locate)
-   ("C-c s t" . counsel-tmm)            ; menubar
-   ("C-c s r" . counsel-linux-app)      ; run linux app
+   ("C-c s t" . counsel-tmm)
+   ("C-c s r" . counsel-linux-app)
    )
   :bind
   (:map help-map
@@ -64,8 +30,6 @@
         ("s" . counsel-info-lookup-symbol))
   :init
   (ivy-mode))
-
-(use-package hydra)
 
 (use-package which-key
   :defer 3
@@ -86,8 +50,7 @@
   (setq avy-timeout-seconds 0.8)
   (advice-add 'swiper :before 'avy-push-mark)
 
-  (defhydra hydra-avy (:color pink
-                       :hint nil)
+  (defhydra hydra-avy (:color pink)
     "
 ^Goto^                ^Copy/Move^               ^Others^
 ^^^---------------------------------------------------------
@@ -106,7 +69,6 @@ _s_: subword         _M_: move region
     ("m" avy-move-line)
     ("M" avy-move-region)
     ("q" nil))
-
   (global-set-key (kbd "M-g a") 'hydra-avy/body))
 
 (use-package ace-pinyin
