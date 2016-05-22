@@ -20,17 +20,16 @@
   ("C-x g" . magit-status))
   
 (defun init-comment ()
-  (use-package comment-dwim-2
-    :bind
-    ("M-;" . comment-dwim-2)
-    )
   ;; auto fill only comments
   (auto-fill-mode 1)
   (setq comment-auto-fill-only-comments t)
+
+  (use-package comment-dwim-2
+    :bind
+    ("M-;" . comment-dwim-2))
   )
 (add-hook 'prog-mode-hook 'init-comment)
 
-;; indentation
 (defun init-indent ()
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)

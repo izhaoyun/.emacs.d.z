@@ -16,35 +16,30 @@
   :init
   (winner-mode))
 
+(use-package window-numbering
+  :init
+  (window-numbering-mode))
+
 (use-package expand-region
   :bind
   ("C-=" . er/expand-region)
   ("C--" . er/contract-region))
 
-(use-package rainbow-delimiters
-  :init
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-
-(use-package window-numbering
-  :init
-  (window-numbering-mode))
-
 (use-package undo-tree
-  ;; :defer 8
   :diminish undo-tree-mode
+  :bind
+  ("C-z" . undo)
   :init
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-visualizer-timestamps t)
   (global-undo-tree-mode))
 
 (use-package swiper
-  ;;  :defer 1
   :ensure counsel
   :diminish ivy-mode
   :init
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
-  (setq counsel-find-file-at-point t)
   (setq ivy-count-format "(%d/%d) ")
   :bind
   (("C-s" . counsel-grep-or-swiper)
@@ -72,44 +67,13 @@
 
 (use-package hydra)
 
-(defhydra hydra-buffer-menu (:color pink
-                             :hint nil)
-  "
-^Mark^             ^Unmark^           ^Actions^          ^Search
-^^^^^^^^-----------------------------------------------------------------
-_m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
-_s_: save          _U_: unmark up     _b_: bury          _I_: isearch
-_d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
-_D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
-_~_: modified
-"
-  ("m" Buffer-menu-mark)
-  ("u" Buffer-menu-unmark)
-  ("U" Buffer-menu-backup-unmark)
-  ("d" Buffer-menu-delete)
-  ("D" Buffer-menu-delete-backwards)
-  ("s" Buffer-menu-save)
-  ("~" Buffer-menu-not-modified)
-  ("x" Buffer-menu-execute)
-  ("b" Buffer-menu-bury)
-  ("g" revert-buffer)
-  ("T" Buffer-menu-toggle-files-only)
-  ("O" Buffer-menu-multi-occur :color blue)
-  ("I" Buffer-menu-isearch-buffers :color blue)
-  ("R" Buffer-menu-isearch-buffers-regexp :color blue)
-  ("c" nil "cancel")
-  ("v" Buffer-menu-select "select" :color blue)
-  ("o" Buffer-menu-other-window "other-window" :color blue)
-  ("q" quit-window "quit" :color blue))
-
-(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
-
 (use-package which-key
   :defer 3
   :diminish which-key-mode
   :init
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom))
+  (which-key-setup-side-window-right-bottom)
+  (setq which-key-use-C-h-commands nil))
 
 (use-package avy
   :bind
@@ -120,21 +84,30 @@ _~_: modified
   (avy-setup-default)
   (setq avy-all-windows nil)
   (setq avy-timeout-seconds 0.8)
-  (advice-add 'swiper :before 'avy-push-mark))
+  (advice-add 'swiper :before 'avy-push-mark)
 
-(defhydra hydra-avy (global-map "M-g a")
-  "Jump to things in Emacs tree-style.\n"
-  ("j" avy-goto-char)
-  ("J" avy-goto-char-2)
-  ("w" avy-goto-word-0)
-  ("W" avy-goto-word-1)
-  ("l" avy-goto-line)
-  ("c" avy-copy-line)
-  ("C" avy-copy-region)
-  ("m" avy-move-line)
-  ("M" avy-move-region)
-  ("q" nil)
-  )
+  (defhydra hydra-avy (:color pink
+                       :hint nil)
+    "
+^Goto^                ^Copy/Move^               ^Others^
+^^^---------------------------------------------------------
+_c_: char            _y_: copy line            _q_: quit
+_w_: word            _Y_: copy region
+_l_: line            _m_: move line
+_s_: subword         _M_: move region
+
+"
+    ("c" avy-goto-char)
+    ("w" avy-goto-word-0)
+    ("l" avy-goto-line)
+    ("s" avy-goto-subword-0)
+    ("y" avy-copy-line)
+    ("Y" avy-copy-region)
+    ("m" avy-move-line)
+    ("M" avy-move-region)
+    ("q" nil))
+
+  (global-set-key (kbd "M-g a") 'hydra-avy/body))
 
 (use-package ace-pinyin
   :diminish ace-pinyin-mode
