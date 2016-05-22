@@ -10,7 +10,6 @@
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
   ;; (add-hook 'c-mode-common-hook 'init-company)
   (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
-  (add-hook 'c-mode-common-hook 'init-cmake-mode)
   (add-hook 'c-mode-common-hook 'init-cmake-ide)
   (add-hook 'c-mode-common-hook 'init-ggtags)
   )
@@ -20,12 +19,6 @@
   (use-package cmake-ide
     :init
     (cmake-ide-setup))
-  )
-
-(defun init-cmake-mode ()
-  (use-package cmake-mode
-    :mode (("CMakeLists\\.txt$" . cmake-mode)
-           ("\\.cmake$" . cmake-mode)))
   )
 
 (defun init-ggtags ()
@@ -55,5 +48,6 @@
 ;;   (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
 ;;   (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode))
 
+;; (use-package gnuplot)
 
 (provide 'setup-cpp)
