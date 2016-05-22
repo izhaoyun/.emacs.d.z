@@ -18,7 +18,7 @@
   :defer t
   :bind
   ("C-x g" . magit-status))
-  
+
 (defun init-comment ()
   ;; auto fill only comments
   (auto-fill-mode 1)
