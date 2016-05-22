@@ -21,12 +21,6 @@
     (cmake-ide-setup))
   )
 
-(defun init-cmake-mode ()
-  (use-package cmake-mode
-    :mode (("CMakeLists\\.txt$" . cmake-mode)
-           ("\\.cmake$" . cmake-mode)))
-  )
-
 (defun init-ggtags ()
   (use-package ggtags
     :bind
@@ -54,5 +48,6 @@
 ;;   (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
 ;;   (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode))
 
+;; (use-package gnuplot)
 
 (provide 'setup-cpp)

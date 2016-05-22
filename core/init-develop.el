@@ -20,22 +20,21 @@
   ("C-x g" . magit-status))
   
 (defun init-comment ()
-  (use-package comment-dwim-2
-    :bind
-    ("M-;" . comment-dwim-2)
-    )
   ;; auto fill only comments
   (auto-fill-mode 1)
   (setq comment-auto-fill-only-comments t)
+
+  (use-package comment-dwim-2
+    :bind
+    ("M-;" . comment-dwim-2))
   )
 (add-hook 'prog-mode-hook 'init-comment)
 
-;; indentation
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(global-set-key (kbd "RET") 'newline-and-indent)
-
 (defun init-indent ()
+  (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
+  (global-set-key (kbd "RET") 'newline-and-indent)
+
   (use-package clean-aindent-mode
     :init
     (clean-aindent-mode 1))
@@ -61,13 +60,15 @@
   :init
   (yas-global-mode 1))
 
-(use-package flycheck
-  :commands global-flycheck-mode
-  :init
-  (global-flycheck-mode)
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled save))
+(defun init-flycheck ()
+  (use-package flycheck
+    :commands flycheck-mode
+    :init
+    (flycheck-mode)
+    (setq flycheck-check-syntax-automatically
+          '(mode-enabled save)))
   )
+(add-hook 'prog-mode-hook 'init-flycheck)
 
 (use-package projectile
   :diminish projectile-mode
