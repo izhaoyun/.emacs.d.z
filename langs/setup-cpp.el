@@ -1,21 +1,4 @@
-(use-package cc-mode
-  :mode (("\\.h\\'" . c++-mode))
-  :bind
-  ("RET" . newline-and-indent)
-  :init
-  (setq c-default-style "linux")
-  (setq indent-tabs-mode nil)
-  (setq c-basic-offset 4)
-
-  (add-hook 'c-mode-common-hook 'hs-minor-mode)
-  (add-hook 'c-mode-common-hook 'init-company-for-c/c++)
-  (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
-  (add-hook 'c-mode-common-hook 'init-cmake-ide)
-  (add-hook 'c-mode-common-hook 'init-ggtags)
-  )
-
 (defun init-cmake-ide ()
-  ;; cmake-ide
   (use-package cmake-ide
     :init
     (cmake-ide-setup))
@@ -29,8 +12,7 @@
     (setq company-backends (delete 'company-semantic company-backends)))
   (use-package company-c-headers
     :init
-    (add-to-list 'company-backends 'company-c-headers)
-    )
+    (add-to-list 'company-backends 'company-c-headers))
   )
 
 (defun init-ggtags ()
@@ -61,5 +43,20 @@
 ;;   (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode))
 
 ;; (use-package gnuplot)
+
+(use-package cc-mode
+  :mode (("\\.h\\'" . c++-mode))
+  :bind
+  ("RET" . newline-and-indent)
+  :init
+  (setq c-default-style "linux")
+  (setq indent-tabs-mode nil)
+  (setq c-basic-offset 4)
+
+  (add-hook 'c-mode-common-hook 'hs-minor-mode)
+  (add-hook 'c-mode-common-hook 'init-company-for-c/c++)
+  (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
+  ;; (add-hook 'c-mode-common-hook 'init-cmake-ide)
+  (add-hook 'c-mode-common-hook 'init-ggtags))
 
 (provide 'setup-cpp)

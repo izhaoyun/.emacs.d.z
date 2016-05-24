@@ -33,6 +33,7 @@
     (clean-aindent-mode 1))
 
   (use-package dtrt-indent
+    :diminish drtt-indent
     :config
     (dtrt-indent-mode 1))
 
