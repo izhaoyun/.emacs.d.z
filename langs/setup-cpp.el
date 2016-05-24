@@ -8,7 +8,7 @@
   (setq c-basic-offset 4)
 
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
-  ;; (add-hook 'c-mode-common-hook 'init-company)
+  (add-hook 'c-mode-common-hook 'init-company-for-c/c++)
   (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
   (add-hook 'c-mode-common-hook 'init-cmake-ide)
   (add-hook 'c-mode-common-hook 'init-ggtags)
@@ -19,6 +19,18 @@
   (use-package cmake-ide
     :init
     (cmake-ide-setup))
+  )
+
+(defun init-company-for-c/c++ ()
+  (use-package company
+    :init
+    (setq company-show-numbers t)
+    (company-mode 1)
+    (setq company-backends (delete 'company-semantic company-backends)))
+  (use-package company-c-headers
+    :init
+    (add-to-list 'company-backends 'company-c-headers)
+    )
   )
 
 (defun init-ggtags ()
@@ -36,7 +48,7 @@
     :init
     (ggtags-mode 1)
     (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
-    (setq-local eldoc-documentation-function #'ggtags-eldoc-function)
+    ;; (setq-local eldoc-documentation-function #'ggtags-eldoc-function)
     (setq-local hippie-expand-try-functions-list
                 (cons 'ggtags-try-complete-tag hippie-expand-try-functions-list)))
   )
