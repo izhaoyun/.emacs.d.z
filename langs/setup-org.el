@@ -12,8 +12,11 @@
   (use-package ob-ruby       :ensure org)
   (use-package ob-shell      :ensure org)
   (use-package ob-python     :ensure org)
-  (use-package ob-plantuml   :ensure org)  
   (use-package ob-emacs-lisp :ensure org)
+  (use-package ob-plantuml
+    :ensure org
+    :init
+    (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar"))
   (use-package ob-ditaa
     :ensure org
     :init
