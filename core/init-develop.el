@@ -55,13 +55,12 @@
   :init
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
-  (eval-after-load 'company-mode
+  :config
     (use-package company-yasnippet
       :ensure company
       :commands company-yasnippet
       :bind
       ("C-c ; y" . company-yasnippet))
-    )
   )
 
 
@@ -70,7 +69,11 @@
   :init
   (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically
-        '(mode-enabled save)))
+        '(mode-enabled save))
+  :config
+  (use-package flycheck-pos-tip
+    :init
+    (flycheck-pos-tip-mode)))
 
 (use-package projectile
   :diminish projectile-mode
