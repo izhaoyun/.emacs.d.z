@@ -9,7 +9,7 @@
 
 ;; packages repositories
 (require 'package)
-(setq package-archives '(;("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
@@ -27,17 +27,6 @@
 (require 'bind-key)
 
 (setq load-prefer-newer t)
-
-;; byte-compile
-(defun recompile-elisp-file ()
-  (interactive)
-  (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
-    (let ((byte-file (concat buffer-file-name "\\.elc")))
-      (if (or (not (file-exists-p byte-file))
-              (file-newer-than-file-p buffer-file-name byte-file))
-          (byte-compile-file buffer-file-name)))))
-
-(add-hook 'after-save-hook #'recompile-elisp-file)
 
 ;; basic settings
 (add-to-list 'load-path (expand-file-name "core" dotfiles-dir))

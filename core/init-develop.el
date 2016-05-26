@@ -64,15 +64,13 @@
     )
   )
 
-(defun init-flycheck ()
-  (use-package flycheck
-    :commands flycheck-mode
-    :init
-    (flycheck-mode)
-    (setq flycheck-check-syntax-automatically
-          '(mode-enabled save)))
-  )
-(add-hook 'prog-mode-hook 'init-flycheck)
+
+(use-package flycheck
+  :commands   flycheck-mode
+  :init
+  (global-flycheck-mode)
+  (setq flycheck-check-syntax-automatically
+        '(mode-enabled save)))
 
 (use-package projectile
   :diminish projectile-mode
