@@ -5,24 +5,23 @@
   :bind
   ("C-x g" . magit-status))
 
-(defun init-comment ()
-  ;; auto fill only comments
+(defun auto-fill-comments ()
   (auto-fill-mode 1)
   (setq comment-auto-fill-only-comments t)
-
-  (use-package comment-dwim-2
-    n    :bind
-    ("M-;" . comment-dwim-2))
   )
-(add-hook 'prog-mode-hook 'init-comment)
+(add-hook 'prog-mode-hook 'auto-fill-comments)
 
-  (setq-default tab-width 4)
-  (setq-default indent-tabs-mode nil)
-  (global-set-key (kbd "RET") 'newline-and-indent)
+(use-package comment-dwim-2
+  :bind
+  ("M-;" . comment-dwim-2))
 
-  (use-package clean-aindent-mode
-    :init
-    (clean-aindent-mode 1))
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+(use-package clean-aindent-mode
+  :init
+  (clean-aindent-mode 1))
 
 (use-package dtrt-indent
   :diminish dtrt-indent-mode

@@ -73,7 +73,7 @@ usually soft line-breaks"
   (defun ox-html-clear-single-linebreak-for-cjk (string backend info)
     (when (org-export-derived-backend-p backend 'html)
       (clear-single-linebreak-in-cjk-string string)))
-  
+
   (use-package ox
     :ensure org
     :init
@@ -158,6 +158,7 @@ usually soft line-breaks"
 
 (use-package calfw)
 (use-package calfw-org
-  :ensure calfw)
+  :ensure calfw
+  :defer t)
 
 (provide 'setup-org)
