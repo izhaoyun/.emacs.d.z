@@ -156,4 +156,8 @@ usually soft line-breaks"
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
+(use-package calfw)
+(use-package calfw-org
+  :ensure calfw)
+
 (provide 'setup-org)

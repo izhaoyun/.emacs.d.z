@@ -1,3 +1,5 @@
+(setq vc-handled-backends nil)
+
 (use-package magit
   :defer t
   :bind
@@ -9,12 +11,11 @@
   (setq comment-auto-fill-only-comments t)
 
   (use-package comment-dwim-2
-    :bind
+    n    :bind
     ("M-;" . comment-dwim-2))
   )
 (add-hook 'prog-mode-hook 'init-comment)
 
-(defun init-indent ()
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
   (global-set-key (kbd "RET") 'newline-and-indent)
@@ -23,17 +24,19 @@
     :init
     (clean-aindent-mode 1))
 
-  (use-package dtrt-indent
-    :diminish drtt-indent
-    :config
-    (dtrt-indent-mode 1))
+(use-package dtrt-indent
+  :diminish dtrt-indent-mode
+  :config
+  (dtrt-indent-mode 1))
 
-  (use-package indent-guide
-    :diminish indent-guide-mode
-    :init
-    (indent-guide-global-mode))
-  )
-(add-hook 'prog-mode-hook 'init-indent)
+(use-package indent-guide
+  :diminish indent-guide-mode
+  :init
+  (indent-guide-global-mode))
+
+(use-package aggressive-indent
+  :config
+  (global-aggressive-indent-mode 1))
 
 (use-package ws-butler
   :diminish ws-butler-mode
@@ -84,4 +87,4 @@
     (semantic-mode 1))
   )
 
-(provide 'init-develop)
+(provide 'setup-develop)

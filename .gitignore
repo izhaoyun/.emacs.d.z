@@ -1,4 +1,5 @@
 # dirs
+irony/*
 el-get/*
 elpa/*
 auto-save-list/*
