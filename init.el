@@ -27,6 +27,10 @@
   (auto-compile-on-save-mode))
 (setq load-prefer-newer t)
 
+(defun install-pkgs ()
+  "Install all require packages."
+  (unless package-archive-contents))
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
