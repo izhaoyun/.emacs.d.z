@@ -1,12 +1,3 @@
-(defun init-auto-complete ()
-  (use-package auto-complete-config
-    :ensure auto-complete
-    :init
-    (ac-config-default)
-    (auto-complete-mode))
-  )
-(add-hook 'emacs-lisp-mode-hook 'init-auto-complete)
-
 (use-package magit
   :defer t
   :bind
