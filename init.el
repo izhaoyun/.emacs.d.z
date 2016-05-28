@@ -1,12 +1,9 @@
 (require 'package)
 (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")
-                         ("org"   . "http://orgmode.org/elpa/")))
+                         ("melpa" . "http://melpa.org/packages/")))
+
 (package-initialize)
 (setq package-enable-at-startup nil)
-
-(add-to-list 'load-path "~/.emacs.d/site-lisp/org-mode/lisp")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/org-mode/contrib/lisp")
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -23,12 +20,13 @@
 (setq load-prefer-newer t)
 
 (defun install-pkgs (pkgs-list)
-   "Install all require packages."
-   (dolist (package pkgs-list)
-     (unless (package-installed-p package)
-       (package-install package)))
-   )
-
+  "Install all require packages."
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (dolist (package pkgs-list)
+    (unless (package-installed-p package)
+      (package-install package)))
+  )
 
 ;; (setq sentence-end-double-space nil)
 ;; (setq truncate-partial-width-windows nil)
@@ -162,12 +160,12 @@
 
 (add-to-list 'load-path "~/.emacs.d/core")
 (require 'setup-editing)
-;; ;; (require 'setup-utils)
+(require 'setup-utils)
 ;; ;; (require 'setup-develop)
 
 ;; ;; langs settings
-;; (add-to-list 'load-path "~/.emacs.d/langs")
-;; ;; (require 'setup-org)
+(add-to-list 'load-path "~/.emacs.d/langs")
+(require 'setup-org)
 ;; ;; (require 'setup-cpp)
 ;; ;; (require 'setup-ruby)
 ;; ;; (require 'setup-python)
