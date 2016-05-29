@@ -188,6 +188,4 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   :config
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
-
-
 (provide 'setup-utils)

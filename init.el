@@ -13,8 +13,9 @@
 
 (eval-when-compile
   (require 'use-package))
-(setq use-package-verbose t)
 (setq use-package-always-ensure t)
+(require 'diminish)
+(require 'bind-key)
 
 (setq load-prefer-newer t)
 
@@ -43,13 +44,12 @@
   )
 
 (add-to-list 'load-path "~/.emacs.d/core")
-(eval-when-compile
-  (require 'setup-editing))
+(require 'setup-editing)
 (require 'setup-utils)
 
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/modules")
-;;(require 'setup-org)
+(require 'setup-org)
 ;; ;; (require 'setup-cpp)
 ;; ;; (require 'setup-ruby)
 ;; ;; (require 'setup-python)
