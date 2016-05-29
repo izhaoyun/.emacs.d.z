@@ -36,4 +36,19 @@
                               (?\{ . ?\})))
   (electric-pair-mode 1))
 
+(use-package expand-region
+  :bind
+  (("C-=" . er/expand-region)
+   ("C--" . er/contract-region)))
+
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :commands global-undo-tree-mode
+  :bind
+  ("C-z" . undo)
+  :init
+  (setq undo-tree-visualizer-diff t)
+  (setq undo-tree-visualizer-timestamps t)
+  (global-undo-tree-mode))
+
 (provide 'setup-editing)

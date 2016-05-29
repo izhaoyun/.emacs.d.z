@@ -33,24 +33,6 @@
 ;; (setq-default indicate-empty-lines t)
 ;; (setq require-final-newline t)
 
-;; (use-package elec-pair
-;;   :ensure nil
-;;   :init
-;;   (setq electric-pair-pairs '((?\" . ?\")
-;;                               (?\{ . ?\})))
-;;   (electric-pair-mode 1))
-
-;; (use-package paren
-;;   :ensure nil
-;;   :init
-;;   (setq show-paren-style 'expression)
-;;   (show-paren-mode 1))
-
-;; (use-package rainbow-delimiters
-;;   :defer 5
-;;   :config
-;;   (rainbow-delimiters-mode))
-
 ;; (setq read-buffer-completion-ignore-case t)
 
 ;; (global-unset-key "\C-x\C-v")
@@ -73,23 +55,6 @@
 ;;   :init
 ;;   (setq peep-dired-enable-on-directories t))
 
-;; (use-package ibuffer
-;;   :bind
-;;   ("C-x C-b" . ibuffer)
-;;   :init
-;;   (defun ibuffer-group-buffers ()
-;;     (ibuffer-switch-to-saved-filter-groups "Default"))
-;;   (add-hook 'ibuffer-mode-hook #'ibuffer-group-buffers)
-;;   (add-hook 'ibuffer-mode-hook #'ibuffer-auto-mode)
-;;   (setq ibuffer-saved-filter-groups
-;;         '(("Default"
-;;            ("Dired" (mode . dired-mode))
-;;            ("ERC"   (mode . erc-mode))
-;;            ("Magit" (name . "\*magit.+*"))
-;;            ("Org"   (mode . org-mode))
-;;            ("Grep"  (name . "\*grep-.*"))
-;;            ("Temporary" (name . "\*.*\*"))))))
-
 ;; (setq backup-directory-alist '(("-autoloads.el\\'")
 ;;                                ("-loaddefs.el\\'")
 ;;                                ("." . "~/.emacs.d/backups")))
@@ -110,12 +75,6 @@
 ;; (defalias 'yes-or-no-p 'y-or-n-p)
 ;; (setq gc-cons-threshold 104857600)
 
-;; (use-package server
-;;   :defer 10
-;;   :config
-;;   (unless (server-running-p)
-;;     (server-start)))
-
 ;; (use-package winner
 ;;   :defer 8
 ;;   :config
@@ -132,24 +91,13 @@
 ;;   :init
 ;;   (setq annotate-file "~/.emacs.d/annotations"))
 
-;; (use-package expand-region
-;;   :bind
-;;   (("C-=" . er/expand-region)
-;;    ("C--" . er/contract-region)))
+
 
 ;; (use-package change-inner
 ;;   :bind
 ;;   (("M-i" . change-inner)
 ;;    ("M-o" . change-outer)))
 
-;; (use-package undo-tree
-;;   :diminish undo-tree-mode
-;;   :bind
-;;   ("C-z" . undo)
-;;   :init
-;;   (setq undo-tree-visualizer-diff t)
-;;   (setq undo-tree-visualizer-timestamps t)
-;;   (global-undo-tree-mode))
 
 ;; ;; (use-package recentf
 ;; ;;   :commands recentf-mode
