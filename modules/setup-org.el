@@ -1,3 +1,5 @@
+
+
 (defun init-org-bullets ()
   "initialize org-bullets"
   (use-package org-bullets
@@ -118,4 +120,6 @@ usually soft line-breaks"
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
+(use-package calfw)
+ 
 (provide 'setup-org)
