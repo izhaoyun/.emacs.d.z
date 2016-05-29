@@ -121,7 +121,6 @@ usually soft line-breaks"
   :init
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
-  ;; (add-hook 'org-mode-hook 'init-org-bullets)
 
   :config
   ;; alist of packages to be inserted in every LaTeX header.

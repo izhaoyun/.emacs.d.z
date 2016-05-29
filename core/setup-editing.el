@@ -25,15 +25,14 @@
   (show-paren-mode 1))
 
 (use-package rainbow-delimiters
-  :commands rainbow-delimiters-mode
-  :init
-  (rainbow-delimiters-mode))
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package elec-pair
   :ensure nil
   :init
   (setq electric-pair-pairs '((?\" . ?\")
-                              (?\{ . ?\})))
+			      (?\{ . ?\})))
   (electric-pair-mode 1))
 
 (use-package expand-region
@@ -50,5 +49,17 @@
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-visualizer-timestamps t)
   (global-undo-tree-mode))
+
+(use-package whitespace
+  :commands whitespace-mode
+  :config
+  (add-hook 'prog-mode-hook #'whitespace-mode))
+
+(use-package winner
+  :commands winner-mode
+  :init
+  (winner-mode))
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (provide 'setup-editing)

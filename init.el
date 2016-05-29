@@ -1,7 +1,7 @@
-(require 'package)
-(setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+(setq gc-cons-threshold 104857600)
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -13,11 +13,15 @@
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
+(setq load-prefer-newer t)
+
 (use-package auto-compile
+  :init
+  (setq auto-compile-display-buffer nil)
+  (setq auto-compile-mode-line-counter t)
   :config
   (auto-compile-on-load-mode)
   (auto-compile-on-save-mode))
-(setq load-prefer-newer t)
 
 (defun install-pkgs (pkgs-list)
   "Install all require packages."
@@ -28,18 +32,8 @@
       (package-install package)))
   )
 
-;; (setq sentence-end-double-space nil)
-;; (setq truncate-partial-width-windows nil)
-;; (setq-default indicate-empty-lines t)
-;; (setq require-final-newline t)
-
-;; (setq read-buffer-completion-ignore-case t)
-
 ;; (global-unset-key "\C-x\C-v")
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
-
-;; ;; buffers and windows
-;; (setq frame-title-format "%b - emacs")
 
 ;; (use-package peep-dired
 ;;   :defer 9
@@ -71,14 +65,6 @@
 ;;   (setq savehist-additional-variables
 ;;         '(kill-ring search-ring regexp-search-ring)))
 
-;; (add-hook 'text-mode-hook 'turn-on-auto-fill)
-;; (defalias 'yes-or-no-p 'y-or-n-p)
-;; (setq gc-cons-threshold 104857600)
-
-;; (use-package winner
-;;   :defer 8
-;;   :config
-;;   (winner-mode))
 
 ;; (use-package window-numbering
 ;;   :defer 10
@@ -90,21 +76,6 @@
 ;;   :commands annotate-mode
 ;;   :init
 ;;   (setq annotate-file "~/.emacs.d/annotations"))
-
-
-
-;; (use-package change-inner
-;;   :bind
-;;   (("M-i" . change-inner)
-;;    ("M-o" . change-outer)))
-
-
-;; ;; (use-package recentf
-;; ;;   :commands recentf-mode
-;; ;;   :init
-;; ;;   (recentf-mode 1))
-
-;; (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (add-to-list 'load-path "~/.emacs.d/core")
 (require 'setup-editing)
