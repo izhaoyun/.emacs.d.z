@@ -80,6 +80,12 @@
   :init
   (indent-guide-mode 1))
 
+;; (use-package edit-server
+;;   :if window-system
+;;   :init
+;;   (add-hook 'after-init-hook 'server-start t)
+;;   (add-hook 'after-init-hook 'edit-server-start t))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (provide 'setup-editing)

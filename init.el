@@ -1,7 +1,9 @@
 (setq gc-cons-threshold 104857600)
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -9,7 +11,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+(require 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
@@ -28,9 +31,7 @@
   (use-package async-bytecomp
     :ensure async
     :config
-    (async-bytecomp-package-mode 1))
-  )
-
+    (async-bytecomp-package-mode 1)))
 
 (defun install-pkgs (pkgs-list)
   "Install all require packages."
@@ -42,13 +43,14 @@
   )
 
 (add-to-list 'load-path "~/.emacs.d/core")
-(require 'setup-editing)
+(eval-when-compile
+  (require 'setup-editing))
 (require 'setup-utils)
 ;; (require 'setup-develop)
 
 ;; langs settings
-(add-to-list 'load-path "~/.emacs.d/langs")
-;;(require 'setup-org)
+(add-to-list 'load-path "~/.emacs.d/modules")
+(require 'setup-org)
 ;; ;; (require 'setup-cpp)
 ;; ;; (require 'setup-ruby)
 ;; ;; (require 'setup-python)
