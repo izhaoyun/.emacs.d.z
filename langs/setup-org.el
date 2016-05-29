@@ -1,3 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/site-lisp/org-mode/lisp")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/org-mode/contrib/lisp")
+
 (setq sentence-end
       "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
@@ -73,7 +76,7 @@ usually soft line-breaks"
   (defun ox-html-clear-single-linebreak-for-cjk (string backend info)
     (when (org-export-derived-backend-p backend 'html)
       (clear-single-linebreak-in-cjk-string string)))
-  
+
   (use-package ox
     :ensure org
     :init
@@ -86,7 +89,7 @@ usually soft line-breaks"
 
 (defun init-org-bullets ()
   (use-package org-bullets
-    :ensure org-plus-contrib
+    :load-path "site-lisp/org-mode/contrib/lisp"
     :init
     (org-bullets-mode 1))
   )
@@ -118,28 +121,7 @@ usually soft line-breaks"
   :init
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
-  ;; (add-hook 'org-mode-hook 'init-org-bullets)
 
-  ;; (font-lock-add-keywords 'org-mode
-  ;;                         '(("^ +\\([-*]\\) "
-  ;;                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-  ;; (let* ((variable-tuple (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-  ;;                              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-  ;;                              ((x-list-fonts "Verdana")         '(:font "Verdana"))
-  ;;                              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-  ;;                              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-  ;;        (base-font-color     (face-foreground 'default nil 'default))
-  ;;        (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-  ;;   (custom-theme-set-faces 'user
-  ;;                           `(org-level-8 ((t (,@headline ,@variable-tuple))))
-  ;;                           `(org-level-7 ((t (,@headline ,@variable-tuple))))
-  ;;                           `(org-level-6 ((t (,@headline ,@variable-tuple))))
-  ;;                           `(org-level-5 ((t (,@headline ,@variable-tuple))))
-  ;;                           `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-  ;;                           `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.35))))
-  ;;                           `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.55))))
-  ;;                           `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.7))))
-  ;;                           `(org-documentt-itle ((t (,@headline ,@variable-tuple :height 1.5 :underline nil))))))
   :config
   ;; alist of packages to be inserted in every LaTeX header.
   (add-to-list 'org-latex-packages-alist '("" "ctex"))
@@ -155,5 +137,11 @@ usually soft line-breaks"
   (add-hook 'org-mode-hook 'init-org-publish)
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
+
+;;(use-package calfw
+;;  :config
+;;  (use-package calfw-org
+;;    :ensure calfw)
+;;  )
 
 (provide 'setup-org)
