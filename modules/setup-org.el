@@ -19,7 +19,7 @@
   (use-package ob-python     :ensure org)
   (use-package ob-emacs-lisp :ensure org)
   (use-package ob-plantuml
-    :ensure (or )rg
+    :ensure org
     :init
     (setq org-plantuml-jar-path "/opt/plantuml/plantuml.jar"))
   (use-package ob-ditaa
