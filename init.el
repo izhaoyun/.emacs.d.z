@@ -1,9 +1,9 @@
 (setq gc-cons-threshold 104857600)
 
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
+                         ("org"   . "http://orgmode.org/elpa/")))
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -12,7 +12,7 @@
   (package-install 'use-package))
 
 (eval-when-compile
-(require 'use-package))
+  (require 'use-package))
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
@@ -46,11 +46,10 @@
 (eval-when-compile
   (require 'setup-editing))
 (require 'setup-utils)
-;; (require 'setup-develop)
 
 ;; langs settings
 (add-to-list 'load-path "~/.emacs.d/modules")
-(require 'setup-org)
+;;(require 'setup-org)
 ;; ;; (require 'setup-cpp)
 ;; ;; (require 'setup-ruby)
 ;; ;; (require 'setup-python)

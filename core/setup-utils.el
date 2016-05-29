@@ -12,6 +12,7 @@
     magit
     ggtags
     ag
+    yasnippet
     ))
 
 (install-pkgs utils-packages)
@@ -177,5 +178,16 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   :ensure nil
   :bind
   ("C-x C-b" . ibuffer))
+
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :commands (yas-reload-all
+	     yas-minor-mode)
+  :init
+  (yas-reload-all)
+  :config
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
+
+
 
 (provide 'setup-utils)

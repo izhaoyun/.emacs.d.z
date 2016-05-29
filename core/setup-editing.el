@@ -3,8 +3,7 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (blink-cursor-mode -1)
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  )
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))) 
 
 (setq visible-bell t
       inhibit-startup-message t
@@ -80,11 +79,21 @@
   :init
   (indent-guide-mode 1))
 
+(use-package abbrev
+  :ensure nil
+  :diminish abbrev-mode
+  :config
+  (if (file-exists-p abbrev-file-name)
+      (quietly-read-abbrev-file)))
+
 ;; (use-package edit-server
 ;;   :if window-system
 ;;   :init
 ;;   (add-hook 'after-init-hook 'server-start t)
 ;;   (add-hook 'after-init-hook 'edit-server-start t))
+
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
