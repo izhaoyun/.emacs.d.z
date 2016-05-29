@@ -1,12 +1,14 @@
-(add-to-list 'load-path "~/.emacs.d/site-lisp/org-mode/lisp")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/org-mode/contrib/lisp")
 
-(setq sentence-end
-      "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
-(setq sentence-end-double-space nil)
+
+(defun init-org-bullets ()
+  "initialize org-bullets"
+  (use-package org-bullets
+    :ensure org-plus-contrib
+    :init
+    (org-bullets-mode 1)))
 
 (defun init-org-babel ()
-  "settings for org-babel."
+  "initialize org-babel."
   (use-package ob-C          :ensure org)
   (use-package ob-awk        :ensure org)
   (use-package ob-dot        :ensure org)
@@ -25,7 +27,8 @@
     :init
     (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0_9.jar"))
 
-  (use-package ob            :ensure org
+  (use-package ob            
+    :ensure org
     :init
     (org-babel-do-load-languages
      'org-babel-load-languages
@@ -45,9 +48,12 @@
 (defun init-org-export ()
   "settings for export"
   (progn
-    (use-package ox-beamer :ensure org)
-    (use-package ox-gfm    :ensure org-plus-contrib)
-    (use-package ox-html   :ensure org
+    (use-package ox-beamer 
+      :ensure org)
+    (use-package ox-gfm    
+      :ensure org-plus-contrib)
+    (use-package ox-html   
+      :ensure org
       :init
       (use-package htmlize))
     (use-package ox-latex
@@ -87,43 +93,20 @@ usually soft line-breaks"
                  'ox-html-clear-single-linebreak-for-cjk))
   )
 
-(defun init-org-bullets ()
-  (use-package org-bullets
-    :load-path "site-lisp/org-mode/contrib/lisp"
-    :init
-    (org-bullets-mode 1))
-  )
-
-(defun init-org-publish ()
-  (use-package ox-publish
-    :ensure org
-    :init
-    (setq org-publish-project-alist
-          '("org-notes"
-            :base-directory "~/org-notes/"
-            :base-extension "org"
-            :publishing-directory "~/public_html/"
-            :recursive t
-            :publishing-function org-html-publish-to-html
-            :auto-preamble t
-            ))
-    )
-  )
-
 (use-package org
-  :mode (("\\.org$" . org-mode)
-         ("\\.txt$" . org-mode))
+  :mode
+  (("\\.org$" . org-mode)
+   ("\\.txt$" . txt-mode))
   :bind
   (("C-c a" . org-agenda)
-   ("C-c b" . org-iswitchb)
+   ("C-c b" . org-iswitch)
    ("C-c c" . org-capture)
    ("C-c l" . org-store-link))
   :init
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
-
+  (add-hook 'org-mode-hook 'init-org-bullets)
   :config
-  ;; alist of packages to be inserted in every LaTeX header.
   (add-to-list 'org-latex-packages-alist '("" "ctex"))
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (add-to-list 'org-latex-packages-alist '("" "color"))
@@ -134,14 +117,9 @@ usually soft line-breaks"
   (add-to-list 'org-latex-packages-alist '("" "natbib"))
   (add-to-list 'org-latex-packages-alist '("" "titlesec"))
 
-  (add-hook 'org-mode-hook 'init-org-publish)
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
-;;(use-package calfw
-;;  :config
-;;  (use-package calfw-org
-;;    :ensure calfw)
-;;  )
-
+(use-package calfw)
+ 
 (provide 'setup-org)
