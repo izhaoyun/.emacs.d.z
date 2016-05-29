@@ -60,6 +60,26 @@
   :init
   (winner-mode))
 
+(use-package comment-dwim-2
+  :bind
+  ("M-;" . comment-dwim-2))
+
+(use-package aggressive-indent
+  :diminish aggressive-indent-mode
+  :config
+  (global-aggressive-indent-mode 1))
+
+(use-package clean-aindent-mode
+  :init
+  (electric-indent-mode -1)
+  (clean-aindent-mode 1)
+  (setq clean-aindent-is-simple-indent t))
+
+(use-package indent-guide
+  :diminish indent-guide-mode
+  :init
+  (indent-guide-mode 1))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (provide 'setup-editing)

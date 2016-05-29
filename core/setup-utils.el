@@ -5,6 +5,13 @@
     ivy
     which-key
     avy
+    ace-link
+    ace-pinyin
+    projectile
+    flycheck
+    magit
+    ggtags
+    ag
     ))
 
 (install-pkgs utils-packages)
@@ -95,7 +102,12 @@ _s_: subword         _M_: move region
 
 (use-package ag)
 
-(use-package projectile)
+(use-package projectile
+  :diminish projectile-mode
+  :commands projectile-global-mode
+  :init
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
 
 (defhydra hydra-projectile-other-window (:color teal)
   "projectile-other-window"
@@ -143,18 +155,27 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   ("`"   hydra-projectile-other-window/body "other window")
   ("q"   nil "cancel" :color blue))
 
-(use-package server
-  :ensure nil
-  :defer t
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
+(use-package flycheck
+  :diminish flycheck-mode
   :config
-  (unless (server-running-p)
-    (server-start)))
+  (add-hook 'prog-mode-hook #'flycheck-mode)
+  (setq flycheck-check-syntax-automatically
+        '(mode-enabled save)))
+
+;; (use-package server
+;;   :ensure nil
+;;   :defer t
+;;   :config
+;;   (unless (server-running-p)
+;;     (server-start)))
 
 (use-package ibuffer
   :ensure nil
   :bind
   ("C-x C-b" . ibuffer))
-
-
 
 (provide 'setup-utils)
