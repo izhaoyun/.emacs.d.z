@@ -1,3 +1,15 @@
+(defconst devel-packages
+  '(
+    ws-butler
+    yasnippet
+    flycheck
+    flycheck-pos-tip
+    company
+    company-quickhelp
+    ))
+
+(install-pkgs devel-packages)
+
 (setq vc-handled-backends nil)
 
 (defun auto-fill-comments ()
@@ -6,21 +18,18 @@
   )
 (add-hook 'prog-mode-hook 'auto-fill-comments)
 
-
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(use-package dtrt-indent
-  :diminish dtrt-indent-mode
-  :config
-  (dtrt-indent-mode 1))
-
-
 (use-package ws-butler
   :diminish ws-butler-mode
+  :commands ws-butler-mode
   :init
-  (ws-butler-mode))
+  (add-hook 'c-mode-common-hook 'ws-butler-mode)
+  (add-hook 'python-mode-hook 'ws-butler-mode)
+  (add-hook 'cython-mode-hook 'ws-butler-mode)
+  )
 
 (use-package yasnippet
   :commands (yas-reload-all
@@ -37,21 +46,38 @@
   )
 
 (use-package flycheck
-  :commands   flycheck-mode
+  :commands (flycheck-mode)
   :init
-  (global-flycheck-mode)
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled save))
+  (add-hook 'c-mode-common-hook #'flycheck-mode)
+  (add-hook 'python-mode-hook #'flycheck-mode)
+  (add-hook 'ruby-mode-hook #'flycheck-mode)
   :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (use-package flycheck-pos-tip
     :init
     (flycheck-pos-tip-mode)))
 
-(defun init-semantic-stickyfunc-enhance ()
-  (use-package stickyfunc-enhance
+(use-package company
+  :commands (global-company-mode
+             company-mode)
+  :init
+  (global-company-mode)
+  (setq company-global-modes 
+        '(not python-mode cython-mode sage-mode))
+  (use-package company-quickhelp
+    :commands (company-quickhelp-mode)
     :init
-    (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-    (semantic-mode 1))
+    (company-quickhelp-mode 1)
+    (setq company-quickhelp-delay nil)
+    (define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin))
+  :config
+  (setq company-show-numbers t)
+  (setq company-tooltip-limit 20)
+  (setq company-idle-delay .3)
+  (setq company-echo-delay 0)
+  (setq company-begin-commands '(self-insert-command))
+  ;; use company-mode with Clang
+  (setq company-backends (delete 'company-semantic company-backends))
   )
 
 (provide 'setup-develop)
