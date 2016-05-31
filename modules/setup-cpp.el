@@ -21,6 +21,10 @@
   ;; (use-package )
   )
 
+(use-package company-c-headers
+  :init
+  (push 'company-c-headers company-backends))
+
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
   :bind
