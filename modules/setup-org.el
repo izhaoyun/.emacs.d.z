@@ -1,4 +1,6 @@
-
+(defconst org-packages
+  '(org-plus-contrib))
+(install-pkgs org-packages)
 
 (defun init-org-bullets ()
   "initialize org-bullets"
