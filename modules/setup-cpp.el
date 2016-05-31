@@ -1,20 +1,21 @@
-
-
 (use-package irony
   :diminish irony-mode
+  :defer t
   :init
-)
-(add-hook 'c-mode-common-hook 'irony-mode)
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  :config
+  (defun my-irony-mode-hook ()
+    (define-key irony-mode-map [remap completion-at-point]
+      'irony-completion-at-point-async)
+    (define-key irony-mode-map [remap complete-symbol]
+      'irony-completion-at-point-async))
+  (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
-(defun init-company-for-c/c++ ()
-  (use-package company
-    :init
-    (setq company-show-numbers t)
-    (company-mode 1)
-    (setq company-backends (delete 'company-semantic company-backends)))
-  (use-package company-c-headers
-    :init
-    (add-to-list 'company-backends 'company-c-headers))
+(defun init-rtags ()
+  (use-package rtags)
+  ;; (use-package )
   )
 
 (use-package cc-mode
@@ -24,11 +25,8 @@
   :init
   (setq c-default-style "linux")
   (setq indent-tabs-mode nil)
-  (setq c-basic-offset 4)
+  (setq-default c-basic-offset 4)
 
-  (add-hook 'c-mode-common-hook 'hs-minor-mode)
-  (add-hook 'c-mode-common-hook 'init-company-for-c/c++)
-  (add-hook 'c-mode-common-hook 'init-semantic-stickyfunc-enhance)
-  )
+  (add-hook 'c-mode-common-hook 'hs-minor-mode))
 
 (provide 'setup-cpp)

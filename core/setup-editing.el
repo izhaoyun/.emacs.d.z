@@ -79,6 +79,11 @@
   :init
   (indent-guide-mode 1))
 
+(use-package dtrt-indent
+  :diminish dtrt-indent-mode
+  :init
+  (dtrt-indent-mode 1))
+
 (use-package abbrev
   :ensure nil
   :diminish abbrev-mode
