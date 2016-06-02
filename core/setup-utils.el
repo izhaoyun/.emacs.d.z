@@ -167,12 +167,12 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   (setq flycheck-check-syntax-automatically
         '(mode-enabled save)))
 
-;; (use-package server
-;;   :ensure nil
-;;   :defer t
-;;   :config
-;;   (unless (server-running-p)
-;;     (server-start)))
+(use-package server
+  :ensure nil
+  :defer t
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
 (use-package ibuffer
   :ensure nil
