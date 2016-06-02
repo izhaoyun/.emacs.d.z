@@ -61,7 +61,7 @@
   :commands (global-company-mode
              company-mode)
   :init
-  (global-company-mode)
+  (global-company-mode 1)
   (setq company-global-modes 
         '(not python-mode cython-mode sage-mode))
   (use-package company-quickhelp
