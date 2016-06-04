@@ -1,6 +1,5 @@
 (defconst devel-packages
-  '(
-    ws-butler
+  '(ws-butler
     yasnippet
     flycheck
     flycheck-pos-tip
@@ -55,7 +54,7 @@
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (use-package flycheck-pos-tip
     :init
-    (flycheck-pos-tip-mode)))
+    (flycheck-pos-tip-mode 1)))
 
 (use-package company
   :commands (global-company-mode

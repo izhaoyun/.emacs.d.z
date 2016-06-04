@@ -16,21 +16,6 @@
 (use-package cmake-mode
   :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
 
-(defun run-rtags ()
-  (interactive)
-  (use-package rtags
-    :defer t
-    :commands (rtags-start-process-unless-running
-               )
-    :init
-    (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-    (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
-    :bind
-
-    :config
-    )
-  )
-
 (use-package company-c-headers
   :init
   (push 'company-c-headers company-backends))
@@ -44,6 +29,21 @@
   (setq indent-tabs-mode nil)
   (setq-default c-basic-offset 4)
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
+  :config
+  (defun run-rtags ()
+    (interactive)
+    (use-package rtags
+      :defer t
+      :commands (rtags-start-process-unless-running
+                 )
+      :init
+      (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
+      (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
+      :bind
+
+      :config
+      )
+    )
   )
 
 (provide 'setup-cpp)

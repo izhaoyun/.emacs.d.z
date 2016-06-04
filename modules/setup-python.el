@@ -48,6 +48,8 @@
   (setq python-shell-interpreter-args "")
   (setq python-shell-prompt-regexp "In \\[[0-9]+\\]: ")
   (setq python-shell-prompt-output-regexp  "Out\\[[0-9]+\\]: ")
+  :config
+  (use-package flycheck-pyflakes)
   )
 
 (provide 'setup-python)
