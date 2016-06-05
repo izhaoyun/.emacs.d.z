@@ -3,7 +3,7 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (blink-cursor-mode -1)
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))) 
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
 
 (setq visible-bell t
       inhibit-startup-message t
@@ -49,7 +49,7 @@
   :ensure nil
   :init
   (setq electric-pair-pairs '((?\" . ?\")
-			      (?\{ . ?\})))
+                  (?\{ . ?\})))
   (electric-pair-mode 1))
 
 (use-package expand-region
@@ -69,9 +69,12 @@
 
 (use-package whitespace
   :diminish whitespace-mode
-  :commands whitespace-mode
+  :commands (whitespace-mode
+             whitespace-cleanup)
   :bind
   (("C-c T w" . whitespace-mode))
+  :init
+  (add-hook 'before-save-hook 'whitespace-cleanup)
   :config
   (setq whitespace-line-column nil))
 
