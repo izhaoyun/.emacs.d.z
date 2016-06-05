@@ -1,11 +1,8 @@
 (use-package python
-  :mode ("\\.py$" . python-mode)
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
   :init
   (setq python-indent-offset 4)
-  ;; (setq python-shell-interpreter "ipython")
-  ;; (setq python-shell-interpreter-args "")
-  ;; (setq python-shell-prompt-regexp "In \\[[0-9]+\\]: ")
-  ;; (setq python-shell-prompt-output-regexp  "Out\\[[0-9]+\\]: ")
   :config
   (use-package flycheck-pyflakes))
 
@@ -16,6 +13,15 @@
   )
 (add-hook 'python-mode-hook 'python/init-pyenv-mode)
 
+(defun python/init-nose ()
+  (use-package nose
+    :commands
+    :init
+    :config
+    (add-to-list 'nose-project-root-files "setup.cfg")
+    (setq nose-use-verbose nil))
+  )
+
 (defun python/init-virtualenvwrapper ()
   (use-package virtualenvwrapper
     :commands (venv-initialize-eshell
@@ -23,6 +29,7 @@
     :init
     (venv-initialize-interactive-shells)
     (venv-initialize-eshell)
+    (require 'eshell)
     :config
     (setq eshell-prompt-function
           (lambda () (concat venv-current-name " $ "))))
@@ -38,13 +45,16 @@
 
 (defun python/init-complete ()
   (use-package anaconda-mode
+    :commands (anaconda-mode
+               anaconda-eldoc-mode)
     :init
-    (anaconda-mode)
-    (anaconda-eldoc-mode))
+    (anaconda-mode 1)
+    (anaconda-eldoc-mode 1))
   (use-package company
     :init
-    (setq company-show-numbers t)
-    (company-mode 1))
+    (company-mode 1)
+    :config
+    (setq company-show-numbers t))
   (use-package company-anaconda
     :init
     (eval-after-load 'company
