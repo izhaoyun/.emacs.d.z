@@ -72,12 +72,6 @@
   :commands whitespace-mode
   :bind
   (("C-c T w" . whitespace-mode))
-  :init
-  (dolist (hook '(prog-mode-hook
-                  org-mode-hook
-                  text-mode-hook
-                  conf-mode-hook))
-    (add-hook hook #'whitespace-mode))
   :config
   (setq whitespace-line-column nil))
 
