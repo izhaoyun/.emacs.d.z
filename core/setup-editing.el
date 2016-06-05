@@ -68,9 +68,18 @@
   (global-undo-tree-mode))
 
 (use-package whitespace
+  :diminish whitespace-mode
   :commands whitespace-mode
+  :bind
+  (("C-c T w" . whitespace-mode))
+  :init
+  (dolist (hook '(prog-mode-hook
+                  org-mode-hook
+                  text-mode-hook
+                  conf-mode-hook))
+    (add-hook hook #'whitespace-mode))
   :config
-  (add-hook 'prog-mode-hook #'whitespace-mode))
+  (setq whitespace-line-column nil))
 
 (use-package winner
   :commands winner-mode

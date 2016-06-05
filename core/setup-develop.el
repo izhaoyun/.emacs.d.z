@@ -4,8 +4,7 @@
     flycheck
     flycheck-pos-tip
     company
-    company-quickhelp
-    ))
+    company-quickhelp))
 
 (install-pkgs devel-packages)
 
