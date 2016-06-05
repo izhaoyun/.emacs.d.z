@@ -1,6 +1,5 @@
 (defconst devel-packages
-  '(
-    ws-butler
+  '(ws-butler
     yasnippet
     flycheck
     flycheck-pos-tip
@@ -38,11 +37,11 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
-    (use-package company-yasnippet
-      :ensure company
-      :commands company-yasnippet
-      :bind
-      ("C-c ; y" . company-yasnippet))
+  (use-package company-yasnippet
+    :ensure company
+    :commands company-yasnippet
+    :bind
+    ("<backtab>" . company-yasnippet))
   )
 
 (use-package flycheck
@@ -55,13 +54,13 @@
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (use-package flycheck-pos-tip
     :init
-    (flycheck-pos-tip-mode)))
+    (flycheck-pos-tip-mode 1)))
 
 (use-package company
   :commands (global-company-mode
              company-mode)
   :init
-  (global-company-mode)
+  (global-company-mode 1)
   (setq company-global-modes 
         '(not python-mode cython-mode sage-mode))
   (use-package company-quickhelp
@@ -69,7 +68,8 @@
     :init
     (company-quickhelp-mode 1)
     (setq company-quickhelp-delay nil)
-    (define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin))
+    (define-key company-active-map (kbd "M-h")
+      #'company-quickhelp-manual-begin))
   :config
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)
