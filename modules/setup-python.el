@@ -1,3 +1,11 @@
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
+  :init
+  (setq python-indent-offset 4)
+  :config
+  (use-package flycheck-pyflakes))
+
 (defun python/init-pyenv-mode ()
   (use-package pyenv-mode
     :init
@@ -5,28 +13,48 @@
   )
 (add-hook 'python-mode-hook 'python/init-pyenv-mode)
 
-;; (defun python/init-virtualenvwrapper ()
-;;   (use-package virtualenvwrapper
-;;     :config
-;;     (venv-initialize-interactive-shells)
-;;     (venv-initialize-eshell)))
-
-(defun python/init-sphinx-doc ()
-  (use-package sphinx-doc
+(defun python/init-nose ()
+  (use-package nose
+    :commands
     :init
-    (sphinx-doc-mode 1))
+    :config
+    (add-to-list 'nose-project-root-files "setup.cfg")
+    (setq nose-use-verbose nil))
   )
-(add-hook 'python-mode-hook 'python/init-sphinx-doc)
+
+(defun python/init-virtualenvwrapper ()
+  (use-package virtualenvwrapper
+    :commands (venv-initialize-eshell
+               venv-initialize-interactive-shells)
+    :init
+    (venv-initialize-interactive-shells)
+    (venv-initialize-eshell)
+    (require 'eshell)
+    :config
+    (setq eshell-prompt-function
+          (lambda () (concat venv-current-name " $ "))))
+  )
+(add-hook 'python-mode-hook 'python/init-virtualenvwrapper)
+
+;; (defun python/init-sphinx-doc ()
+;;   (use-package sphinx-doc
+;;     :init
+;;     (sphinx-doc-mode 1))
+;;   )
+;; (add-hook 'python-mode-hook 'python/init-sphinx-doc)
 
 (defun python/init-complete ()
   (use-package anaconda-mode
+    :commands (anaconda-mode
+               anaconda-eldoc-mode)
     :init
-    (anaconda-mode)
-    (anaconda-eldoc-mode))
+    (anaconda-mode 1)
+    (anaconda-eldoc-mode 1))
   (use-package company
     :init
-    (setq company-show-numbers t)
-    (company-mode 1))
+    (company-mode 1)
+    :config
+    (setq company-show-numbers t))
   (use-package company-anaconda
     :init
     (eval-after-load 'company
@@ -39,17 +67,5 @@
     :init
     (fci-mode 1)))
 (add-hook 'python-mode-hook 'python/init-fill-column-indicator)
-
-(use-package python
-  :mode ("\\.py$" . python-mode)
-  :init
-  (setq python-indent-offset 4)
-  (setq python-shell-interpreter "ipython")
-  (setq python-shell-interpreter-args "")
-  (setq python-shell-prompt-regexp "In \\[[0-9]+\\]: ")
-  (setq python-shell-prompt-output-regexp  "Out\\[[0-9]+\\]: ")
-  :config
-  (use-package flycheck-pyflakes)
-  )
 
 (provide 'setup-python)
