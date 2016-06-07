@@ -40,7 +40,7 @@
     :ensure company
     :commands company-yasnippet
     :bind
-    ("<backtab>" . company-yasnippet))
+    ("C-<tab>" . company-yasnippet))
   )
 
 (use-package flycheck
