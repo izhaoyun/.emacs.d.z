@@ -29,7 +29,6 @@
     :init
     (venv-initialize-interactive-shells)
     (venv-initialize-eshell)
-    (require 'eshell)
     :config
     (setq eshell-prompt-function
           (lambda () (concat venv-current-name " $ "))))
