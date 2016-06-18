@@ -115,6 +115,14 @@
   (if (file-exists-p abbrev-file-name)
       (quietly-read-abbrev-file)))
 
+(use-package highlight-symbol
+  :bind
+  (("C-<f5>" . highlight-symbol)
+   ("<f5>"   . highlight-symbol-next)
+   ("S-<f5>" . highlight-symbol-prev)
+   ("M-<f5>" . highlight-symbol-query-replace))
+  )
+
 ;; (use-package edit-server
 ;;   :if window-system
 ;;   :init
