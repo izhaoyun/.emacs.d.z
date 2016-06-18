@@ -27,6 +27,10 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-company-irony)
 
+(use-package irony-eldoc
+  :init
+  (add-hook 'irony-mode-hook 'irony-eldoc))
+
 (defun cpp/init-company-c-headers ()
   (use-package company-c-headers
     :init
