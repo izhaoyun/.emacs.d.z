@@ -9,18 +9,10 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-company-c-headers)
 
-;; (defun run-rtags ()
-;;   (interactive)
-;;   (use-package rtags
-;;     :defer t
-;;     :commands (rtags-start-process-unless-running)
-;;     :init
-;;     (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-;;     (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
-;;     :bind
-;;     :config
-;;     )
-;;   )
+(use-package cmake-ide
+  :init
+  (cmake-ide-setup)
+  )
 
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
