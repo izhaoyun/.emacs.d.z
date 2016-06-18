@@ -78,4 +78,8 @@
   (setq company-backends (delete 'company-semantic company-backends))
   )
 
+(use-package eldoc
+  :init
+  (add-hook 'prog-mode-hook #'eldoc-mode))
+
 (provide 'setup-develop)
