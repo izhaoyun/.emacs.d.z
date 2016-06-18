@@ -44,23 +44,22 @@
   )
 
 (use-package flycheck
-  :commands (flycheck-mode)
+  :commands (global-flycheck-mode)
   :init
-  (add-hook 'c-mode-common-hook #'flycheck-mode)
-  (add-hook 'python-mode-hook #'flycheck-mode)
-  (add-hook 'ruby-mode-hook #'flycheck-mode)
-  :config
+  (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  :config
   (use-package flycheck-pos-tip
     :init
-    (flycheck-pos-tip-mode 1)))
+    (flycheck-pos-tip-mode 1))
+  )
 
 (use-package company
   :commands (global-company-mode
              company-mode)
   :init
   (global-company-mode 1)
-  (setq company-global-modes 
+  (setq company-global-modes
         '(not python-mode cython-mode sage-mode))
   (use-package company-quickhelp
     :commands (company-quickhelp-mode)
