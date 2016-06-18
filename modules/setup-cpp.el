@@ -1,16 +1,6 @@
-(defun cpp/init-irony ()
-  (use-package irony
-    :diminish irony-mode
-    :defer t
-    :init
-    (irony-mode 1)
-    )
-  )
-(add-hook 'c-mode-hook 'cpp/init-irony)
-(add-hook 'c++-mode-hook 'cpp/init-irony)
-
 (use-package cmake-mode
-  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
+  :mode (("CMakeLists.txt\\'" . cmake-mode)
+         ("\\.cmake\\'" . cmake-mode)))
 
 (defun cpp/init-company-c-headers ()
   (use-package company-c-headers
@@ -19,18 +9,18 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-company-c-headers)
 
-(defun run-rtags ()
-  (interactive)
-  (use-package rtags
-    :defer t
-    :commands (rtags-start-process-unless-running)
-    :init
-    (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-    (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
-    :bind
-    :config
-    )
-  )
+;; (defun run-rtags ()
+;;   (interactive)
+;;   (use-package rtags
+;;     :defer t
+;;     :commands (rtags-start-process-unless-running)
+;;     :init
+;;     (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
+;;     (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
+;;     :bind
+;;     :config
+;;     )
+;;   )
 
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
