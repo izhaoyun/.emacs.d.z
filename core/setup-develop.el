@@ -79,7 +79,9 @@
   )
 
 (use-package eldoc
+  :diminish eldoc-mode
   :init
-  (add-hook 'prog-mode-hook #'eldoc-mode))
+  (add-hook 'prog-mode-hook #'eldoc-mode)
+  )
 
 (provide 'setup-develop)
