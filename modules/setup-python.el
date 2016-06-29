@@ -1,7 +1,4 @@
 (use-package python-mode
-  :ensure python-mode
-  :mode ("\\.py\\'" . python-mode)
-
   :init
 
   :config
