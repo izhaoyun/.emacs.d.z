@@ -60,8 +60,8 @@
              company-mode)
   :init
   (global-company-mode 1)
-  (setq company-global-modes
-        '(not python-mode cython-mode sage-mode))
+  ;; (setq company-global-modes
+  ;;       '(not python-mode cython-mode sage-mode))
   :config
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)
