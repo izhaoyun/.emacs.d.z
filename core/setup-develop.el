@@ -36,12 +36,9 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
-  (use-package company-yasnippet
-    :ensure company
-    :commands company-yasnippet
-    :bind
-    ("C-<tab>" . company-yasnippet))
+
   )
+
 
 (use-package flycheck
   :commands (global-flycheck-mode)
@@ -49,9 +46,13 @@
   (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   :config
-  (use-package flycheck-pos-tip
-    :init
-    (flycheck-pos-tip-mode 1))
+  )
+
+(use-package flycheck-pos-tip
+  :after flycheck
+  :commands flycheck-pos-tip-mode
+  :init
+  (flycheck-pos-tip-mode 1)
   )
 
 (use-package company
@@ -59,15 +60,8 @@
              company-mode)
   :init
   (global-company-mode 1)
-  (setq company-global-modes
-        '(not python-mode cython-mode sage-mode))
-  (use-package company-quickhelp
-    :commands (company-quickhelp-mode)
-    :init
-    (company-quickhelp-mode 1)
-    (setq company-quickhelp-delay nil)
-    (define-key company-active-map (kbd "M-h")
-      #'company-quickhelp-manual-begin))
+  ;; (setq company-global-modes
+  ;;       '(not python-mode cython-mode sage-mode))
   :config
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)
@@ -76,6 +70,25 @@
   (setq company-begin-commands '(self-insert-command))
   ;; use company-mode with Clang
   (setq company-backends (delete 'company-semantic company-backends))
+  )
+
+(use-package company-yasnippet
+  :ensure company
+  :after yasnippet
+  :commands company-yasnippet
+  :bind
+  ("C-<tab>" . company-yasnippet)
+  )
+
+(use-package company-quickhelp
+  :commands company-quickhelp-mode
+  :after company
+  :init
+  (company-quickhelp-mode 1)
+  (setq company-quickhelp-delay nil)
+  :bind (:map company-active-map
+              ("M-h" . company-quickhelp-manual-begin)
+              )
   )
 
 (use-package eldoc
