@@ -1,9 +1,9 @@
-(use-package python-mode
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
   :init
-  (progn
-    ;; Actually speaking, the following line is not needed.
-    (require 'python-mode)
-    )
+  ;; Actually speaking, the following line is not needed.
+  ;; (require 'python-mode)
   :config
   )
 

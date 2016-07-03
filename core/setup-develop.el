@@ -97,9 +97,13 @@
   (add-hook 'prog-mode-hook #'eldoc-mode)
   )
 
-(use-package stickyfunc-enhance
-  :init
-  (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-  (semantic-mode 1))
+(defun init/develop-stickyfunc-enhance ()
+  (use-package stickyfunc-enhance
+    :init
+    (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+    (semantic-mode 1)
+    )
+  )
+(add-hook 'prog-mode-hook 'init/develop-stickyfunc-enhance)
 
 (provide 'setup-develop)
