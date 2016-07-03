@@ -2,8 +2,7 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
   :init
-  ;; Actually speaking, the following line is not needed.
-  ;; (require 'python-mode)
+
   :config
   )
 
