@@ -20,14 +20,17 @@
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(use-package ws-butler
-  :diminish ws-butler-mode
-  :commands ws-butler-mode
-  :init
-  (add-hook 'c-mode-common-hook 'ws-butler-mode)
-  (add-hook 'python-mode-hook 'ws-butler-mode)
-  (add-hook 'cython-mode-hook 'ws-butler-mode)
+
+(defun init/develop-ws-butler ()
+  (use-package ws-butler
+    :diminish ws-butler-mode
+    :commands ws-butler-mode
+    :init
+    (ws-butler-mode)
+    )
   )
+(add-hook 'prog-mode-hook 'init/develop-ws-butler)
+
 
 (use-package yasnippet
   :commands (yas-reload-all
@@ -39,6 +42,19 @@
 
   )
 
+(defun init/develop-highlight-indentation ()
+  (use-package highlight-indentation
+    :diminish (highlight-indentation-mode
+               highlight-indentation-current-column-mode)
+    :init
+    (highlight-indentation-mode)
+    (highlight-indentation-current-column-mode)
+    :config
+    (set-face-background 'highlight-indentation-face "#e3e3d3")
+    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+    )
+  )
+(add-hook 'prog-mode-hook 'init/develop-highlight-indentation)
 
 (use-package flycheck
   :commands (global-flycheck-mode)
