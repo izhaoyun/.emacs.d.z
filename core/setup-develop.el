@@ -119,4 +119,9 @@
   )
 (add-hook 'prog-mode-hook 'init/develop-stickyfunc-enhance)
 
+(defun init/develop-flyspell ()
+  (flyspell-prog-mode)
+  )
+(add-hook 'prog-mode-hook 'init/develop-flyspell)
+
 (provide 'setup-develop)

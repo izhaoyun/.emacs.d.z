@@ -2,7 +2,6 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
   :init
-
   :config
   )
 
@@ -30,5 +29,9 @@
   )
 (add-hook 'python-mode-hook 'python/init-anaconda-mode)
 
+(use-package py-yapf
+  :init
+  (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+  )
 
 (provide 'setup-python)
