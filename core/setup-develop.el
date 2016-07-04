@@ -112,16 +112,4 @@
   (add-hook 'prog-mode-hook #'eldoc-mode)
   )
 
-(defun init/develop-stickyfunc-enhance ()
-    (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-    (semantic-mode 1)
-    (require 'stickyfunc-enhance)
-  )
-(add-hook 'prog-mode-hook 'init/develop-stickyfunc-enhance)
-
-(defun init/develop-flyspell ()
-  (flyspell-prog-mode)
-  )
-(add-hook 'prog-mode-hook 'init/develop-flyspell)
-
 (provide 'setup-develop)
