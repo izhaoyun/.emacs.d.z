@@ -42,19 +42,18 @@
 
   )
 
-(defun init/develop-highlight-indentation ()
-  (use-package highlight-indentation
-    :diminish (highlight-indentation-mode
-               highlight-indentation-current-column-mode)
-    :init
-    (highlight-indentation-mode)
-    (highlight-indentation-current-column-mode)
-    :config
-    (set-face-background 'highlight-indentation-face "#e3e3d3")
-    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-    )
+
+(use-package highlight-indentation
+  :diminish (highlight-indentation-mode
+             highlight-indentation-current-column-mode)
+  :init
+  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+  (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+  :config
+  (set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
   )
-(add-hook 'prog-mode-hook 'init/develop-highlight-indentation)
+
 
 (use-package flycheck
   :commands (global-flycheck-mode)
@@ -114,11 +113,9 @@
   )
 
 (defun init/develop-stickyfunc-enhance ()
-  (use-package stickyfunc-enhance
-    :init
     (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
     (semantic-mode 1)
-    )
+    (require 'stickyfunc-enhance)
   )
 (add-hook 'prog-mode-hook 'init/develop-stickyfunc-enhance)
 
