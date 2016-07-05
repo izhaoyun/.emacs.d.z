@@ -20,14 +20,17 @@
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(use-package ws-butler
-  :diminish ws-butler-mode
-  :commands ws-butler-mode
-  :init
-  (add-hook 'c-mode-common-hook 'ws-butler-mode)
-  (add-hook 'python-mode-hook 'ws-butler-mode)
-  (add-hook 'cython-mode-hook 'ws-butler-mode)
+
+(defun init/develop-ws-butler ()
+  (use-package ws-butler
+    :diminish ws-butler-mode
+    :commands ws-butler-mode
+    :init
+    (ws-butler-mode)
+    )
   )
+(add-hook 'prog-mode-hook 'init/develop-ws-butler)
+
 
 (use-package yasnippet
   :commands (yas-reload-all
@@ -37,6 +40,18 @@
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
 
+  )
+
+
+(use-package highlight-indentation
+  :diminish (highlight-indentation-mode
+             highlight-indentation-current-column-mode)
+  :init
+  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+  (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+  :config
+  (set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
   )
 
 
@@ -96,14 +111,5 @@
   :init
   (add-hook 'prog-mode-hook #'eldoc-mode)
   )
-
-(defun init/develop-stickyfunc-enhance ()
-  (use-package stickyfunc-enhance
-    :init
-    (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-    (semantic-mode 1)
-    )
-  )
-(add-hook 'prog-mode-hook 'init/develop-stickyfunc-enhance)
 
 (provide 'setup-develop)

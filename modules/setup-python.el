@@ -2,7 +2,6 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
   :init
-
   :config
   )
 
@@ -29,6 +28,30 @@
     )
   )
 (add-hook 'python-mode-hook 'python/init-anaconda-mode)
+
+(use-package py-yapf
+  :init
+  (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+  )
+
+(defvar python-test-runner 'nose
+  "Test runner to use. Possible values are `nose' and `pytest'.")
+
+(defun python/init-nose ()
+  (use-package nose
+    :if (eq 'nose python-test-runner)
+    :commands (nosetests-one
+               nosetests-pdb-one
+               nosetests-all
+               nosetests-pdb-all
+               nosetests-module
+               nosetests-pdb-module
+               nosetests-suite)
+    :init
+    :config
+    )
+  )
+(add-hook 'python-mode-hook 'python/init-nose)
 
 
 (provide 'setup-python)
