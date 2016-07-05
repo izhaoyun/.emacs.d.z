@@ -5,7 +5,10 @@
 
 (use-package ggtags
   :init
-  (add-hook 'c-mode-common-hook 'ggtags-mode)
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode 1))))
   :bind
   (:map ggtags-mode-map
         ("C-c g s" . ggtags-find-other-symbol)
@@ -15,7 +18,7 @@
         ("C-c g f" . ggtags-find-file)
         ("C-c g c" . ggtags-create-tags)
         ("C-c g u" . ggtags-update-tags)
-        ("C-," . pop-tag-mark)
+        ("M-," . pop-tag-mark)
         ("M-." . ggtags-find-tag-dwim)
         )
   :config
@@ -52,5 +55,21 @@
   (add-hook 'c-mode-common-hook 'hs-minor-mode)
   :config
   )
+
+;; (use-package semantic
+;; :init
+;; (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+
+
+;; )
+
+(defun cpp/init-gdb ()
+  (use-package gdb-mi
+    :config
+    (setq gdb-many-windows t)
+    (setq gdb-show-main t)
+    )
+  )
+(add-hook 'c-mode-common-hook 'cpp/init-gdb)
 
 (provide 'setup-cpp)

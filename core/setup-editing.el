@@ -108,6 +108,7 @@
   :diminish dtrt-indent-mode
   :init
   (dtrt-indent-mode 1)
+  (setq dtrt-indent-verbosity 0)
   )
 
 (use-package abbrev
