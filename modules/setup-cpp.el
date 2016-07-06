@@ -3,6 +3,7 @@
          ("\\.cmake\\'" . cmake-mode))
   )
 
+
 (use-package ggtags
   :init
   (add-hook 'c-mode-common-hook
@@ -36,13 +37,6 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-company-c-headers)
 
-(defun cpp/init-cmake-ide ()
-  (use-package cmake-ide
-    :init
-    (cmake-ide-setup)
-    )
-  )
-(add-hook 'c-mode-common-hook 'cpp/init-cmake-ide)
 
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
@@ -59,8 +53,6 @@
 ;; (use-package semantic
 ;; :init
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-
-
 ;; )
 
 (defun cpp/init-gdb ()
@@ -71,5 +63,19 @@
     )
   )
 (add-hook 'c-mode-common-hook 'cpp/init-gdb)
+
+(defun cpp/init-rtags ()
+  (use-package rtags
+    :commands rtags-enable-standard-keybindings
+    :init
+    (rtags-enable-standard-keybindings)
+    :config
+    (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+    (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
+    )
+  )
+(add-hook 'c-mode-common-hook 'cpp/init-rtags)
+(add-hook 'c++-mode-common-hook 'cpp/init-rtags)
+
 
 (provide 'setup-cpp)
