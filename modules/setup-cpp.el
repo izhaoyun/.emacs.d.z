@@ -3,6 +3,7 @@
          ("\\.cmake\\'" . cmake-mode))
   )
 
+
 (use-package ggtags
   :init
   (add-hook 'c-mode-common-hook
@@ -37,15 +38,6 @@
 (add-hook 'c-mode-common-hook 'cpp/init-company-c-headers)
 
 
-(defun cpp/init-cmake-ide ()
-  ;; (use-package cmake-ide
-  ;;   :init
-  ;;   (cmake-ide-setup)
-  ;;   )
-  )
-(add-hook 'c-mode-common-hook 'cpp/init-cmake-ide)
-
-
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
   :bind
@@ -73,6 +65,24 @@
 (add-hook 'c-mode-common-hook 'cpp/init-gdb)
 
 
-(use-package rtags)
+(use-package rtags
+  :defer t
+  :commands (rtags-start-process-unless-running
+             rtags-enable-standard-keybindings
+             )
+  :init
+  (add-to-list 'exec-path (expand-file-name "~/.emacs.d/utils/rtags/bin"))
+  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+  (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
+  (rtags-enable-standard-keybindings)
+  )
+
+
+(use-package cmake-ide
+  :after rtags
+  :init
+  (setq cmake-ide-rdm-executable "~/.emacs.d/utils/rtags/bin/rdm")
+  (cmake-ide-setup)
+  )
 
 (provide 'setup-cpp)
