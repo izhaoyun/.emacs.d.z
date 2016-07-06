@@ -68,8 +68,6 @@
   (use-package rtags
     :commands rtags-enable-standard-keybindings
     :init
-    ;; path to rdm/rc
-    (add-to-list 'exec-path (expand-file-name "~/.emacs.d/utils/rtags/bin"))
     (rtags-enable-standard-keybindings)
     :config
     (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
