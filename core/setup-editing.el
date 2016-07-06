@@ -81,7 +81,12 @@
 (use-package winner
   :commands winner-mode
   :init
-  (winner-mode))
+  (winner-mode)
+  :bind
+  (("C-x 4 u" . winner-undo)
+   ("C-x 4 r" . winner-redo)
+   )
+  )
 
 (use-package comment-dwim-2
   :bind
@@ -136,5 +141,11 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+(use-package window-numbering
+  :commands (window-numbering-mode)
+  :init
+  (window-numbering-mode 1)
+  )
 
 (provide 'setup-editing)

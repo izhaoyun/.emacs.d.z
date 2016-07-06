@@ -36,13 +36,15 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-company-c-headers)
 
+
 (defun cpp/init-cmake-ide ()
-  (use-package cmake-ide
-    :init
-    (cmake-ide-setup)
-    )
+  ;; (use-package cmake-ide
+  ;;   :init
+  ;;   (cmake-ide-setup)
+  ;;   )
   )
 (add-hook 'c-mode-common-hook 'cpp/init-cmake-ide)
+
 
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
@@ -59,8 +61,6 @@
 ;; (use-package semantic
 ;; :init
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-
-
 ;; )
 
 (defun cpp/init-gdb ()
@@ -71,5 +71,8 @@
     )
   )
 (add-hook 'c-mode-common-hook 'cpp/init-gdb)
+
+
+(use-package rtags)
 
 (provide 'setup-cpp)
