@@ -64,25 +64,20 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-gdb)
 
-
-(use-package rtags
-  :defer t
-  :commands (rtags-start-process-unless-running
-             rtags-enable-standard-keybindings
-             )
-  :init
-  (add-to-list 'exec-path (expand-file-name "~/.emacs.d/utils/rtags/bin"))
-  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
-  (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-  (rtags-enable-standard-keybindings)
+(defun cpp/init-rtags ()
+  (use-package rtags
+    :commands rtags-enable-standard-keybindings
+    :init
+    ;; path to rdm/rc
+    (add-to-list 'exec-path (expand-file-name "~/.emacs.d/utils/rtags/bin"))
+    (rtags-enable-standard-keybindings)
+    :config
+    (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+    (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
+    )
   )
+(add-hook 'c-mode-common-hook 'cpp/init-rtags)
+(add-hook 'c++-mode-common-hook 'cpp/init-rtags)
 
-
-(use-package cmake-ide
-  :after rtags
-  :init
-  (setq cmake-ide-rdm-executable "~/.emacs.d/utils/rtags/bin/rdm")
-  (cmake-ide-setup)
-  )
 
 (provide 'setup-cpp)
