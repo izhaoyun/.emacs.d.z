@@ -1,6 +1,3 @@
-[submodule "utils/ycmd"]
-	path = utils/ycmd
-	url = https://github.com/Valloric/ycmd.git
 [submodule "utils/rtags"]
 	path = utils/rtags
 	url = https://github.com/Andersbakken/rtags.git
