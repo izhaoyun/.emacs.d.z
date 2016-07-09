@@ -106,18 +106,6 @@
               )
   )
 
-(use-package ycmd
-  :commands (global-ycmd-mode)
-  :init
-  (add-hook 'after-init-hook #'global-ycmd-mode)
-  :config
-  ;; eldoc integration
-  (progn
-    (require 'ycmd-eldoc)
-    (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
-    )
-  )
-
 
 (use-package eldoc
   :diminish eldoc-mode

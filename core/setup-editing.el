@@ -148,4 +148,6 @@
   (window-numbering-mode 1)
   )
 
+(recentf-mode 1)
+
 (provide 'setup-editing)
