@@ -148,6 +148,12 @@
   (window-numbering-mode 1)
   )
 
-(recentf-mode 1)
+(use-package recentf
+  :commands (recentf-mode)
+  :init
+  (recentf-mode 1)
+  :bind
+  ("C-x C-r" . recentf-open-files)
+  )
 
 (provide 'setup-editing)
