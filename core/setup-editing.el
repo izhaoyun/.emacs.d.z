@@ -149,7 +149,8 @@
   )
 
 (use-package recentf
-  :commands (recentf-mode)
+  :commands (recentf-mode
+             recentf-open-files)
   :init
   (recentf-mode 1)
   :bind
