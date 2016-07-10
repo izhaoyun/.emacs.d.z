@@ -54,6 +54,6 @@
 (require 'setup-cpp)
 ;; (require 'setup-ruby)
 (require 'setup-python)
-;; (require 'setup-go)
+(require 'setup-go)
 
 ;; ;;; init.el ends here
