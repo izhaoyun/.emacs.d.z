@@ -4,7 +4,10 @@
     flycheck
     flycheck-pos-tip
     company
-    company-quickhelp))
+    company-quickhelp
+    highlight-indentation
+    )
+  )
 
 (install-pkgs devel-packages)
 
@@ -20,17 +23,12 @@
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-
-(defun init/develop-ws-butler ()
-  (use-package ws-butler
-    :diminish ws-butler-mode
-    :commands ws-butler-mode
-    :init
-    (ws-butler-mode)
-    )
+(use-package ws-butler
+  :diminish ws-butler-mode
+  :commands ws-butler-mode
+  :init
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
   )
-(add-hook 'prog-mode-hook 'init/develop-ws-butler)
-
 
 (use-package yasnippet
   :commands (yas-reload-all
@@ -38,10 +36,7 @@
   :init
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
-  :config
-
   )
-
 
 (use-package highlight-indentation
   :diminish (highlight-indentation-mode
@@ -54,20 +49,20 @@
   (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
   )
 
-
 (use-package flycheck
-  :commands (global-flycheck-mode)
+  :commands (flycheck-mode)
   :init
-  (global-flycheck-mode)
-  (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (add-hook 'prog-mode-hook 'flycheck-mode)
   :config
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
   )
 
 (use-package flycheck-pos-tip
   :after flycheck
   :commands flycheck-pos-tip-mode
   :init
-  (flycheck-pos-tip-mode 1)
+  (add-hook 'flycheck-mode-hook 'flycheck-pos-tip-mode)
+  ;; (flycheck-pos-tip-mode 1)
   )
 
 (use-package company
@@ -105,7 +100,6 @@
               ("M-h" . company-quickhelp-manual-begin)
               )
   )
-
 
 (use-package eldoc
   :diminish eldoc-mode

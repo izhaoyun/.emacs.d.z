@@ -72,7 +72,7 @@
     :init
     (setq ace-pinyin-use-avy t)
     (ace-pinyin-global-mode))
-  
+
   (use-package ace-link
     :init
     (ace-link-setup-default))
@@ -119,14 +119,14 @@ _s_: subword         _M_: move region
   ("q"  nil                                      "cancel" :color blue))
 
 (defhydra hydra-projectile (:color teal
-                            :hint nil)
+                                   :hint nil)
   "
      PROJECTILE: %(projectile-project-root)
 
      Find File            Search/Tags          Buffers                Cache
 ------------------------------------------------------------------------------------------
 _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache clear
- _ff_: file dwim       _g_: update gtags      _b_: switch to buffer  _x_: remove known project
+ _ff_: file dwim       _b_: switch to buffer  _x_: remove known project
  _fd_: file curr dir   _o_: multi-occur     _s-k_: Kill all buffers  _X_: cleanup non-existing
   _r_: recent file                                               ^^^^_z_: cache current
   _d_: dir
@@ -139,8 +139,6 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   ("s-f" projectile-find-file)
   ("ff"  projectile-find-file-dwim)
   ("fd"  projectile-find-file-in-directory)
-  ("g"   ggtags-update-tags)
-  ("s-g" ggtags-update-tags)
   ("i"   projectile-ibuffer)
   ("K"   projectile-kill-buffers)
   ("s-k" projectile-kill-buffers)
@@ -154,7 +152,8 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   ("X"   projectile-cleanup-known-projects)
   ("z"   projectile-cache-current-file)
   ("`"   hydra-projectile-other-window/body "other window")
-  ("q"   nil "cancel" :color blue))
+  ("q"   nil "cancel" :color blue)
+  )
 
 (use-package magit
   :bind
@@ -182,7 +181,7 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
 (use-package yasnippet
   :diminish yas-minor-mode
   :commands (yas-reload-all
-	     yas-minor-mode)
+         yas-minor-mode)
   :init
   (yas-reload-all)
   :config
