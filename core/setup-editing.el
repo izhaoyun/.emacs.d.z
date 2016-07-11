@@ -37,25 +37,32 @@
         regexp-search-ring))
 
 (use-package paren
+  :init
+  (show-paren-mode 1)
   :config
   (setq show-paren-style 'expression)
-  (show-paren-mode 1))
+  )
 
 (use-package rainbow-delimiters
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+  :commands (rainbow-delimiters-mode)
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  )
 
 (use-package elec-pair
   :ensure nil
   :init
+  (electric-pair-mode 1)
+  :config
   (setq electric-pair-pairs '((?\" . ?\")
-                  (?\{ . ?\})))
-  (electric-pair-mode 1))
+                              (?\{ . ?\})))
+  )
 
 (use-package expand-region
   :bind
   (("C-=" . er/expand-region)
-   ("C--" . er/contract-region)))
+   ("C--" . er/contract-region))
+  )
 
 (use-package undo-tree
   :diminish undo-tree-mode
@@ -76,10 +83,13 @@
   :init
   (add-hook 'before-save-hook 'whitespace-cleanup)
   :config
-  (setq whitespace-line-column nil))
+  (setq whitespace-line-column nil)
+  )
 
 (use-package winner
-  :commands winner-mode
+  :commands (winner-mode
+             winner-undo
+             winner-redo)
   :init
   (winner-mode)
   :bind
@@ -90,38 +100,38 @@
 
 (use-package comment-dwim-2
   :bind
-  ("M-;" . comment-dwim-2))
+  ("M-;" . comment-dwim-2)
+  )
 
 (use-package aggressive-indent
   :diminish aggressive-indent-mode
-  :config
-  (global-aggressive-indent-mode 1))
+  :init
+  (add-hook 'prog-mode-hook #'aggressive-indent-mode)
+  )
 
 (use-package clean-aindent-mode
   :init
   (electric-indent-mode -1)
   (clean-aindent-mode 1)
-  (setq clean-aindent-is-simple-indent t))
-
-;; (use-package indent-guide
-;;   :diminish indent-guide-mode
-;;   :init
-;;   (indent-guide-mode 1)
-;;   )
+  :config
+  (setq clean-aindent-is-simple-indent t)
+  )
 
 (use-package dtrt-indent
   :diminish dtrt-indent-mode
   :init
   (dtrt-indent-mode 1)
+  :config
   (setq dtrt-indent-verbosity 0)
   )
 
-(use-package abbrev
-  :ensure nil
-  :diminish abbrev-mode
-  :config
-  (if (file-exists-p abbrev-file-name)
-      (quietly-read-abbrev-file)))
+;; (use-package abbrev
+;;   :ensure nil
+;;   :diminish abbrev-mode
+;;   :config
+;;   (if (file-exists-p abbrev-file-name)
+;;       (quietly-read-abbrev-file))
+;;   )
 
 (use-package highlight-symbol
   :bind
@@ -137,7 +147,11 @@
 ;;   (add-hook 'after-init-hook 'server-start t)
 ;;   (add-hook 'after-init-hook 'edit-server-start t))
 
-(global-set-key (kbd "M-/") 'hippie-expand)
+(use-package hippie-exp
+  :bind
+  ("M-/" . hippie-expand)
+  )
+
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
