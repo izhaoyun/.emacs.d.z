@@ -52,7 +52,7 @@
 (use-package flycheck
   :commands (flycheck-mode)
   :init
-  (add-hook 'prog-mode-hook 'flycheck-mode)
+  (add-hook 'prog-mode-hook #'flycheck-mode)
   :config
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
   )
@@ -62,7 +62,6 @@
   :commands flycheck-pos-tip-mode
   :init
   (add-hook 'flycheck-mode-hook 'flycheck-pos-tip-mode)
-  ;; (flycheck-pos-tip-mode 1)
   )
 
 (use-package company
@@ -96,9 +95,9 @@
   :init
   (company-quickhelp-mode 1)
   (setq company-quickhelp-delay nil)
-  :bind (:map company-active-map
-              ("M-h" . company-quickhelp-manual-begin)
-              )
+  :bind
+  (:map company-active-map
+        ("M-h" . company-quickhelp-manual-begin))
   )
 
 (use-package eldoc

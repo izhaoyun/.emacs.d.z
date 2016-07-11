@@ -13,17 +13,14 @@
     ggtags
     ag
     yasnippet
-    ))
+    )
+  )
 
 (install-pkgs utils-packages)
 
 (use-package swiper
   :ensure counsel
   :diminish ivy-mode
-  :init
-  (setq ivy-display-style 'fancy)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
   :bind
   (("C-s" . counsel-grep-or-swiper)
    ("C-r" . ivy-resume)
@@ -45,7 +42,12 @@
         ("v" . counsel-describe-variable)
         ("s" . counsel-info-lookup-symbol))
   :init
-  (ivy-mode))
+  (ivy-mode)
+  :config
+  (setq ivy-display-style 'fancy)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  )
 
 (use-package hydra)
 
@@ -53,7 +55,8 @@
   :diminish which-key-mode
   :init
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom))
+  (which-key-setup-side-window-right-bottom)
+  )
 
 (use-package avy
   :bind
@@ -156,35 +159,33 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   )
 
 (use-package magit
+  :commands (magit-status)
   :bind
-  ("C-x g" . magit-status))
+  ("C-x g" . magit-status)
+  )
 
 (use-package flycheck
   :diminish flycheck-mode
-  :config
+  :init
   (add-hook 'prog-mode-hook #'flycheck-mode)
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled save)))
-
-(use-package server
-  :ensure nil
-  :defer t
   :config
-  (unless (server-running-p)
-    (server-start)))
+  (setq flycheck-check-syntax-automatically
+        '(mode-enabled save))
+  )
 
 (use-package ibuffer
   :ensure nil
   :bind
-  ("C-x C-b" . ibuffer))
+  ("C-x C-b" . ibuffer)
+  )
 
 (use-package yasnippet
   :diminish yas-minor-mode
   :commands (yas-reload-all
-         yas-minor-mode)
+             yas-minor-mode)
   :init
   (yas-reload-all)
-  :config
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  )
 
 (provide 'setup-utils)

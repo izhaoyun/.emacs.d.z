@@ -3,7 +3,6 @@
          ("\\.cmake\\'" . cmake-mode))
   )
 
-
 (use-package ggtags
   :init
   (add-hook 'c-mode-common-hook
