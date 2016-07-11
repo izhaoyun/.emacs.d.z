@@ -9,7 +9,7 @@
       inhibit-startup-message t
       sentence-end-double-space nil)
 
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 (global-font-lock-mode 1)
 (global-linum-mode 1)
 (column-number-mode 1)
@@ -59,6 +59,8 @@
   )
 
 (use-package expand-region
+  :commands (er/expand-region
+             er/contract-region)
   :bind
   (("C-=" . er/expand-region)
    ("C--" . er/contract-region))
@@ -66,13 +68,16 @@
 
 (use-package undo-tree
   :diminish undo-tree-mode
-  :commands global-undo-tree-mode
+  :commands (global-undo-tree-mode)
   :bind
-  ("C-z" . undo)
+  (("C-z" . undo)
+   ("C-S-z" . undo-tree-redo))
   :init
+  (global-undo-tree-mode)
+  :config
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-visualizer-timestamps t)
-  (global-undo-tree-mode))
+  )
 
 (use-package whitespace
   :diminish whitespace-mode
@@ -110,6 +115,7 @@
   )
 
 (use-package clean-aindent-mode
+  :commands (clean-aindent-mode)
   :init
   (electric-indent-mode -1)
   (clean-aindent-mode 1)
@@ -125,14 +131,6 @@
   (setq dtrt-indent-verbosity 0)
   )
 
-;; (use-package abbrev
-;;   :ensure nil
-;;   :diminish abbrev-mode
-;;   :config
-;;   (if (file-exists-p abbrev-file-name)
-;;       (quietly-read-abbrev-file))
-;;   )
-
 (use-package highlight-symbol
   :bind
   (("C-<f5>" . highlight-symbol)
@@ -141,13 +139,8 @@
    ("M-<f5>" . highlight-symbol-query-replace))
   )
 
-;; (use-package edit-server
-;;   :if window-system
-;;   :init
-;;   (add-hook 'after-init-hook 'server-start t)
-;;   (add-hook 'after-init-hook 'edit-server-start t))
-
 (use-package hippie-exp
+  :commands (hippie-expand)
   :bind
   ("M-/" . hippie-expand)
   )
