@@ -41,6 +41,8 @@
 (use-package highlight-indentation
   :diminish (highlight-indentation-mode
              highlight-indentation-current-column-mode)
+  :commands (highlight-indentation-mode
+             highlight-indentation-current-column-mode)
   :init
   (add-hook 'prog-mode-hook 'highlight-indentation-mode)
   (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
@@ -86,7 +88,7 @@
   :after yasnippet
   :commands company-yasnippet
   :bind
-  ("C-<tab>" . company-yasnippet)
+  (("C-<tab>" . company-yasnippet))
   )
 
 (use-package company-quickhelp

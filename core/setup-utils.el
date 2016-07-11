@@ -159,6 +159,7 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   )
 
 (use-package magit
+  :defer 5
   :commands (magit-status)
   :bind
   ("C-x g" . magit-status)
