@@ -1,3 +1,16 @@
+(defconst devel-packages
+  '(ws-butler
+    yasnippet
+    flycheck
+    flycheck-pos-tip
+    company
+    company-quickhelp
+    highlight-indentation
+    )
+  )
+
+(install-pkgs devel-packages)
+
 (setq vc-handled-backends nil)
 
 (defun auto-fill-comments ()
@@ -6,21 +19,16 @@
   )
 (add-hook 'prog-mode-hook 'auto-fill-comments)
 
-
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-(use-package dtrt-indent
-  :diminish dtrt-indent-mode
-  :config
-  (dtrt-indent-mode 1))
-
-
 (use-package ws-butler
   :diminish ws-butler-mode
+  :commands ws-butler-mode
   :init
-  (ws-butler-mode))
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
+  )
 
 (use-package yasnippet
   :commands (yas-reload-all
@@ -28,30 +36,76 @@
   :init
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
+  )
+
+(use-package highlight-indentation
+  :diminish (highlight-indentation-mode
+             highlight-indentation-current-column-mode)
+  :commands (highlight-indentation-mode
+             highlight-indentation-current-column-mode)
+  :init
+  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+  (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
   :config
-    (use-package company-yasnippet
-      :ensure company
-      :commands company-yasnippet
-      :bind
-      ("C-c ; y" . company-yasnippet))
+  (set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
   )
 
 (use-package flycheck
-  :commands   flycheck-mode
+  :commands (flycheck-mode)
   :init
-  (global-flycheck-mode)
-  (setq flycheck-check-syntax-automatically
-        '(mode-enabled save))
+  (add-hook 'prog-mode-hook #'flycheck-mode)
   :config
-  (use-package flycheck-pos-tip
-    :init
-    (flycheck-pos-tip-mode)))
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  )
 
-(defun init-semantic-stickyfunc-enhance ()
-  (use-package stickyfunc-enhance
-    :init
-    (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-    (semantic-mode 1))
+(use-package flycheck-pos-tip
+  :after flycheck
+  :commands flycheck-pos-tip-mode
+  :init
+  (add-hook 'flycheck-mode-hook 'flycheck-pos-tip-mode)
+  )
+
+(use-package company
+  :commands (global-company-mode
+             company-mode)
+  :init
+  (global-company-mode 1)
+  ;; (setq company-global-modes
+  ;;       '(not python-mode cython-mode sage-mode))
+  :config
+  (setq company-show-numbers t)
+  (setq company-tooltip-limit 20)
+  (setq company-idle-delay .3)
+  (setq company-echo-delay 0)
+  (setq company-begin-commands '(self-insert-command))
+  ;; use company-mode with Clang
+  (setq company-backends (delete 'company-semantic company-backends))
+  )
+
+(use-package company-yasnippet
+  :ensure company
+  :after yasnippet
+  :commands company-yasnippet
+  :bind
+  (("C-<tab>" . company-yasnippet))
+  )
+
+(use-package company-quickhelp
+  :commands company-quickhelp-mode
+  :after company
+  :init
+  (company-quickhelp-mode 1)
+  (setq company-quickhelp-delay nil)
+  :bind
+  (:map company-active-map
+        ("M-h" . company-quickhelp-manual-begin))
+  )
+
+(use-package eldoc
+  :diminish eldoc-mode
+  :init
+  (add-hook 'prog-mode-hook #'eldoc-mode)
   )
 
 (provide 'setup-develop)

@@ -13,17 +13,14 @@
     ggtags
     ag
     yasnippet
-    ))
+    )
+  )
 
 (install-pkgs utils-packages)
 
 (use-package swiper
   :ensure counsel
   :diminish ivy-mode
-  :init
-  (setq ivy-display-style 'fancy)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
   :bind
   (("C-s" . counsel-grep-or-swiper)
    ("C-r" . ivy-resume)
@@ -45,7 +42,12 @@
         ("v" . counsel-describe-variable)
         ("s" . counsel-info-lookup-symbol))
   :init
-  (ivy-mode))
+  (ivy-mode)
+  :config
+  (setq ivy-display-style 'fancy)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  )
 
 (use-package hydra)
 
@@ -53,7 +55,8 @@
   :diminish which-key-mode
   :init
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom))
+  (which-key-setup-side-window-right-bottom)
+  )
 
 (use-package avy
   :bind
@@ -72,7 +75,7 @@
     :init
     (setq ace-pinyin-use-avy t)
     (ace-pinyin-global-mode))
-  
+
   (use-package ace-link
     :init
     (ace-link-setup-default))
@@ -119,14 +122,14 @@ _s_: subword         _M_: move region
   ("q"  nil                                      "cancel" :color blue))
 
 (defhydra hydra-projectile (:color teal
-                            :hint nil)
+                                   :hint nil)
   "
      PROJECTILE: %(projectile-project-root)
 
      Find File            Search/Tags          Buffers                Cache
 ------------------------------------------------------------------------------------------
 _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache clear
- _ff_: file dwim       _g_: update gtags      _b_: switch to buffer  _x_: remove known project
+ _ff_: file dwim       _b_: switch to buffer  _x_: remove known project
  _fd_: file curr dir   _o_: multi-occur     _s-k_: Kill all buffers  _X_: cleanup non-existing
   _r_: recent file                                               ^^^^_z_: cache current
   _d_: dir
@@ -139,8 +142,6 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   ("s-f" projectile-find-file)
   ("ff"  projectile-find-file-dwim)
   ("fd"  projectile-find-file-in-directory)
-  ("g"   ggtags-update-tags)
-  ("s-g" ggtags-update-tags)
   ("i"   projectile-ibuffer)
   ("K"   projectile-kill-buffers)
   ("s-k" projectile-kill-buffers)
@@ -154,38 +155,38 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
   ("X"   projectile-cleanup-known-projects)
   ("z"   projectile-cache-current-file)
   ("`"   hydra-projectile-other-window/body "other window")
-  ("q"   nil "cancel" :color blue))
+  ("q"   nil "cancel" :color blue)
+  )
 
 (use-package magit
+  :defer 5
+  :commands (magit-status)
   :bind
-  ("C-x g" . magit-status))
+  ("C-x g" . magit-status)
+  )
 
 (use-package flycheck
   :diminish flycheck-mode
-  :config
+  :init
   (add-hook 'prog-mode-hook #'flycheck-mode)
+  :config
   (setq flycheck-check-syntax-automatically
-        '(mode-enabled save)))
-
-;; (use-package server
-;;   :ensure nil
-;;   :defer t
-;;   :config
-;;   (unless (server-running-p)
-;;     (server-start)))
+        '(mode-enabled save))
+  )
 
 (use-package ibuffer
   :ensure nil
   :bind
-  ("C-x C-b" . ibuffer))
+  ("C-x C-b" . ibuffer)
+  )
 
 (use-package yasnippet
   :diminish yas-minor-mode
   :commands (yas-reload-all
-	     yas-minor-mode)
+             yas-minor-mode)
   :init
   (yas-reload-all)
-  :config
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  )
 
 (provide 'setup-utils)
