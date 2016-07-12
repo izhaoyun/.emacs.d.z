@@ -1,55 +1,17 @@
-(setq gc-cons-threshold 104857600)
+;;; init.el --- Where all the magic begins
 
-(require 'package)
-(setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")
-                         ("org"   . "http://orgmode.org/elpa/")))
-(package-initialize)
-(setq package-enable-at-startup nil)
+(setq dotfiles-dir (file-name-directory (or (buffer-file-name) 
+                                         load-file-name)))
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(let* ((org-dir "~/.emacs.d/site-lisp/org-mode/lisp")
+       (org-contrib-dir "~/.emacs.d/site-lisp/org-mode/contrib/lisp")
+       (load-path (append (list org-dir org-contrib-dir)
+			  (or load-path nil))))
+  ;; load up Org-mode and Org-babel
+  (require 'org-install)
+  (require 'ob-tangle))
 
-(eval-when-compile
-  (require 'use-package))
-(setq use-package-always-ensure t)
-(require 'diminish)
-(require 'bind-key)
+;;;; load up all literate org-mode files in this directory
+(mapc #'org-babel-load-file (directory-files dotfiles-dir t "\\.org$"))
 
-(setq load-prefer-newer t)
-
-(use-package auto-compile
-  :commands (auto-compile-on-load-mode
-             auto-compile-on-save-mode)
-  :init
-  (auto-compile-on-load-mode)
-  (auto-compile-on-save-mode)
-  :config
-  (setq auto-compile-display-buffer nil)
-  (setq auto-compile-mode-line-counter t)
-  )
-
-(defun install-pkgs (pkgs-list)
-  "Install all require packages."
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package pkgs-list)
-    (unless (package-installed-p package)
-      (package-install package)))
-  )
-
-(add-to-list 'load-path "~/.emacs.d/core")
-(require 'setup-editing)
-(require 'setup-utils)
-(require 'setup-develop)
-
-;; langs settings
-(add-to-list 'load-path "~/.emacs.d/modules")
-(require 'setup-org)
-(require 'setup-cpp)
-;; (require 'setup-ruby)
-(require 'setup-python)
-(require 'setup-go)
-
-;; ;;; init.el ends here
+;;; init.el ends here
