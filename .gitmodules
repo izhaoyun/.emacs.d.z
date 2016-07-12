@@ -1,3 +1,84 @@
+[submodule "site-lisp/company-mode"]
+	path = site-lisp/company-mode
+	url = https://github.com/company-mode/company-mode.git
+[submodule "site-lisp/swiper"]
+	path = site-lisp/swiper
+	url = https://github.com/abo-abo/swiper.git
+[submodule "site-lisp/hydra"]
+	path = site-lisp/hydra
+	url = https://github.com/abo-abo/hydra.git
+[submodule "site-lisp/avy"]
+	path = site-lisp/avy
+	url = https://github.com/abo-abo/avy.git
+[submodule "site-lisp/projectile"]
+	path = site-lisp/projectile
+	url = https://github.com/bbatsov/projectile.git
+[submodule "site-lisp/emacs-async"]
+	path = site-lisp/emacs-async
+	url = https://github.com/jwiegley/emacs-async.git
+[submodule "site-lisp/helm"]
+	path = site-lisp/helm
+	url = https://github.com/emacs-helm/helm.git
+[submodule "site-lisp/smartparens"]
+	path = site-lisp/smartparens
+	url = https://github.com/Fuco1/smartparens.git
+[submodule "site-lisp/emacs-which-key"]
+	path = site-lisp/emacs-which-key
+	url = https://github.com/justbur/emacs-which-key.git
+[submodule "site-lisp/Fill-Column-Indicator"]
+	path = site-lisp/Fill-Column-Indicator
+	url = https://github.com/alpaker/Fill-Column-Indicator.git
+[submodule "site-lisp/use-package"]
+	path = site-lisp/use-package
+	url = https://github.com/jwiegley/use-package.git
+[submodule "site-lisp/emacs-calfw"]
+	path = site-lisp/emacs-calfw
+	url = https://github.com/kiwanami/emacs-calfw.git
+[submodule "site-lisp/ws-butler"]
+	path = site-lisp/ws-butler
+	url = https://github.com/lewang/ws-butler.git
+[submodule "site-lisp/magit"]
+	path = site-lisp/magit
+	url = https://github.com/magit/magit.git
+[submodule "site-lisp/expand-region.el"]
+	path = site-lisp/expand-region.el
+	url = https://github.com/magnars/expand-region.el.git
+[submodule "site-lisp/window-numbering.el"]
+	path = site-lisp/window-numbering.el
+	url = https://github.com/nschum/window-numbering.el.git
+[submodule "site-lisp/clean-aindent-mode"]
+	path = site-lisp/clean-aindent-mode
+	url = https://github.com/pmarinov/clean-aindent-mode.git
+[submodule "site-lisp/comment-dwim-2"]
+	path = site-lisp/comment-dwim-2
+	url = https://github.com/remyferre/comment-dwim-2.git
+[submodule "site-lisp/helm-swoop"]
+	path = site-lisp/helm-swoop
+	url = https://github.com/ShingoFukuyama/helm-swoop.git
+[submodule "site-lisp/electric-align"]
+	path = site-lisp/electric-align
+	url = https://github.com/zk-phi/electric-align.git
+[submodule "site-lisp/flycheck"]
+	path = site-lisp/flycheck
+	url = https://github.com/flycheck/flycheck.git
+[submodule "site-lisp/flycheck-irony"]
+	path = site-lisp/flycheck-irony
+	url = https://github.com/Sarcasm/flycheck-irony.git
+[submodule "site-lisp/irony-mode"]
+	path = site-lisp/irony-mode
+	url = https://github.com/Sarcasm/irony-mode.git
+[submodule "site-lisp/cedet"]
+	path = site-lisp/cedet
+	url = http://git.code.sf.net/p/cedet/git
+[submodule "site-lisp/company-c-headers"]
+	path = site-lisp/company-c-headers
+	url = https://github.com/randomphrase/company-c-headers.git
 [submodule "site-lisp/org-mode"]
 	path = site-lisp/org-mode
 	url = git://orgmode.org/org-mode.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git
+[submodule "site-lisp/company-anaconda"]
+	path = site-lisp/company-anaconda
+	url = https://github.com/proofit404/company-anaconda.git
