@@ -19,17 +19,6 @@
 
 (setq load-prefer-newer t)
 
-(use-package auto-compile
-  :commands (auto-compile-on-load-mode
-             auto-compile-on-save-mode)
-  :init
-  (auto-compile-on-load-mode)
-  (auto-compile-on-save-mode)
-  :config
-  (setq auto-compile-display-buffer nil)
-  (setq auto-compile-mode-line-counter t)
-  )
-
 (defun install-pkgs (pkgs-list)
   "Install all require packages."
   (unless package-archive-contents
