@@ -122,7 +122,6 @@ _s_: subword         _M_: move region
   )
 
 (use-package magit
-  :defer 2
   :commands (magit-status)
   :bind
   ("C-x g" . magit-status)
