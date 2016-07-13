@@ -160,7 +160,7 @@
              recentf-open-files)
   :bind
   (("C-x C-r" . recentf-open-files))
-  :config
+  :init
   (recentf-mode 1)
   )
 
