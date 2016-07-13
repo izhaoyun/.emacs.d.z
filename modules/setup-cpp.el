@@ -1,3 +1,12 @@
+(defconst cpp-packages
+  '(cmake-mode
+    company-c-headers
+    rtags
+    irony)
+  )
+
+(install-pkgs cpp-packages)
+
 (use-package cmake-mode
   :mode (("CMakeLists.txt\\'" . cmake-mode)
          ("\\.cmake\\'" . cmake-mode))
@@ -5,7 +14,6 @@
 
 (use-package cc-mode
   :mode (("\\.h\\'" . c++-mode))
-  :defer 5
   :bind
   ("RET" . newline-and-indent)
   :init
@@ -29,18 +37,18 @@
   )
 (add-hook 'c-mode-common-hook 'cpp/init-gdb)
 
-(defun cpp/init-rtags ()
-  (use-package rtags
-    :commands rtags-enable-standard-keybindings
-    :init
-    (rtags-enable-standard-keybindings)
-    :config
-    (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
-    (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-    )
+(defun init-rtags ()
+  (require 'rtags)
+  (rtags-start-process-unless-running)
+
+  (rtags-enable-standard-keybindings)
+  ;; enable rtags-diagnostics
+  (setq rtags-autostart-diagnostics t)
+  ;; enable rtags-completions-enabled
+  (setq rtags-completions-enabled t)
   )
-(add-hook 'c-mode-common-hook 'cpp/init-rtags)
-(add-hook 'c++-mode-common-hook 'cpp/init-rtags)
+(add-hook 'c-mode-common-hook 'init-rtags)
+(add-hook 'c++-mode-common-hook 'init-rtags)
 
 (use-package irony
   :init

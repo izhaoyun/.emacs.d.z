@@ -10,7 +10,6 @@
     projectile
     flycheck
     magit
-    ggtags
     ag
     yasnippet
     )
