@@ -158,10 +158,10 @@
 (use-package recentf
   :commands (recentf-mode
              recentf-open-files)
+  :bind
+  (("C-x C-r" . recentf-open-files))
   :init
   (recentf-mode 1)
-  :bind
-  ("C-x C-r" . recentf-open-files)
   )
 
 (provide 'setup-editing)
