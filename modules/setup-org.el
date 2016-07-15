@@ -122,8 +122,6 @@ usually soft line-breaks"
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
-;; (use-package calfw)
-
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
