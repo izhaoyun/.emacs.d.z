@@ -29,7 +29,7 @@
     :init
     (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0_9.jar"))
 
-  (use-package ob            
+  (use-package ob
     :ensure org
     :init
     (org-babel-do-load-languages
@@ -50,11 +50,11 @@
 (defun init-org-export ()
   "settings for export"
   (progn
-    (use-package ox-beamer 
+    (use-package ox-beamer
       :ensure org)
-    (use-package ox-gfm    
+    (use-package ox-gfm
       :ensure org-plus-contrib)
-    (use-package ox-html   
+    (use-package ox-html
       :ensure org
       :init
       (use-package htmlize))
@@ -122,6 +122,15 @@ usually soft line-breaks"
   (add-hook 'org-mode-hook 'init-org-babel)
   (add-hook 'org-mode-hook 'init-org-export))
 
-(use-package calfw)
- 
+;; (use-package calfw)
+
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init
+  (setq markdown-command "markdown")
+  )
+
 (provide 'setup-org)
