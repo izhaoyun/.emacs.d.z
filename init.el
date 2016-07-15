@@ -28,6 +28,11 @@
       (package-install package)))
   )
 
+(defun my/byte-recompile ()
+  (interactive)
+  (byte-recompile-directory "~/.emacs.d" 0)
+  )
+
 (add-to-list 'load-path "~/.emacs.d/core")
 (require 'setup-editing)
 (require 'setup-utils)
