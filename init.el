@@ -42,6 +42,7 @@
 (add-to-list 'load-path "~/.emacs.d/modules")
 (require 'setup-org)
 (require 'setup-cpp)
+(require 'setup-shell)
 ;; (require 'setup-ruby)
 (require 'setup-python)
 (require 'setup-go)
