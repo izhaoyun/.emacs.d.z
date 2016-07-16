@@ -46,5 +46,6 @@
 ;; (require 'setup-ruby)
 (require 'setup-python)
 (require 'setup-go)
+(require 'setup-erlang)
 
 ;; ;;; init.el ends here
