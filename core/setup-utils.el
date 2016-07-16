@@ -101,15 +101,6 @@ _s_: subword         _M_: move region
   ("q" nil))
 (global-set-key (kbd "M-g a") 'hydra-avy/body)
 
-(use-package swoop
-  :bind
-  (("C-o"   . swoop)
-   ("C-M-o" . swoop-multi)
-   ("M-o"   . swoop-pcre-regexp)
-   ("C-S-o" . swoop-back-to-last-position)
-   )
-  )
-
 (use-package ag)
 
 (use-package projectile
