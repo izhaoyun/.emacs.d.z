@@ -1,7 +1,6 @@
 # dirs
 irony/*
 el-get/*
-site-lisp/*
 elpa/*
 auto-save-list/*
 semanticdb/*

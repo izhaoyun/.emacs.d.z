@@ -31,21 +31,12 @@
 [submodule "site-lisp/use-package"]
 	path = site-lisp/use-package
 	url = https://github.com/jwiegley/use-package.git
-[submodule "site-lisp/emacs-calfw"]
-	path = site-lisp/emacs-calfw
-	url = https://github.com/kiwanami/emacs-calfw.git
 [submodule "site-lisp/ws-butler"]
 	path = site-lisp/ws-butler
 	url = https://github.com/lewang/ws-butler.git
 [submodule "site-lisp/magit"]
 	path = site-lisp/magit
 	url = https://github.com/magit/magit.git
-[submodule "site-lisp/expand-region.el"]
-	path = site-lisp/expand-region.el
-	url = https://github.com/magnars/expand-region.el.git
-[submodule "site-lisp/window-numbering.el"]
-	path = site-lisp/window-numbering.el
-	url = https://github.com/nschum/window-numbering.el.git
 [submodule "site-lisp/clean-aindent-mode"]
 	path = site-lisp/clean-aindent-mode
 	url = https://github.com/pmarinov/clean-aindent-mode.git
@@ -82,3 +73,12 @@
 [submodule "site-lisp/company-anaconda"]
 	path = site-lisp/company-anaconda
 	url = https://github.com/proofit404/company-anaconda.git
+[submodule "site-lisp/python-mode"]
+	path = site-lisp/python-mode
+	url = https://github.com/pdee/pdee.git
+[submodule "site-lisp/expand-region"]
+	path = site-lisp/expand-region
+	url = https://github.com/magnars/expand-region.el.git
+[submodule "site-lisp/window-numbering"]
+	path = site-lisp/window-numbering
+	url = https://github.com/nschum/window-numbering.el.git
