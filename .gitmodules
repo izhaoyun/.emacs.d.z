@@ -82,3 +82,6 @@
 [submodule "site-lisp/which-key"]
 	path = site-lisp/which-key
 	url = https://github.com/justbur/emacs-which-key.git
+[submodule "site-lisp/diminish"]
+	path = site-lisp/diminish
+	url = https://github.com/myrjola/diminish.el
