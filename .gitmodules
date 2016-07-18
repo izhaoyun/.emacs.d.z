@@ -22,15 +22,9 @@
 [submodule "site-lisp/smartparens"]
 	path = site-lisp/smartparens
 	url = https://github.com/Fuco1/smartparens.git
-[submodule "site-lisp/emacs-which-key"]
-	path = site-lisp/emacs-which-key
-	url = https://github.com/justbur/emacs-which-key.git
 [submodule "site-lisp/Fill-Column-Indicator"]
 	path = site-lisp/Fill-Column-Indicator
 	url = https://github.com/alpaker/Fill-Column-Indicator.git
-[submodule "site-lisp/use-package"]
-	path = site-lisp/use-package
-	url = https://github.com/jwiegley/use-package.git
 [submodule "site-lisp/ws-butler"]
 	path = site-lisp/ws-butler
 	url = https://github.com/lewang/ws-butler.git
@@ -82,3 +76,9 @@
 [submodule "site-lisp/window-numbering"]
 	path = site-lisp/window-numbering
 	url = https://github.com/nschum/window-numbering.el.git
+[submodule "lib/use-package"]
+	path = lib/use-package
+	url = https://github.com/jwiegley/use-package.git
+[submodule "site-lisp/which-key"]
+	path = site-lisp/which-key
+	url = https://github.com/justbur/emacs-which-key.git

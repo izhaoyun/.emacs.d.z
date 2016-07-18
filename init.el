@@ -1,17 +1,28 @@
-;;; init.el --- Where all the magic begins
+(package-initialize)
+(mapc #'(lambda (path)
+	  (add-to-list 'load-path
+		       (expand-file-name path user-emacs-directory)))
+      '("site-lisp" "lisp" "lib/use-package"))
 
-(setq dotfiles-dir (file-name-directory (or (buffer-file-name) 
-                                         load-file-name)))
+(require 'cl)
 
-(let* ((org-dir "~/.emacs.d/site-lisp/org-mode/lisp")
-       (org-contrib-dir "~/.emacs.d/site-lisp/org-mode/contrib/lisp")
-       (load-path (append (list org-dir org-contrib-dir)
-			  (or load-path nil))))
-  ;; load up Org-mode and Org-babel
-  (require 'org-install)
-  (require 'ob-tangle))
+(defvar use-package-verbose t)
+(require 'use-package)
 
-;;;; load up all literate org-mode files in this directory
-(mapc #'org-babel-load-file (directory-files dotfiles-dir t "\\.org$"))
+(use-package avy
+  :load-path "site-lisp/avy"
+  :bind
+  (("C-:" . avy-goto-char)
+   ("M-p" . avy-pop-mark))
+  :config
+  (avy-setup-default))
 
-;;; init.el ends here
+(use-package which-key
+  :load-path "site-lisp/which-key"
+  :init
+  (which-key-mode))
+
+(use-package python-mode
+  :load-path "site-lisp/python-mode"
+  :config
+  )
