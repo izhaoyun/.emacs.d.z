@@ -1,0 +1,127 @@
+[submodule "site-lisp/company-mode"]
+	path = site-lisp/company-mode
+	url = https://github.com/company-mode/company-mode.git
+        ignore = dirty
+[submodule "site-lisp/hydra"]
+	path = site-lisp/hydra
+	url = https://github.com/abo-abo/hydra.git
+        ignore = dirty
+[submodule "site-lisp/avy"]
+	path = site-lisp/avy
+	url = https://github.com/abo-abo/avy.git
+        ignore = dirty
+[submodule "site-lisp/projectile"]
+	path = site-lisp/projectile
+	url = https://github.com/bbatsov/projectile.git
+        ignore = dirty
+[submodule "site-lisp/emacs-async"]
+	path = site-lisp/emacs-async
+	url = https://github.com/jwiegley/emacs-async.git
+        ignore = dirty
+[submodule "site-lisp/helm"]
+	path = site-lisp/helm
+	url = https://github.com/emacs-helm/helm.git
+        ignore = dirty
+[submodule "site-lisp/smartparens"]
+	path = site-lisp/smartparens
+	url = https://github.com/Fuco1/smartparens.git
+        ignore = dirty
+[submodule "site-lisp/Fill-Column-Indicator"]
+	path = site-lisp/Fill-Column-Indicator
+	url = https://github.com/alpaker/Fill-Column-Indicator.git
+        ignore = dirty
+[submodule "site-lisp/ws-butler"]
+	path = site-lisp/ws-butler
+	url = https://github.com/lewang/ws-butler.git
+        ignore = dirty
+[submodule "site-lisp/magit"]
+	path = site-lisp/magit
+	url = https://github.com/magit/magit.git
+        ignore = dirty
+[submodule "site-lisp/clean-aindent-mode"]
+	path = site-lisp/clean-aindent-mode
+	url = https://github.com/pmarinov/clean-aindent-mode.git
+        ignore = dirty
+[submodule "site-lisp/comment-dwim-2"]
+	path = site-lisp/comment-dwim-2
+	url = https://github.com/remyferre/comment-dwim-2.git
+        ignore = dirty
+[submodule "site-lisp/helm-swoop"]
+	path = site-lisp/helm-swoop
+	url = https://github.com/ShingoFukuyama/helm-swoop.git
+        ignore = dirty
+[submodule "site-lisp/electric-align"]
+	path = site-lisp/electric-align
+	url = https://github.com/zk-phi/electric-align.git
+        ignore = dirty
+[submodule "site-lisp/flycheck"]
+	path = site-lisp/flycheck
+	url = https://github.com/flycheck/flycheck.git
+        ignore = dirty
+[submodule "site-lisp/flycheck-irony"]
+	path = site-lisp/flycheck-irony
+	url = https://github.com/Sarcasm/flycheck-irony.git
+        ignore = dirty
+[submodule "site-lisp/irony-mode"]
+	path = site-lisp/irony-mode
+	url = https://github.com/Sarcasm/irony-mode.git
+        ignore = dirty
+[submodule "site-lisp/cedet"]
+	path = site-lisp/cedet
+	url = http://git.code.sf.net/p/cedet/git
+        ignore = dirty
+[submodule "site-lisp/company-c-headers"]
+	path = site-lisp/company-c-headers
+	url = https://github.com/randomphrase/company-c-headers.git
+        ignore = dirty
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git
+        ignore = dirty
+[submodule "site-lisp/company-anaconda"]
+	path = site-lisp/company-anaconda
+	url = https://github.com/proofit404/company-anaconda.git
+        ignore = dirty
+[submodule "site-lisp/python-mode"]
+	path = site-lisp/python-mode
+	url = https://github.com/pdee/pdee.git
+        ignore = dirty
+[submodule "site-lisp/expand-region"]
+	path = site-lisp/expand-region
+	url = https://github.com/magnars/expand-region.el.git
+        ignore = dirty
+[submodule "site-lisp/window-numbering"]
+	path = site-lisp/window-numbering
+	url = https://github.com/nschum/window-numbering.el.git
+        ignore = dirty
+[submodule "lib/use-package"]
+	path = lib/use-package
+	url = https://github.com/jwiegley/use-package.git
+        ignore = dirty
+[submodule "site-lisp/which-key"]
+	path = site-lisp/which-key
+	url = https://github.com/justbur/emacs-which-key.git
+        ignore = dirty
+[submodule "site-lisp/diminish"]
+	path = site-lisp/diminish
+	url = https://github.com/myrjola/diminish.el
+        ignore = dirty
+[submodule "site-lisp/swiper"]
+	path = site-lisp/swiper
+	url = https://github.com/abo-abo/swiper.git
+        ignore = dirty
+[submodule "site-lisp/org-mode"]
+	path = site-lisp/org-mode
+	url = git://orgmode.org/org-mode.git
+[submodule "lib/dash"]
+	path = lib/dash
+	url = https://github.com/magnars/dash.el.git
+        ignore = dirty
+[submodule "site-lisp/sunrise-commander"]
+	path = site-lisp/sunrise-commander
+	url = git://github.com/escherdragon/sunrise-commander.git
+        ignore = dirty
+[submodule "lib/with-editor"]
+	path = lib/with-editor
+	url = https://github.com/magit/with-editor.git
+        ignore = dirty
