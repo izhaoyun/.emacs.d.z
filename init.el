@@ -2,7 +2,7 @@
 (mapc #'(lambda (path)
 	  (add-to-list 'load-path
 		       (expand-file-name path user-emacs-directory)))
-      '("site-lisp" "lisp" "lib/use-package"))
+      '("site-lisp" "lib/use-package"))
 
 (require 'cl)
 
@@ -28,11 +28,11 @@
 (use-package swiper
   :load-path "site-lisp/swiper"
   :bind (("C-s" . counsel-grep-or-swiper)
-	 ("C-r" . ivy-resume)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
 	 ("C-x C-f" . counsel-find-file)
 	 ("C-h l"   . counsel-load-library)
+	 ("C-x C-r" . ivy-resume)
 	 ("C-x r b" . counsel-bookmark)
 	 ("C-c s a" . counsel-ag)
 	 ("C-c s g" . counsel-git)
@@ -47,10 +47,10 @@
 	      ("v" . counsel-describe-variable)
 	      ("s" . counsel-info-lookup-symbol))
   :init
-  (ivy-mode)
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
   :config
   (setq ivy-display-style 'fancy)
-  (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) "))
 
 (use-package which-key
@@ -83,7 +83,7 @@
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package company
-  :load-path "site-lisp/company"
+  :load-path "site-lisp/company-mode"
   :commands (company-mode)
   :init
   (add-hook 'prog-mode-hook #'company-mode)
