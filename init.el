@@ -110,6 +110,9 @@
   :bind
   ("C-x g" . magit-status))
 
+(use-package sunrise-commander
+  :load-path "site-lisp/sunrise-commander")
+
 (when window-system
   (tooltip-mode -1)
   (tool-bar-mode -1)
