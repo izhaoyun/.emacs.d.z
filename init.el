@@ -16,8 +16,11 @@
 
 (eval-and-compile
   (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
-(use-package dash    :defer t :load-path "lib/dash")
 
+(use-package dash         :defer t :load-path "lib/dash")
+(use-package with-editor  :defer t :load-path "lib/with-editor")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package avy
   :load-path "site-lisp/avy"
   :commands (avy-setup-default)
@@ -105,12 +108,13 @@
   (setq tramp-default-method "ssh"))
 
 (use-package magit
-  :load-path "site-lisp/magit"
+  :load-path "site-lisp/magit/lisp"
   :commands (magit-status)
   :bind
   ("C-x g" . magit-status))
 
 (use-package sunrise-commander
+  :defer 10
   :load-path "site-lisp/sunrise-commander")
 
 (when window-system

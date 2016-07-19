@@ -120,3 +120,6 @@
 [submodule "site-lisp/sunrise-commander"]
 	path = site-lisp/sunrise-commander
 	url = git://github.com/escherdragon/sunrise-commander.git
+[submodule "lib/with-editor"]
+	path = lib/with-editor
+	url = https://github.com/magit/with-editor.git
