@@ -65,7 +65,7 @@
   :load-path "site-lisp/projectile"
   :commands (projectile-global-mode)
   :init
-  (projectile-global-mode)
+  (add-hook 'after-init-hook 'projectile-global-mode)
   (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action #'projectile-dired)
   )
@@ -83,5 +83,15 @@
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 (use-package tramp
+  :defer 10
   :config
   (setq tramp-default-method "ssh"))
+
+(use-package company
+  :load-path "site-lisp/company"
+  :commands (company-mode)
+  :init
+  (add-hook 'prog-mode-hook #'company-mode)
+  :config
+  (setq company-show-numbers t)
+  (setq company-tooltip-limit 20))
