@@ -16,7 +16,7 @@
 
 (eval-and-compile
   (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
-(ues-package dash    :defer t :load-path "lib/dash")
+(use-package dash    :defer t :load-path "lib/dash")
 
 (use-package avy
   :load-path "site-lisp/avy"
