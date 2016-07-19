@@ -20,6 +20,35 @@
   :init
   (avy-setup-default))
 
+(use-package swiper
+  :load-path "site-lisp/swiper"
+  :bind (("C-s" . counsel-grep-or-swiper)
+	 ("C-r" . ivy-resume)
+	 ("M-x" . counsel-M-x)
+	 ("M-y" . counsel-yank-pop)
+	 ("C-x C-f" . counsel-find-file)
+	 ("C-h l"   . counsel-load-library)
+	 ("C-x r b" . counsel-bookmark)
+	 ("C-c s a" . counsel-ag)
+	 ("C-c s g" . counsel-git)
+	 ("C-c s i" . counsel-imenu)
+	 ("C-c s p" . counsel-git-grep)
+	 ("C-c s l" . counsel-locate)
+	 ("C-c s t" . counsel-tmm)
+	 ("C-c s r" . counsel-linux-app))
+  :bind (:map help-map
+	      ("b" . counsel-descbinds)
+	      ("f" . counsel-describe-function)
+	      ("v" . counsel-describe-variable)
+	      ("s" . counsel-info-lookup-symbol))
+  :init
+  (ivy-mode)
+  :config
+  (setq ivy-display-style 'fancy)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  )
+
 (use-package which-key
   :load-path "site-lisp/which-key"
   :commands (which-key-mode
@@ -30,6 +59,16 @@
 
 (use-package python-mode
   :load-path "site-lisp/python-mode"
-  :config
-  )
+  :config)
 
+(use-package yasnippet
+  :load-path "site-lisp/yasnippet"
+  :commands (yas-reload-all
+	     yas-minor-mode)
+  :init
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
+
+(use-package tramp
+  :config
+  (setq tramp-default-method "ssh"))

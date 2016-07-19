@@ -58,9 +58,6 @@
 [submodule "site-lisp/company-c-headers"]
 	path = site-lisp/company-c-headers
 	url = https://github.com/randomphrase/company-c-headers.git
-[submodule "site-lisp/org-mode"]
-	path = site-lisp/org-mode
-	url = git://orgmode.org/org-mode.git
 [submodule "site-lisp/yasnippet"]
 	path = site-lisp/yasnippet
 	url = https://github.com/joaotavora/yasnippet.git
