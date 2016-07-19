@@ -25,8 +25,9 @@
   (setq avy-timeout-seconds 0.8)
   (advice-add 'swiper :before 'avy-push-mark))
 
-(use-package swiper
-  :load-path "site-lisp/swiper"
+(use-package counsel
+	     :load-path "site-lisp/swiper"
+	     :commands (ivy-mode)
   :bind (("C-s" . counsel-grep-or-swiper)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
@@ -48,8 +49,8 @@
 	      ("s" . counsel-info-lookup-symbol))
   :init
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
   :config
+  (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy)
   (setq ivy-count-format "(%d/%d) "))
 
