@@ -73,8 +73,10 @@
 
 (use-package projectile
   :load-path "site-lisp/projectile"
+  :bind-keymap ("C-c p" . projectile-command-map)
   :commands (projectile-global-mode)
   :init
+  (projectile-global-mode)
   (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action #'projectile-dired)
   )
