@@ -18,7 +18,11 @@
   :bind (("C-:" . avy-goto-char)
 	 ("M-p" . avy-pop-mark))
   :init
-  (avy-setup-default))
+  (avy-setup-default)
+  :config
+  (setq avy-all-windows nil)
+  (setq avy-timeout-seconds 0.8)
+  (advice-add 'swiper :before 'avy-push-mark))
 
 (use-package swiper
   :load-path "site-lisp/swiper"
@@ -46,16 +50,25 @@
   :config
   (setq ivy-display-style 'fancy)
   (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  )
+  (setq ivy-count-format "(%d/%d) "))
 
 (use-package which-key
   :load-path "site-lisp/which-key"
+  :diminish which-key-mode
   :commands (which-key-mode
 	     which-key-setup-side-window-right-bottom)
   :init
   (which-key-mode)
   (which-key-setup-side-window-right-bottom))
+
+(use-package projectile
+  :load-path "site-lisp/projectile"
+  :commands (projectile-global-mode)
+  :init
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-switch-project-action #'projectile-dired)
+  )
 
 (use-package python-mode
   :load-path "site-lisp/python-mode"
