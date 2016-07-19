@@ -6,8 +6,9 @@
 
 (require 'cl)
 
-(defvar use-package-verbose t)
-(require 'use-package)
+(eval-when-compile
+  (defvar use-package-verbose t)
+  (require 'use-package))
 
 (require 'bind-key)
 (use-package diminish :load-path "site-lisp/diminish")
@@ -65,7 +66,6 @@
   :load-path "site-lisp/projectile"
   :commands (projectile-global-mode)
   :init
-  (add-hook 'after-init-hook 'projectile-global-mode)
   (setq projectile-completion-system 'ivy)
   (setq projectile-switch-project-action #'projectile-dired)
   )
@@ -82,11 +82,6 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
-(use-package tramp
-  :defer 10
-  :config
-  (setq tramp-default-method "ssh"))
-
 (use-package company
   :load-path "site-lisp/company"
   :commands (company-mode)
@@ -94,4 +89,22 @@
   (add-hook 'prog-mode-hook #'company-mode)
   :config
   (setq company-show-numbers t)
-  (setq company-tooltip-limit 20))
+  (setq company-tooltip-limit 20)
+  (use-package company-yasnippet
+    :bind ("C-<tab>" . company-yasnippet)))
+
+(use-package tramp
+  :defer 10
+  :config
+  (setq tramp-default-method "ssh"))
+
+(use-package magit
+  :load-path "site-lisp/magit"
+  :commands (magit-status)
+  :bind
+  ("C-x g" . magit-status))
+
+(when window-system
+  (tooltip-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1))
