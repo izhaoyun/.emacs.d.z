@@ -1,17 +1,22 @@
 (package-initialize)
-(mapc #'(lambda (path)
-	  (add-to-list 'load-path
-		       (expand-file-name path user-emacs-directory)))
-      '("site-lisp" "lib/use-package"))
+(setq load-prefer-newer t)
+(eval-and-compile
+  (mapc #'(lambda (path)
+	    (add-to-list 'load-path
+			 (expand-file-name path user-emacs-directory)))
+	'("site-lisp" "lib/use-package"))
 
-(require 'cl)
+  (require 'cl)
 
-(eval-when-compile
   (defvar use-package-verbose t)
   (require 'use-package))
 
 (require 'bind-key)
 (use-package diminish :load-path "site-lisp/diminish")
+
+(eval-and-compile
+  (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
+(ues-package dash    :defer t :load-path "lib/dash")
 
 (use-package avy
   :load-path "site-lisp/avy"
@@ -26,8 +31,8 @@
   (advice-add 'swiper :before 'avy-push-mark))
 
 (use-package counsel
-	     :load-path "site-lisp/swiper"
-	     :commands (ivy-mode)
+  :load-path "site-lisp/swiper"
+  :commands (ivy-mode)
   :bind (("C-s" . counsel-grep-or-swiper)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
