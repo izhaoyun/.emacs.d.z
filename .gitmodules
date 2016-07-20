@@ -118,3 +118,6 @@
 [submodule "site-lisp/rtags"]
 	path = site-lisp/rtags
 	url = https://github.com/Andersbakken/rtags.git
+[submodule "site-lisp/auto-complete"]
+	path = site-lisp/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
