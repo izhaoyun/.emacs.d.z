@@ -81,10 +81,6 @@
   (setq projectile-switch-project-action #'projectile-dired)
   )
 
-(use-package python-mode
-  :load-path "site-lisp/python-mode"
-  :config)
-
 (use-package yasnippet
   :load-path "site-lisp/yasnippet"
   :commands (yas-reload-all
@@ -116,8 +112,8 @@
   ("C-x g" . magit-status))
 
 (use-package sunrise-commander
-  :defer 10
-  :load-path "site-lisp/sunrise-commander")
+  :load-path "site-lisp/sunrise-commander"
+  )
 
 (use-package org
   :load-path ("site-lisp/org-mode/lisp"
@@ -129,6 +125,11 @@
 	 ("C-c c" . org-capture)
 	 ("C-c l" . org-store-link))
   )
+
+(use-package window-numbering
+  :load-path "site-lisp/window-numbering"
+  :init
+  (window-numbering-mode))
 
 (when window-system
   (tooltip-mode -1)
