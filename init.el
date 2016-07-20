@@ -125,6 +125,12 @@
   (electric-indent-mode -1)
   (clean-aindent-mode 1))
 
+(use-package aggressive-indent
+  :load-path "site-lisp/aggressive-indent-mode"
+  :commands (aggressive-indent-mode)
+  :init
+  (add-hook 'prog-mode-hook #'aggressive-indent-mode))
+
 (use-package tramp
   :defer 10
   :config

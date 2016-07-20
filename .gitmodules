@@ -128,3 +128,6 @@
 [submodule "site-lisp/rainbow-delimiters"]
 	path = site-lisp/rainbow-delimiters
 	url = https://github.com/Fanael/rainbow-delimiters.git
+[submodule "site-lisp/aggressive-indent-mode"]
+	path = site-lisp/aggressive-indent-mode
+	url = https://github.com/Malabarba/aggressive-indent-mode.git
