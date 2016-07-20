@@ -14,10 +14,6 @@
 	path = site-lisp/projectile
 	url = https://github.com/bbatsov/projectile.git
         ignore = dirty
-[submodule "site-lisp/emacs-async"]
-	path = site-lisp/emacs-async
-	url = https://github.com/jwiegley/emacs-async.git
-        ignore = dirty
 [submodule "site-lisp/smartparens"]
 	path = site-lisp/smartparens
 	url = https://github.com/Fuco1/smartparens.git
@@ -116,18 +112,28 @@
 [submodule "site-lisp/python-mode"]
 	path = site-lisp/python-mode
 	url = https://gitlab.com/python-mode-devs/python-mode.git
+        ignore = dirty
 [submodule "site-lisp/rtags"]
 	path = site-lisp/rtags
 	url = https://github.com/Andersbakken/rtags.git
+        ignore = dirty
 [submodule "site-lisp/auto-complete"]
 	path = site-lisp/auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
+        ignore = dirty
 [submodule "lib/emacs-epc"]
 	path = lib/emacs-epc
 	url = https://github.com/kiwanami/emacs-epc.git
+        ignore = dirty
 [submodule "site-lisp/rainbow-delimiters"]
 	path = site-lisp/rainbow-delimiters
 	url = https://github.com/Fanael/rainbow-delimiters.git
+        ignore = dirty
 [submodule "site-lisp/aggressive-indent-mode"]
 	path = site-lisp/aggressive-indent-mode
 	url = https://github.com/Malabarba/aggressive-indent-mode.git
+        ignore = dirty
+[submodule "lib/emacs-async"]
+	path = lib/emacs-async
+	url = https://github.com/jwiegley/emacs-async.git
+        ignore = dirty
