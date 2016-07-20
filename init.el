@@ -147,6 +147,11 @@
   :init
   (window-numbering-mode))
 
+(use-package winner
+  :commands (winner-mode)
+  :init
+  (winner-mode))
+
 (use-package electric-align
   :load-path "site-lisp/electric-align"
   :commands (electric-align-mode)
