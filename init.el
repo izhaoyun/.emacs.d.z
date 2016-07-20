@@ -119,6 +119,17 @@
   :defer 10
   :load-path "site-lisp/sunrise-commander")
 
+(use-package org
+  :load-path ("site-lisp/org-mode/lisp"
+	      "site-lisp/org-mode/contrib/lisp")
+  :mode (("\\.org$" . org-mode)
+	 ("\\.txt$" . txt-mode))
+  :bind (("C-c a" . org-agenda)
+	 ("C-c b" . org-iswitch)
+	 ("C-c c" . org-capture)
+	 ("C-c l" . org-store-link))
+  )
+
 (when window-system
   (tooltip-mode -1)
   (tool-bar-mode -1)
