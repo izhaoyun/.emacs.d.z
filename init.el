@@ -147,10 +147,14 @@
   :load-path ("site-lisp/magit/lisp"
 	      "site-lisp/with-editor")
 <<<<<<< HEAD
+<<<<<<< HEAD
   :bind ("C-x t g" . magit-status)
 =======
   :bind ("C-x g" . magit-status)
 >>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
+=======
+  :bind ("C-x t g" . magit-status)
+>>>>>>> 03918c4... update keybinding for python-mode-map and magit-status
   :init
   (add-hook 'magit-mode-hook 'hl-line-mode))
 
@@ -323,6 +327,14 @@
 
 (use-package rtags
   :load-path "site-path/rtags"
+  )
+
+(use-package python
+  :load-path "site-path/python-mode"
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
+  :bind-keymap ("C-c r" . python-mode-map)
+  :config
   )
 
 (when window-system
