@@ -17,7 +17,10 @@
 (eval-and-compile
   (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
 
-(use-package dash         :defer t :load-path "lib/dash")
+;; libraries
+(use-package dash
+  :defer t
+  :load-path "lib/dash")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package avy
@@ -102,6 +105,13 @@
   :after company
   :bind ("C-<tab>" . company-yasnippet)
   )
+
+(use-package clean-aindent-mode
+  :load-path "site-lisp/clean-aindent-mode"
+  :commands (clean-aindent-mode)
+  :init
+  (electric-indent-mode -1)
+  (clean-aindent-mode 1))
 
 (use-package tramp
   :defer 10
