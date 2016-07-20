@@ -146,6 +146,19 @@
 (use-package hippie-exp
   :bind ("M-/" . hippie-expand))
 
+(use-package cc-mode
+  :mode (("\\.h\\(h?\\|xx\\|pp\\)\\'" . c++-mode)
+	 ("\\.m\\'" . c-mode)
+	 ("\\.mm\\'" . c++-mode))
+  :preface
+  (defun my-c-mode-common-hook ()
+    (hs-minor-mode 1)
+    (diminish 'hs-minor-mode)
+    (bind-key "<return>" #'newline-and-indent c-mode-base-map))
+  :config
+  (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+  )
+
 (when window-system
   (tooltip-mode -1)
   (tool-bar-mode -1)
