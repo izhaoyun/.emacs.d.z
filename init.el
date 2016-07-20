@@ -144,8 +144,8 @@
   (add-hook 'magit-mode-hook 'hl-line-mode))
 
 (use-package sunrise-commander
+  :defer t
   :load-path "site-lisp/sunrise-commander"
-<<<<<<< HEAD
   :bind ("C-x t c" . sunrise))
 
 (use-package org
@@ -156,8 +156,7 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c b" . org-iswitch)
 	 ("C-c c" . org-capture)
-	 ("C-c l" . org-store-link))
-  )
+	 ("C-c l" . org-store-link)))
 
 (use-package window-numbering
   :defer t
@@ -253,9 +252,8 @@
   :commands (rainbow-delimiters-mode)
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-=======
   )
->>>>>>> 674cf4f... update submodule url and add window-numbering.
+  :bind ("C-x t c" . sunrise))
 
 (use-package org
   :load-path ("site-lisp/org-mode/lisp"
@@ -269,9 +267,24 @@
   )
 
 (use-package window-numbering
+  :defer t
   :load-path "site-lisp/window-numbering"
+  :commands (window-numbering-mode)
   :init
   (window-numbering-mode))
+
+(use-package electric-align
+  :load-path "site-lisp/electric-align"
+  :commands (electric-align-mode)
+  :init
+  (add-hook 'prog-mode-hook 'electric-align-mode))
+
+(use-package comment-dwim-2
+  :load-path "site-lisp/comment-dwim-2"
+  :bind ("M-;" . comment-dwim-2))
+
+(use-package hippie-exp
+  :bind ("M-/" . hippie-expand))
 
 (when window-system
   (tooltip-mode -1)
