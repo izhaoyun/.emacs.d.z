@@ -18,7 +18,6 @@
   (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
 
 (use-package dash         :defer t :load-path "lib/dash")
-(use-package with-editor  :defer t :load-path "lib/with-editor")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package avy
@@ -93,12 +92,16 @@
   :load-path "site-lisp/company-mode"
   :commands (company-mode)
   :init
-  (add-hook 'prog-mode-hook #'company-mode)
+  ;; (add-hook 'prog-mode-hook #'company-mode)
   :config
   (setq company-show-numbers t)
   (setq company-tooltip-limit 20)
-  (use-package company-yasnippet
-    :bind ("C-<tab>" . company-yasnippet)))
+  )
+
+(use-package company-yasnippet
+  :after company
+  :bind ("C-<tab>" . company-yasnippet)
+  )
 
 (use-package tramp
   :defer 10
@@ -106,20 +109,21 @@
   (setq tramp-default-method "ssh"))
 
 (use-package magit
-  :load-path "site-lisp/magit/lisp"
-  :commands (magit-status)
-  :bind ("C-x g" . magit-status))
+  :load-path ("site-lisp/magit/lisp"
+	      "site-lisp/with-editor")
+  :bind ("C-x g" . magit-status)
+  :init
+  (add-hook 'magit-mode-hook 'hl-line-mode))
 
 (use-package sunrise-commander
-  :defer t
   :load-path "site-lisp/sunrise-commander"
   :bind ("C-x t c" . sunrise))
 
 (use-package org
   :load-path ("site-lisp/org-mode/lisp"
 	      "site-lisp/org-mode/contrib/lisp")
-  :mode (("\\.org$" . org-mode)
-	 ("\\.txt$" . txt-mode))
+  :mode (("\\.org\\'" . org-mode)
+	 ("\\.txt\\'" . txt-mode))
   :bind (("C-c a" . org-agenda)
 	 ("C-c b" . org-iswitch)
 	 ("C-c c" . org-capture)
@@ -152,11 +156,24 @@
 	 ("\\.mm\\'" . c++-mode))
   :preface
   (defun my-c-mode-common-hook ()
+    (bind-key "<return>" #'newline-and-indent c-mode-base-map)
+
     (hs-minor-mode 1)
     (diminish 'hs-minor-mode)
-    (bind-key "<return>" #'newline-and-indent c-mode-base-map))
-  :config
+
+    (eldoc-mode 1)
+    (diminish 'eldoc-mode)
+
+    (company-mode 1)
+
+    (setq gdb-many-windows t)
+    (setq gdb-show-main t))
+  :init
   (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+  )
+
+(use-package rtags
+  :load-path "site-path/rtags"
   )
 
 (when window-system

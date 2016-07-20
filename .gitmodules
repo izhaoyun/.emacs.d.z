@@ -18,10 +18,6 @@
 	path = site-lisp/emacs-async
 	url = https://github.com/jwiegley/emacs-async.git
         ignore = dirty
-[submodule "site-lisp/helm"]
-	path = site-lisp/helm
-	url = https://github.com/emacs-helm/helm.git
-        ignore = dirty
 [submodule "site-lisp/smartparens"]
 	path = site-lisp/smartparens
 	url = https://github.com/Fuco1/smartparens.git
@@ -45,10 +41,6 @@
 [submodule "site-lisp/comment-dwim-2"]
 	path = site-lisp/comment-dwim-2
 	url = https://github.com/remyferre/comment-dwim-2.git
-        ignore = dirty
-[submodule "site-lisp/helm-swoop"]
-	path = site-lisp/helm-swoop
-	url = https://github.com/ShingoFukuyama/helm-swoop.git
         ignore = dirty
 [submodule "site-lisp/electric-align"]
 	path = site-lisp/electric-align
@@ -117,7 +109,12 @@
 	path = site-lisp/sunrise-commander
 	url = https://github.com/escherdragon/sunrise-commander.git
         ignore = dirty
-[submodule "lib/with-editor"]
-	path = lib/with-editor
+[submodule "site-lisp/with-editor"]
+	path = site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
-        ignore = dirty
+[submodule "site-lisp/python-mode"]
+	path = site-lisp/python-mode
+	url = https://gitlab.com/python-mode-devs/python-mode.git
+[submodule "site-lisp/rtags"]
+	path = site-lisp/rtags
+	url = https://github.com/Andersbakken/rtags.git
