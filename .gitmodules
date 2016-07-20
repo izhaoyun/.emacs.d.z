@@ -1,3 +1,23 @@
+[submodule "lib/emacs-async"]
+	path = lib/emacs-async
+	url = https://github.com/jwiegley/emacs-async.git
+        ignore = dirty
+[submodule "lib/emacs-epc"]
+	path = lib/emacs-epc
+	url = https://github.com/kiwanami/emacs-epc.git
+        ignore = dirty
+[submodule "lib/dash"]
+	path = lib/dash
+	url = https://github.com/magnars/dash.el.git
+        ignore = dirty
+[submodule "lib/use-package"]
+	path = lib/use-package
+	url = https://github.com/jwiegley/use-package.git
+        ignore = dirty
+[submodule "site-lisp/avy"]
+	path = site-lisp/avy
+	url = https://github.com/abo-abo/avy.git
+        ignore = dirty
 [submodule "site-lisp/company-mode"]
 	path = site-lisp/company-mode
 	url = https://github.com/company-mode/company-mode.git
@@ -6,17 +26,9 @@
 	path = site-lisp/hydra
 	url = https://github.com/abo-abo/hydra.git
         ignore = dirty
-[submodule "site-lisp/avy"]
-	path = site-lisp/avy
-	url = https://github.com/abo-abo/avy.git
-        ignore = dirty
 [submodule "site-lisp/projectile"]
 	path = site-lisp/projectile
 	url = https://github.com/bbatsov/projectile.git
-        ignore = dirty
-[submodule "site-lisp/smartparens"]
-	path = site-lisp/smartparens
-	url = https://github.com/Fuco1/smartparens.git
         ignore = dirty
 [submodule "site-lisp/Fill-Column-Indicator"]
 	path = site-lisp/Fill-Column-Indicator
@@ -78,10 +90,6 @@
 	path = site-lisp/window-numbering
 	url = https://github.com/nschum/window-numbering.el.git
         ignore = dirty
-[submodule "lib/use-package"]
-	path = lib/use-package
-	url = https://github.com/jwiegley/use-package.git
-        ignore = dirty
 [submodule "site-lisp/which-key"]
 	path = site-lisp/which-key
 	url = https://github.com/justbur/emacs-which-key.git
@@ -97,9 +105,6 @@
 [submodule "site-lisp/org-mode"]
 	path = site-lisp/org-mode
 	url = git://orgmode.org/org-mode.git
-[submodule "lib/dash"]
-	path = lib/dash
-	url = https://github.com/magnars/dash.el.git
         ignore = dirty
 [submodule "site-lisp/sunrise-commander"]
 	path = site-lisp/sunrise-commander
@@ -109,6 +114,10 @@
 	path = site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
         ignore = dirty
+[submodule "site-lisp/python-mode"]
+	path = site-lisp/python-mode
+	url = https://gitlab.com/python-mode-devs/python-mode.git
+        ignore = dirty
 [submodule "site-lisp/rtags"]
 	path = site-lisp/rtags
 	url = https://github.com/Andersbakken/rtags.git
@@ -117,10 +126,6 @@
 	path = site-lisp/auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
         ignore = dirty
-[submodule "lib/emacs-epc"]
-	path = lib/emacs-epc
-	url = https://github.com/kiwanami/emacs-epc.git
-        ignore = dirty
 [submodule "site-lisp/rainbow-delimiters"]
 	path = site-lisp/rainbow-delimiters
 	url = https://github.com/Fanael/rainbow-delimiters.git
@@ -128,12 +133,4 @@
 [submodule "site-lisp/aggressive-indent-mode"]
 	path = site-lisp/aggressive-indent-mode
 	url = https://github.com/Malabarba/aggressive-indent-mode.git
-        ignore = dirty
-[submodule "lib/emacs-async"]
-	path = lib/emacs-async
-	url = https://github.com/jwiegley/emacs-async.git
-        ignore = dirty
-[submodule "site-lisp/python-mode"]
-	path = site-lisp/python-mode
-	url = https://gitlab.com/python-mode-devs/python-mode.git
         ignore = dirty
