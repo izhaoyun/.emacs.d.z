@@ -82,10 +82,6 @@
 	path = site-lisp/company-anaconda
 	url = https://github.com/proofit404/company-anaconda.git
         ignore = dirty
-[submodule "site-lisp/python-mode"]
-	path = site-lisp/python-mode
-	url = https://github.com/pdee/pdee.git
-        ignore = dirty
 [submodule "site-lisp/expand-region"]
 	path = site-lisp/expand-region
 	url = https://github.com/magnars/expand-region.el.git
