@@ -206,6 +206,21 @@
   :bind (("C-=" . er/expand-region)
 	 ("C--" . er/contract-region)))
 
+(use-package paren
+  :init
+  (show-paren-mode)
+  :preface
+  (defun match-paren (arg)
+      "Go to the matching paren if on a paren; otherwise insert
+%."
+      (interactive "p")
+      (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+	    ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+	    (t (self-insert-command (or arg 1)))))
+  :bind (("%" . match-paren))
+  :config
+  (setq show-paren-style 'expression))
+
 (use-package rainbow-delimiters
   :load-path "site-lisp/rainbow-delimiters"
   :commands (rainbow-delimiters-mode)
