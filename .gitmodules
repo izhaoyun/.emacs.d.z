@@ -136,15 +136,3 @@
 [submodule "site-lisp/python-mode"]
 	path = site-lisp/python-mode
 	url = https://gitlab.com/python-mode-devs/python-mode.git
-[submodule "site-lisp/rtags"]
-	path = site-lisp/rtags
-	url = https://github.com/Andersbakken/rtags.git
-[submodule "site-lisp/auto-complete"]
-	path = site-lisp/auto-complete
-	url = https://github.com/auto-complete/auto-complete.git
-[submodule "lib/emacs-epc"]
-	path = lib/emacs-epc
-	url = https://github.com/kiwanami/emacs-epc.git
-[submodule "site-lisp/rainbow-delimiters"]
-	path = site-lisp/rainbow-delimiters
-	url = https://github.com/Fanael/rainbow-delimiters.git
