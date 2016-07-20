@@ -111,7 +111,7 @@
 (use-package magit
   :load-path ("site-lisp/magit/lisp"
 	      "site-lisp/with-editor")
-  :bind ("C-x g" . magit-status)
+  :bind ("C-x t g" . magit-status)
   :init
   (add-hook 'magit-mode-hook 'hl-line-mode))
 
@@ -174,6 +174,14 @@
 
 (use-package rtags
   :load-path "site-path/rtags"
+  )
+
+(use-package python
+  :load-path "site-path/python-mode"
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode)
+  :bind-keymap ("C-c r" . python-mode-map)
+  :config
   )
 
 (when window-system
