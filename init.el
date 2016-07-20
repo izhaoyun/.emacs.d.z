@@ -29,14 +29,10 @@
 (eval-and-compile
   (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
 
-<<<<<<< HEAD
 ;; libraries
 (use-package dash
   :defer t
   :load-path "lib/dash")
-=======
-(use-package dash         :defer t :load-path "lib/dash")
->>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package avy
@@ -121,7 +117,6 @@
   :after company
   :bind ("C-<tab>" . company-yasnippet)
   )
-<<<<<<< HEAD
 
 (use-package clean-aindent-mode
   :load-path "site-lisp/clean-aindent-mode"
@@ -135,8 +130,6 @@
   :commands (aggressive-indent-mode)
   :init
   (add-hook 'prog-mode-hook #'aggressive-indent-mode))
-=======
->>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
 
 (use-package tramp
   :defer 10
@@ -146,32 +139,13 @@
 (use-package magit
   :load-path ("site-lisp/magit/lisp"
 	      "site-lisp/with-editor")
-<<<<<<< HEAD
-<<<<<<< HEAD
   :bind ("C-x t g" . magit-status)
-=======
-  :bind ("C-x g" . magit-status)
->>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
-=======
-  :bind ("C-x t g" . magit-status)
->>>>>>> 03918c4... update keybinding for python-mode-map and magit-status
   :init
   (add-hook 'magit-mode-hook 'hl-line-mode))
 
 (use-package sunrise-commander
   :load-path "site-lisp/sunrise-commander"
   :bind ("C-x t c" . sunrise))
-
-(use-package org
-  :load-path ("site-lisp/org-mode/lisp"
-	      "site-lisp/org-mode/contrib/lisp")
-  :mode (("\\.org\\'" . org-mode)
-	 ("\\.txt\\'" . txt-mode))
-<<<<<<< HEAD
-  :bind (("C-c a" . org-agenda)
-	 ("C-c b" . org-iswitch)
-	 ("C-c c" . org-capture)
-	 ("C-c l" . org-store-link)))
 
 (use-package window-numbering
   :defer t
@@ -275,33 +249,12 @@
 	      "site-lisp/org-mode/contrib/lisp")
   :mode (("\\.org$" . org-mode)
 	 ("\\.txt$" . txt-mode))
-=======
->>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
   :bind (("C-c a" . org-agenda)
 	 ("C-c b" . org-iswitch)
 	 ("C-c c" . org-capture)
 	 ("C-c l" . org-store-link))
   )
 
-(use-package window-numbering
-  :defer t
-  :load-path "site-lisp/window-numbering"
-  :commands (window-numbering-mode)
-  :init
-  (window-numbering-mode))
-
-(use-package electric-align
-  :load-path "site-lisp/electric-align"
-  :commands (electric-align-mode)
-  :init
-  (add-hook 'prog-mode-hook 'electric-align-mode))
-
-(use-package comment-dwim-2
-  :load-path "site-lisp/comment-dwim-2"
-  :bind ("M-;" . comment-dwim-2))
-
-(use-package hippie-exp
-  :bind ("M-/" . hippie-expand))
 
 (use-package cc-mode
   :mode (("\\.h\\(h?\\|xx\\|pp\\)\\'" . c++-mode)
