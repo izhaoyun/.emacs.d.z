@@ -333,9 +333,22 @@
   :load-path "site-path/python-mode"
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
-  :bind-keymap ("C-c r" . python-mode-map)
-  :config
+  ;; :bind-keymap ("C-x p" . python-mode-map)
+  ;; :config
   )
+
+(use-package expand-region
+  :load-path "site-path/expand-region"
+  :commands (er/expand-region
+	     er/contract-region)
+  :bind (("C-=" . er/expand-region)
+	 ("C--" . er/contract-region)))
+
+(use-package rainbow-delimiters
+  :load-path "site-lisp/rainbow-delimiters"
+  :commands (rainbow-delimiters-mode)
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (when window-system
   (tooltip-mode -1)

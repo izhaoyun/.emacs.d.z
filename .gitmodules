@@ -145,3 +145,6 @@
 [submodule "lib/emacs-epc"]
 	path = lib/emacs-epc
 	url = https://github.com/kiwanami/emacs-epc.git
+[submodule "site-lisp/rainbow-delimiters"]
+	path = site-lisp/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters.git
