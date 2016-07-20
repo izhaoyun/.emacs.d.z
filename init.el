@@ -145,6 +145,7 @@
 
 (use-package sunrise-commander
   :load-path "site-lisp/sunrise-commander"
+<<<<<<< HEAD
   :bind ("C-x t c" . sunrise))
 
 (use-package org
@@ -252,6 +253,9 @@
   :commands (rainbow-delimiters-mode)
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+=======
+  )
+>>>>>>> 674cf4f... update submodule url and add window-numbering.
 
 (use-package org
   :load-path ("site-lisp/org-mode/lisp"
@@ -263,6 +267,11 @@
 	 ("C-c c" . org-capture)
 	 ("C-c l" . org-store-link))
   )
+
+(use-package window-numbering
+  :load-path "site-lisp/window-numbering"
+  :init
+  (window-numbering-mode))
 
 (when window-system
   (tooltip-mode -1)
