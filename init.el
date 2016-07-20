@@ -29,10 +29,14 @@
 (eval-and-compile
   (add-to-list 'load-path (expand-file-name "lib" user-emacs-directory)))
 
+<<<<<<< HEAD
 ;; libraries
 (use-package dash
   :defer t
   :load-path "lib/dash")
+=======
+(use-package dash         :defer t :load-path "lib/dash")
+>>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package avy
@@ -117,6 +121,7 @@
   :after company
   :bind ("C-<tab>" . company-yasnippet)
   )
+<<<<<<< HEAD
 
 (use-package clean-aindent-mode
   :load-path "site-lisp/clean-aindent-mode"
@@ -130,6 +135,8 @@
   :commands (aggressive-indent-mode)
   :init
   (add-hook 'prog-mode-hook #'aggressive-indent-mode))
+=======
+>>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
 
 (use-package tramp
   :defer 10
@@ -139,12 +146,15 @@
 (use-package magit
   :load-path ("site-lisp/magit/lisp"
 	      "site-lisp/with-editor")
+<<<<<<< HEAD
   :bind ("C-x t g" . magit-status)
+=======
+  :bind ("C-x g" . magit-status)
+>>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
   :init
   (add-hook 'magit-mode-hook 'hl-line-mode))
 
 (use-package sunrise-commander
-  :defer t
   :load-path "site-lisp/sunrise-commander"
   :bind ("C-x t c" . sunrise))
 
@@ -153,6 +163,7 @@
 	      "site-lisp/org-mode/contrib/lisp")
   :mode (("\\.org\\'" . org-mode)
 	 ("\\.txt\\'" . txt-mode))
+<<<<<<< HEAD
   :bind (("C-c a" . org-agenda)
 	 ("C-c b" . org-iswitch)
 	 ("C-c c" . org-capture)
@@ -260,6 +271,8 @@
 	      "site-lisp/org-mode/contrib/lisp")
   :mode (("\\.org$" . org-mode)
 	 ("\\.txt$" . txt-mode))
+=======
+>>>>>>> 73bfd01... update python-mode url, remove helm and helm-swoop
   :bind (("C-c a" . org-agenda)
 	 ("C-c b" . org-iswitch)
 	 ("C-c c" . org-capture)
@@ -292,11 +305,24 @@
 	 ("\\.mm\\'" . c++-mode))
   :preface
   (defun my-c-mode-common-hook ()
+    (bind-key "<return>" #'newline-and-indent c-mode-base-map)
+
     (hs-minor-mode 1)
     (diminish 'hs-minor-mode)
-    (bind-key "<return>" #'newline-and-indent c-mode-base-map))
-  :config
+
+    (eldoc-mode 1)
+    (diminish 'eldoc-mode)
+
+    (company-mode 1)
+
+    (setq gdb-many-windows t)
+    (setq gdb-show-main t))
+  :init
   (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+  )
+
+(use-package rtags
+  :load-path "site-path/rtags"
   )
 
 (when window-system
