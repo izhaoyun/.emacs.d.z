@@ -243,6 +243,17 @@
   :load-path "site-lisp/rtags"
   )
 
+(use-package cmake-mode
+  :mode (("CMakeLists.txt\\'" . cmake-mode)
+	 ("\\.cmake\\'"       . cmake-mode)))
+
+(use-package cmake-font-lock
+  :after cmake-mode
+  :load-path "site-lisp/cmake-font-lock"
+  :commands (cmake-font-lock-activate)
+  :init
+  (add-hook 'cmake-mode-hook 'cmake-font-lock-activate))
+
 (use-package python-mode
   :load-path "site-lisp/python-mode"
   :mode ("\\.py\\'" . python-mode)

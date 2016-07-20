@@ -134,3 +134,6 @@
 	path = site-lisp/aggressive-indent-mode
 	url = https://github.com/Malabarba/aggressive-indent-mode.git
         ignore = dirty
+[submodule "site-lisp/cmake-font-lock"]
+	path = site-lisp/cmake-font-lock
+	url = https://github.com/Lindydancer/cmake-font-lock.git
