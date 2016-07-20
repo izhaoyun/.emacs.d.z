@@ -7,7 +7,6 @@
 	'("site-lisp" "lib/use-package"))
 
   (require 'cl)
-
   (defvar use-package-verbose t)
   (require 'use-package))
 
@@ -92,8 +91,7 @@
   :init
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy)
-  (setq projectile-switch-project-action #'projectile-dired)
-  )
+  (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package yasnippet
   :load-path "site-lisp/yasnippet"
@@ -110,13 +108,11 @@
   ;; (add-hook 'prog-mode-hook #'company-mode)
   :config
   (setq company-show-numbers t)
-  (setq company-tooltip-limit 20)
-  )
+  (setq company-tooltip-limit 20))
 
 (use-package company-yasnippet
   :after company
-  :bind ("C-<tab>" . company-yasnippet)
-  )
+  :bind ("C-<tab>" . company-yasnippet))
 
 (use-package clean-aindent-mode
   :load-path "site-lisp/clean-aindent-mode"
@@ -127,6 +123,7 @@
 
 (use-package aggressive-indent
   :load-path "site-lisp/aggressive-indent-mode"
+  :diminish aggressive-indent-mode
   :commands (aggressive-indent-mode)
   :init
   (add-hook 'prog-mode-hook #'aggressive-indent-mode))
@@ -172,42 +169,9 @@
 (use-package hippie-exp
   :bind ("M-/" . hippie-expand))
 
-(use-package cc-mode
-  :mode (("\\.h\\(h?\\|xx\\|pp\\)\\'" . c++-mode)
-	 ("\\.m\\'" . c-mode)
-	 ("\\.mm\\'" . c++-mode))
-  :preface
-  (defun my-c-mode-common-hook ()
-    (bind-key "<return>" #'newline-and-indent c-mode-base-map)
-
-    (hs-minor-mode 1)
-    (diminish 'hs-minor-mode)
-
-    (eldoc-mode 1)
-    (diminish 'eldoc-mode)
-
-    (company-mode 1)
-
-    (setq gdb-many-windows t)
-    (setq gdb-show-main t))
-  :init
-  (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-  )
-
-(use-package rtags
-  :load-path "site-path/rtags"
-  )
-
-(use-package python
-  :load-path "site-path/python-mode"
-  :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode)
-  ;; :bind-keymap ("C-x p" . python-mode-map)
-  ;; :config
-  )
 
 (use-package expand-region
-  :load-path "site-path/expand-region"
+  :load-path "site-lisp/expand-region"
   :commands (er/expand-region
 	     er/contract-region)
   :bind (("C-=" . er/expand-region)
@@ -241,8 +205,6 @@
   :commands (rainbow-delimiters-mode)
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-  )
-  :bind ("C-x t c" . sunrise))
 
 (use-package org
   :load-path ("site-lisp/org-mode/lisp"
@@ -278,23 +240,16 @@
   )
 
 (use-package rtags
-  :load-path "site-path/rtags"
+  :load-path "site-lisp/rtags"
   )
 
-(use-package python
-  :load-path "site-path/python-mode"
+(use-package python-mode
+  :load-path "site-lisp/python-mode"
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
   ;; :bind-keymap ("C-x p" . python-mode-map)
   ;; :config
   )
-
-(use-package expand-region
-  :load-path "site-path/expand-region"
-  :commands (er/expand-region
-	     er/contract-region)
-  :bind (("C-=" . er/expand-region)
-	 ("C--" . er/contract-region)))
 
 (when window-system
   (tooltip-mode -1)
