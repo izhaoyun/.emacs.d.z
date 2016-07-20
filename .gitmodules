@@ -112,6 +112,7 @@
 [submodule "site-lisp/with-editor"]
 	path = site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
+        ignore = dirty
 [submodule "site-lisp/python-mode"]
 	path = site-lisp/python-mode
 	url = https://gitlab.com/python-mode-devs/python-mode.git

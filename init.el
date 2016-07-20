@@ -206,6 +206,14 @@
   :bind (("C-=" . er/expand-region)
 	 ("C--" . er/contract-region)))
 
+(use-package elec-pair
+  :commands (electric-pair-mode)
+  :init
+  (electric-pair-mode)
+  :config
+  (setq electric-pair-pairs '((?\" . ?\")
+                              (?\{ . ?\}))))
+
 (use-package paren
   :init
   (show-paren-mode)
