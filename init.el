@@ -1,5 +1,5 @@
 (package-initialize)
-(setq load-prefer-newer t)
+
 (eval-and-compile
   (mapc #'(lambda (path)
 	    (add-to-list 'load-path
@@ -10,6 +10,18 @@
 
   (defvar use-package-verbose t)
   (require 'use-package))
+
+(setq load-prefer-newer t)
+
+(eval-and-compile
+  (defun recompile-elisp-file ()
+    (interactive)
+    (when (and buffer-file-name (string-match "\\.el" buffer-file-name))
+      (let ((byte-file (concat buffer-file-name "\\.elc")))
+	(if (or (not (file-exists-p byte-file))
+		(file-newer-than-file-p buffer-file-name byte-file))
+	    (byte-compile-file buffer-file-name)))))
+  (add-hook 'after-save-hook #'recompile-elisp-file))
 
 (require 'bind-key)
 (use-package diminish :load-path "site-lisp/diminish")
