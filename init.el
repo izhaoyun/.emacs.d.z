@@ -255,7 +255,6 @@
 	 ("C-c l" . org-store-link))
   )
 
-
 (use-package cc-mode
   :mode (("\\.h\\(h?\\|xx\\|pp\\)\\'" . c++-mode)
 	 ("\\.m\\'" . c-mode)
@@ -296,12 +295,6 @@
 	     er/contract-region)
   :bind (("C-=" . er/expand-region)
 	 ("C--" . er/contract-region)))
-
-(use-package rainbow-delimiters
-  :load-path "site-lisp/rainbow-delimiters"
-  :commands (rainbow-delimiters-mode)
-  :init
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (when window-system
   (tooltip-mode -1)
