@@ -108,12 +108,12 @@
 (use-package magit
   :load-path "site-lisp/magit/lisp"
   :commands (magit-status)
-  :bind
-  ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status))
 
 (use-package sunrise-commander
+  :defer t
   :load-path "site-lisp/sunrise-commander"
-  )
+  :bind ("C-x t c" . sunrise))
 
 (use-package org
   :load-path ("site-lisp/org-mode/lisp"
@@ -127,9 +127,24 @@
   )
 
 (use-package window-numbering
+  :defer t
   :load-path "site-lisp/window-numbering"
+  :commands (window-numbering-mode)
   :init
   (window-numbering-mode))
+
+(use-package electric-align
+  :load-path "site-lisp/electric-align"
+  :commands (electric-align-mode)
+  :init
+  (add-hook 'prog-mode-hook 'electric-align-mode))
+
+(use-package comment-dwim-2
+  :load-path "site-lisp/comment-dwim-2"
+  :bind ("M-;" . comment-dwim-2))
+
+(use-package hippie-exp
+  :bind ("M-/" . hippie-expand))
 
 (when window-system
   (tooltip-mode -1)
