@@ -133,3 +133,6 @@
 [submodule "site-lisp/cmake-font-lock"]
 	path = site-lisp/cmake-font-lock
 	url = https://github.com/Lindydancer/cmake-font-lock.git
+[submodule "site-lisp/go-mode"]
+	path = site-lisp/go-mode
+	url = https://github.com/dominikh/go-mode.el.git
