@@ -1,3 +1,5 @@
+(setq inhibit-startup-message t)
+
 (package-initialize)
 
 (eval-and-compile
@@ -231,13 +233,16 @@
     (eldoc-mode 1)
     (diminish 'eldoc-mode)
 
-    (company-mode 1)
-
-    (setq gdb-many-windows t)
-    (setq gdb-show-main t))
+    (company-mode 1))
+  (defun setup-gdb ()
+    (use-package gdb-mi
+      :init
+      (setq gdb-many-windows t)
+      (setq gdb-show-main t)))
   :init
   (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-  )
+  :config
+  (add-hook 'c-mode-common-hook 'setup-gdb))
 
 (use-package rtags
   :load-path "site-lisp/rtags"
