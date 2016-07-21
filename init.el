@@ -52,7 +52,7 @@
   :load-path "site-lisp/avy"
   :commands (avy-setup-default)
   :bind (("C-:" . avy-goto-char)
-     ("M-p" . avy-pop-mark))
+         ("M-p" . avy-pop-mark))
   :init
   (avy-setup-default)
   :config
@@ -287,10 +287,6 @@
   (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
   :config
   (add-hook 'c-mode-common-hook 'setup-gdb))
-
-(use-package rtags
-  :load-path "site-lisp/rtags"
-  )
 
 (use-package cmake-mode
   :mode (("CMakeLists.txt\\'" . cmake-mode)

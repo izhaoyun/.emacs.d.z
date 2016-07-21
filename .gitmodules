@@ -114,10 +114,6 @@
 	path = site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
         ignore = dirty
-[submodule "site-lisp/rtags"]
-	path = site-lisp/rtags
-	url = https://github.com/Andersbakken/rtags.git
-        ignore = dirty
 [submodule "site-lisp/auto-complete"]
 	path = site-lisp/auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
@@ -136,3 +132,6 @@
 [submodule "site-lisp/go-mode"]
 	path = site-lisp/go-mode
 	url = https://github.com/dominikh/go-mode.el.git
+[submodule "lib/popup-el"]
+	path = lib/popup-el
+	url = https://github.com/auto-complete/popup-el.git
