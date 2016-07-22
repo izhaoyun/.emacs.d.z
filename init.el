@@ -101,12 +101,13 @@
 
 (use-package projectile
   :load-path "site-lisp/projectile"
+  :diminish projectile-mode
   :bind-keymap ("C-c p" . projectile-command-map)
   :commands (projectile-global-mode)
   :init
   (projectile-global-mode)
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-switch-project-action #'projectile-dired))
+  :config
+  (setq projectile-completion-system 'ivy))
 
 (use-package yasnippet
   :load-path "site-lisp/yasnippet"
@@ -376,3 +377,10 @@
 (use-package restclient
   :load-path "site-lisp/restclient"
   :mode ("\\.rest\\'" . restclient-mode))
+
+(use-package multiple-cursors
+  :load-path "site-lisp/multiple-cursors"
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->"         . mc/mark-next-like-this)
+         ("C-<"         . mc/mark-previous-like-this)
+         ("C-c C-<"     . mc/mark-all-like-this)))

@@ -141,3 +141,6 @@
 [submodule "site-lisp/restclient"]
 	path = site-lisp/restclient
 	url = https://github.com/pashky/restclient.el.git
+[submodule "site-lisp/multiple-cursors"]
+	path = site-lisp/multiple-cursors
+	url = https://github.com/magnars/multiple-cursors.el.git
