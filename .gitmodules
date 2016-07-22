@@ -114,14 +114,6 @@
 	path = site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
         ignore = dirty
-[submodule "site-lisp/python-mode"]
-	path = site-lisp/python-mode
-	url = https://gitlab.com/python-mode-devs/python-mode.git
-        ignore = dirty
-[submodule "site-lisp/rtags"]
-	path = site-lisp/rtags
-	url = https://github.com/Andersbakken/rtags.git
-        ignore = dirty
 [submodule "site-lisp/auto-complete"]
 	path = site-lisp/auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
@@ -137,3 +129,18 @@
 [submodule "site-lisp/cmake-font-lock"]
 	path = site-lisp/cmake-font-lock
 	url = https://github.com/Lindydancer/cmake-font-lock.git
+[submodule "site-lisp/go-mode"]
+	path = site-lisp/go-mode
+	url = https://github.com/dominikh/go-mode.el.git
+[submodule "lib/popup-el"]
+	path = lib/popup-el
+	url = https://github.com/auto-complete/popup-el.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "site-lisp/restclient"]
+	path = site-lisp/restclient
+	url = https://github.com/pashky/restclient.el.git
+[submodule "site-lisp/multiple-cursors"]
+	path = site-lisp/multiple-cursors
+	url = https://github.com/magnars/multiple-cursors.el.git
