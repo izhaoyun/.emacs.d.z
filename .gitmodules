@@ -135,3 +135,6 @@
 [submodule "lib/popup-el"]
 	path = lib/popup-el
 	url = https://github.com/auto-complete/popup-el.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git

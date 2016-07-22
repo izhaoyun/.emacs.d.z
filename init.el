@@ -110,7 +110,7 @@
 (use-package yasnippet
   :load-path "site-lisp/yasnippet"
   :commands (yas-reload-all
-         yas-minor-mode)
+             yas-minor-mode)
   :init
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
@@ -149,7 +149,7 @@
 
 (use-package magit
   :load-path ("site-lisp/magit/lisp"
-          "site-lisp/with-editor")
+              "site-lisp/with-editor")
   :bind ("C-x t g" . magit-status)
   :init
   (add-hook 'magit-mode-hook 'hl-line-mode))
@@ -255,11 +255,9 @@
   )
 
 (use-package cc-mode
-  :mode (("\\.h\\(h?\\|xx\\|pp\\)\\'" . c++-mode)
-         ("\\.m\\'" . c-mode)
-         ("\\.mm\\'" . c++-mode))
+  :mode (("\\.h\\(h?\\|xx\\|pp\\)\\'" . c++-mode))
   :preface
-  (defun my-c-mode-common-hook ()
+  (defun my/c-mode-common-hook ()
     (setq indent-tabs-mode nil)
     (setq c-default-style "linux")
 
@@ -277,14 +275,13 @@
     (bind-key "<return>" #'newline-and-indent c-mode-base-map)
     (unbind-key "M-j" c-mode-base-map)
     )
-
   (defun setup-gdb ()
     (use-package gdb-mi
       :init
       (setq gdb-many-windows t)
       (setq gdb-show-main t)))
   :init
-  (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+  (add-hook 'c-mode-common-hook 'my/c-mode-common-hook)
   :config
   (add-hook 'c-mode-common-hook 'setup-gdb))
 
@@ -307,24 +304,32 @@
   ;; :config
   )
 
-(use-package go-mode
-  :load-path "site-lisp/go-mode"
-  :mode (("\\.go\\'" . go-mode))
-  :commands (gofmt-before-save
-             godoc
-             go-remove-unused-imports
-             gofmt)
-  :preface
-  (defun init-go ()
+;; (use-package go-mode
+;;   :load-path "site-lisp/go-mode"
+;;   :mode (("\\.go\\'" . go-mode))
+;;   :commands (gofmt-before-save
+;;              godoc
+;;              go-remove-unused-imports
+;;              gofmt)
+;;   :preface
+;;   (defun init-go ()
 
-    )
-  :init
-  (add-hook 'go-mode-hook 'init-go)
-  :config
-  (progn
-    (bind-key "<return>" #'newline-and-indent go-mode-map)
-    (bind-key (kbd "C-c C-f l") 'godoc go-mode-map)
-    (bind-key (kbd "C-c C-f e") 'go-remove-unused-imports go-mode-map)
-    (bind-key (kbd "C-c C-f t") 'gofmt go-mode-map)
-    )
-  (add-hook 'before-save-hook 'gofmt-before-save))
+;;     )
+;;   :init
+;;   (add-hook 'go-mode-hook 'init-go)
+;;   :config
+;;   (progn
+;;     (bind-key "<return>" #'newline-and-indent go-mode-map)
+;;     (bind-key (kbd "C-c C-f l") 'godoc go-mode-map)
+;;     (bind-key (kbd "C-c C-f e") 'go-remove-unused-imports go-mode-map)
+;;     (bind-key (kbd "C-c C-f t") 'gofmt go-mode-map)
+;;     )
+;;   (add-hook 'before-save-hook 'gofmt-before-save))
+
+(use-package markdown-mode
+  :load-path "site-lisp/markdown-mode"
+  :commands (markdown-mode
+             gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode)))
