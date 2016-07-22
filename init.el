@@ -368,3 +368,7 @@
 
   ;; optional key bindings, easier than hs defaults
   (bind-key "C-c h" #'hs-toggle-hiding nxml-mode-map))
+
+(use-package restclient
+  :load-path "site-lisp/restclient"
+  :mode ("\\.rest\\'" . restclient-mode))
