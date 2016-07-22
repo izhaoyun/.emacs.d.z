@@ -93,8 +93,9 @@
   :load-path "site-lisp/which-key"
   :diminish which-key-mode
   :commands (which-key-mode
-         which-key-setup-side-window-right-bottom)
-  :init
+             which-key-setup-side-window-right-bottom)
+  :defer 10
+  :config
   (which-key-mode)
   (which-key-setup-side-window-right-bottom))
 
@@ -166,8 +167,10 @@
   (window-numbering-mode))
 
 (use-package winner
+  :if (not noninteractive)
   :commands (winner-mode)
-  :init
+  :defer 5
+  :config
   (winner-mode))
 
 (use-package electric-align
@@ -230,7 +233,8 @@
 
 (use-package whitespace
   :commands (whitespace-cleanup
-             whitespace-buffer)
+             whitespace-buffer
+             whitespace-mode)
   :config
   (add-hook 'before-save-hook 'whitespace-cleanup))
 
